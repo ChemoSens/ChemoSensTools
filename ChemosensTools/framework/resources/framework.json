@@ -1,0 +1,1027 @@
+﻿[
+  {
+    "key": "AlignTextCenterTooltip",
+    "en": "Centered",
+    "fr": "Centré"
+  },
+  {
+    "key": "AlignTextJustifyTooltip",
+    "en": "Justifé",
+    "fr": "Justifié"
+  },
+  {
+    "key": "AlignTextLeftTooltip",
+    "en": "Left aligned",
+    "fr": "Aligné à gauche"
+  },
+  {
+    "key": "AlignTextRightTooltip",
+    "en": "Right aligned",
+    "fr": "Aligné à droite"
+  },
+  {
+    "key": "AllSelected",
+    "en": "All selected",
+    "fr": "Tout est sélectionné"
+  },
+  {
+    "key": "AttributeName",
+    "en": "Expected column name",
+    "fr": "Nom de colonne attendu"
+  },
+  {
+    "key": "BackgroundTooltip",
+    "en": "Background color",
+    "fr": "Couleur du fond"
+  },
+  {
+    "key": "CheckAll",
+    "en": "Select all",
+    "fr": "Tout sélectionner"
+  },
+  {
+    "key": "ChooseFileFormat",
+    "en": "Select file format",
+    "fr": "Choix du format de fichier"
+  },
+  {
+    "key": "ClickToCancelSort",
+    "en": "Click to calcel sort",
+    "fr": "Cliquer pour supprimer le tri"
+  },
+  {
+    "key": "ClickToSortAsc",
+    "en": "Click to sort asc",
+    "fr": "Cliquer pour trier par ordre croissant"
+  },
+  {
+    "key": "ClickToSortDesc",
+    "en": "Click to sort desc",
+    "fr": "Cliquer pour trier par ordre décroissant"
+  },
+
+  {
+    "key": "ColumnName",
+    "en": "Found column name",
+    "fr": "Noms de colonnes trouvés"
+  },
+  {
+    "key": "DataTable_EmptyTable",
+    "en": "No data available in table",
+    "fr": "Pas de donnée."
+  },
+  {
+    "key": "DataTable_First",
+    "en": "First",
+    "fr": "Premier"
+  },
+  {
+    "key": "DataTable_Info",
+    "en": "Showing _START_ to _END_ of _TOTAL_ entries",
+    "fr": "Affichage de _START_ à _END_ sur _TOTAL_ entrées"
+  },
+  {
+    "key": "DataTable_InfoEmpty",
+    "en": "Showing 0 to 0 of 0 entries",
+    "fr": "Affichage de 0 à 0 sur 0 entrée"
+  },
+  {
+    "key": "DataTable_InfoFiltered",
+    "en": "(filtered from _MAX_ total entries)",
+    "fr": "(filtrage de _MAX_ entrées)"
+  },
+  {
+    "key": "DataTable_Last",
+    "en": "Last",
+    "fr": "Dernier"
+  },
+  {
+    "key": "DataTable_LengthMenu",
+    "en": "Show _MENU_ entries",
+    "fr": "Affiche _MENU_ entrées"
+  },
+  {
+    "key": "DataTable_Loading",
+    "en": "Loading...",
+    "fr": "Chargement"
+  },
+  {
+    "key": "DataTable_Next",
+    "en": "Next",
+    "fr": "Suivant"
+  },
+  {
+    "key": "DataTable_Previous",
+    "en": "Previous",
+    "fr": "Précédent"
+  },
+  {
+    "key": "DataTable_Processing",
+    "en": "Processing...",
+    "fr": "Traitement"
+  },
+  {
+    "key": "DataTable_Search",
+    "en": "Search:",
+    "fr": "Chercher : "
+  },
+  {
+    "key": "DataTable_SortAscending",
+    "en": ": activate to sort column ascending",
+    "fr": ": activer pour trier par ordre croissant"
+  },
+  {
+    "key": "DataTable_SortDescending",
+    "en": ": activate to sort column descending",
+    "fr": ": activer pour trier par ordre décroissant"
+  },
+  {
+    "key": "DataTable_ZeroRecord",
+    "en": "No matching records found",
+    "fr": "aucun enregistrement corespondant trouvé"
+  },
+  {
+    "key": "Day",
+    "en": "Day",
+    "fr": "Jour"
+  },
+  {
+    "key": "DayNames",
+    "en": "Monday,Tuesday,Wednesday,Thursday,Friday,Saturday,Sunday",
+    "fr": "Lundi,Mardi,Mercredi,Jeudi,Vendredi,Samedi,Dimanche"
+  },
+  {
+    "key": "DayNamesMin",
+    "en": "Mo,Tu,We,Th,Fr,Sa,Su",
+    "fr": "Lu,Ma,Me,Je,Ve,Sa,Di"
+  },
+  {
+    "key": "DayNamesShort",
+    "en": "Mon,Tue,Wed,Thu,Fri,Sat,Sun",
+    "fr": "Lun,Mar,Mer,Jeu,Ven,Sam,Dim"
+  },
+  {
+    "key": "DeleteRows",
+    "en": "Delete selected rows",
+    "fr": "Supprimer les lignes sélectionnées"
+  },
+  {
+    "key": "Description",
+    "en": "Description",
+    "fr": "Description"
+  },
+  {
+    "key": "EMailFormatExpected",
+    "en": "E-mail format expected.",
+    "fr": "Format e-mail attendu."
+  },
+  {
+    "key": "Filter",
+    "en": "Filter",
+    "fr": "Filtrer"
+  },
+  {
+    "key": "FilterBy",
+    "en": "Filter by: {0}",
+    "fr": "Filtrer : {0}"
+  },
+  {
+    "key": "FontNameTooltip",
+    "en": "Font",
+    "fr": "Police de caractère"
+  },
+  {
+    "key": "FontSizeTooltip",
+    "en": "Font size",
+    "fr": "Taille du texte"
+  },
+  {
+    "key": "ForegroundTooltip",
+    "en": "Font color",
+    "fr": "Couleur du texte"
+  },
+  {
+    "key": "Import",
+    "en": "Import",
+    "fr": "Importer"
+  },
+  {
+    "key": "InsertRow",
+    "en": "Insert row",
+    "fr": "Insérer une ligne"
+  },
+  {
+    "key": "InsertSpecialTextTooltip",
+    "en": "Special text",
+    "fr": "Texte spécial"
+  },
+  {
+    "key": "IsImperative",
+    "en": "Mandatory",
+    "fr": "Colonne obligatoire"
+  },
+  {
+    "key": "Lines",
+    "en": "Line(s)",
+    "fr": "Ligne(s)"
+  },
+  {
+    "key": "Month",
+    "en": "Month",
+    "fr": "Mois"
+  },
+  {
+    "key": "NoneSelected",
+    "en": "None selected",
+    "fr": "Rien n'est sélectionné"
+  },
+  {
+    "key": "SelectUnselectAll",
+    "en": "Select/unselect all",
+    "fr": "Sélectionner/déselectionner tout"
+  },
+  {
+    "key": "Selected",
+    "en": "selected",
+    "fr": "sélectionné(s)"
+  },
+  {
+    "key": "SelectedItems",
+    "en": "Selected row(s): ",
+    "fr": "Ligne(s) sélectionnée(s) : "
+  },
+  {
+    "key": "SelectedLines",
+    "en": "selected line(s)",
+    "fr": "ligne(s) sélectionnées"
+  },
+  {
+    "key": "SwitchToFullScreen",
+    "en": "Switch to full screen",
+    "fr": "Passer en mode plein écran"
+  },
+  {
+    "key": "success",
+    "en": "success",
+    "fr": "succès"
+  },
+  {
+    "key": "ThisWindowsWillCloseInSeconds",
+    "en": "This windows will be closed in {0} second(s)",
+    "fr": "Cette fenêtre va se fermer automatiquement dans {0} seconde(s)"
+  },
+  {
+    "key": "success",
+    "en": "success",
+    "fr": "succès"
+  },
+  {
+    "key": "ToggleBoldTooltip",
+    "en": "Bold",
+    "fr": "Gras"
+  },
+  {
+    "key": "ToggleItalicTooltip",
+    "en": "Italic",
+    "fr": "Italique"
+  },
+  {
+    "key": "ToggleStrikeThroughTooltip",
+    "en": "Strikethrough",
+    "fr": "Barré"
+  },
+  {
+    "key": "ToggleSubscriptTooltip",
+    "en": "Subscript",
+    "fr": "Indice"
+  },
+  {
+    "key": "ToggleSuperscriptTooltip",
+    "en": "Superscript",
+    "fr": "Exposant"
+  },
+  {
+    "key": "ToggleUnderlineTooltip",
+    "en": "Underline",
+    "fr": "Souligné"
+  },
+  {
+    "key": "Year",
+    "en": "Year",
+    "fr": "Année"
+  },
+
+
+  {
+    "key": "black",
+    "en": "Black",
+    "fr": "Noir"
+  },
+  {
+    "key": "dimgrey",
+    "en": "Dim grey",
+    "fr": "Gris mat"
+  },
+  {
+    "key": "dimgray",
+    "en": "dim gray",
+    "fr": "Gris mat"
+  },
+  {
+    "key": "grey",
+    "en": "Grey",
+    "fr": "Gris"
+  },
+  {
+    "key": "gray",
+    "en": "Gray",
+    "fr": "Gris"
+  },
+  {
+    "key": "darkgrey",
+    "en": "Dark grey",
+    "fr": "Gris foncé (Acier)"
+  },
+  {
+    "key": "darkgray",
+    "en": "Dark gray",
+    "fr": "Gris foncé (Acier)"
+  },
+  {
+    "key": "silver",
+    "en": "Silver",
+    "fr": "Gris argent"
+  },
+  {
+    "key": "lightgray",
+    "en": "Light gray",
+    "fr": "Gris clair"
+  },
+  {
+    "key": "lightgrey",
+    "en": "Light grey",
+    "fr": "Gris clair"
+  },
+  {
+    "key": "gainsboro",
+    "en": "Gainsboro",
+    "fr": "Gris gainsboro (Etain)"
+  },
+  {
+    "key": "whitesmoke",
+    "en": "White smoke",
+    "fr": "Blanc fumée"
+  },
+  {
+    "key": "ghostwhite",
+    "en": "Ghost white",
+    "fr": "Blanc spectral"
+  },
+  {
+    "key": "white",
+    "en": "White",
+    "fr": "Blanc"
+  },
+  {
+    "key": "ivory",
+    "en": "Ivory",
+    "fr": "Ivoire"
+  },
+  {
+    "key": "floralwhite",
+    "en": "Floral white",
+    "fr": "Blanc floral"
+  },
+  {
+    "key": "seashell",
+    "en": "Sea shell",
+    "fr": "Blanc coquillage"
+  },
+  {
+    "key": "lavenderblush",
+    "en": "Lavender blush",
+    "fr": "Blanc lavande"
+  },
+  {
+    "key": "oldlace",
+    "en": "Old lace",
+    "fr": "Blanc dentelle"
+  },
+  {
+    "key": "linen",
+    "en": "Linen",
+    "fr": "Blanc Lin"
+  },
+  {
+    "key": "mistyrose",
+    "en": "Misty rose",
+    "fr": "Rose brumeux"
+  },
+  {
+    "key": "pink",
+    "en": "Pink",
+    "fr": "Rose"
+  },
+  {
+    "key": "lightpink",
+    "en": "Light pink",
+    "fr": "Rose clair"
+  },
+  {
+    "key": "hotpink",
+    "en": "Hot pink",
+    "fr": "Rose Passion"
+  },
+  {
+    "key": "deeppink",
+    "en": "Deep pink",
+    "fr": "Rose profond"
+  },
+  {
+    "key": "palevioletred",
+    "en": "Pale violetred",
+    "fr": "Violet pâle"
+  },
+  {
+    "key": "magenta",
+    "en": "Magenta",
+    "fr": "Magenta"
+  },
+  {
+    "key": "fuchsia",
+    "en": "Fuchsia",
+    "fr": "Fushia"
+  },
+  {
+    "key": "mediumvioletred",
+    "en": "Medium violetred",
+    "fr": "Violet moyen"
+  },
+  {
+    "key": "thistle",
+    "en": "Thistle",
+    "fr": "Violet chardon"
+  },
+  {
+    "key": "plum",
+    "en": "Plum",
+    "fr": "Prune"
+  },
+  {
+    "key": "violet",
+    "en": "Violet",
+    "fr": "Violet"
+  },
+  {
+    "key": "orchid",
+    "en": "Orchid",
+    "fr": "Violet orchidée"
+  },
+  {
+    "key": "mediumorchid",
+    "en": "Medium orchid",
+    "fr": "Violet orchidée moyen"
+  },
+  {
+    "key": "darkorchid",
+    "en": "Dark orchid",
+    "fr": "Violet orchidée foncé"
+  },
+  {
+    "key": "darkviolet",
+    "en": "Dark violet",
+    "fr": "Violet foncé"
+  },
+  {
+    "key": "blueviolet",
+    "en": "Blue violet",
+    "fr": "Bleu violet"
+  },
+  {
+    "key": "indigo",
+    "en": "Indigo",
+    "fr": "Indigo"
+  },
+  {
+    "key": "mediumslateblue",
+    "en": "Medium slate blue",
+    "fr": "Bleu ardoise moyen"
+  },
+  {
+    "key": "slateblue",
+    "en": "Slate blue",
+    "fr": "Bleu ardoise"
+  },
+  {
+    "key": "darkslateblue",
+    "en": "Dark slate blue",
+    "fr": "Bleu ardoise foncé"
+  },
+  {
+    "key": "mediumpurple",
+    "en": "Medium purple",
+    "fr": "Pourpre moyen"
+  },
+  {
+    "key": "darkmagenta",
+    "en": "Dark magenta",
+    "fr": "Magenta foncé"
+  },
+  {
+    "key": "purple",
+    "en": "Purple",
+    "fr": "Pourpre"
+  },
+  {
+    "key": "rosybrown",
+    "en": "Rosy brown",
+    "fr": "Brun rosé"
+  },
+  {
+    "key": "lightcoral",
+    "en": "Light coral",
+    "fr": "Corail clair"
+  },
+  {
+    "key": "coral",
+    "en": "Coral",
+    "fr": "Corail"
+  },
+  {
+    "key": "tomato",
+    "en": "Tomato",
+    "fr": "Tomate"
+  },
+  {
+    "key": "orangered",
+    "en": "Orange red",
+    "fr": "Orangé"
+  },
+  {
+    "key": "red",
+    "en": "Red",
+    "fr": "Rouge"
+  },
+  {
+    "key": "crimson",
+    "en": "Crimson",
+    "fr": "Rouge cramoisi"
+  },
+  {
+    "key": "lightsalmon",
+    "en": "Light salmon",
+    "fr": "Saumon clair"
+  },
+  {
+    "key": "darksalmon",
+    "en": "Dark salmon",
+    "fr": "Saumon Foncé"
+  },
+  {
+    "key": "salmon",
+    "en": "Salmon",
+    "fr": "Saumon"
+  },
+  {
+    "key": "indianred",
+    "en": "Indian red",
+    "fr": "Rouge Indien"
+  },
+  {
+    "key": "firebrick",
+    "en": "Fire brick",
+    "fr": "Rouge brique"
+  },
+  {
+    "key": "brown",
+    "en": "Brown",
+    "fr": "Brun"
+  },
+  {
+    "key": "darkred",
+    "en": "Dark red",
+    "fr": "Rouge foncé"
+  },
+  {
+    "key": "maroon",
+    "en": "Maroon",
+    "fr": "Bordeaux"
+  },
+  {
+    "key": "beige",
+    "en": "Beige",
+    "fr": "Beige"
+  },
+  {
+    "key": "antiquewhite",
+    "en": "Antique white",
+    "fr": "Beige antique"
+  },
+  {
+    "key": "papayawhip",
+    "en": "Papaya whip",
+    "fr": "Beige papaye"
+  },
+  {
+    "key": "blanchedalmond",
+    "en": "Blanched almond",
+    "fr": "Amande"
+  },
+  {
+    "key": "bisque",
+    "en": "Bisque",
+    "fr": "Bisque"
+  },
+  {
+    "key": "peachpuff",
+    "en": "Peach puff",
+    "fr": "Beige pêche"
+  },
+  {
+    "key": "moccasin",
+    "en": "Moccasin",
+    "fr": "Beige mocassin"
+  },
+  {
+    "key": "navajowhite",
+    "en": "Navajo white",
+    "fr": "Jaune blanc navaro"
+  },
+  {
+    "key": "wheat",
+    "en": "Wheat",
+    "fr": "Jaune blé"
+  },
+  {
+    "key": "burlywood",
+    "en": "Burly wood",
+    "fr": "Brun bois rustique"
+  },
+  {
+    "key": "tan",
+    "en": "Tan",
+    "fr": "Brun roux"
+  },
+  {
+    "key": "sandybrown",
+    "en": "Sandy brown",
+    "fr": "Brun sable"
+  },
+  {
+    "key": "orange",
+    "en": "Orange",
+    "fr": "Orange"
+  },
+  {
+    "key": "darkorange",
+    "en": "Dark orange",
+    "fr": "Orange foncé"
+  },
+  {
+    "key": "chocolate",
+    "en": "Chocolate",
+    "fr": "Chocolat"
+  },
+  {
+    "key": "peru",
+    "en": "Peru",
+    "fr": "Brun pérou"
+  },
+  {
+    "key": "sienna",
+    "en": "Sienna",
+    "fr": "Terre de Sienne"
+  },
+  {
+    "key": "saddlebrown",
+    "en": "Saddle brown",
+    "fr": "Brun cuir"
+  },
+  {
+    "key": "lightyellow",
+    "en": "Light yellow",
+    "fr": "Jaune clair"
+  },
+  {
+    "key": "cornsilk",
+    "en": "Corn silk",
+    "fr": "Jaune maïs doux"
+  },
+  {
+    "key": "lightgoldenrodyellow",
+    "en": "Light golden rod yellow",
+    "fr": "Jaune doré clair"
+  },
+  {
+    "key": "lemonchiffon",
+    "en": "Lemon chiffon",
+    "fr": "Beige citron soie"
+  },
+  {
+    "key": "palegoldenrod",
+    "en": "Pale golden rod",
+    "fr": "Jaune doré pâle"
+  },
+  {
+    "key": "khaki",
+    "en": "Khaki",
+    "fr": "Brun kaki"
+  },
+  {
+    "key": "yellow",
+    "en": "Yellow",
+    "fr": "Jaune"
+  },
+  {
+    "key": "gold",
+    "en": "Gold",
+    "fr": "Or"
+  },
+  {
+    "key": "goldenrod",
+    "en": "Golden rod",
+    "fr": "Jaune doré"
+  },
+  {
+    "key": "darkgoldenrod",
+    "en": "Dark golden rod",
+    "fr": "Jaune doré foncé"
+  },
+  {
+    "key": "darkkhaki",
+    "en": "Dark khaki",
+    "fr": "Brun kaki foncé"
+  },
+  {
+    "key": "yellowgreen",
+    "en": "Yellow green",
+    "fr": "Jaune vert"
+  },
+  {
+    "key": "olivedrab",
+    "en": "Olive drab",
+    "fr": "Kaki"
+  },
+  {
+    "key": "olive",
+    "en": "Olive",
+    "fr": "Olive"
+  },
+  {
+    "key": "darkolivegreen",
+    "en": "Dark olive green",
+    "fr": "Vert olive foncé"
+  },
+  {
+    "key": "greenyellow",
+    "en": "Green yellow",
+    "fr": "Vert jaune"
+  },
+  {
+    "key": "chartreuse",
+    "en": "Chartreuse",
+    "fr": "Chartreuse"
+  },
+  {
+    "key": "lawngreen",
+    "en": "Lawn green",
+    "fr": "Vert prairie"
+  },
+  {
+    "key": "lime",
+    "en": "Lime",
+    "fr": "Citron vert"
+  },
+  {
+    "key": "limegreen",
+    "en": "Lime green",
+    "fr": "Citron vert foncé"
+  },
+  {
+    "key": "mintcream",
+    "en": "Mint cream",
+    "fr": "Blanc menthe"
+  },
+  {
+    "key": "honeydew",
+    "en": "Honeydew",
+    "fr": "Miellat"
+  },
+  {
+    "key": "palegreen",
+    "en": "Pale green",
+    "fr": "Vert pâle"
+  },
+  {
+    "key": "lightgreen",
+    "en": "Light green",
+    "fr": "Vert clair"
+  },
+  {
+    "key": "springgreen",
+    "en": "Spring green",
+    "fr": "Vert printemps"
+  },
+  {
+    "key": "mediumspringgreen",
+    "en": "Medium spring green",
+    "fr": "Vert printemps moyen"
+  },
+  {
+    "key": "forestgreen",
+    "en": "Forest green",
+    "fr": "Vert forêt"
+  },
+  {
+    "key": "green",
+    "en": "Green",
+    "fr": "Vert"
+  },
+  {
+    "key": "darkgreen",
+    "en": "Dark green",
+    "fr": "Vert foncé"
+  },
+  {
+    "key": "darkseagreen",
+    "en": "Dark sea green",
+    "fr": "Vert océan foncé"
+  },
+  {
+    "key": "mediumseagreen",
+    "en": "Medium sea green",
+    "fr": "Vert océan moyen"
+  },
+  {
+    "key": "seagreen",
+    "en": "Sea green",
+    "fr": "Vert océan"
+  },
+  {
+    "key": "lightslategray",
+    "en": "Light slate gray",
+    "fr": "Gris ardoise clair"
+  },
+  {
+    "key": "slategray",
+    "en": "Slate gray",
+    "fr": "Gris ardoise"
+  },
+  {
+    "key": "darkslategray",
+    "en": "Dark slate gray",
+    "fr": "Gris ardoise foncé"
+  },
+  {
+    "key": "aliceblue",
+    "en": "Alice blue",
+    "fr": "Bleu alice"
+  },
+  {
+    "key": "azure",
+    "en": "Azure",
+    "fr": "Bleu azur"
+  },
+  {
+    "key": "lightcyan",
+    "en": "Light cyan",
+    "fr": "Cyan clair"
+  },
+  {
+    "key": "paleturquoise",
+    "en": "Pale turquoise",
+    "fr": "Azurin"
+  },
+  {
+    "key": "aquamarine",
+    "en": "Aaquamarine",
+    "fr": "Aigue-marine"
+  },
+  {
+    "key": "mediumaquamarine",
+    "en": "Medium aquamarine",
+    "fr": "Aigue-marine moyen"
+  },
+  {
+    "key": "aqua",
+    "en": "Aqua",
+    "fr": "Cyan"
+  },
+  {
+    "key": "turquoise",
+    "en": "Turquoise",
+    "fr": "Turquoise"
+  },
+  {
+    "key": "mediumturquoise",
+    "en": "Medium turquoise",
+    "fr": "Turquoise moyen"
+  },
+  {
+    "key": "darkturquoise",
+    "en": "Dark turquoise",
+    "fr": "Turquoise foncé"
+  },
+  {
+    "key": "lightseagreen",
+    "en": "Light sea green",
+    "fr": "Vert marin clair"
+  },
+  {
+    "key": "darkcyan",
+    "en": "Dark cyan",
+    "fr": "Cyan foncé"
+  },
+  {
+    "key": "teal",
+    "en": "Teal",
+    "fr": "Vert sarcelle"
+  },
+  {
+    "key": "cadetblue",
+    "en": "Cadet blue",
+    "fr": "Bleu pétrole"
+  },
+  {
+    "key": "powderblue",
+    "en": "Powder blue",
+    "fr": "Bleu poudre"
+  },
+  {
+    "key": "lightblue",
+    "en": "Light blue",
+    "fr": "Bleu clair"
+  },
+  {
+    "key": "lightskyblue",
+    "en": "Light sky blue",
+    "fr": "Bleu azur clair"
+  },
+  {
+    "key": "skyblue",
+    "en": "Sky blue",
+    "fr": "Bleu azur"
+  },
+  {
+    "key": "deepskyblue",
+    "en": "Deep sky blue",
+    "fr": "Bleu azur profond"
+  },
+  {
+    "key": "dodgerblue",
+    "en": "Dodger blue",
+    "fr": "Bleu toile"
+  },
+  {
+    "key": "lavender",
+    "en": "Lavender",
+    "fr": "Bleu lavande"
+  },
+  {
+    "key": "lightsteelblue",
+    "en": "Light steel blue",
+    "fr": "Bleu acier clair"
+  },
+  {
+    "key": "cornflowerblue",
+    "en": "Cornflower blue",
+    "fr": "Bleuet"
+  },
+  {
+    "key": "steelblue",
+    "en": "Steel blue",
+    "fr": "Bleu acier"
+  },
+  {
+    "key": "royalblue",
+    "en": "Royal blue",
+    "fr": "Bleu royal"
+  },
+  {
+    "key": "blue",
+    "en": "Blue",
+    "fr": "Bleu"
+  },
+  {
+    "key": "mediumblue",
+    "en": "Medium blue",
+    "fr": "Bleu moyen"
+  },
+  {
+    "key": "darkblue",
+    "en": "Dark blue",
+    "fr": "Bleu foncé"
+  },
+  {
+    "key": "navy",
+    "en": "Navy",
+    "fr": "Bleu marin"
+  },
+  {
+    "key": "midnightblue",
+    "en": "Midnight blue",
+    "fr": "Bleu de minuit"
+  }
+
+
+]

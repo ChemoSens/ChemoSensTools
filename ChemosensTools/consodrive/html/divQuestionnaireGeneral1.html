@@ -1,0 +1,47 @@
+﻿<div id="divQuestionnaireGeneral1" class="container h-100">
+    <div class="row h-100 justify-content-center align-items-center">
+        <div class="col-12">
+            <h2  class="text-center"><b>De manière générale</b>, quel degré d'importance accordez-vous à la <b>valeur économique</b> des aliments lors de vos achats ?</h2>
+            <p class="text-center alert alert-info">"Critère secondaire" = critère pris en compte dans vos choix mais qui, seul, n'est pas décisif, "Critère primordial" = si ce critère n'est pas respecté, vous préférez ne pas acheter l'aliment. Si ce critère n'a aucune importance pour vos décisions d'achat, cochez la case prévue à cet effet.</p>
+
+            <div class="text-center mt-5"><div style="float:left;width:40%;text-align:right">Secondaire</div><div class="text-center scale-2" style="float:left;width:20%" id="divRankingValeurEconomique"></div><div style="float:left;width:40%;text-align:left">Primordial</div><div style="clear:both"></div></div>
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" id="inputValeurEconomiquePasSensible">
+                <label class="form-check-label" for="inputValeurEconomiquePasSensible">globalement, je ne me soucie pas de la valeur économique des aliments lors de mes achats</label>
+            </div>
+            <div id="divCriteres">
+                <h4 class="mt-5">A quel(s) critère(s) êtes-vous le plus sensible ?</h4>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="inputValeurEconomiqueSensiblePrixAffiche">
+                    <label class="form-check-label" for="inputValeurEconomiqueSensiblePrixAffiche">le prix affiché en euros</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="inputValeurEconomiqueSensiblePrixKg">
+                    <label class="form-check-label" for="inputValeurEconomiqueSensiblePrixKg">le prix affiché au kg </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="inputValeurEconomiqueSensibleReduction">
+                    <label class="form-check-label" for="inputValeurEconomiqueSensibleReduction">une réduction (offre promotionnelle)</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="inputValeurEconomiqueSensibleAdequation">
+                    <label class="form-check-label" for="inputValeurEconomiqueSensibleAdequation">l'adéquation du prix d'achat avec votre budget</label>
+                </div>
+
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="inputValeurEconomiqueSensibleAutre">
+                    <label class="form-check-label" for="inputValeurEconomiqueSensibleAutre">autre critère (précisez ci-dessous)</label>
+                </div>
+
+                <input class="form-control w-100 mt-5" type="text" id="inputValeurEconomiqueAutre" />
+
+            </div>
+
+
+            <div class="form-group text-center mt-5">
+                <button id="btnPrec" class="btn btn-primary">Précédent</button>
+                <button id="btnGoToQuestionnaireGeneral2" class="btn btn-primary">Suivant</button>
+            </div>
+        </div>
+    </div>
+</div>

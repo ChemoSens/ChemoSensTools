@@ -1,0 +1,1579 @@
+﻿<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props')" />
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{2A0B9541-CDC3-4BEB-9C3B-5023329830C1}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ChemosensTools</RootNamespace>
+    <AssemblyName>ChemosensTools</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <Use64BitIISExpress />
+    <IISExpressSSLPort>44301</IISExpressSSLPort>
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <TypeScriptToolsVersion>4.0</TypeScriptToolsVersion>
+    <WcfConfigValidationEnabled>True</WcfConfigValidationEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="BouncyCastle.Crypto, Version=1.8.6.0, Culture=neutral, PublicKeyToken=0e99375e54769942, processorArchitecture=MSIL">
+      <HintPath>..\packages\Portable.BouncyCastle.1.8.6\lib\net40\BouncyCastle.Crypto.dll</HintPath>
+    </Reference>
+    <Reference Include="DocumentFormat.OpenXml, Version=2.11.3.0, Culture=neutral, PublicKeyToken=8fb06cb64d019a17, processorArchitecture=MSIL">
+      <HintPath>..\packages\DocumentFormat.OpenXml.2.11.3\lib\net46\DocumentFormat.OpenXml.dll</HintPath>
+    </Reference>
+    <Reference Include="EPPlus, Version=5.4.1.0, Culture=neutral, PublicKeyToken=ea159fdaa78159a1, processorArchitecture=MSIL">
+      <HintPath>..\packages\EPPlus.5.4.1\lib\net45\EPPlus.dll</HintPath>
+    </Reference>
+    <Reference Include="ICSharpCode.SharpZipLib, Version=1.2.0.246, Culture=neutral, PublicKeyToken=1b03e6acf1164f73, processorArchitecture=MSIL">
+      <HintPath>..\packages\SharpZipLib.1.2.0\lib\net45\ICSharpCode.SharpZipLib.dll</HintPath>
+    </Reference>
+    <Reference Include="itextsharp, Version=5.5.13.2, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
+      <HintPath>..\packages\iTextSharp.5.5.13.2\lib\itextsharp.dll</HintPath>
+    </Reference>
+    <Reference Include="LpSolveDotNet, Version=4.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\LpSolveDotNet.4.0.0\lib\net471\LpSolveDotNet.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=3.6.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="NHunspell, Version=1.2.5554.16953, Culture=neutral, PublicKeyToken=1ac793ea843b4366, processorArchitecture=MSIL">
+      <HintPath>..\packages\NHunspell.1.2.5554.16953\lib\net\NHunspell.dll</HintPath>
+    </Reference>
+    <Reference Include="NPOI, Version=2.5.1.0, Culture=neutral, PublicKeyToken=0df73ec7942b34e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\NPOI.2.5.1\lib\net45\NPOI.dll</HintPath>
+    </Reference>
+    <Reference Include="NPOI.OOXML, Version=2.5.1.0, Culture=neutral, PublicKeyToken=0df73ec7942b34e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\NPOI.2.5.1\lib\net45\NPOI.OOXML.dll</HintPath>
+    </Reference>
+    <Reference Include="NPOI.OpenXml4Net, Version=2.5.1.0, Culture=neutral, PublicKeyToken=0df73ec7942b34e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\NPOI.2.5.1\lib\net45\NPOI.OpenXml4Net.dll</HintPath>
+    </Reference>
+    <Reference Include="NPOI.OpenXmlFormats, Version=2.5.1.0, Culture=neutral, PublicKeyToken=0df73ec7942b34e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\NPOI.2.5.1\lib\net45\NPOI.OpenXmlFormats.dll</HintPath>
+    </Reference>
+    <Reference Include="PresentationCore" />
+    <Reference Include="System.ComponentModel.Annotations, Version=4.2.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.ComponentModel.Annotations.4.7.0\lib\net461\System.ComponentModel.Annotations.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ComponentModel.Composition" />
+    <Reference Include="System.IO, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.IO.4.3.0\lib\net462\System.IO.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.IO.FileSystem.Primitives, Version=4.0.2.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.IO.FileSystem.Primitives.4.3.0\lib\net46\System.IO.FileSystem.Primitives.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.IO.Packaging, Version=4.0.5.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.IO.Packaging.4.7.0\lib\net46\System.IO.Packaging.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http, Version=4.1.1.3, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Net.Http.4.3.4\lib\net46\System.Net.Http.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Runtime, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.4.3.0\lib\net462\System.Runtime.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Runtime.Caching" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Security.Cryptography.Algorithms, Version=4.2.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Security.Cryptography.Algorithms.4.3.0\lib\net463\System.Security.Cryptography.Algorithms.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Security.Cryptography.Encoding, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Security.Cryptography.Encoding.4.3.0\lib\net46\System.Security.Cryptography.Encoding.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Security.Cryptography.Primitives, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Security.Cryptography.Primitives.4.3.0\lib\net46\System.Security.Cryptography.Primitives.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Security.Cryptography.X509Certificates, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Security.Cryptography.X509Certificates.4.3.0\lib\net461\System.Security.Cryptography.X509Certificates.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.ServiceModel.Activation" />
+    <Reference Include="System.ServiceModel.Web" />
+    <Reference Include="System.Threading.Tasks" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="WindowsBase" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="admin\html\Accounts.html" />
+    <Content Include="admin\html\Crocnoteurs.html" />
+    <Content Include="admin\html\Main.html" />
+    <Content Include="admin\html\ModalLogin.html" />
+    <Content Include="admin\img\logo.png" />
+    <Content Include="admin\index.html" />
+    <Content Include="admin\ts\app.js" />
+    <Content Include="admin\ts\index.js" />
+    <Content Include="analyses\data\scripts\style.css" />
+    <Content Include="analyses\html\Output.html" />
+    <Content Include="analyses\html\Main.html" />
+    <Content Include="analyses\html\ModalLogin.html" />
+    <Content Include="analyses\img\tds.png" />
+    <Content Include="analyses\index.html" />
+    <Content Include="analyses\ts\app.js" />
+    <Content Include="analyses\ts\index.js" />
+    <Content Include="ciqualClassifier\html\MainOld.html" />
+    <Content Include="ciqualClassifier\html\Main.html" />
+    <Content Include="ciqualClassifier\html\ModalLogin.html" />
+    <Content Include="ciqualClassifier\img\logo.jpg" />
+    <Content Include="ciqualClassifier\index.html" />
+    <Content Include="ciqualClassifier\ts\app.js" />
+    <Content Include="ciqualClassifier\ts\index.js" />
+    <Content Include="codappro\html\DivDetail.html" />
+    <Content Include="codappro\html\DivFactures.html" />
+    <Content Include="codappro\html\DivEnregistre.html" />
+    <Content Include="codappro\html\DivFin.html" />
+    <Content Include="codappro\html\DivChoix.html" />
+    <Content Include="codappro\html\DivLiking.html" />
+    <Content Include="codappro\html\DivLabels.html" />
+    <Content Include="codappro\html\DivLoginAdmin.html" />
+    <Content Include="codappro\html\DivPrix.html" />
+    <Content Include="codappro\html\DivPoids.html" />
+    <Content Include="codappro\html\DivDesignation.html" />
+    <Content Include="codappro\html\DivLieu.html" />
+    <Content Include="codappro\html\DivDate.html" />
+    <Content Include="codappro\html\DivLogin.html" />
+    <Content Include="codappro\img\icon.png" />
+    <Content Include="codappro\img\shopping_cart.png" />
+    <Content Include="codappro\index.html" />
+    <Content Include="codappro\service-worker.js" />
+    <Content Include="codappro\ts\app.js" />
+    <Content Include="codappro\ts\index.js" />
+    <Content Include="codappro\ts\models.js" />
+    <Content Include="consodrive\html\divEntrainement5.html" />
+    <Content Include="consodrive\html\divAuthentification.html" />
+    <Content Include="consodrive\html\divConsentement.html" />
+    <Content Include="consodrive\html\divEntrainement1.html" />
+    <Content Include="consodrive\html\divEntrainement2.html" />
+    <Content Include="consodrive\html\divEntrainement3.html" />
+    <Content Include="consodrive\html\divEntrainement4.html" />
+    <Content Include="consodrive\html\divEntrainement6.html" />
+    <Content Include="consodrive\html\divEntrainement7.html" />
+    <Content Include="consodrive\html\divEntrainement8.html" />
+    <Content Include="consodrive\html\divEntrainement9.html" />
+    <Content Include="consodrive\html\divFactures.html" />
+    <Content Include="consodrive\html\divInfo.html" />
+    <Content Include="consodrive\html\divFin.html" />
+    <Content Include="consodrive\html\divInstruction1.html" />
+    <Content Include="consodrive\html\divInstruction2.html" />
+    <Content Include="consodrive\html\divInstruction3.html" />
+    <Content Include="consodrive\html\divInstruction4.html" />
+    <Content Include="consodrive\html\divQuestionnaireAliment1.html" />
+    <Content Include="consodrive\html\divQuestionnaireAliment2.html" />
+    <Content Include="consodrive\html\divQuestionnaireAliment3.html" />
+    <Content Include="consodrive\html\divQuestionnaireAliment4.html" />
+    <Content Include="consodrive\html\divQuestionnaireGeneral1.html" />
+    <Content Include="consodrive\html\divQuestionnaireIndividu5.html" />
+    <Content Include="consodrive\html\divQuestionnaireIndividu6.html" />
+    <Content Include="consodrive\html\divQuestionnaireIndividu4.html" />
+    <Content Include="consodrive\html\divQuestionnaireIndividu3.html" />
+    <Content Include="consodrive\html\divQuestionnaireIndividu2.html" />
+    <Content Include="consodrive\html\divQuestionnaireIndividu1.html" />
+    <Content Include="consodrive\html\divQuestionnaireGeneral9.html" />
+    <Content Include="consodrive\html\divQuestionnaireGeneral8.html" />
+    <Content Include="consodrive\html\divQuestionnaireGeneral7.html" />
+    <Content Include="consodrive\html\divQuestionnaireGeneral6.html" />
+    <Content Include="consodrive\html\divQuestionnaireGeneral5.html" />
+    <Content Include="consodrive\html\divQuestionnaireGeneral4.html" />
+    <Content Include="consodrive\html\divQuestionnaireGeneral3.html" />
+    <Content Include="consodrive\html\divQuestionnaireGeneral2.html" />
+    <Content Include="consodrive\indemnisation.html" />
+    <Content Include="consodrive\inscription.html" />
+    <Content Include="consodrive\img\cjki.png" />
+    <Content Include="consodrive\index.html" />
+    <Content Include="consodrive\ts\app.js" />
+    <Content Include="consodrive\ts\indemnisation.js" />
+    <Content Include="consodrive\ts\index.js" />
+    <Content Include="consodrive\ts\inscription.js" />
+    <Content Include="consodrive\ts\models.js" />
+    <Content Include="crocnoteurs\demo.html" />
+    <Content Include="crocnoteurs\application.html" />
+    <Content Include="crocnoteurs\html\divArretEtude.html" />
+    <Content Include="crocnoteurs\html\divAuthentification.html" />
+    <Content Include="crocnoteurs\html\divAvantPhotoComposition.html" />
+    <Content Include="crocnoteurs\html\divAvantPhotoIngredients.html" />
+    <Content Include="crocnoteurs\html\divCagnotte.html" />
+    <Content Include="crocnoteurs\html\divDejaUtilise.html" />
+    <Content Include="crocnoteurs\html\divEvaluationAime.html" />
+    <Content Include="crocnoteurs\html\divEvaluationApparence.html" />
+    <Content Include="crocnoteurs\html\divEvaluationApparenceIdeal.html" />
+    <Content Include="crocnoteurs\html\divEvaluationDejaGoute.html" />
+    <Content Include="crocnoteurs\html\divEvaluationExpectedLiking.html" />
+    <Content Include="crocnoteurs\html\divEvaluationFoodChoice1.html" />
+    <Content Include="crocnoteurs\html\divEvaluationFoodChoice2.html" />
+    <Content Include="crocnoteurs\html\divEvaluationGout.html" />
+    <Content Include="crocnoteurs\html\divEvaluationGoutIdeal.html" />
+    <Content Include="crocnoteurs\html\divEvaluationJARGras.html" />
+    <Content Include="crocnoteurs\html\divEvaluationJARSale.html" />
+    <Content Include="crocnoteurs\html\divEvaluationJARSucre.html" />
+    <Content Include="crocnoteurs\html\divEvaluationNouveauProduit.html" />
+    <Content Include="crocnoteurs\html\divEvaluationPasAime.html" />
+    <Content Include="crocnoteurs\html\divEvaluationProduit1.html" />
+    <Content Include="crocnoteurs\html\divEvaluationProduit1b.html" />
+    <Content Include="crocnoteurs\html\divEvaluationRachat.html" />
+    <Content Include="crocnoteurs\html\divEvaluationStatedLiking.html" />
+    <Content Include="crocnoteurs\html\divEvaluationTexture.html" />
+    <Content Include="crocnoteurs\html\divEvaluationTextureIdeal.html" />
+    <Content Include="crocnoteurs\html\divGoutage.html" />
+    <Content Include="crocnoteurs\html\divIdeal.html" />
+    <Content Include="crocnoteurs\html\divIndemnisation.html" />
+    <Content Include="crocnoteurs\html\divInscription2a.html" />
+    <Content Include="crocnoteurs\html\divInscription1g.html" />
+    <Content Include="crocnoteurs\html\divInscription1f.html" />
+    <Content Include="crocnoteurs\html\divInscription1e.html" />
+    <Content Include="crocnoteurs\html\divInscription1d.html" />
+    <Content Include="crocnoteurs\html\divInscription1c.html" />
+    <Content Include="crocnoteurs\html\divInscription1b.html" />
+    <Content Include="crocnoteurs\html\divInscription1a.html" />
+    <Content Include="crocnoteurs\html\divInscription1.html" />
+    <Content Include="crocnoteurs\html\divInscription2b.html" />
+    <Content Include="crocnoteurs\html\divInscription2.html" />
+    <Content Include="crocnoteurs\html\divInscription3.html" />
+    <Content Include="crocnoteurs\html\divInscription4.html" />
+    <Content Include="crocnoteurs\html\divInscription5.html" />
+    <Content Include="crocnoteurs\html\divInscription6d.html" />
+    <Content Include="crocnoteurs\html\divInscription6c1.html" />
+    <Content Include="crocnoteurs\html\divInscription6b1.html" />
+    <Content Include="crocnoteurs\html\divInscription6a1.html" />
+    <Content Include="crocnoteurs\html\divInscription6a.html" />
+    <Content Include="crocnoteurs\html\divInscription6b.html" />
+    <Content Include="crocnoteurs\html\divInscription6c.html" />
+    <Content Include="crocnoteurs\html\divInscription7.html" />
+    <Content Include="crocnoteurs\html\divInscription8.html" />
+    <Content Include="crocnoteurs\html\divMauvaisProfil.html" />
+    <Content Include="crocnoteurs\html\divMenu.html" />
+    <Content Include="crocnoteurs\html\divObservation.html" />
+    <Content Include="crocnoteurs\html\divOuverturePaquet.html" />
+    <Content Include="crocnoteurs\html\divPhotoComposition.html" />
+    <Content Include="crocnoteurs\html\divPhotoEmballage.html" />
+    <Content Include="crocnoteurs\html\divPhotoIngredients.html" />
+    <Content Include="crocnoteurs\html\divVerificationCagnotte.html" />
+    <Content Include="crocnoteurs\html\modalRandom.html" />
+    <Content Include="crocnoteurs\img\accueil.jpg" />
+    <Content Include="crocnoteurs\img\accueil.png" />
+    <Content Include="crocnoteurs\img\croco_courses.png" />
+    <Content Include="crocnoteurs\img\croco_mange.png" />
+    <Content Include="crocnoteurs\img\croco_tel.png" />
+    <Content Include="crocnoteurs\img\icon.png" />
+    <Content Include="crocnoteurs\img\image1.jpg" />
+    <Content Include="crocnoteurs\img\image2.jpg" />
+    <Content Include="crocnoteurs\img\image3.jpg" />
+    <Content Include="crocnoteurs\img\image4.jpg" />
+    <Content Include="crocnoteurs\img\image5.jpg" />
+    <Content Include="crocnoteurs\img\logo.png" />
+    <Content Include="crocnoteurs\inscription2.html" />
+    <Content Include="crocnoteurs\inscription.html" />
+    <Content Include="crocnoteurs\service-worker.js" />
+    <Content Include="crocnoteurs\style.css" />
+    <Content Include="crocnoteurs\ts\app.js" />
+    <Content Include="crocnoteurs\ts\demo.js" />
+    <Content Include="crocnoteurs\ts\index.js" />
+    <Content Include="crocnoteurs\ts\inscription.js" />
+    <Content Include="crocnoteurs\ts\models.js" />
+    <Content Include="crocnoteurs\index.html" />
+    <Content Include="favicon.ico" />
+    <Content Include="fcLexicon\html\Main.html" />
+    <Content Include="fcLexicon\html\ModalLogin.html" />
+    <Content Include="fcLexicon\img\wordcloud.jpg" />
+    <Content Include="fcLexicon\index.html" />
+    <Content Include="fcLexicon\ts\app.js" />
+    <Content Include="fcLexicon\ts\index.js" />
+    <Content Include="Framework\css\addtohomescreen.css" />
+    <Content Include="Framework\css\bootstrap-colorpalette.css" />
+    <Content Include="Framework\css\bootstrap-multiselect.css" />
+    <Content Include="Framework\css\bootstrap.css" />
+    <Content Include="Framework\css\bootstrap.min.css" />
+    <Content Include="Framework\css\buttons.dataTables.min.css" />
+    <Content Include="Framework\css\datatable.css" />
+    <Content Include="Framework\css\dataTables.bootstrap.min.css" />
+    <Content Include="Framework\css\flatly.min.css" />
+    <Content Include="Framework\css\font-awesome-4.7.0\css\font-awesome.css" />
+    <Content Include="Framework\css\font-awesome-4.7.0\css\font-awesome.min.css" />
+    <Content Include="Framework\css\font-awesome-4.7.0\fonts\fontawesome-webfont.svg" />
+    <Content Include="Framework\css\font-awesome-4.7.0\HELP-US-OUT.txt" />
+    <Content Include="Framework\css\fontawesome-all.min.css" />
+    <Content Include="Framework\css\framework.css" />
+    <Content Include="Framework\css\ie10-viewport-bug-workaround.css" />
+    <Content Include="Framework\css\images\sort_asc.png" />
+    <Content Include="Framework\css\images\sort_asc_disabled.png" />
+    <Content Include="Framework\css\images\sort_both.png" />
+    <Content Include="Framework\css\images\sort_desc.png" />
+    <Content Include="Framework\css\images\sort_desc_disabled.png" />
+    <Content Include="Framework\css\images\ui-icons_444444_256x240.png" />
+    <Content Include="Framework\css\images\ui-icons_555555_256x240.png" />
+    <Content Include="Framework\css\images\ui-icons_777620_256x240.png" />
+    <Content Include="Framework\css\images\ui-icons_777777_256x240.png" />
+    <Content Include="Framework\css\images\ui-icons_cc0000_256x240.png" />
+    <Content Include="Framework\css\images\ui-icons_ffffff_256x240.png" />
+    <Content Include="Framework\css\jquery-ui.min.css" />
+    <Content Include="Framework\css\jquery.dataTables.min.css" />
+    <Content Include="Framework\css\jquery.mCustomScrollbar.min.css" />
+    <Content Include="Framework\css\jquery.modal.min.css" />
+    <Content Include="Framework\css\navbar-fixed-top.css" />
+    <Content Include="Framework\css\nouislider.min.css" />
+    <Content Include="Framework\css\pivot.min.css" />
+    <Content Include="Framework\css\qunit-2.0.1.css" />
+    <Content Include="Framework\css\sticky-footer-navbar.css" />
+    <Content Include="Framework\css\tooltipster.bundle.css" />
+    <Content Include="Framework\css\tooltipster.bundle.min.css" />
+    <Content Include="Framework\css\zoom.css" />
+    <Content Include="Framework\doc\README.txt" />
+    <Content Include="Framework\framework.js" />
+    <Content Include="Framework\images\progressbar.gif" />
+    <Content Include="Framework\js\addtohomescreen.min.js" />
+    <Content Include="Framework\js\BingSpeech.js" />
+    <Content Include="Framework\js\bootstrap-colorpalette.js" />
+    <Content Include="Framework\js\bootstrap-datepicker.js" />
+    <Content Include="Framework\js\bootstrap-multiselect.js" />
+    <Content Include="Framework\js\bootstrap.lightbox.js" />
+    <Content Include="Framework\js\bootstrap.min.js" />
+    <Content Include="Framework\js\buttons.html5.min.js" />
+    <Content Include="Framework\js\buttons.print.min.js" />
+    <Content Include="Framework\js\coundown-timer.js" />
+    <Content Include="Framework\js\crypto-js\aes.js" />
+    <Content Include="Framework\js\crypto-js\cipher-core.js" />
+    <Content Include="Framework\js\crypto-js\core.js" />
+    <Content Include="Framework\js\crypto-js\enc-base64.js" />
+    <Content Include="Framework\js\crypto-js\enc-hex.js" />
+    <Content Include="Framework\js\crypto-js\enc-latin1.js" />
+    <Content Include="Framework\js\crypto-js\enc-utf16.js" />
+    <Content Include="Framework\js\crypto-js\enc-utf8.js" />
+    <Content Include="Framework\js\crypto-js\evpkdf.js" />
+    <Content Include="Framework\js\crypto-js\format-hex.js" />
+    <Content Include="Framework\js\crypto-js\format-openssl.js" />
+    <Content Include="Framework\js\crypto-js\hmac-md5.js" />
+    <Content Include="Framework\js\crypto-js\hmac-ripemd160.js" />
+    <Content Include="Framework\js\crypto-js\hmac-sha1.js" />
+    <Content Include="Framework\js\crypto-js\hmac-sha224.js" />
+    <Content Include="Framework\js\crypto-js\hmac-sha256.js" />
+    <Content Include="Framework\js\crypto-js\hmac-sha3.js" />
+    <Content Include="Framework\js\crypto-js\hmac-sha384.js" />
+    <Content Include="Framework\js\crypto-js\hmac-sha512.js" />
+    <Content Include="Framework\js\crypto-js\hmac.js" />
+    <Content Include="Framework\js\crypto-js\index.js" />
+    <Content Include="Framework\js\crypto-js\jcrypto.js" />
+    <Content Include="Framework\js\crypto-js\lib-typedarrays.js" />
+    <Content Include="Framework\js\crypto-js\md5.js" />
+    <Content Include="Framework\js\crypto-js\mode-cfb.js" />
+    <Content Include="Framework\js\crypto-js\mode-ctr-gladman.js" />
+    <Content Include="Framework\js\crypto-js\mode-ctr.js" />
+    <Content Include="Framework\js\crypto-js\mode-ecb.js" />
+    <Content Include="Framework\js\crypto-js\mode-ofb.js" />
+    <Content Include="Framework\js\crypto-js\pad-ansix923.js" />
+    <Content Include="Framework\js\crypto-js\pad-iso10126.js" />
+    <Content Include="Framework\js\crypto-js\pad-iso97971.js" />
+    <Content Include="Framework\js\crypto-js\pad-nopadding.js" />
+    <Content Include="Framework\js\crypto-js\pad-pkcs7.js" />
+    <Content Include="Framework\js\crypto-js\pad-zeropadding.js" />
+    <Content Include="Framework\js\crypto-js\pbkdf2.js" />
+    <Content Include="Framework\js\crypto-js\rabbit-legacy.js" />
+    <Content Include="Framework\js\crypto-js\rabbit.js" />
+    <Content Include="Framework\js\crypto-js\rc4.js" />
+    <Content Include="Framework\js\crypto-js\ripemd160.js" />
+    <Content Include="Framework\js\crypto-js\sha1.js" />
+    <Content Include="Framework\js\crypto-js\sha224.js" />
+    <Content Include="Framework\js\crypto-js\sha256.js" />
+    <Content Include="Framework\js\crypto-js\sha3.js" />
+    <Content Include="Framework\js\crypto-js\sha384.js" />
+    <Content Include="Framework\js\crypto-js\sha512.js" />
+    <Content Include="Framework\js\crypto-js\tripledes.js" />
+    <Content Include="Framework\js\crypto-js\x64-core.js" />
+    <Content Include="Framework\js\d3.js" />
+    <Content Include="Framework\js\dataTables.bootstrap.min.js" />
+    <Content Include="Framework\js\dataTables.buttons.min.js" />
+    <Content Include="Framework\js\dataTables.editor.min.js" />
+    <Content Include="Framework\js\dataTables.select.min.js" />
+    <Content Include="Framework\js\dexie.min.js" />
+    <Content Include="Framework\js\dragdroptouch.js" />
+    <Content Include="Framework\js\face-api.min.js" />
+    <Content Include="Framework\js\FileSaver.min.js" />
+    <Content Include="Framework\js\html2canvas.min.js" />
+    <Content Include="Framework\js\html5shiv.js" />
+    <Content Include="Framework\js\ie-emulation-modes-warning.js" />
+    <Content Include="Framework\js\ie10-viewport-bug-workaround.js" />
+    <Content Include="Framework\js\interact.min.js" />
+    <Content Include="Framework\js\jquery-editable-select.min.js" />
+    <Content Include="Framework\js\jquery-ui.min.js" />
+    <Content Include="Framework\js\jquery.barrating.min.js" />
+    <Content Include="Framework\js\jquery.dataTables.min.js" />
+    <Content Include="Framework\js\jquery.expose.js" />
+    <Content Include="Framework\js\jquery.js" />
+    <Content Include="Framework\js\jquery.mark.min.js" />
+    <Content Include="Framework\js\jquery.mCustomScrollbar.concat.min.js" />
+    <Content Include="Framework\js\jquery.modal.min.js" />
+    <Content Include="Framework\js\jquery.nav.js" />
+    <Content Include="Framework\js\jquery.parallax.js" />
+    <Content Include="Framework\js\jquery.scrollTo.js" />
+    <Content Include="Framework\js\jquery.ui.touch-punch.min.js" />
+    <Content Include="Framework\js\jspdf.min.js" />
+    <Content Include="Framework\js\jszip.min.js" />
+    <Content Include="Framework\js\Keyboard-master\css\images\disabled.svg" />
+    <Content Include="Framework\js\Keyboard-master\css\images\enabled.svg" />
+    <Content Include="Framework\js\Keyboard-master\css\images\keyboard.svg" />
+    <Content Include="Framework\js\Keyboard-master\css\keyboard-basic.css" />
+    <Content Include="Framework\js\Keyboard-master\css\keyboard.css" />
+    <Content Include="Framework\js\Keyboard-master\dist\css\keyboard-basic.min.css" />
+    <Content Include="Framework\js\Keyboard-master\dist\css\keyboard-dark.min.css" />
+    <Content Include="Framework\js\Keyboard-master\dist\css\keyboard-previewkeyset.min.css" />
+    <Content Include="Framework\js\Keyboard-master\dist\css\keyboard.min.css" />
+    <Content Include="Framework\js\Keyboard-master\dist\js\jquery.keyboard.extension-all.min.js" />
+    <Content Include="Framework\js\Keyboard-master\dist\js\jquery.keyboard.extension-altkeyspopup.min.js" />
+    <Content Include="Framework\js\Keyboard-master\dist\js\jquery.keyboard.extension-autocomplete.min.js" />
+    <Content Include="Framework\js\Keyboard-master\dist\js\jquery.keyboard.extension-caret.min.js" />
+    <Content Include="Framework\js\Keyboard-master\dist\js\jquery.keyboard.extension-extender.min.js" />
+    <Content Include="Framework\js\Keyboard-master\dist\js\jquery.keyboard.extension-mobile.min.js" />
+    <Content Include="Framework\js\Keyboard-master\dist\js\jquery.keyboard.extension-navigation.min.js" />
+    <Content Include="Framework\js\Keyboard-master\dist\js\jquery.keyboard.extension-previewkeyset.min.js" />
+    <Content Include="Framework\js\Keyboard-master\dist\js\jquery.keyboard.extension-scramble.min.js" />
+    <Content Include="Framework\js\Keyboard-master\dist\js\jquery.keyboard.extension-typing.min.js" />
+    <Content Include="Framework\js\Keyboard-master\dist\js\jquery.keyboard.js" />
+    <Content Include="Framework\js\Keyboard-master\dist\js\jquery.keyboard.min.js" />
+    <Content Include="Framework\js\Keyboard-master\dist\js\jquery.mousewheel.min.js" />
+    <Content Include="Framework\js\Keyboard-master\dist\languages\de.min.js" />
+    <Content Include="Framework\js\Keyboard-master\dist\languages\es.min.js" />
+    <Content Include="Framework\js\Keyboard-master\dist\languages\fa.min.js" />
+    <Content Include="Framework\js\Keyboard-master\dist\languages\fr.min.js" />
+    <Content Include="Framework\js\Keyboard-master\dist\languages\he.min.js" />
+    <Content Include="Framework\js\Keyboard-master\dist\languages\hu.min.js" />
+    <Content Include="Framework\js\Keyboard-master\dist\languages\it.min.js" />
+    <Content Include="Framework\js\Keyboard-master\dist\languages\lv.min.js" />
+    <Content Include="Framework\js\Keyboard-master\dist\languages\pl.min.js" />
+    <Content Include="Framework\js\Keyboard-master\dist\languages\pt.min.js" />
+    <Content Include="Framework\js\Keyboard-master\dist\languages\ro.min.js" />
+    <Content Include="Framework\js\Keyboard-master\dist\languages\ru.min.js" />
+    <Content Include="Framework\js\Keyboard-master\dist\languages\sq.min.js" />
+    <Content Include="Framework\js\Keyboard-master\dist\layouts\albanian.min.js" />
+    <Content Include="Framework\js\Keyboard-master\dist\layouts\arabic.min.js" />
+    <Content Include="Framework\js\Keyboard-master\dist\layouts\belarusian.min.js" />
+    <Content Include="Framework\js\Keyboard-master\dist\layouts\bengali.min.js" />
+    <Content Include="Framework\js\Keyboard-master\dist\layouts\bulgarian.min.js" />
+    <Content Include="Framework\js\Keyboard-master\dist\layouts\catalan.min.js" />
+    <Content Include="Framework\js\Keyboard-master\dist\layouts\chinese.min.js" />
+    <Content Include="Framework\js\Keyboard-master\dist\layouts\danish.min.js" />
+    <Content Include="Framework\js\Keyboard-master\dist\layouts\french.min.js" />
+    <Content Include="Framework\js\Keyboard-master\dist\layouts\german.min.js" />
+    <Content Include="Framework\js\Keyboard-master\dist\layouts\hebrew.min.js" />
+    <Content Include="Framework\js\Keyboard-master\dist\layouts\hindi.min.js" />
+    <Content Include="Framework\js\Keyboard-master\dist\layouts\hungarian.min.js" />
+    <Content Include="Framework\js\Keyboard-master\dist\layouts\hungarianansi.min.js" />
+    <Content Include="Framework\js\Keyboard-master\dist\layouts\japanese.min.js" />
+    <Content Include="Framework\js\Keyboard-master\dist\layouts\keyboard-layouts-combined.min.js" />
+    <Content Include="Framework\js\Keyboard-master\dist\layouts\keyboard-layouts-greywyvern.min.js" />
+    <Content Include="Framework\js\Keyboard-master\dist\layouts\keyboard-layouts-microsoft.min.js" />
+    <Content Include="Framework\js\Keyboard-master\dist\layouts\latvian.min.js" />
+    <Content Include="Framework\js\Keyboard-master\dist\layouts\mongolian.min.js" />
+    <Content Include="Framework\js\Keyboard-master\dist\layouts\ms-Albanian.min.js" />
+    <Content Include="Framework\js\Keyboard-master\dist\layouts\ms-Arabic.min.js" />
+    <Content Include="Framework\js\Keyboard-master\dist\layouts\ms-Armenian.min.js" />
+    <Content Include="Framework\js\Keyboard-master\dist\layouts\ms-Assamese.min.js" />
+    <Content Include="Framework\js\Keyboard-master\dist\layouts\ms-Azeri.min.js" />
+    <Content Include="Framework\js\Keyboard-master\dist\layouts\ms-Bashkir.min.js" />
+    <Content Include="Framework\js\Keyboard-master\dist\layouts\ms-Belarusian.min.js" />
+    <Content Include="Framework\js\Keyboard-master\dist\layouts\ms-Belgian.min.js" />
+    <Content Include="Framework\js\Keyboard-master\dist\layouts\ms-Bengali.min.js" />
+    <Content Include="Framework\js\Keyboard-master\dist\layouts\ms-Bulgarian.min.js" />
+    <Content Include="Framework\js\Keyboard-master\dist\layouts\ms-Canadian.min.js" />
+    <Content Include="Framework\js\Keyboard-master\dist\layouts\ms-Chinese.min.js" />
+    <Content Include="Framework\js\Keyboard-master\dist\layouts\ms-Czech.min.js" />
+    <Content Include="Framework\js\Keyboard-master\dist\layouts\ms-Danish.min.js" />
+    <Content Include="Framework\js\Keyboard-master\dist\layouts\ms-Devanagari.min.js" />
+    <Content Include="Framework\js\Keyboard-master\dist\layouts\ms-Divehi.min.js" />
+    <Content Include="Framework\js\Keyboard-master\dist\layouts\ms-Dutch.min.js" />
+    <Content Include="Framework\js\Keyboard-master\dist\layouts\ms-Estonian.min.js" />
+    <Content Include="Framework\js\Keyboard-master\dist\layouts\ms-Faeroese.min.js" />
+    <Content Include="Framework\js\Keyboard-master\dist\layouts\ms-Finnish.min.js" />
+    <Content Include="Framework\js\Keyboard-master\dist\layouts\ms-French.min.js" />
+    <Content Include="Framework\js\Keyboard-master\dist\layouts\ms-Gaelic.min.js" />
+    <Content Include="Framework\js\Keyboard-master\dist\layouts\ms-Georgian.min.js" />
+    <Content Include="Framework\js\Keyboard-master\dist\layouts\ms-German.min.js" />
+    <Content Include="Framework\js\Keyboard-master\dist\layouts\ms-Greek.min.js" />
+    <Content Include="Framework\js\Keyboard-master\dist\layouts\ms-Greenlandic.min.js" />
+    <Content Include="Framework\js\Keyboard-master\dist\layouts\ms-Gujarati.min.js" />
+    <Content Include="Framework\js\Keyboard-master\dist\layouts\ms-Hausa.min.js" />
+    <Content Include="Framework\js\Keyboard-master\dist\layouts\ms-Hebrew.min.js" />
+    <Content Include="Framework\js\Keyboard-master\dist\layouts\ms-Hindi.min.js" />
+    <Content Include="Framework\js\Keyboard-master\dist\layouts\ms-Hungarian.min.js" />
+    <Content Include="Framework\js\Keyboard-master\dist\layouts\ms-Icelandic.min.js" />
+    <Content Include="Framework\js\Keyboard-master\dist\layouts\ms-Igbo.min.js" />
+    <Content Include="Framework\js\Keyboard-master\dist\layouts\ms-Inuktitut.min.js" />
+    <Content Include="Framework\js\Keyboard-master\dist\layouts\ms-Irish.min.js" />
+    <Content Include="Framework\js\Keyboard-master\dist\layouts\ms-Italian.min.js" />
+    <Content Include="Framework\js\Keyboard-master\dist\layouts\ms-Japanese-Hiragana.min.js" />
+    <Content Include="Framework\js\Keyboard-master\dist\layouts\ms-Kannada.min.js" />
+    <Content Include="Framework\js\Keyboard-master\dist\layouts\ms-Kazakh.min.js" />
+    <Content Include="Framework\js\Keyboard-master\dist\layouts\ms-Korean.min.js" />
+    <Content Include="Framework\js\Keyboard-master\dist\layouts\ms-Kyrgyz-Cyrillic.min.js" />
+    <Content Include="Framework\js\Keyboard-master\dist\layouts\ms-Lao.min.js" />
+    <Content Include="Framework\js\Keyboard-master\dist\layouts\ms-Latin-American.min.js" />
+    <Content Include="Framework\js\Keyboard-master\dist\layouts\ms-Latvian.min.js" />
+    <Content Include="Framework\js\Keyboard-master\dist\layouts\ms-Lithuanian.min.js" />
+    <Content Include="Framework\js\Keyboard-master\dist\layouts\ms-Luxembourgish.min.js" />
+    <Content Include="Framework\js\Keyboard-master\dist\layouts\ms-Macedonian.min.js" />
+    <Content Include="Framework\js\Keyboard-master\dist\layouts\ms-Malayalam.min.js" />
+    <Content Include="Framework\js\Keyboard-master\dist\layouts\ms-Maltese.min.js" />
+    <Content Include="Framework\js\Keyboard-master\dist\layouts\ms-Maori.min.js" />
+    <Content Include="Framework\js\Keyboard-master\dist\layouts\ms-Marathi.min.js" />
+    <Content Include="Framework\js\Keyboard-master\dist\layouts\ms-Mongolian-Cyrillic.min.js" />
+    <Content Include="Framework\js\Keyboard-master\dist\layouts\ms-Nepali.min.js" />
+    <Content Include="Framework\js\Keyboard-master\dist\layouts\ms-Norwegian.min.js" />
+    <Content Include="Framework\js\Keyboard-master\dist\layouts\ms-Oriya.min.js" />
+    <Content Include="Framework\js\Keyboard-master\dist\layouts\ms-Pashto.min.js" />
+    <Content Include="Framework\js\Keyboard-master\dist\layouts\ms-Persian.min.js" />
+    <Content Include="Framework\js\Keyboard-master\dist\layouts\ms-Polish.min.js" />
+    <Content Include="Framework\js\Keyboard-master\dist\layouts\ms-Portuguese.min.js" />
+    <Content Include="Framework\js\Keyboard-master\dist\layouts\ms-Punjabi.min.js" />
+    <Content Include="Framework\js\Keyboard-master\dist\layouts\ms-Romanian.min.js" />
+    <Content Include="Framework\js\Keyboard-master\dist\layouts\ms-Russian.min.js" />
+    <Content Include="Framework\js\Keyboard-master\dist\layouts\ms-Sami.min.js" />
+    <Content Include="Framework\js\Keyboard-master\dist\layouts\ms-Serbian.min.js" />
+    <Content Include="Framework\js\Keyboard-master\dist\layouts\ms-Setswana.min.js" />
+    <Content Include="Framework\js\Keyboard-master\dist\layouts\ms-Sinhala.min.js" />
+    <Content Include="Framework\js\Keyboard-master\dist\layouts\ms-Slovak.min.js" />
+    <Content Include="Framework\js\Keyboard-master\dist\layouts\ms-Slovenian.min.js" />
+    <Content Include="Framework\js\Keyboard-master\dist\layouts\ms-Sorbian.min.js" />
+    <Content Include="Framework\js\Keyboard-master\dist\layouts\ms-Spanish.min.js" />
+    <Content Include="Framework\js\Keyboard-master\dist\layouts\ms-Swedish-Sami.min.js" />
+    <Content Include="Framework\js\Keyboard-master\dist\layouts\ms-Swedish.min.js" />
+    <Content Include="Framework\js\Keyboard-master\dist\layouts\ms-Swiss-German.min.js" />
+    <Content Include="Framework\js\Keyboard-master\dist\layouts\ms-Syriac.min.js" />
+    <Content Include="Framework\js\Keyboard-master\dist\layouts\ms-Tajik.min.js" />
+    <Content Include="Framework\js\Keyboard-master\dist\layouts\ms-Tamil.min.js" />
+    <Content Include="Framework\js\Keyboard-master\dist\layouts\ms-Tatar.min.js" />
+    <Content Include="Framework\js\Keyboard-master\dist\layouts\ms-Telugu.min.js" />
+    <Content Include="Framework\js\Keyboard-master\dist\layouts\ms-Thai.min.js" />
+    <Content Include="Framework\js\Keyboard-master\dist\layouts\ms-Tibetan.min.js" />
+    <Content Include="Framework\js\Keyboard-master\dist\layouts\ms-Turkish.min.js" />
+    <Content Include="Framework\js\Keyboard-master\dist\layouts\ms-Turkmen.min.js" />
+    <Content Include="Framework\js\Keyboard-master\dist\layouts\ms-Ukrainian.min.js" />
+    <Content Include="Framework\js\Keyboard-master\dist\layouts\ms-United-Kingdom.min.js" />
+    <Content Include="Framework\js\Keyboard-master\dist\layouts\ms-Urdu.min.js" />
+    <Content Include="Framework\js\Keyboard-master\dist\layouts\ms-US-Dvorak.min.js" />
+    <Content Include="Framework\js\Keyboard-master\dist\layouts\ms-US-English.min.js" />
+    <Content Include="Framework\js\Keyboard-master\dist\layouts\ms-Uyghur.min.js" />
+    <Content Include="Framework\js\Keyboard-master\dist\layouts\ms-Uzbek-Cyrillic.min.js" />
+    <Content Include="Framework\js\Keyboard-master\dist\layouts\ms-Vietnamese.min.js" />
+    <Content Include="Framework\js\Keyboard-master\dist\layouts\ms-Wolof.min.js" />
+    <Content Include="Framework\js\Keyboard-master\dist\layouts\ms-Yakut.min.js" />
+    <Content Include="Framework\js\Keyboard-master\dist\layouts\ms-Yoruba.min.js" />
+    <Content Include="Framework\js\Keyboard-master\dist\layouts\persian.min.js" />
+    <Content Include="Framework\js\Keyboard-master\dist\layouts\polish.min.js" />
+    <Content Include="Framework\js\Keyboard-master\dist\layouts\portuguese.min.js" />
+    <Content Include="Framework\js\Keyboard-master\dist\layouts\romanian.min.js" />
+    <Content Include="Framework\js\Keyboard-master\dist\layouts\russian.min.js" />
+    <Content Include="Framework\js\Keyboard-master\dist\layouts\serbian.min.js" />
+    <Content Include="Framework\js\Keyboard-master\dist\layouts\spanish.min.js" />
+    <Content Include="Framework\js\Keyboard-master\dist\layouts\swedish.min.js" />
+    <Content Include="Framework\js\Keyboard-master\dist\layouts\tamil.min.js" />
+    <Content Include="Framework\js\Keyboard-master\dist\layouts\thai.min.js" />
+    <Content Include="Framework\js\Keyboard-master\dist\layouts\turkish.min.js" />
+    <Content Include="Framework\js\Keyboard-master\dist\layouts\vietnamese.min.js" />
+    <Content Include="Framework\js\Keyboard-master\js\jquery.keyboard.extension-all.js" />
+    <Content Include="Framework\js\Keyboard-master\js\jquery.keyboard.extension-altkeyspopup.js" />
+    <Content Include="Framework\js\Keyboard-master\js\jquery.keyboard.extension-autocomplete.js" />
+    <Content Include="Framework\js\Keyboard-master\js\jquery.keyboard.extension-caret.js" />
+    <Content Include="Framework\js\Keyboard-master\js\jquery.keyboard.extension-extender.js" />
+    <Content Include="Framework\js\Keyboard-master\js\jquery.keyboard.extension-mobile.js" />
+    <Content Include="Framework\js\Keyboard-master\js\jquery.keyboard.extension-navigation.js" />
+    <Content Include="Framework\js\Keyboard-master\js\jquery.keyboard.extension-previewkeyset.js" />
+    <Content Include="Framework\js\Keyboard-master\js\jquery.keyboard.extension-scramble.js" />
+    <Content Include="Framework\js\Keyboard-master\js\jquery.keyboard.extension-typing.js" />
+    <Content Include="Framework\js\Keyboard-master\js\jquery.keyboard.js" />
+    <Content Include="Framework\js\Keyboard-master\js\jquery.mousewheel.js" />
+    <Content Include="Framework\js\Keyboard-master\languages\de.js" />
+    <Content Include="Framework\js\Keyboard-master\languages\es.js" />
+    <Content Include="Framework\js\Keyboard-master\languages\fa.js" />
+    <Content Include="Framework\js\Keyboard-master\languages\fr.js" />
+    <Content Include="Framework\js\Keyboard-master\languages\he.js" />
+    <Content Include="Framework\js\Keyboard-master\languages\hu.js" />
+    <Content Include="Framework\js\Keyboard-master\languages\it.js" />
+    <Content Include="Framework\js\Keyboard-master\languages\lv.js" />
+    <Content Include="Framework\js\Keyboard-master\languages\pl.js" />
+    <Content Include="Framework\js\Keyboard-master\languages\pt.js" />
+    <Content Include="Framework\js\Keyboard-master\languages\ro.js" />
+    <Content Include="Framework\js\Keyboard-master\languages\ru.js" />
+    <Content Include="Framework\js\Keyboard-master\languages\sq.js" />
+    <Content Include="Framework\js\Keyboard-master\languages\_language_template.js" />
+    <Content Include="Framework\js\Keyboard-master\layouts\albanian.js" />
+    <Content Include="Framework\js\Keyboard-master\layouts\arabic.js" />
+    <Content Include="Framework\js\Keyboard-master\layouts\belarusian.js" />
+    <Content Include="Framework\js\Keyboard-master\layouts\bengali.js" />
+    <Content Include="Framework\js\Keyboard-master\layouts\bulgarian.js" />
+    <Content Include="Framework\js\Keyboard-master\layouts\catalan.js" />
+    <Content Include="Framework\js\Keyboard-master\layouts\chinese.js" />
+    <Content Include="Framework\js\Keyboard-master\layouts\danish.js" />
+    <Content Include="Framework\js\Keyboard-master\layouts\french.js" />
+    <Content Include="Framework\js\Keyboard-master\layouts\german.js" />
+    <Content Include="Framework\js\Keyboard-master\layouts\hebrew.js" />
+    <Content Include="Framework\js\Keyboard-master\layouts\hindi.js" />
+    <Content Include="Framework\js\Keyboard-master\layouts\hungarian.js" />
+    <Content Include="Framework\js\Keyboard-master\layouts\hungarianansi.js" />
+    <Content Include="Framework\js\Keyboard-master\layouts\japanese.js" />
+    <Content Include="Framework\js\Keyboard-master\layouts\keyboard-layouts-combined.js" />
+    <Content Include="Framework\js\Keyboard-master\layouts\keyboard-layouts-greywyvern.js" />
+    <Content Include="Framework\js\Keyboard-master\layouts\keyboard-layouts-microsoft.js" />
+    <Content Include="Framework\js\Keyboard-master\layouts\latvian.js" />
+    <Content Include="Framework\js\Keyboard-master\layouts\mongolian.js" />
+    <Content Include="Framework\js\Keyboard-master\layouts\ms-Albanian.js" />
+    <Content Include="Framework\js\Keyboard-master\layouts\ms-Arabic.js" />
+    <Content Include="Framework\js\Keyboard-master\layouts\ms-Armenian.js" />
+    <Content Include="Framework\js\Keyboard-master\layouts\ms-Assamese.js" />
+    <Content Include="Framework\js\Keyboard-master\layouts\ms-Azeri.js" />
+    <Content Include="Framework\js\Keyboard-master\layouts\ms-Bashkir.js" />
+    <Content Include="Framework\js\Keyboard-master\layouts\ms-Belarusian.js" />
+    <Content Include="Framework\js\Keyboard-master\layouts\ms-Belgian.js" />
+    <Content Include="Framework\js\Keyboard-master\layouts\ms-Bengali.js" />
+    <Content Include="Framework\js\Keyboard-master\layouts\ms-Bulgarian.js" />
+    <Content Include="Framework\js\Keyboard-master\layouts\ms-Canadian.js" />
+    <Content Include="Framework\js\Keyboard-master\layouts\ms-Chinese.js" />
+    <Content Include="Framework\js\Keyboard-master\layouts\ms-Czech.js" />
+    <Content Include="Framework\js\Keyboard-master\layouts\ms-Danish.js" />
+    <Content Include="Framework\js\Keyboard-master\layouts\ms-Devanagari.js" />
+    <Content Include="Framework\js\Keyboard-master\layouts\ms-Divehi.js" />
+    <Content Include="Framework\js\Keyboard-master\layouts\ms-Dutch.js" />
+    <Content Include="Framework\js\Keyboard-master\layouts\ms-Estonian.js" />
+    <Content Include="Framework\js\Keyboard-master\layouts\ms-Faeroese.js" />
+    <Content Include="Framework\js\Keyboard-master\layouts\ms-Finnish.js" />
+    <Content Include="Framework\js\Keyboard-master\layouts\ms-French.js" />
+    <Content Include="Framework\js\Keyboard-master\layouts\ms-Gaelic.js" />
+    <Content Include="Framework\js\Keyboard-master\layouts\ms-Georgian.js" />
+    <Content Include="Framework\js\Keyboard-master\layouts\ms-German.js" />
+    <Content Include="Framework\js\Keyboard-master\layouts\ms-Greek.js" />
+    <Content Include="Framework\js\Keyboard-master\layouts\ms-Greenlandic.js" />
+    <Content Include="Framework\js\Keyboard-master\layouts\ms-Gujarati.js" />
+    <Content Include="Framework\js\Keyboard-master\layouts\ms-Hausa.js" />
+    <Content Include="Framework\js\Keyboard-master\layouts\ms-Hebrew.js" />
+    <Content Include="Framework\js\Keyboard-master\layouts\ms-Hindi.js" />
+    <Content Include="Framework\js\Keyboard-master\layouts\ms-Hungarian.js" />
+    <Content Include="Framework\js\Keyboard-master\layouts\ms-Icelandic.js" />
+    <Content Include="Framework\js\Keyboard-master\layouts\ms-Igbo.js" />
+    <Content Include="Framework\js\Keyboard-master\layouts\ms-Inuktitut.js" />
+    <Content Include="Framework\js\Keyboard-master\layouts\ms-Irish.js" />
+    <Content Include="Framework\js\Keyboard-master\layouts\ms-Italian.js" />
+    <Content Include="Framework\js\Keyboard-master\layouts\ms-Japanese-Hiragana.js" />
+    <Content Include="Framework\js\Keyboard-master\layouts\ms-Kannada.js" />
+    <Content Include="Framework\js\Keyboard-master\layouts\ms-Kazakh.js" />
+    <Content Include="Framework\js\Keyboard-master\layouts\ms-Korean.js" />
+    <Content Include="Framework\js\Keyboard-master\layouts\ms-Kyrgyz-Cyrillic.js" />
+    <Content Include="Framework\js\Keyboard-master\layouts\ms-Lao.js" />
+    <Content Include="Framework\js\Keyboard-master\layouts\ms-Latin-American.js" />
+    <Content Include="Framework\js\Keyboard-master\layouts\ms-Latvian.js" />
+    <Content Include="Framework\js\Keyboard-master\layouts\ms-Lithuanian.js" />
+    <Content Include="Framework\js\Keyboard-master\layouts\ms-Luxembourgish.js" />
+    <Content Include="Framework\js\Keyboard-master\layouts\ms-Macedonian.js" />
+    <Content Include="Framework\js\Keyboard-master\layouts\ms-Malayalam.js" />
+    <Content Include="Framework\js\Keyboard-master\layouts\ms-Maltese.js" />
+    <Content Include="Framework\js\Keyboard-master\layouts\ms-Maori.js" />
+    <Content Include="Framework\js\Keyboard-master\layouts\ms-Marathi.js" />
+    <Content Include="Framework\js\Keyboard-master\layouts\ms-Mongolian-Cyrillic.js" />
+    <Content Include="Framework\js\Keyboard-master\layouts\ms-Nepali.js" />
+    <Content Include="Framework\js\Keyboard-master\layouts\ms-Norwegian.js" />
+    <Content Include="Framework\js\Keyboard-master\layouts\ms-Oriya.js" />
+    <Content Include="Framework\js\Keyboard-master\layouts\ms-Pashto.js" />
+    <Content Include="Framework\js\Keyboard-master\layouts\ms-Persian.js" />
+    <Content Include="Framework\js\Keyboard-master\layouts\ms-Polish.js" />
+    <Content Include="Framework\js\Keyboard-master\layouts\ms-Portuguese.js" />
+    <Content Include="Framework\js\Keyboard-master\layouts\ms-Punjabi.js" />
+    <Content Include="Framework\js\Keyboard-master\layouts\ms-Romanian.js" />
+    <Content Include="Framework\js\Keyboard-master\layouts\ms-Russian.js" />
+    <Content Include="Framework\js\Keyboard-master\layouts\ms-Sami.js" />
+    <Content Include="Framework\js\Keyboard-master\layouts\ms-Serbian.js" />
+    <Content Include="Framework\js\Keyboard-master\layouts\ms-Setswana.js" />
+    <Content Include="Framework\js\Keyboard-master\layouts\ms-Sinhala.js" />
+    <Content Include="Framework\js\Keyboard-master\layouts\ms-Slovak.js" />
+    <Content Include="Framework\js\Keyboard-master\layouts\ms-Slovenian.js" />
+    <Content Include="Framework\js\Keyboard-master\layouts\ms-Sorbian.js" />
+    <Content Include="Framework\js\Keyboard-master\layouts\ms-Spanish.js" />
+    <Content Include="Framework\js\Keyboard-master\layouts\ms-Swedish-Sami.js" />
+    <Content Include="Framework\js\Keyboard-master\layouts\ms-Swedish.js" />
+    <Content Include="Framework\js\Keyboard-master\layouts\ms-Swiss-German.js" />
+    <Content Include="Framework\js\Keyboard-master\layouts\ms-Syriac.js" />
+    <Content Include="Framework\js\Keyboard-master\layouts\ms-Tajik.js" />
+    <Content Include="Framework\js\Keyboard-master\layouts\ms-Tamil.js" />
+    <Content Include="Framework\js\Keyboard-master\layouts\ms-Tatar.js" />
+    <Content Include="Framework\js\Keyboard-master\layouts\ms-Telugu.js" />
+    <Content Include="Framework\js\Keyboard-master\layouts\ms-Thai.js" />
+    <Content Include="Framework\js\Keyboard-master\layouts\ms-Tibetan.js" />
+    <Content Include="Framework\js\Keyboard-master\layouts\ms-Turkish.js" />
+    <Content Include="Framework\js\Keyboard-master\layouts\ms-Turkmen.js" />
+    <Content Include="Framework\js\Keyboard-master\layouts\ms-Ukrainian.js" />
+    <Content Include="Framework\js\Keyboard-master\layouts\ms-United-Kingdom.js" />
+    <Content Include="Framework\js\Keyboard-master\layouts\ms-Urdu.js" />
+    <Content Include="Framework\js\Keyboard-master\layouts\ms-US-Dvorak.js" />
+    <Content Include="Framework\js\Keyboard-master\layouts\ms-US-English.js" />
+    <Content Include="Framework\js\Keyboard-master\layouts\ms-Uyghur.js" />
+    <Content Include="Framework\js\Keyboard-master\layouts\ms-Uzbek-Cyrillic.js" />
+    <Content Include="Framework\js\Keyboard-master\layouts\ms-Vietnamese.js" />
+    <Content Include="Framework\js\Keyboard-master\layouts\ms-Wolof.js" />
+    <Content Include="Framework\js\Keyboard-master\layouts\ms-Yakut.js" />
+    <Content Include="Framework\js\Keyboard-master\layouts\ms-Yoruba.js" />
+    <Content Include="Framework\js\Keyboard-master\layouts\persian.js" />
+    <Content Include="Framework\js\Keyboard-master\layouts\polish.js" />
+    <Content Include="Framework\js\Keyboard-master\layouts\portuguese.js" />
+    <Content Include="Framework\js\Keyboard-master\layouts\romanian.js" />
+    <Content Include="Framework\js\Keyboard-master\layouts\russian.js" />
+    <Content Include="Framework\js\Keyboard-master\layouts\serbian.js" />
+    <Content Include="Framework\js\Keyboard-master\layouts\spanish.js" />
+    <Content Include="Framework\js\Keyboard-master\layouts\swedish.js" />
+    <Content Include="Framework\js\Keyboard-master\layouts\tamil.js" />
+    <Content Include="Framework\js\Keyboard-master\layouts\thai.js" />
+    <Content Include="Framework\js\Keyboard-master\layouts\turkish.js" />
+    <Content Include="Framework\js\Keyboard-master\layouts\vietnamese.js" />
+    <Content Include="Framework\js\Keyboard-master\layouts\_layout_template.js" />
+    <Content Include="Framework\js\localforage.min.js" />
+    <Content Include="Framework\js\modernizr.js" />
+    <Content Include="Framework\js\nouislider.min.js" />
+    <Content Include="Framework\js\offline.min.js" />
+    <Content Include="Framework\js\pdfmake.min.js" />
+    <Content Include="Framework\js\pivot\c3_renderers.min.js" />
+    <Content Include="Framework\js\pivot\d3_renderers.min.js" />
+    <Content Include="Framework\js\pivot\export_renderers.min.js" />
+    <Content Include="Framework\js\pivot\gchart_renderers.min.js" />
+    <Content Include="Framework\js\pivot\pivot.cs.min.js" />
+    <Content Include="Framework\js\pivot\pivot.fr.min.js" />
+    <Content Include="Framework\js\pivot\pivot.min.js" />
+    <Content Include="Framework\js\pivot\pivot_spec.min.js" />
+    <Content Include="Framework\js\pivot\plotly_renderers.min.js" />
+    <Content Include="Framework\js\pivot\tips_data.min.js" />
+    <Content Include="Framework\js\pptxgen.js" />
+    <Content Include="Framework\js\quagga.js" />
+    <Content Include="Framework\js\quagga.min.js" />
+    <Content Include="Framework\js\qunit-2.0.1.js" />
+    <Content Include="Framework\js\require.js" />
+    <Content Include="Framework\js\respond.min.js" />
+    <Content Include="Framework\js\shim.min.js" />
+    <Content Include="Framework\js\smoothscroll.js" />
+    <Content Include="Framework\js\tesseract.min.js" />
+    <Content Include="Framework\js\tinymce\jquery.tinymce.min.js" />
+    <Content Include="Framework\js\tinymce\license.txt" />
+    <Content Include="Framework\js\tinymce\plugins\advlist\plugin.min.js" />
+    <Content Include="Framework\js\tinymce\plugins\anchor\plugin.min.js" />
+    <Content Include="Framework\js\tinymce\plugins\autolink\plugin.min.js" />
+    <Content Include="Framework\js\tinymce\plugins\autoresize\plugin.min.js" />
+    <Content Include="Framework\js\tinymce\plugins\autosave\plugin.min.js" />
+    <Content Include="Framework\js\tinymce\plugins\bbcode\plugin.min.js" />
+    <Content Include="Framework\js\tinymce\plugins\charmap\plugin.min.js" />
+    <Content Include="Framework\js\tinymce\plugins\codesample\plugin.min.js" />
+    <Content Include="Framework\js\tinymce\plugins\code\plugin.min.js" />
+    <Content Include="Framework\js\tinymce\plugins\colorpicker\plugin.min.js" />
+    <Content Include="Framework\js\tinymce\plugins\contextmenu\plugin.min.js" />
+    <Content Include="Framework\js\tinymce\plugins\directionality\plugin.min.js" />
+    <Content Include="Framework\js\tinymce\plugins\emoticons\js\emojis.js" />
+    <Content Include="Framework\js\tinymce\plugins\emoticons\js\emojis.min.js" />
+    <Content Include="Framework\js\tinymce\plugins\emoticons\plugin.min.js" />
+    <Content Include="Framework\js\tinymce\plugins\fullpage\plugin.min.js" />
+    <Content Include="Framework\js\tinymce\plugins\fullscreen\plugin.min.js" />
+    <Content Include="Framework\js\tinymce\plugins\help\plugin.min.js" />
+    <Content Include="Framework\js\tinymce\plugins\hr\plugin.min.js" />
+    <Content Include="Framework\js\tinymce\plugins\imagetools\plugin.min.js" />
+    <Content Include="Framework\js\tinymce\plugins\image\plugin.min.js" />
+    <Content Include="Framework\js\tinymce\plugins\importcss\plugin.min.js" />
+    <Content Include="Framework\js\tinymce\plugins\insertdatetime\plugin.min.js" />
+    <Content Include="Framework\js\tinymce\plugins\legacyoutput\plugin.min.js" />
+    <Content Include="Framework\js\tinymce\plugins\link\plugin.min.js" />
+    <Content Include="Framework\js\tinymce\plugins\lists\plugin.min.js" />
+    <Content Include="Framework\js\tinymce\plugins\media\plugin.min.js" />
+    <Content Include="Framework\js\tinymce\plugins\nonbreaking\plugin.min.js" />
+    <Content Include="Framework\js\tinymce\plugins\noneditable\plugin.min.js" />
+    <Content Include="Framework\js\tinymce\plugins\pagebreak\plugin.min.js" />
+    <Content Include="Framework\js\tinymce\plugins\paste\plugin.min.js" />
+    <Content Include="Framework\js\tinymce\plugins\preview\plugin.min.js" />
+    <Content Include="Framework\js\tinymce\plugins\print\plugin.min.js" />
+    <Content Include="Framework\js\tinymce\plugins\quickbars\plugin.min.js" />
+    <Content Include="Framework\js\tinymce\plugins\save\plugin.min.js" />
+    <Content Include="Framework\js\tinymce\plugins\searchreplace\plugin.min.js" />
+    <Content Include="Framework\js\tinymce\plugins\spellchecker\plugin.min.js" />
+    <Content Include="Framework\js\tinymce\plugins\tabfocus\plugin.min.js" />
+    <Content Include="Framework\js\tinymce\plugins\table\plugin.min.js" />
+    <Content Include="Framework\js\tinymce\plugins\template\plugin.min.js" />
+    <Content Include="Framework\js\tinymce\plugins\textcolor\plugin.min.js" />
+    <Content Include="Framework\js\tinymce\plugins\textpattern\plugin.min.js" />
+    <Content Include="Framework\js\tinymce\plugins\toc\plugin.min.js" />
+    <Content Include="Framework\js\tinymce\plugins\visualblocks\plugin.min.js" />
+    <Content Include="Framework\js\tinymce\plugins\visualchars\plugin.min.js" />
+    <Content Include="Framework\js\tinymce\plugins\wordcount\plugin.min.js" />
+    <Content Include="Framework\js\tinymce\skins\content\dark\content.min.css" />
+    <Content Include="Framework\js\tinymce\skins\content\default\content.min.css" />
+    <Content Include="Framework\js\tinymce\skins\content\document\content.min.css" />
+    <Content Include="Framework\js\tinymce\skins\content\writer\content.min.css" />
+    <Content Include="Framework\js\tinymce\skins\ui\oxide-dark\content.inline.min.css" />
+    <Content Include="Framework\js\tinymce\skins\ui\oxide-dark\content.min.css" />
+    <Content Include="Framework\js\tinymce\skins\ui\oxide-dark\content.mobile.min.css" />
+    <Content Include="Framework\js\tinymce\skins\ui\oxide-dark\skin.min.css" />
+    <Content Include="Framework\js\tinymce\skins\ui\oxide-dark\skin.mobile.min.css" />
+    <Content Include="Framework\js\tinymce\skins\ui\oxide\content.inline.min.css" />
+    <Content Include="Framework\js\tinymce\skins\ui\oxide\content.min.css" />
+    <Content Include="Framework\js\tinymce\skins\ui\oxide\content.mobile.min.css" />
+    <Content Include="Framework\js\tinymce\skins\ui\oxide\skin.min.css" />
+    <Content Include="Framework\js\tinymce\skins\ui\oxide\skin.mobile.min.css" />
+    <Content Include="Framework\js\tinymce\themes\mobile\theme.min.js" />
+    <Content Include="Framework\js\tinymce\themes\silver\theme.min.js" />
+    <Content Include="Framework\js\tinymce\tinymce.min.js" />
+    <Content Include="Framework\js\tooltipster.bundle.js" />
+    <Content Include="Framework\js\tooltipster.bundle.min.js" />
+    <Content Include="Framework\js\vfs_fonts.js" />
+    <Content Include="Framework\js\wow.min.js" />
+    <Content Include="Framework\js\xlsx.full.min.js" />
+    <Content Include="Framework\js\zoom.js" />
+    <Content Include="Framework\test\frameworktest.js" />
+    <Content Include="Framework\ts\BingSpeech.js" />
+    <Content Include="Framework\ts\models.js" />
+    <Resource Include="fcLexicon\cs\fr.aff" />
+    <Resource Include="fcLexicon\cs\fr.dic" />
+    <Content Include="ciqualClassifier\img\logo.xcf" />
+    <Content Include="crocnoteurs\Raleway-Regular.ttf" />
+    <Content Include="crocnoteurs\manifest.json" />
+    <Content Include="codappro\manifest.json" />
+    <Content Include="crocnoteurs\data\comment_faire.pdf" />
+    <Content Include="analyses\data\scripts\profile.r" />
+    <Content Include="analyses\data\templates\template_profile.xlsx" />
+    <Content Include="crocnoteurs\data\produits.pdf" />
+    <Content Include="crocnoteurs\data\Consentement.pdf" />
+    <Content Include="crocnoteurs\data\Information.pdf" />
+    <Content Include="codappro\data\test.json" />
+    <Content Include="analyses\data\scripts\consotextplorer.r" />
+    <None Include="Hunspellx64.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Hunspellx86.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <Content Include="inca3Classifier\html\Main.html" />
+    <Content Include="inca3Classifier\html\ModalLogin.html" />
+    <Content Include="inca3Classifier\img\inca3.png" />
+    <Content Include="inca3Classifier\index.html" />
+    <Content Include="inca3Classifier\ts\app.js" />
+    <Content Include="inca3Classifier\ts\index.js" />
+    <Content Include="index.html" />
+    <Content Include="invoiceAnalyzer\index.html" />
+    <Content Include="labelExtractor\index.html" />
+    <Content Include="packages\index.html" />
+    <Content Include="packages\r.jpg" />
+    <Content Include="raisonsAchat\html\divBreak1.html" />
+    <Content Include="raisonsAchat\html\divFin.html" />
+    <Content Include="raisonsAchat\html\DivLoginAdmin.html" />
+    <Content Include="raisonsAchat\html\divQuestionnaire4.html" />
+    <Content Include="raisonsAchat\html\divQuestionnaire3.html" />
+    <Content Include="raisonsAchat\html\divQuestionnaire2.html" />
+    <Content Include="raisonsAchat\html\divQuestionnaire1.html" />
+    <Content Include="raisonsAchat\html\divRaisonAchat.html" />
+    <Content Include="raisonsAchat\html\divRaisonNonAchat.html" />
+    <Content Include="raisonsAchat\html\divUnivers.html" />
+    <Content Include="raisonsAchat\html\divProduit.html" />
+    <Content Include="raisonsAchat\html\divInfos.html" />
+    <Content Include="raisonsAchat\html\divErreur.html" />
+    <Content Include="raisonsAchat\img\20022297_1.png" />
+    <Content Include="raisonsAchat\img\20022297_2.png" />
+    <Content Include="raisonsAchat\img\20147426_2.png" />
+    <Content Include="raisonsAchat\img\20147426_1.png" />
+    <Content Include="raisonsAchat\img\20673659_1.png" />
+    <Content Include="raisonsAchat\img\20673659_2.png" />
+    <Content Include="raisonsAchat\img\20928582_1.png" />
+    <Content Include="raisonsAchat\img\20928582_2.png" />
+    <Content Include="raisonsAchat\img\26028279_1.png" />
+    <Content Include="raisonsAchat\img\26028279_2.png" />
+    <Content Include="raisonsAchat\img\3017760756297_1.png" />
+    <Content Include="raisonsAchat\img\3017760756297_2.png" />
+    <Content Include="raisonsAchat\img\3029330022411_1.png" />
+    <Content Include="raisonsAchat\img\3029330022411_2.png" />
+    <Content Include="raisonsAchat\img\3029330022428_1.png" />
+    <Content Include="raisonsAchat\img\3029330022428_2.png" />
+    <Content Include="raisonsAchat\img\3116430213884_1.png" />
+    <Content Include="raisonsAchat\img\3116430213884_2.png" />
+    <Content Include="raisonsAchat\img\3178530407396_1.png" />
+    <Content Include="raisonsAchat\img\3178530407396_2.png" />
+    <Content Include="raisonsAchat\img\3228857000838_1.png" />
+    <Content Include="raisonsAchat\img\3228857000838_2.png" />
+    <Content Include="raisonsAchat\img\3228857000852_1.png" />
+    <Content Include="raisonsAchat\img\3228857000852_2.png" />
+    <Content Include="raisonsAchat\img\3228857000883_1.png" />
+    <Content Include="raisonsAchat\img\3228857000883_2.png" />
+    <Content Include="raisonsAchat\img\3228857000906_1.png" />
+    <Content Include="raisonsAchat\img\3228857000906_2.png" />
+    <Content Include="raisonsAchat\img\3229820800455_1.png" />
+    <Content Include="raisonsAchat\img\3229820800455_2.png" />
+    <Content Include="raisonsAchat\img\3242272346050_1.png" />
+    <Content Include="raisonsAchat\img\3242272346050_2.png" />
+    <Content Include="raisonsAchat\img\3242272347552_1.png" />
+    <Content Include="raisonsAchat\img\3242272347552_2.png" />
+    <Content Include="raisonsAchat\img\3242272500056_1.png" />
+    <Content Include="raisonsAchat\img\3242272500056_2.png" />
+    <Content Include="raisonsAchat\img\3242273050055_1.png" />
+    <Content Include="raisonsAchat\img\3242273050055_2.png" />
+    <Content Include="raisonsAchat\img\3242273050253_1.png" />
+    <Content Include="raisonsAchat\img\3242273050253_2.png" />
+    <Content Include="raisonsAchat\img\3245412149085_1.png" />
+    <Content Include="raisonsAchat\img\3245412149085_2.png" />
+    <Content Include="raisonsAchat\img\3250390036692_1.png" />
+    <Content Include="raisonsAchat\img\3250390036692_2.png" />
+    <Content Include="raisonsAchat\img\3250390214694_1.png" />
+    <Content Include="raisonsAchat\img\3250390214694_2.png" />
+    <Content Include="raisonsAchat\img\3250390305699_1.png" />
+    <Content Include="raisonsAchat\img\3250390305699_2.png" />
+    <Content Include="raisonsAchat\img\3250391697885_1.png" />
+    <Content Include="raisonsAchat\img\3250391697885_2.png" />
+    <Content Include="raisonsAchat\img\3250392259624_1.png" />
+    <Content Include="raisonsAchat\img\3250392259624_2.png" />
+    <Content Include="raisonsAchat\img\3256220210461_1.png" />
+    <Content Include="raisonsAchat\img\3256220210461_2.png" />
+    <Content Include="raisonsAchat\img\3270190021070_1.png" />
+    <Content Include="raisonsAchat\img\3270190021070_2.png" />
+    <Content Include="raisonsAchat\img\3270190114055_1.png" />
+    <Content Include="raisonsAchat\img\3270190114055_2.png" />
+    <Content Include="raisonsAchat\img\3410280020532_1.png" />
+    <Content Include="raisonsAchat\img\3410280020532_2.png" />
+    <Content Include="raisonsAchat\img\3560070433063_1.png" />
+    <Content Include="raisonsAchat\img\3560070433063_2.png" />
+    <Content Include="raisonsAchat\img\3560070593330_1.png" />
+    <Content Include="raisonsAchat\img\3560070593330_2.png" />
+    <Content Include="raisonsAchat\img\3560071151423_2.png" />
+    <Content Include="raisonsAchat\img\3560071151423_1.png" />
+    <Content Include="raisonsAchat\img\3564700000694_2.png" />
+    <Content Include="raisonsAchat\img\3564700000694_1.png" />
+    <Content Include="raisonsAchat\img\3564700000717_2.png" />
+    <Content Include="raisonsAchat\img\3564700000717_1.png" />
+    <Content Include="raisonsAchat\img\3564700019320_1.png" />
+    <Content Include="raisonsAchat\img\3564700019320_2.png" />
+    <Content Include="raisonsAchat\img\3564700038284_1.png" />
+    <Content Include="raisonsAchat\img\3564700038284_2.png" />
+    <Content Include="raisonsAchat\img\3564700038291_1.png" />
+    <Content Include="raisonsAchat\img\3564700038291_2.png" />
+    <Content Include="raisonsAchat\img\3564700465677_1.png" />
+    <Content Include="raisonsAchat\img\3564700465677_2.png" />
+    <Content Include="raisonsAchat\img\3760049790214_1.png" />
+    <Content Include="raisonsAchat\img\3760049790214_2.png" />
+    <Content Include="raisonsAchat\img\4001724036616_1.png" />
+    <Content Include="raisonsAchat\img\4001724036616_2.png" />
+    <Content Include="raisonsAchat\img\4001724038870_1.png" />
+    <Content Include="raisonsAchat\img\4001724038870_2.png" />
+    <Content Include="raisonsAchat\img\4056489007166_1.png" />
+    <Content Include="raisonsAchat\img\4056489007166_2.png" />
+    <Content Include="raisonsAchat\img\4056489007173_1.png" />
+    <Content Include="raisonsAchat\img\4056489007173_2.png" />
+    <Content Include="raisonsAchat\img\4056489007180_1.png" />
+    <Content Include="raisonsAchat\img\4056489007180_2.png" />
+    <Content Include="raisonsAchat\img\7622300356767_1.png" />
+    <Content Include="raisonsAchat\img\7622300356767_2.png" />
+    <Content Include="raisonsAchat\img\7622300689124_1.png" />
+    <Content Include="raisonsAchat\img\7622300689124_2.png" />
+    <Content Include="raisonsAchat\img\7622300746742_1.png" />
+    <Content Include="raisonsAchat\img\7622300746742_2.png" />
+    <Content Include="raisonsAchat\index.html" />
+    <Content Include="raisonsAchat\ts\app.js" />
+    <Content Include="raisonsAchat\ts\index.js" />
+    <Content Include="raisonsAchat\ts\models.js" />
+    <Content Include="recette\index.html" />
+    <Content Include="sensas\html\divAchat.html" />
+    <Content Include="sensas\html\divCATA.html" />
+    <Content Include="sensas\html\divConsentement.html" />
+    <Content Include="sensas\html\divErreur.html" />
+    <Content Include="sensas\html\divFin2.html" />
+    <Content Include="sensas\html\divInstruction5.html" />
+    <Content Include="sensas\html\divRecapAchat.html" />
+    <Content Include="sensas\html\divFin.html" />
+    <Content Include="sensas\html\divInstruction1.html" />
+    <Content Include="sensas\html\divInstruction2.html" />
+    <Content Include="sensas\html\divInstruction3.html" />
+    <Content Include="sensas\html\divInstruction4.html" />
+    <Content Include="sensas\img\J1.png" />
+    <Content Include="sensas\img\J2.png" />
+    <Content Include="sensas\img\J3.png" />
+    <Content Include="sensas\img\J4.png" />
+    <Content Include="sensas\img\J5.png" />
+    <Content Include="sensas\img\j6.png" />
+    <Content Include="sensas\img\J7.png" />
+    <Content Include="sensas\img\J8.png" />
+    <Content Include="sensas\img\nutriscoreB.png" />
+    <Content Include="sensas\img\nutriscoreC.png" />
+    <Content Include="sensas\img\P1.png" />
+    <Content Include="sensas\img\P2.png" />
+    <Content Include="sensas\img\P3.png" />
+    <Content Include="sensas\img\P4.png" />
+    <Content Include="sensas\img\P5.png" />
+    <Content Include="sensas\img\P6.png" />
+    <Content Include="sensas\img\P7.png" />
+    <Content Include="sensas\img\P8.png" />
+    <Content Include="sensas\img\prefscore.png" />
+    <Content Include="sensas\index.html" />
+    <Content Include="sensas\ts\app.js" />
+    <Content Include="sensas\ts\index.js" />
+    <Content Include="sensas\ts\models.js" />
+    <Content Include="taxonomy\img\wheel.png" />
+    <Content Include="taxonomy\index.html" />
+    <Content Include="timesens\img\background.jpg" />
+    <Content Include="timesens\img\logo.png" />
+    <Content Include="timesens\img\R.jpg" />
+    <Content Include="timesens\index.html" />
+    <Content Include="timesens\panelist\css\panelist.css" />
+    <Content Include="timesens\panelist\demo\todo-screenreader.txt" />
+    <Content Include="timesens\panelist\doc\TODO.txt" />
+    <Content Include="timesens\panelist\html\changelog.html" />
+    <Content Include="timesens\panelist\html\ViewDownloadLocalSession.html" />
+    <Content Include="timesens\panelist\html\ViewLocalFile.html" />
+    <Content Include="timesens\panelist\html\ViewLocalSessions.html" />
+    <Content Include="timesens\panelist\html\ViewMenu.html" />
+    <Content Include="timesens\panelist\html\ViewRunFromServerCode.html" />
+    <Content Include="timesens\panelist\html\ViewRunSession.html" />
+    <Content Include="timesens\panelist\html\ViewScreenReader.html" />
+    <Content Include="timesens\panelist\html\viewSettings.html" />
+    <Content Include="timesens\panelist\images\background.jpg" />
+    <Content Include="timesens\panelist\images\favicon.png" />
+    <Content Include="timesens\panelist\images\logo.png" />
+    <Content Include="timesens\panelist\images\logo\logo144.png" />
+    <Content Include="timesens\panelist\images\logo\logo168.png" />
+    <Content Include="timesens\panelist\images\logo\logo192.png" />
+    <Content Include="timesens\panelist\images\logo\logo48.png" />
+    <Content Include="timesens\panelist\images\logo\logo72.png" />
+    <Content Include="timesens\panelist\images\logo\logo96.png" />
+    <Content Include="timesens\panelist\images\logo_blanc.png" />
+    <Content Include="timesens\panelist\images\sharpicons_add-camera.svg" />
+    <Content Include="timesens\panelist\images\sharpicons_add-mic.svg" />
+    <Content Include="timesens\panelist\images\sharpicons_badge-4-orange.svg" />
+    <Content Include="timesens\panelist\images\sharpicons_badge-4-red.svg" />
+    <Content Include="timesens\panelist\images\sharpicons_badge-4.svg" />
+    <Content Include="timesens\panelist\images\sharpicons_bin.svg" />
+    <Content Include="timesens\panelist\images\sharpicons_cloud-refresh.svg" />
+    <Content Include="timesens\panelist\images\sharpicons_cloud-upload.svg" />
+    <Content Include="timesens\panelist\images\sharpicons_database-confirm.svg" />
+    <Content Include="timesens\panelist\images\sharpicons_database.svg" />
+    <Content Include="timesens\panelist\images\sharpicons_delete-bin-trash2.svg" />
+    <Content Include="timesens\panelist\images\sharpicons_download-web-button.svg" />
+    <Content Include="timesens\panelist\images\sharpicons_enter-pin.svg" />
+    <Content Include="timesens\panelist\images\sharpicons_fast-backward.svg" />
+    <Content Include="timesens\panelist\images\sharpicons_flag.svg" />
+    <Content Include="timesens\panelist\images\sharpicons_floppy-disc.svg" />
+    <Content Include="timesens\panelist\images\sharpicons_full-expand.svg" />
+    <Content Include="timesens\panelist\images\sharpicons_keyboard.svg" />
+    <Content Include="timesens\panelist\images\sharpicons_keylock.svg" />
+    <Content Include="timesens\panelist\images\sharpicons_left-big-arrow.svg" />
+    <Content Include="timesens\panelist\images\sharpicons_pause-button.svg" />
+    <Content Include="timesens\panelist\images\sharpicons_record-button.svg" />
+    <Content Include="timesens\panelist\images\sharpicons_remove-mic-2.svg" />
+    <Content Include="timesens\panelist\images\sharpicons_search-open-folder.svg" />
+    <Content Include="timesens\panelist\images\sharpicons_settings.svg" />
+    <Content Include="timesens\panelist\images\sharpicons_stop-button.svg" />
+    <Content Include="timesens\panelist\images\sharpicons_support.svg" />
+    <Content Include="timesens\panelist\images\sharpicons_top-favorites.svg" />
+    <Content Include="timesens\panelist\images\sharpicons_touch.svg" />
+    <Content Include="timesens\panelist\images\sharpicons_wifi-3.svg" />
+    <Content Include="timesens\panelist\images\sharpicons_zoom-tool.svg" />
+    <Content Include="timesens\panelist\index.html" />
+    <Content Include="timesens\panelist\ts\app.js" />
+    <Content Include="timesens\panelist\ts\index.js" />
+    <Content Include="timesens\panelist\login.html" />
+    <Content Include="timesens\panelist\ts\sw.js" />
+    <Content Include="timesens\panelist\version.html" />
+    <Content Include="timesens\panelleader\css\panelleader.css" />
+    <Content Include="timesens\panelleader\downloads\24882190.zip" />
+    <Content Include="timesens\panelleader\fonts\Digit.ttf" />
+    <Content Include="timesens\panelleader\fonts\Genome-Thin.otf" />
+    <Content Include="timesens\panelleader\fonts\Genome-Thin.woff" />
+    <Content Include="timesens\panelleader\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="timesens\panelleader\fonts\gothic.woff" />
+    <Content Include="timesens\panelleader\fonts\ufonts.com_century-gothic.ttf" />
+    <Content Include="timesens\panelleader\help\menu.html" />
+    <Content Include="timesens\panelleader\help\modalAnalysis.html" />
+    <Content Include="timesens\panelleader\help\modalBugReport.html" />
+    <Content Include="timesens\panelleader\help\modalEditDesignRanks.html" />
+    <Content Include="timesens\panelleader\help\modalExport.html" />
+    <Content Include="timesens\panelleader\help\modalHelp.html" />
+    <Content Include="timesens\panelleader\help\modalImportAttributeDesign.html" />
+    <Content Include="timesens\panelleader\help\modalImportAttributes.html" />
+    <Content Include="timesens\panelleader\help\modalImportCanonicalData.html" />
+    <Content Include="timesens\panelleader\help\modalImportProductDesign.html" />
+    <Content Include="timesens\panelleader\help\modalImportProducts.html" />
+    <Content Include="timesens\panelleader\help\modalImportSubjects.html" />
+    <Content Include="timesens\panelleader\help\modalLogin.html" />
+    <Content Include="timesens\panelleader\help\modalSaveAsUndeployedCopy.html" />
+    <Content Include="timesens\panelleader\help\modalSessionDB.html" />
+    <Content Include="timesens\panelleader\help\modalSessionLog.html" />
+    <Content Include="timesens\panelleader\help\modalSessionWizard.html" />
+    <Content Include="timesens\panelleader\help\modalSettings.html" />
+    <Content Include="timesens\panelleader\help\modalSimulation.html" />
+    <Content Include="timesens\panelleader\help\modalSubjectsDB.html" />
+    <Content Include="timesens\panelleader\help\overview.html" />
+    <Content Include="timesens\panelleader\help\viewAnalysis.html" />
+    <Content Include="timesens\panelleader\help\viewAttribute.html" />
+    <Content Include="timesens\panelleader\help\viewData.html" />
+    <Content Include="timesens\panelleader\help\viewMonitoring.html" />
+    <Content Include="timesens\panelleader\help\viewProduct.html" />
+    <Content Include="timesens\panelleader\help\viewScenario.html" />
+    <Content Include="timesens\panelleader\help\viewSubject.html" />
+    <Content Include="timesens\panelleader\help\viewUpload.html" />
+    <Content Include="timesens\panelleader\html\changelog.html" />
+    <Content Include="timesens\panelleader\html\ModalAnalysis.html" />
+    <Content Include="timesens\panelleader\html\ModalDefault.html" />
+    <Content Include="timesens\panelleader\html\ModalImport.html" />
+    <Content Include="timesens\panelleader\html\ModalLogin.html" />
+    <Content Include="timesens\panelleader\html\ModalSaveAsUndeployedCopy.html" />
+    <Content Include="timesens\panelleader\html\ModalSendMail.html" />
+    <Content Include="timesens\panelleader\html\ModalSessionLog.html" />
+    <Content Include="timesens\panelleader\html\ModalSessionsDB.html" />
+    <Content Include="timesens\panelleader\html\ModalSessionWizard.html" />
+    <Content Include="timesens\panelleader\html\ModalSettings.html" />
+    <Content Include="timesens\panelleader\html\ModalSimulation.html" />
+    <Content Include="timesens\panelleader\html\ModalSubjectsDB.html" />
+    <Content Include="timesens\panelleader\html\ModalTokenDownloadConfirmation.html" />
+    <Content Include="timesens\panelleader\html\ViewAnalysis.html" />
+    <Content Include="timesens\panelleader\html\ViewAttributes.html" />
+    <Content Include="timesens\panelleader\html\ViewData.html" />
+    <Content Include="timesens\panelleader\html\ViewExperimentalDesignItems.html" />
+    <Content Include="timesens\panelleader\html\ViewMonitoring.html" />
+    <Content Include="timesens\panelleader\html\ViewProducts.html" />
+    <Content Include="timesens\panelleader\html\ViewProtocol.html" />
+    <Content Include="timesens\panelleader\html\ViewScenario.html" />
+    <Content Include="timesens\panelleader\html\ViewSubjects.html" />
+    <Content Include="timesens\panelleader\html\ViewUpload.html" />
+    <Content Include="timesens\panelleader\images\align-justify.svg" />
+    <Content Include="timesens\panelleader\images\align-to-left.svg" />
+    <Content Include="timesens\panelleader\images\align-to-right.svg" />
+    <Content Include="timesens\panelleader\images\alignGrid.svg" />
+    <Content Include="timesens\panelleader\images\anchor.svg" />
+    <Content Include="timesens\panelleader\images\background.svg" />
+    <Content Include="timesens\panelleader\images\bar-chart.svg" />
+    <Content Include="timesens\panelleader\images\bg.jpg" />
+    <Content Include="timesens\panelleader\images\bold.svg" />
+    <Content Include="timesens\panelleader\images\button.svg" />
+    <Content Include="timesens\panelleader\images\cata.svg" />
+    <Content Include="timesens\panelleader\images\center-text-alignment.svg" />
+    <Content Include="timesens\panelleader\images\check-button.svg" />
+    <Content Include="timesens\panelleader\images\checkboxquestion.svg" />
+    <Content Include="timesens\panelleader\images\clock.svg" />
+    <Content Include="timesens\panelleader\images\discretescale.svg" />
+    <Content Include="timesens\panelleader\images\down-chevron.svg" />
+    <Content Include="timesens\panelleader\images\edit.svg" />
+    <Content Include="timesens\panelleader\images\eye.svg" />
+    <Content Include="timesens\panelleader\images\favicon.png" />
+    <Content Include="timesens\panelleader\images\fontname.svg" />
+    <Content Include="timesens\panelleader\images\fontsize.svg" />
+    <Content Include="timesens\panelleader\images\highlighter.svg" />
+    <Content Include="timesens\panelleader\images\input.svg" />
+    <Content Include="timesens\panelleader\images\italic.svg" />
+    <Content Include="timesens\panelleader\images\leftindent.svg" />
+    <Content Include="timesens\panelleader\images\list.svg" />
+    <Content Include="timesens\panelleader\images\magnetism.svg" />
+    <Content Include="timesens\panelleader\images\microphone.svg" />
+    <Content Include="timesens\panelleader\images\more.svg" />
+    <Content Include="timesens\panelleader\images\movie-file.svg" />
+    <Content Include="timesens\panelleader\images\movie.svg" />
+    <Content Include="timesens\panelleader\images\napping.svg" />
+    <Content Include="timesens\panelleader\images\options.svg" />
+    <Content Include="timesens\panelleader\images\paste.svg" />
+    <Content Include="timesens\panelleader\images\picture-file.svg" />
+    <Content Include="timesens\panelleader\images\pie-chart.svg" />
+    <Content Include="timesens\panelleader\images\progress-bar.svg" />
+    <Content Include="timesens\panelleader\images\questiontable.svg" />
+    <Content Include="timesens\panelleader\images\ranking.svg" />
+    <Content Include="timesens\panelleader\images\repeatedscreen.svg" />
+    <Content Include="timesens\panelleader\images\rightindent.svg" />
+    <Content Include="timesens\panelleader\images\rotateleft.svg" />
+    <Content Include="timesens\panelleader\images\rotateright.svg" />
+    <Content Include="timesens\panelleader\images\sandclock.svg" />
+    <Content Include="timesens\panelleader\images\select.svg" />
+    <Content Include="timesens\panelleader\images\sharpicons_add-folder.svg" />
+    <Content Include="timesens\panelleader\images\sharpicons_blank-file.svg" />
+    <Content Include="timesens\panelleader\images\sharpicons_move-folder-2.svg" />
+    <Content Include="timesens\panelleader\images\sharpicons_search-folder.svg" />
+    <Content Include="timesens\panelleader\images\singlescreen.svg" />
+    <Content Include="timesens\panelleader\images\sliders.svg" />
+    <Content Include="timesens\panelleader\images\square-menu-1.svg" />
+    <Content Include="timesens\panelleader\images\square.svg" />
+    <Content Include="timesens\panelleader\images\strikethrough.svg" />
+    <Content Include="timesens\panelleader\images\subscript.svg" />
+    <Content Include="timesens\panelleader\images\superscript.svg" />
+    <Content Include="timesens\panelleader\images\text-input.svg" />
+    <Content Include="timesens\panelleader\images\toolbar.png" />
+    <Content Include="timesens\panelleader\images\triangletest.svg" />
+    <Content Include="timesens\panelleader\images\underline.svg" />
+    <Content Include="timesens\panelleader\images\up-chevron.svg" />
+    <Content Include="timesens\panelleader\images\user-card.svg" />
+    <Content Include="timesens\panelleader\images\verticalbottom.svg" />
+    <Content Include="timesens\panelleader\images\verticalcenter.svg" />
+    <Content Include="timesens\panelleader\images\verticaltop.svg" />
+    <Content Include="timesens\panelleader\index.html" />
+    <Content Include="timesens\panelleader\resources\analysis.json" />
+    <Content Include="timesens\panelleader\resources\panelleader.json" />
+    <Content Include="timesens\panelleader\ts\app.js" />
+    <Content Include="timesens\panelleader\ts\index.js" />
+    <Content Include="timesens\panelleader\ts\models.js" />
+    <Content Include="timesens\panelleader\ts\models.js.map" />
+    <Content Include="timesens\panelleader\ts\ReadJSONWorkerPL.js" />
+    <Content Include="timesens\panelleader\ts\ReadJSONWorkerPL.js.map" />
+    <Content Include="timesens\screenreader\css\screenreader.css" />
+    <Content Include="timesens\screenreader\images\close-button.svg" />
+    <Content Include="timesens\screenreader\images\cogwheel.svg" />
+    <Content Include="timesens\screenreader\images\download-symbol-1.svg" />
+    <Content Include="timesens\screenreader\images\edit.svg" />
+    <Content Include="timesens\screenreader\images\eye-slash.svg" />
+    <Content Include="timesens\screenreader\images\eye.svg" />
+    <Content Include="timesens\screenreader\images\info-1.svg" />
+    <Content Include="timesens\screenreader\images\left-arrow-2.svg" />
+    <Content Include="timesens\screenreader\images\left-arrows.svg" />
+    <Content Include="timesens\screenreader\images\placeholder.svg" />
+    <Content Include="timesens\screenreader\images\pointer-crosstree.svg" />
+    <Content Include="timesens\screenreader\images\right-arrow.svg" />
+    <Content Include="timesens\screenreader\images\right-arrows.svg" />
+    <Content Include="timesens\screenreader\images\sharpicons_add-camera.svg" />
+    <Content Include="timesens\screenreader\images\sharpicons_bin.svg" />
+    <Content Include="timesens\screenreader\images\sharpicons_cloud-upload.svg" />
+    <Content Include="timesens\screenreader\images\sharpicons_confirm-mic.svg" />
+    <Content Include="timesens\screenreader\images\sharpicons_floppy-disc.svg" />
+    <Content Include="timesens\screenreader\images\sharpicons_mic.svg" />
+    <Content Include="timesens\screenreader\images\sharpicons_pause-button.svg" />
+    <Content Include="timesens\screenreader\images\sharpicons_record-button.svg" />
+    <Content Include="timesens\screenreader\images\sharpicons_remove-mic-2.svg" />
+    <Content Include="timesens\screenreader\images\sharpicons_remove-mic.svg" />
+    <Content Include="timesens\screenreader\images\sharpicons_stop-button.svg" />
+    <Content Include="timesens\screenreader\images\sharpicons_zoom-tool.svg" />
+    <Content Include="timesens\screenreader\models.js" />
+    <Content Include="timesens\screenreader\ReadJSONWorker.js" />
+    <Content Include="timesens\screenreader\screenreader.js" />
+    <Content Include="timesens\sounds\bip.mp3" />
+    <Content Include="Web.config" />
+    <Content Include="WebService.svc" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="analyses\cs\ranalysis.cs" />
+    <Compile Include="ciqualClassifier\cs\ciqualClassifier.cs" />
+    <Compile Include="codappro\cs\codachats.cs" />
+    <Compile Include="consodrive\cs\consodrive.cs" />
+    <Compile Include="crocnoteurs\cs\datasens.cs" />
+    <Compile Include="crocnoteurs\cs\questionnaire.cs" />
+    <Compile Include="fcLexicon\cs\fcLexicon.cs" />
+    <Compile Include="Framework\cs\Account.cs" />
+    <Compile Include="cs\helpers.cs" />
+    <Compile Include="Framework\cs\EncryptionHelper.cs" />
+    <Compile Include="Framework\cs\EPPlusCSVConverter.cs" />
+    <Compile Include="Framework\cs\EPPlusHelper.cs" />
+    <Compile Include="inca3Classifier\cs\inca3Classifier.cs" />
+    <Compile Include="invoiceAnalyzer\cs\invoiceAnalyzer.cs" />
+    <Compile Include="labelExtractor\cs\labelExtractor.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Framework\cs\FileHelper.cs" />
+    <Compile Include="raisonsAchat\cs\raisonAchat.cs" />
+    <Compile Include="recette\cs\analyserecette.cs" />
+    <Compile Include="sensas\cs\sensas.cs" />
+    <Compile Include="timesens\cs\IssueServiceHelper.cs" />
+    <Compile Include="Framework\cs\LocalizationHelper.cs" />
+    <Compile Include="Framework\cs\LogHelper.cs" />
+    <Compile Include="Framework\cs\MailHelper.cs" />
+    <Compile Include="timesens\cs\PanelLeaderApplicationSettings.cs" />
+    <Compile Include="timesens\cs\SeanceHelper.cs" />
+    <Compile Include="Framework\cs\Serializer.cs" />
+    <Compile Include="Framework\cs\StringHelper.cs" />
+    <Compile Include="Framework\cs\SynchronizationHelper.cs" />
+    <Compile Include="Framework\cs\ZipHelper.cs" />
+    <Compile Include="timesens\cs\Access.cs" />
+    <Compile Include="timesens\cs\AnonymousAccess.cs" />
+    <Compile Include="timesens\cs\AuthorizedDates.cs" />
+    <Compile Include="timesens\cs\Consumption.cs" />
+    <Compile Include="timesens\cs\Data.cs" />
+    <Compile Include="timesens\cs\EMail.cs" />
+    <Compile Include="timesens\cs\ExperimentalDesign.cs" />
+    <Compile Include="timesens\cs\Issue.cs" />
+    <Compile Include="timesens\cs\Progress.cs" />
+    <Compile Include="timesens\cs\Screen.cs" />
+    <Compile Include="timesens\cs\Subject.cs" />
+    <Compile Include="timesens\cs\SubjectSeance.cs" />
+    <Compile Include="WebService.svc.cs">
+      <DependentUpon>WebService.svc</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Framework\css\fontawesome-stars-o.css" />
+    <Content Include="Framework\css\font-awesome-4.7.0\fonts\fontawesome-webfont.eot" />
+    <Content Include="Framework\css\font-awesome-4.7.0\fonts\fontawesome-webfont.ttf" />
+    <Content Include="Framework\css\font-awesome-4.7.0\fonts\fontawesome-webfont.woff" />
+    <Content Include="Framework\css\font-awesome-4.7.0\fonts\fontawesome-webfont.woff2" />
+    <Content Include="Framework\css\font-awesome-4.7.0\fonts\FontAwesome.otf" />
+    <Content Include="Framework\css\font-awesome-4.7.0\less\animated.less" />
+    <Content Include="Framework\css\font-awesome-4.7.0\less\bordered-pulled.less" />
+    <Content Include="Framework\css\font-awesome-4.7.0\less\core.less" />
+    <Content Include="Framework\css\font-awesome-4.7.0\less\fixed-width.less" />
+    <Content Include="Framework\css\font-awesome-4.7.0\less\font-awesome.less" />
+    <Content Include="Framework\css\font-awesome-4.7.0\less\icons.less" />
+    <Content Include="Framework\css\font-awesome-4.7.0\less\larger.less" />
+    <Content Include="Framework\css\font-awesome-4.7.0\less\list.less" />
+    <Content Include="Framework\css\font-awesome-4.7.0\less\mixins.less" />
+    <Content Include="Framework\css\font-awesome-4.7.0\less\path.less" />
+    <Content Include="Framework\css\font-awesome-4.7.0\less\rotated-flipped.less" />
+    <Content Include="Framework\css\font-awesome-4.7.0\less\screen-reader.less" />
+    <Content Include="Framework\css\font-awesome-4.7.0\less\stacked.less" />
+    <Content Include="Framework\css\font-awesome-4.7.0\less\variables.less" />
+    <Content Include="Framework\css\font-awesome-4.7.0\scss\font-awesome.scss" />
+    <Content Include="Framework\css\font-awesome-4.7.0\scss\_animated.scss" />
+    <Content Include="Framework\css\font-awesome-4.7.0\scss\_bordered-pulled.scss" />
+    <Content Include="Framework\css\font-awesome-4.7.0\scss\_core.scss" />
+    <Content Include="Framework\css\font-awesome-4.7.0\scss\_fixed-width.scss" />
+    <Content Include="Framework\css\font-awesome-4.7.0\scss\_icons.scss" />
+    <Content Include="Framework\css\font-awesome-4.7.0\scss\_larger.scss" />
+    <Content Include="Framework\css\font-awesome-4.7.0\scss\_list.scss" />
+    <Content Include="Framework\css\font-awesome-4.7.0\scss\_mixins.scss" />
+    <Content Include="Framework\css\font-awesome-4.7.0\scss\_path.scss" />
+    <Content Include="Framework\css\font-awesome-4.7.0\scss\_rotated-flipped.scss" />
+    <Content Include="Framework\css\font-awesome-4.7.0\scss\_screen-reader.scss" />
+    <Content Include="Framework\css\font-awesome-4.7.0\scss\_stacked.scss" />
+    <Content Include="Framework\css\font-awesome-4.7.0\scss\_variables.scss" />
+    <Content Include="Framework\doc\Utilisation du framework TimeSens V2.docx" />
+    <Content Include="Framework\doc\V2.docx" />
+    <Content Include="Framework\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="Framework\js\bootstrap.js.old" />
+    <Content Include="Framework\js\bootstrap.min.js.new" />
+    <Content Include="Framework\js\crypto-js\LICENSE" />
+    <Content Include="Framework\js\interact.min.js.old" />
+    <Content Include="Framework\js\Keyboard-master\languages\README.md" />
+    <Content Include="Framework\js\tinymce\langs\readme.md" />
+    <Content Include="Framework\js\tinymce\skins\ui\oxide-dark\fonts\tinymce-mobile.woff" />
+    <Content Include="Framework\js\tinymce\skins\ui\oxide\fonts\tinymce-mobile.woff" />
+    <Content Include="Framework\resources\caniuse.json" />
+    <Content Include="Framework\resources\framework.json" />
+    <Content Include="Framework\test\frameworktest.js.map" />
+    <Content Include="Framework\ts\BingSpeech.js.map" />
+    <Content Include="consodrive\pdf\consentement.pdf" />
+    <Content Include="analyses\data\scripts\tds.r" />
+    <Content Include="analyses\data\templates\template_tds.xlsx" />
+    <None Include="packages.config" />
+    <Content Include="timesens\screenreader\models.js.map" />
+    <Content Include="timesens\screenreader\ReadJSONWorker.js.map" />
+    <Content Include="timesens\screenreader\resources\screenreader.json" />
+    <Content Include="timesens\screenreader\screenreader.js.map" />
+    <Content Include="timesens\panelist\demo\alternated_profile.json" />
+    <Content Include="timesens\panelist\demo\anchors.json" />
+    <Content Include="timesens\panelist\demo\cata.json" />
+    <Content Include="timesens\panelist\demo\comparative_profile.json" />
+    <Content Include="timesens\panelist\demo\dati.json" />
+    <Content Include="timesens\panelist\demo\dtsliking.json" />
+    <Content Include="timesens\panelist\demo\dynamicprofile.json" />
+    <Content Include="timesens\panelist\demo\dynamic_profile_without_start_and_stop.json" />
+    <Content Include="timesens\panelist\demo\fadingtcata.json" />
+    <Content Include="timesens\panelist\demo\flashprofile.json" />
+    <Content Include="timesens\panelist\demo\freebites_profile_liking.json" />
+    <Content Include="timesens\panelist\demo\liking.json" />
+    <Content Include="timesens\panelist\demo\media_record.json" />
+    <Content Include="timesens\panelist\demo\media_record_with_preview.json" />
+    <Content Include="timesens\panelist\demo\napping.json" />
+    <Content Include="timesens\panelist\demo\profile.json" />
+    <Content Include="timesens\panelist\demo\profile_3intakes.json" />
+    <Content Include="timesens\panelist\demo\sorting.json" />
+    <Content Include="timesens\panelist\demo\sorting2.json" />
+    <Content Include="timesens\panelist\demo\sorting_free.json" />
+    <Content Include="timesens\panelist\demo\sorting_list.json" />
+    <Content Include="timesens\panelist\demo\sorting_multiple_group_description.json" />
+    <Content Include="timesens\panelist\demo\tcata.json" />
+    <Content Include="timesens\panelist\demo\tde_videos.json" />
+    <Content Include="timesens\panelist\demo\tds.json" />
+    <Content Include="timesens\panelist\demo\testjson1.json" />
+    <Content Include="timesens\panelist\demo\testjson2.json" />
+    <Content Include="timesens\panelist\demo\timeintensity.json" />
+    <Content Include="timesens\panelist\demo\timeintensity2.json" />
+    <Content Include="timesens\panelist\demo\time_intensity.json" />
+    <Content Include="timesens\panelist\demo\timingProperties.json" />
+    <Content Include="timesens\panelist\demo\triangletest.json" />
+    <Content Include="timesens\panelist\demo\xaml_cata.json" />
+    <Content Include="timesens\panelist\demo\xaml_fadingtcata.json" />
+    <Content Include="timesens\panelist\demo\xaml_profile.json" />
+    <Content Include="timesens\panelist\demo\xaml_tcata.json" />
+    <Content Include="timesens\panelist\doc\Changements_V1_V2.docx" />
+    <Content Include="timesens\panelist\fonts\Digit.ttf" />
+    <Content Include="timesens\panelist\fonts\Genome-Thin.otf" />
+    <Content Include="timesens\panelist\fonts\Genome-Thin.woff" />
+    <Content Include="timesens\panelist\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="timesens\panelist\fonts\gothic.woff" />
+    <Content Include="timesens\panelist\fonts\ufonts.com_century-gothic.ttf" />
+    <Content Include="timesens\panelist\ts\index.js.map" />
+    <Content Include="timesens\panelist\manifest.json" />
+    <Content Include="timesens\panelist\resources\aromawheel.json" />
+    <Content Include="timesens\panelist\resources\panelist.json" />
+    <Content Include="packages\CVAS.zip" />
+    <Content Include="packages\MAMCAP.zip" />
+    <None Include="Properties\PublishProfiles\Default Settings.pubxml" />
+    <Content Include="timesens\panelleader\help\help.pdf" />
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <TypeScriptCompile Include="admin\ts\app.ts" />
+    <TypeScriptCompile Include="admin\ts\index.ts" />
+    <TypeScriptCompile Include="analyses\ts\app.ts" />
+    <TypeScriptCompile Include="analyses\ts\index.ts" />
+    <TypeScriptCompile Include="ciqualClassifier\ts\app.ts" />
+    <TypeScriptCompile Include="ciqualClassifier\ts\index.ts" />
+    <TypeScriptCompile Include="codappro\ts\app.ts" />
+    <TypeScriptCompile Include="codappro\ts\index.ts" />
+    <TypeScriptCompile Include="codappro\ts\models.ts" />
+    <TypeScriptCompile Include="consodrive\ts\app.ts" />
+    <TypeScriptCompile Include="consodrive\ts\indemnisation.ts" />
+    <TypeScriptCompile Include="consodrive\ts\inscription.ts" />
+    <TypeScriptCompile Include="consodrive\ts\index.ts" />
+    <TypeScriptCompile Include="consodrive\ts\models.ts" />
+    <TypeScriptCompile Include="crocnoteurs\ts\app.ts" />
+    <TypeScriptCompile Include="crocnoteurs\ts\demo.ts" />
+    <TypeScriptCompile Include="crocnoteurs\ts\index.ts" />
+    <TypeScriptCompile Include="crocnoteurs\ts\inscription.ts" />
+    <TypeScriptCompile Include="crocnoteurs\ts\models.ts" />
+    <TypeScriptCompile Include="fcLexicon\ts\app.ts" />
+    <TypeScriptCompile Include="fcLexicon\ts\index.ts" />
+    <TypeScriptCompile Include="fcLexicon\ts\models.ts" />
+    <TypeScriptCompile Include="Framework\ts\models.ts" />
+    <TypeScriptCompile Include="Framework\framework.ts" />
+    <TypeScriptCompile Include="Framework\test\frameworktest.ts" />
+    <TypeScriptCompile Include="Framework\ts\BingSpeech.ts" />
+    <TypeScriptCompile Include="inca3Classifier\ts\app.ts" />
+    <TypeScriptCompile Include="inca3Classifier\ts\index.ts" />
+    <TypeScriptCompile Include="invoiceAnalyzer\index.ts" />
+    <TypeScriptCompile Include="invoiceAnalyzer\ts\models.ts" />
+    <TypeScriptCompile Include="invoiceAnalyzer\ts\app.ts" />
+    <TypeScriptCompile Include="labelExtractor\ts\index.ts" />
+    <TypeScriptCompile Include="labelExtractor\ts\app.ts" />
+    <TypeScriptCompile Include="labelExtractor\ts\models.ts" />
+    <TypeScriptCompile Include="raisonsAchat\ts\app.ts" />
+    <TypeScriptCompile Include="raisonsAchat\ts\index.ts" />
+    <TypeScriptCompile Include="raisonsAchat\ts\models.ts" />
+    <TypeScriptCompile Include="recette\ts\app.ts" />
+    <TypeScriptCompile Include="recette\ts\index.ts" />
+    <TypeScriptCompile Include="Scripts\typings\cryptojs\cryptojs.d.ts" />
+    <TypeScriptCompile Include="Scripts\typings\es6-promise\es6-promise.d.ts" />
+    <TypeScriptCompile Include="Scripts\typings\FileSaver\FileSaver.d.ts" />
+    <TypeScriptCompile Include="Scripts\typings\jquery\jquery.d.ts" />
+    <TypeScriptCompile Include="Scripts\typings\jszip\jszip.d.ts" />
+    <TypeScriptCompile Include="Scripts\typings\localForage\localForage.d.ts" />
+    <TypeScriptCompile Include="Scripts\typings\modernizr\modernizr.d.ts" />
+    <TypeScriptCompile Include="Scripts\typings\offline-js\offline-js.d.ts" />
+    <TypeScriptCompile Include="Scripts\typings\qunit\qunit.d.ts" />
+    <TypeScriptCompile Include="sensas\ts\app.ts" />
+    <TypeScriptCompile Include="sensas\ts\index.ts" />
+    <TypeScriptCompile Include="sensas\ts\models.ts" />
+    <TypeScriptCompile Include="timesens\panelist\ts\index.ts" />
+    <TypeScriptCompile Include="timesens\panelist\ts\app.ts" />
+    <TypeScriptCompile Include="timesens\panelleader\ts\index.ts" />
+    <TypeScriptCompile Include="timesens\panelleader\ts\models.ts" />
+    <TypeScriptCompile Include="timesens\panelleader\ts\app.ts" />
+    <TypeScriptCompile Include="timesens\panelleader\ts\ReadJSONWorkerPL.ts" />
+    <TypeScriptCompile Include="timesens\screenreader\models.ts" />
+    <TypeScriptCompile Include="timesens\screenreader\ReadJSONWorker.ts" />
+    <TypeScriptCompile Include="timesens\screenreader\screenreader.ts" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="admin\cs\" />
+    <Folder Include="admin\data\accounts\" />
+    <Folder Include="consodrive\data\" />
+    <Folder Include="invoiceAnalyzer\data\invoices\" />
+    <Folder Include="invoiceAnalyzer\data\pdf\" />
+    <Folder Include="labelExtractor\data\" />
+    <Folder Include="raisonsAchat\data\" />
+    <Folder Include="sensas\data\" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets')" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>54185</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:44301/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>Ce projet fait référence à des packages NuGet qui sont manquants sur cet ordinateur. Utilisez l'option de restauration des packages NuGet pour les télécharger. Pour plus d'informations, consultez http://go.microsoft.com/fwlink/?LinkID=322105. Le fichier manquant est : {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

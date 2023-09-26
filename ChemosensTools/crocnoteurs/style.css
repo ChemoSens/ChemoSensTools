@@ -1,0 +1,22 @@
+﻿body, p, h1, h2, h3, h4 {
+    font-family: Raleway !important;
+    color:darkgreen !important;
+}
+
+@font-face {
+    font-family: Raleway;
+    src: url(Raleway-Regular.ttf);
+}
+
+.btn-primary {
+    background-color: #588958 !important;
+    border-color: #588958 !important;
+}
+
+    .btn-primary:focus, .btn-primary:hover {
+        background-color: #649e66 !important;
+    }
+
+.btn:disabled {
+    background-color: lightgray !important;
+}

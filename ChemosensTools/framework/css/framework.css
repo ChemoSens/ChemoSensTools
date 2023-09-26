@@ -1,0 +1,1305 @@
+﻿/* Bouton flottant avec une icone */
+.toolboxbutton {
+    background-color: white;
+    border: 1px solid;
+    padding: 0 !important;
+    overflow: hidden;
+    height: 24px;
+    width: 24px;
+    line-height: 24px !important;
+    /*float: left;*/
+    display: inline;
+    margin-right: 1px !important;
+    margin-bottom: 1px !important;
+    margin-top: 0 !important;
+}
+
+    .toolboxbutton:hover {
+        border-color: #00fff7;
+    }
+
+    .toolboxbutton:disabled {
+        background-color: darkgray;
+    }
+
+    .toolboxbutton.toggled {
+        background-color: #28ded9;
+    }
+
+/* SplashDiv */
+.splashDiv {
+    height: 100vh;
+    width: 100vw;
+    background: #e6ffff;
+    z-index: 100000;
+    position: absolute;
+    overflow: hidden;
+    display: table;
+    visibility: visible !important;
+}
+
+    .splashDiv > div {
+        display: table-cell;
+        vertical-align: middle;
+        text-align: center;
+    }
+
+.modal-content {
+    max-height: 100vh !important;
+}
+
+/*.modal-header {
+    max-height: 6vh !important;
+}
+
+.modal-footer {
+    max-height: 60px !important;
+}*/
+
+.modal-body {
+    max-height: 80vh !important;
+    overflow-y: auto;
+}
+
+.accordion:before {
+    font-family: FontAwesome;
+    content: "\f0d8 \00a0";
+}
+
+.accordion.opened:before {
+    font-family: FontAwesome;
+    content: "\f0d7 \00a0";
+}
+
+.upDownButton {
+}
+
+    .upDownButton > button {
+        background: transparent;
+        border: 0;
+        width: 20px;
+    }
+
+.upButton:before {
+    font-family: FontAwesome;
+    content: "\f0fe \00a0";
+}
+
+.popupButton:before {
+    font-family: FontAwesome;
+    content: "\f141 \00a0";
+}
+
+.colorPickerButton:before {
+    font-family: FontAwesome;
+    content: "\f1fc \00a0";
+}
+
+.fileButton {
+    background: transparent;
+    border: 0;
+    width: 20px;
+}
+
+    .fileButton:before {
+        font-family: FontAwesome;
+        content: "\f07c \00a0";
+    }
+
+.downButton:before {
+    font-family: FontAwesome;
+    content: "\f146 \00a0";
+}
+
+.toggleButton {
+    font-family: FontAwesome;
+    background: transparent;
+    border: 0;
+    width: 20px;
+}
+
+    .toggleButton:before {
+        content: "\f204 \00a0";
+    }
+
+    .toggleButton.toggled:before {
+        content: "\f205 \00a0";
+    }
+
+
+.disabled {
+    color: #e4dfdf !important;
+    cursor: default;
+}
+
+
+.customtooltip {
+    position: absolute;
+    background: #4b4646;
+    border-radius: 0px;
+    padding: 0px;
+    font-family: arial;
+    text-shadow: 0px 1px 1px #000;
+    border: 1px solid black;
+    line-height: 0 !important;
+}
+
+    .customtooltip.top:before {
+        content: " ";
+        width: 0;
+        height: 0;
+        border-left: 10px solid transparent;
+        border-right: 10px solid transparent;
+        border-top: 10px solid #4b4646;
+        position: absolute;
+        bottom: -10px;
+        left: 5px;
+    }
+
+    .customtooltip.right:before {
+        content: " ";
+        position: absolute;
+        top: 15px;
+        right: 100%;
+        margin-top: -5px;
+        border-width: 10px;
+        border-style: solid;
+        border-color: transparent #4b4646 transparent transparent;
+    }
+
+    .customtooltip.left:before {
+        content: " ";
+        position: absolute;
+        top: 15px;
+        margin-top: -5px;
+        left: 100%;
+        border-width: 10px;
+        border-style: solid;
+        border-color: transparent transparent transparent #4b4646;
+    }
+
+
+    /*.tooltip .tooltiptext::after {
+    content: " ";
+    position: absolute;
+    top: 50%;
+    left: 100%; 
+    margin-top: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: transparent transparent transparent black;
+}*/
+
+    /*.tooltip .tooltiptext::after {
+    content: " ";
+    position: absolute;
+    top: 100%; 
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: black transparent transparent transparent;
+}*/
+
+    .customtooltip > div {
+        line-height: 1.4;
+    }
+
+    .customtooltip > button {
+        line-height: 0;
+    }
+
+    .customtooltip > hr {
+        line-height: 0;
+    }
+
+.modal {
+    text-align: center;
+}
+
+    .modal:before {
+        content: '';
+        display: inline-block;
+        height: 100%;
+        vertical-align: middle;
+    }
+
+.modal-dialog {
+    display: inline-block;
+    text-align: left;
+    vertical-align: middle;
+}
+
+
+/*table.dataTable thead .sorting {
+    background: url('images/sort_both.png') no-repeat center right !important;
+}
+
+table.dataTable thead .sorting_asc {
+    background: url('images/sort_asc.png') no-repeat center right !important;
+}
+
+table.dataTable thead .sorting_desc {
+    background: url('images/sort_desc.png') no-repeat center right !important;
+}
+
+table.dataTable thead .sorting_asc_disabled {
+    background: url('images/sort_asc_disabled.png') no-repeat center right !important;
+}
+
+table.dataTable thead .sorting_desc_disabled {
+    background: url('images/sort_desc_disabled.png') no-repeat center right !important;
+}*/
+
+.tooltipster-sidetip .tooltipster-box {
+    border-radius: 0;
+}
+
+.tooltipster-base {
+    height: auto !important;
+}
+
+html.hidden {
+    visibility: visible !important;
+    display: block !important;
+}
+
+input:required:invalid, input:focus:invalid {
+    border-color: red;
+}
+
+input:required:valid {
+    border-color: lightgreen;
+}
+
+.valid {
+    border-color: lightgreen;
+}
+
+.invalid {
+    border-color: red;
+}
+
+.disabled:hover {
+    border: 2px solid #26567c;
+    background-color: #ccc;
+}
+
+.disabledDiv {
+    opacity: 0.4 !important;
+    pointer-events: none;
+}
+
+.popupBlockButton {
+    display: block;
+    color: white;
+    background: transparent;
+    border: 0;
+    font-size: 12px;
+}
+
+    .popupBlockButton:before {
+        font-family: FontAwesome;
+        content: "\f00c \00a0";
+        color: transparent;
+        padding-right: 3px;
+    }
+
+    .popupBlockButton:hover:before {
+        font-family: FontAwesome;
+        content: "\f00c \00a0";
+        color: white;
+        padding-right: 3px;
+    }
+
+.checkboxDiv {
+    display: flex;
+    flex-direction: row;
+}
+
+    .checkboxDiv input {
+        flex: 1;
+    }
+
+    .checkboxDiv span {
+        flex: 5;
+    }
+
+.modal.fade:not(.in).left .modal-dialog {
+    -webkit-transform: translate3d(-25%, 0, 0);
+    transform: translate3d(-25%, 0, 0);
+}
+
+
+.modal.fade:not(.in).right .modal-dialog {
+    -webkit-transform: translate3d(25%, 0, 0);
+    transform: translate3d(25%, 0, 0);
+}
+
+.caret {
+    float: right;
+    margin: 6px 0;
+}
+
+.dataTable > thead > tr > th[class*="sort"]:after {
+    content: "" !important;
+}
+
+.filterCb {
+    width: 150px;
+    text-align: left;
+    font-size: 12px;
+}
+
+.inlineBlock {
+    display: inline-block;
+}
+
+.block {
+    display: block;
+}
+
+.input-block-level {
+    display: block;
+    width: 100%;
+    min-height: 28px;
+    box-sizing: border-box;
+}
+
+.inputPlaceholder:-ms-input-placeholder {
+    color: gray;
+    font-style: italic;
+    padding: 2px;
+}
+
+.m1 {
+    margin: 3px;
+}
+
+.tableInput {
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.tableInput2 {
+    width: 48%;
+    box-sizing: border-box;
+}
+
+.tableInput3 {
+    width: 30%;
+    box-sizing: border-box;
+}
+
+.inlineMultipleSelect > * {
+    float: left;
+}
+
+.multiselect {
+    border-radius: 0 !important;
+}
+
+.blockForm {
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+    margin-top: 10px;
+}
+
+.btnEditableProperty {
+    display: inline;
+    width: 18px;
+    height: 18px;
+    line-height: 18px;
+    margin: 0;
+    margin-right: 2px;
+    margin-top: 1px;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    color: black;
+}
+
+    .btnEditableProperty i {
+        width: 18px;
+        height: 18px;
+        margin: 0;
+        border: 1px solid black;
+    }
+
+.popupEditableProperty {
+    font-size: 18px;
+    text-align: left;
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+    color: white;
+    height: 20px;
+    line-height: 20px;
+    margin-bottom: 5px;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    background: transparent;
+}
+
+    .popupEditableProperty:hover {
+        text-decoration: underline;
+    }
+
+    .popupEditableProperty:disabled {
+        opacity: 0.5;
+    }
+
+.popupColorEditableProperty {
+    height: 18px;
+    width: 18px;
+    border: 0;
+    margin: 1px;
+    float: left;
+}
+
+.popupFormButton {
+    background: white;
+    color: black;
+    border: 0;
+}
+
+.popupFormInputText {
+    color: black;
+}
+
+.editableProperty {
+    display: table;
+    width: 100%;
+    box-sizing: border-box;
+    font-size: 16px;
+    color: black;
+    cursor: help;
+    padding-left: 2px;
+    height: 18px;
+    line-height: 18px;
+    margin-bottom: 5px;
+    border-bottom: 1px solid #F2F2F2;
+}
+
+    .editableProperty:hover {
+        border-bottom: 1px solid #E2E2E2;
+    }
+
+.editableSpan {
+    height: 18px;
+    line-height: 18px;
+    width: 60%;
+    border-bottom: 1px solid transparent;
+}
+
+    .editableSpan.numeric {
+        width: 100px;
+    }
+
+    .editableSpan:hover {
+        border-bottom: 1px solid lightgray;
+    }
+
+.editableSpanInvalid {
+    border-bottom: 1px solid #f17171;
+}
+
+    .editableSpanInvalid:hover {
+        border-bottom: 1px solid #f17171;
+    }
+
+.optionsDiv .editableProperty {
+    font-size: 18px;
+    height: 20px;
+    line-height: 20px;
+}
+
+.spanEditablePropertyValue {
+    display: table-cell;
+    color: darkblue;
+    white-space: nowrap;
+    overflow: hidden !important;
+    text-overflow: ellipsis;
+    max-width: 100px;
+}
+
+.spanEditablePropertyButton {
+    display: table-cell;
+    float: right;
+    cursor: pointer;
+}
+
+.spanEditablePropertyKey {
+    display: table-cell;
+    width: 1px;
+    white-space: nowrap;
+    overflow: hidden !important;
+    max-width: 200px;
+    text-overflow: ellipsis;
+}
+
+    .spanEditablePropertyKey::before {
+        content: "-\00a0";
+    }
+
+.noDot .spanEditablePropertyKey::before {
+    content: "";
+}
+
+
+.spanEditablePropertyCaret {
+    display: table-cell;
+}
+
+.noselect {
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* Internet Explorer/Edge */
+    user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome and Opera */
+}
+
+    .noselect::selection {
+        background: transparent;
+    }
+
+.dataTableButton {
+    background: #eae7e7;
+    font-size: 20px;
+    border: 0;
+    height: 24px;
+    width: 24px;
+    color: black;
+    margin-right: 10px;
+    margin-bottom: 1px;
+}
+
+    .dataTableButton:hover {
+        color: gray;
+    }
+
+    .dataTableButton:disabled {
+        opacity: 0.2;
+    }
+
+.card.selected {
+    /*border: 1px solid gold;*/
+    background: gold;
+}
+
+.modal-backdrop {
+    background: transparent !important;
+}
+
+.btnCircle {
+    height: 48px;
+    line-height: 48px;
+    width: 48px;
+    padding: 0;
+    margin: 0;
+    border-radius: 50% !important;
+    border: 1px solid;
+    background: white;
+    margin-left: 5px;
+}
+
+    .btnCircle:disabled {
+        opacity: 0.5;
+    }
+
+    .btnCircle:hover {
+        background: #d5f0f8;
+        border-color: dodgerblue;
+    }
+
+    .btnCircle.active {
+        background: #f3f2b0;
+        border-color: #ff931e;
+    }
+
+    .btnCircle i {
+        height: 47px;
+        line-height: 49px;
+        width: 47px;
+        padding: 0;
+        margin-left: -1px !important;
+        margin-top: -1px !important;
+        display: block;
+        font-size: 24px;
+    }
+
+.btn24 {
+    height: 24px;
+    line-height: 24px;
+    width: 24px;
+}
+
+    .btn24 i {
+        height: 24px;
+        line-height: 24px;
+        width: 24px;
+        font-size: 14px;
+    }
+
+.btnBlack i {
+    color: black;
+}
+
+.progressBarOuter {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    background-color: gray;
+    opacity: 0.5;
+    z-index: 999999999;
+    top: 0;
+}
+
+.progressBarInner {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    width: 500px;
+    height: 200px;
+    margin-left: -250px;
+    margin-top: -100px;
+    text-align: center;
+    color: white;
+    text-shadow: 2px 2px 5px black;
+}
+
+.maxHeight4 {
+    height: 6em;
+    max-height: 6em;
+    overflow: hidden;
+}
+
+.textButton {
+    background: transparent;
+    border: 0;
+    display: block;
+}
+
+    .textButton::before {
+        content: "- \00a0";
+    }
+
+    .textButton:disabled {
+        opacity: 0.5;
+    }
+
+/*@media print {
+  body * {
+    visibility:hidden;
+  }
+  #printSection, #printSection * {
+    visibility:visible;
+  }
+  #printSection {
+    position:absolute;
+    left:0;
+    top:0;
+  }
+}
+
+@media screen {
+  #printSection {
+      display: none;
+  }
+}*/
+
+.blink {
+    animation: blink 2s steps(5, start) infinite;
+    -webkit-animation: blink 1s steps(5, start) infinite;
+}
+
+@keyframes blink {
+    to {
+        visibility: hidden;
+    }
+}
+
+@-webkit-keyframes blink {
+    to {
+        visibility: hidden;
+    }
+}
+
+.font-weight-bold {
+    font-weight: bold;
+}
+
+.editableSpanError {
+    color: red !important;
+}
+
+/*Pivot*/
+.pvtRenderer {
+    display: none;
+}
+
+
+
+/*table.tableScroll {
+   
+    border-collapse: collapse;
+    border-spacing: 0;
+    background: white;
+    border: 1px solid black;
+}
+
+    table.tableScroll tbody {
+        display: block;
+        overflow-y: auto;
+        overflow-x: hidden;
+      
+    }
+
+    table.tableScroll thead {
+        display: block;
+
+    }
+
+        table.tableScroll thead tr th {
+            height: 30px;
+            line-height: 30px;
+            overflow: hidden;
+            padding: 5px;
+            border-right: 1px solid gray;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            font-size:0.9em;
+
+        }
+
+    table.tableScroll tbody td {
+        overflow: hidden;
+        border-right: 1px solid gray;
+        border-top: 1px solid gray;
+        padding: 5px;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        font-size:0.9em;
+    }
+
+    table.tableScroll tbody tr:nth-child(odd) {
+        background: #eee;
+    }
+
+    table.tableScroll tbody tr:hover {
+        background: #e6ffff;
+    }
+
+    table.tableScroll thead th:last-child {
+        border-right: none;
+    }
+
+.btnFilterSelect {
+    float: left;
+    border: 0;
+    background: transparent;
+    text-decoration: underline;
+    font-size: 12px;
+}
+
+.selectedRow {
+    background: lightblue !important;
+}
+
+.tableSelectionCell {
+    width: 30px;
+    text-align: center;
+    vertical-align: middle;
+    padding: 0;
+}
+
+.editRowButton {
+    line-height:16px;
+    height:16px;
+    width:16px;
+    margin:0;
+    padding:0;
+    margin-left:2px;
+    float:right;
+    border:0;    
+    background:transparent;
+}
+
+.formInputTextWithButton_Input {
+    background :transparent;
+    border:0;
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.formInputTextWithButton_Button {
+    background :transparent;
+    display: table-cell;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.formInputTextWithButton_Container {
+    background :transparent;
+    display: table;
+}
+
+.tableLoading tbody {
+    position: relative;
+}
+
+.tableLoading tbody:after {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.1);
+    font-family: 'FontAwesome';
+    content: "\f021";
+    font-size:100px;
+    text-align:center;
+    color:white;
+    text-shadow:2px 2px 2px #333;
+}
+
+.tableDisabled tbody {
+    position: relative;
+}
+
+.tableDisabled tbody:after {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.1);
+    font-family: 'FontAwesome';
+    content: "\f023";
+    font-size:100px;
+    text-align:center;
+    color:white;
+    text-shadow:2px 2px 2px #333;
+}
+
+.headerBtn {
+    background:transparent;
+    border:0;
+}
+    */
+.tox {
+    z-index: 2147483647;
+}
+
+
+table.tableScroll {
+    /*width: 100%;*/
+    border-collapse: collapse;
+    border-spacing: 0;
+    /*border: 1px solid black;*/
+}
+
+    table.tableScroll tbody {
+        display: block;
+        overflow-y: scroll;
+        overflow-x: hidden;
+        border-left: 1px solid black;
+        border-right: 1px solid black;
+        border-bottom: 1px solid black;
+        background: white;
+    }
+
+    table.tableScroll tfoot {
+        border: 0 !important;
+        background: transparent !important;
+    }
+
+        table.tableScroll tfoot tr {
+            border: 0 !important;
+            background: transparent !important;
+        }
+
+        table.tableScroll tfoot td {
+            border: 0 !important;
+            background: transparent !important;
+        }
+
+
+    table.tableScroll thead {
+        display: block;
+        border-left: 1px solid black;
+        border-right: 1px solid black;
+        border-top: 1px solid black;
+        background: white;
+    }
+
+        table.tableScroll thead tr th {
+            height: 18px;
+            line-height: 18px;
+            overflow: hidden;
+            padding: 0;
+            border-right: 1px solid gray;
+            /*white-space: nowrap;
+            text-overflow: ellipsis;
+            font-size: 0.9em;*/
+        }
+
+span.ellipsis {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    margin: 0;
+    padding: 1px;
+    font-size: 0.9em;
+}
+
+table.tableScroll tbody td {
+    overflow: hidden;
+    border-right: 1px solid gray;
+    border-top: 1px solid gray;
+    padding: 5px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    font-size: 0.9em;
+}
+
+/*table.tableScroll tbody tr:nth-child(even) {
+        background: #CCC;
+    }*/
+
+table.tableScroll tbody tr:nth-child(odd) {
+    background: #eee;
+}
+
+table.tableScroll tbody tr:hover {
+    background: #e6ffff;
+}
+
+
+/*table.tableScroll thead th:last-child {
+        border-right: none;
+    }*/
+
+/*table.tableScroll tbody td:last-child {
+        border-right: none;
+    }*/
+
+.btnFilterSelect {
+    float: left;
+    border: 0;
+    background: transparent;
+    text-decoration: underline;
+    font-size: 12px;
+}
+
+.selectedRow {
+    background: lightblue !important;
+}
+
+.tableSelectionCell {
+    width: 40px;
+    max-width: 40px;
+    min-width: 40px;
+    text-align: center;
+    vertical-align: middle;
+    padding: 0;
+}
+
+    .tableSelectionCell button {
+        width: 28px;
+    }
+
+.editRowButton {
+    line-height: 16px;
+    height: 16px;
+    width: 16px;
+    margin: 0;
+    padding: 0;
+    margin-left: 2px;
+    float: right;
+    border: 0;
+    background: transparent;
+}
+
+.formInputTextWithButton_Input {
+    background: transparent;
+    border: 0;
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.formInputTextWithButton_Button {
+    background: transparent;
+    display: table-cell;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.formInputTextWithButton_Container {
+    background: transparent;
+    display: table;
+}
+
+.tableLoading tbody {
+    position: relative;
+}
+
+    .tableLoading tbody:after {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: rgba(0, 0, 0, 0.1);
+        font-family: 'FontAwesome';
+        content: "\f021";
+        font-size: 100px;
+        text-align: center;
+        color: white;
+        text-shadow: 2px 2px 2px #333;
+    }
+
+.tableDisabled tbody {
+    position: relative;
+}
+
+    .tableDisabled tbody:after {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: rgba(0, 0, 0, 0.1);
+        font-family: 'FontAwesome';
+        content: "\f023";
+        font-size: 100px;
+        text-align: center;
+        color: white;
+        text-shadow: 2px 2px 2px #333;
+    }
+
+.headerBtn {
+    background: transparent;
+    border: 0;
+}
+
+.frameworkSliderContainer {
+    width: 100%;
+}
+
+.frameworkSlider {
+    -webkit-appearance: none;
+    width: 100%;
+    height: 20px;
+    border-radius: 5px;
+    background: #d3d3d3;
+    outline: none;
+    /*    opacity: 0.7;
+    -webkit-transition: .2s;
+    transition: opacity .2s;*/
+}
+
+    /* Mouse-over effects */
+    .frameworkSlider:hover {
+        opacity: 1; /* Fully shown on mouse-over */
+    }
+
+    /* The slider handle (use -webkit- (Chrome, Opera, Safari, Edge) and -moz- (Firefox) to override default look) */
+    .frameworkSlider::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        appearance: none;
+        width: 10px;
+        height: 30px;
+        /*border-radius: 50%;*/
+        background: #337ab7;
+        cursor: pointer;
+    }
+
+    .frameworkSlider::-moz-range-thumb {
+        width: 10px;
+        height: 30px;
+        /* border-radius: 50%;*/
+        background: #337ab7;
+        cursor: pointer;
+    }
+
+
+
+.frameworkSliderHide {
+    -webkit-appearance: none;
+    width: 100%;
+    height: 20px;
+    border-radius: 5px;
+    background: #d3d3d3;
+    outline: none;
+    opacity: 0.7;
+    -webkit-transition: .2s;
+    transition: opacity .2s;
+}
+
+    /* Mouse-over effects */
+    .frameworkSliderHide:hover {
+        opacity: 1; /* Fully shown on mouse-over */
+    }
+
+    /* The slider handle (use -webkit- (Chrome, Opera, Safari, Edge) and -moz- (Firefox) to override default look) */
+    .frameworkSliderHide::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        appearance: none;
+        width: 0;
+        height: 0;
+        border-radius: 50%;
+        background: #04AA6D;
+        cursor: pointer;
+    }
+
+    .frameworkSliderHide::-moz-range-thumb {
+        width: 0;
+        height: 0;
+        border-radius: 50%;
+        background: #04AA6D;
+        cursor: pointer;
+    }
+
+
+
+
+
+
+
+
+
+li.popup_editor:hover ul {
+    display: flex !important;
+}
+
+ul.submenu_editor {
+    top: 20px;
+    left: 0px;
+    position: absolute;
+    display: none;
+    background: white;
+    padding: 2px;
+    box-shadow: 0px 0 4px rgba(0, 0, 0, 0.3);
+    z-index: 1;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    width: 48px;
+}
+
+    ul.submenu_editor > li button {
+        width: 15px;
+        height: 15px;
+    }
+
+        ul.submenu_editor > li button:hover {
+            cursor: pointer;
+            box-shadow: 0px 0 4px rgba(0, 0, 0, 0.8)
+        }
+
+.popup_editor button.active::after {
+    content: "✔";
+    position: absolute;
+    left: 3.5px;
+    top: 6.5px;
+}
+
+.popup_editor button.active {
+    border: 1px solid black;
+    opacity: 1;
+}
+
+.popup_editor button[data-color=white] {
+    border: 1px solid black !important;
+}
+
+    .popup_editor button[data-color=white]::after {
+        color: black;
+    }
+
+.btnEditor {
+    padding-left: 32px;
+    position: relative;
+    height: 32px;
+    border-radius: 0;
+    border: 1px solid #26567c;
+    background:white;
+}
+
+    .btnEditor:before {
+        position: absolute;
+        font-family: 'FontAwesome';
+        top: 4px;
+        left: 12px;
+    }
+
+.btnEditor:disabled {
+    background:gray;
+}
+
+.btnBold:before {
+    content: "\f032";
+}
+
+.btnItalic:before {
+    content: "\f033";
+}
+
+.btnUnderline:before {
+    content: "\f0cd";
+}
+
+.btnStrikeThrough:before {
+    content: "\f0cc";
+}
+
+.btnJustifyLeft:before {
+    content: "\f036";
+}
+
+.btnJustifyRight:before {
+    content: "\f038";
+}
+
+.btnJustifyCenter:before {
+    content: "\f037";
+}
+
+.btnUnorderedList:before {
+    content: "\f0ca";
+}
+
+.btnOrderedList:before {
+    content: "\f0cb";
+}
+
+.btnForecolor:before {
+    content: "\f043";
+}
+
+.btnBackcolor:before {
+    content: "\f1fc";
+}
+
+.btnFont:before {
+    content: "\f031";
+}
+
+.btnFontSize:before {
+    content: "\f034";
+}
+
+.btnLineHeight:before {
+    content: "\f1dd";
+}
+
+
+.btnActive {
+    background: lightblue;
+}
+
+

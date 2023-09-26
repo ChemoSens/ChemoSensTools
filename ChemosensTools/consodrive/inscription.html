@@ -1,0 +1,205 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>ConsoDrive</title>
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.9.0/css/all.css" crossorigin="anonymous">
+
+    <script src="../framework/js/jquery.js" type="text/javascript"></script>
+    <script src="../Framework/framework.js" type="text/javascript"></script>
+    <!--<script src="ts/app.js" type="text/javascript"></script>
+    <script src="ts/inscription.js" type="text/javascript"></script>-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+
+</head>
+<body>
+    <div class="container h-100" style="font-size:1.1em">
+        <div class="row h-100 justify-content-center align-items-center">
+            <div class="col-10">
+                <h2 class="text-center h-25"><img src="../consodrive/img/cjki.png" class="text-center" /></h2>
+                <div id="divPresentation" class="text-justify">
+                    <h1 class="mt-5 text-center">L'étude est terminée.</h1>
+                    </div>
+                    <!--<div id="divPresentation" class="text-justify">
+                <p>Le Centre des Sciences du Goût et de l'Alimentation (CSGA) vous propose de participer à une étude financée par des fonds publics, portant sur les achats alimentaires effectués en drive.</p>
+                <p>Pour participer à cette étude <b>il est nécessaire d'avoir plus de 18 ans et d'être utilisateur de l'un des drives de France métropolitaine</b>.</p>
+                <p><b>Vous devrez nous faire parvenir une ou plusieurs factures électroniques correspondant à des achats alimentaires effectués il y a moins de 6 mois dans un drive*. L'ensemble de ces factures devra représenter un total d'au moins 30 aliments différents.</b></p>
+                <p>Vous devrez ensuite remplir un questionnaire (durée : 30 minutes environ) portant sur vos motivations d'achat, puis donner quelques renseignements vous concernant (données sociodémographiques).</p>
+                <p>Le recueil des données s'effectuera en ligne via une application Internet développée spécifiquement pour cette étude.</p>
+                <p>Chaque facture sera traitée informatiquement pour n'extraire que la date d'achat, les libellés, les quantités et les prix des aliments. Les achats non alimentaires ne seront pas pris en compte. A cette étape, votre nom, votre prénom ainsi que vos coordonnées ne seront pas enregistrés.</p>
+                <p>Pour vous remercier de votre participation, un chèque-cadeau dématérialisé d'une valeur de 10€, vous sera remis par email à la fin de l'étude.</p>
+                <p class="mt-5">*<i>Attention, à l'heure actuelle l'application Internet ne reconnait que les factures Leclerc, Carrefour et Intermarché. Si vous êtes client d'un autre drive, merci de nous envoyer votre facture par mail à l'adresse suivante : consodrive@inrae.fr. Nous vous recontacterons dès que l'application permettra de prendre en charge votre facture.</i></p>
+
+                <div class="form-group mt-5 text-right">
+                    <button id="btnInscription1" class="btn btn-primary btn-lg">Je suis intéressé et je souhaite m'inscrire</button>
+                </div>
+
+
+            </div>
+
+            <div id="divCompris" class="text-justify">
+                <p><b>L’inscription à cette étude implique l’enregistrement de données personnelles (nom, prénom, coordonnées, adresse mail, etc.)</b>. Elles sont enregistrées dans une base de données ayant fait l’objet d’une demande d’autorisation auprès de la Commission Nationale Informatique et des Libertés (CNIL, n° d’enregistrement 1148039) et sont nécessaires pour le versement de votre indemnisation.</p>
+                <p><a href="https://www2.dijon.inrae.fr/csga/doc/grand_public/FicheInformationConsodriveMai2021.pdf" target="_blank">Lire la fiche d'information de l'étude.</a></p>
+                <div class="form-group mt-5 text-right">
+                    <button id="btnInscription2" class="btn btn-primary btn-lg">J'ai compris et je souhaite continuer</button>
+                </div>
+            </div>
+
+            <div id="divCnil" class="text-justify">
+                <p>Merci de compléter les champs suivants (<b>tous les champs sont obligatoires, le bouton "Suivant" ne sera activé qu'une fois tous les champs remplis</b>) :</p>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input checkL" type="radio" value="" name="inputCivilite" id="inputCiviliteMme">
+                    <label class="form-check-label checkLLabel" for="inputCivilite">Madame</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input checkL" type="radio" value="" name="inputCivilite" id="inputCiviliteMr">
+                    <label class="form-check-label checkLLabel" for="inputCivilite">Monsieur</label>
+                </div>
+                <div class="input-group mt-5 ">
+                    <input type="text" class="form-control" placeholder="Votre nom" id="inputNom">
+                </div>
+                <div class="input-group mt-5 ">
+                    <input type="text" class="form-control" placeholder="Votre prénom" id="inputPrenom">
+                </div>
+                <div class="input-group mt-5 ">
+                    <input type="text" class="form-control" placeholder="Votre date de naissance (format JJ/MM/YYYY)" id="inputDateNaissance">
+                </div>
+                <div class="input-group mt-5 ">
+                    <input type="text" class="form-control" placeholder="Votre adresse" id="inputAdresse">
+                </div>
+                <div class="input-group mt-5 ">
+                    <input type="text" class="form-control" placeholder="Votre code postal" id="inputCP">
+                </div>
+                <div class="input-group mt-5 ">
+                    <input type="text" class="form-control" placeholder="Votre ville" id="inputVille">
+                </div>
+                <div class="input-group mt-5 ">
+                    <input type="text" class="form-control" placeholder="Votre adresse e-mail (obligatoire)" id="inputMail">
+                </div>
+                <div class="form-group mt-5 text-right">
+                    <button id="btnInscription3" class="btn btn-primary btn-lg">Suivant</button>
+                </div>
+            </div>
+
+            <div id="divLieuAchat" class="text-justify">
+                <p>Où effectuez-vous les achats alimentaires de votre foyer ? Merci de cocher tous les lieux que vous fréquentez pour ces achats. Ne tenez pas compte des achats non alimentaires : </p><p>(plusieurs réponses possibles)</p>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="dans des grandes et moyennes surfaces" name="checkboxLieu1" id="checkboxLieu1">
+                    <label class="form-check-label" for="checkboxLieu1">dans des grandes et moyennes surfaces</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="dans des grandes surfaces spécialisées" name="checkboxLieu2" id="checkboxLieu2">
+                    <label class="form-check-label" for="checkboxLieu2">dans des grandes surfaces spécialisées</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="dans des commerces de proximité" name="checkboxLieu3" id="checkboxLieu3">
+                    <label class="form-check-label" for="checkboxLieu3">dans des commerces de proximité</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="au marché" name="checkboxLieu4" id="checkboxLieu4">
+                    <label class="form-check-label" for="checkboxLieu4">au marché</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="dans un drive" name="checkboxLieu5" id="checkboxLieu5">
+                    <label class="form-check-label" for="checkboxLieu5">dans un drive</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="auprès de producteurs en direct" name="checkboxLieu6" id="checkboxLieu6">
+                    <label class="form-check-label" for="checkboxLieu6">auprès de producteurs en direct</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="sur internet (hors drive)" name="checkboxLieu7" id="checkboxLieu7">
+                    <label class="form-check-label" for="checkboxLieu7">sur internet (hors drive)</label>
+                </div>
+                <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Autre (préciser)" id="inputLieu8">
+                </div>
+                <div class="form-group mt-5 text-right">
+                    <button id="btnInscription4" class="btn btn-primary btn-lg">Suivant</button>
+                </div>
+            </div>
+
+            <div id="divEnseigne" class="text-justify">
+                <p>Concernant les achats alimentaires effectués auprès d’un drive, quelle(s) enseigne(s) fréquentez-vous ? (réponse obligatoire, plusieurs réponses possible ; le bouton "Suivant" ne sera activé que si au moins une case est cochée)</p>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="Carrefour Drive" name="checkboxEnseigne1" id="checkboxEnseigne1">
+                    <label class="form-check-label" for="checkboxEnseigne1">Carrefour Drive</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="Leclerc Drive" name="checkboxEnseigne2" id="checkboxEnseigne2">
+                    <label class="form-check-label" for="checkboxEnseigne2">Leclerc Drive</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="Intermarché Drive" name="checkboxEnseigne3" id="checkboxEnseigne3">
+                    <label class="form-check-label" for="checkboxEnseigne3">Intermarché Drive</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="Super U Drive" name="checkboxEnseigne4" id="checkboxEnseigne4">
+                    <label class="form-check-label" for="checkboxEnseigne4">Super U Drive</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="Cora Drive" name="checkboxEnseigne5" id="checkboxEnseigne5">
+                    <label class="form-check-label" for="checkboxEnseigne5">Cora Drive</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="Casino Drive" name="checkboxEnseigne6" id="checkboxEnseigne6">
+                    <label class="form-check-label" for="checkboxEnseigne6">Casino Drive</label>
+                </div>
+                <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Autre enseigne (préciser)" id="inputEnseigne7">
+                </div>
+                <div class="form-group mt-5 text-right">
+                    <button id="btnInscription5" class="btn btn-primary btn-lg">Suivant</button>
+                </div>
+            </div>
+
+            <div id="divCategories" class="text-justify">
+                <p>Merci de cocher les catégories d’aliments pour lesquelles vous effectuez au moins la moitié de vos achats en drive (réponse obligatoire, plusieurs réponses possibles ; le bouton "Suivant" ne sera activé que si au moins une case est cochée) :</p>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="Viandes et poissons" name="checkboxCategorie1" id="checkboxCategorie1">
+                    <label class="form-check-label" for="checkboxCategorie1">Viandes et poissons</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="Fruits et légumes" name="checkboxCategorie2" id="checkboxCategorie2">
+                    <label class="form-check-label" for="checkboxCategorie2">Fruits et légumes</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="Pains et pâtisseries" name="checkboxCategorie3" id="checkboxCategorie3">
+                    <label class="form-check-label" for="checkboxCategorie3">Pains et pâtisseries</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="Surgelés" name="checkboxCategorie4" id="checkboxCategorie4">
+                    <label class="form-check-label" for="checkboxCategorie4">Surgelés</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="Epicerie salée" name="checkboxCategorie5" id="checkboxCategorie5">
+                    <label class="form-check-label" for="checkboxCategorie5">Epicerie salée</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="Epicerie sucrée" name="checkboxCategorie6" id="checkboxCategorie6">
+                    <label class="form-check-label" for="checkboxCategorie6">Epicerie sucrée</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="Frais (produits laitiers, œufs, charcuteries, traiteur, desserts…)" name="checkboxCategorie7" id="checkboxCategorie7">
+                    <label class="form-check-label" for="checkboxCategorie7">Frais (produits laitiers, œufs, charcuteries, traiteur, desserts…)</label>
+                </div>
+                <div class="form-group mt-5 text-right">
+                    <button id="btnInscription6" class="btn btn-primary btn-lg">Terminer</button>
+                </div>
+            </div>
+
+            <div id="divFin" class="text-center mt-5">
+
+            </div>
+
+        -->
+                </div>
+            </div>
+    </div>
+</body>
+</html>

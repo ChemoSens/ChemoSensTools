@@ -1,0 +1,54 @@
+﻿<div id="divQuestionnaireGeneral4" class="container h-100">
+    <div class="row h-100 justify-content-center align-items-center">
+        <div class="col-12">
+            <h2 class="text-center"><b>De manière générale</b>, quel degré d'importance accordez-vous aux <b>caractéristiques nutritionnelles</b> des aliments lors de vos achats ?</h2>
+
+            <p class="text-center alert alert-info">"Critère secondaire" = critère pris en compte dans vos choix mais qui, seul, n'est pas décisif, "Critère primordial" = si ce critère n'est pas respecté, vous préférez ne pas acheter l'aliment. Si ce critère n'a aucune importance pour vos décisions d'achat, cochez la case prévue à cet effet.</p>
+
+            <div class="text-center mt-5"><div style="float:left;width:40%;text-align:right">Secondaire</div><div class="text-center scale-2" style="float:left;width:20%" id="divRanking"></div><div style="float:left;width:40%;text-align:left">Primordial</div><div style="clear:both"></div></div>
+
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="inputNutritionnelPasSensible">
+                <label class="form-check-label" for="inputNutritionnelPasSensible">globalement, je ne me soucie pas des caractéristiques nutritionnelles des aliments lors de mes achats</label>
+            </div>
+
+            <div id="divCriteres">
+                <h4 class="mt-5">A quel(s) critère(s) êtes-vous le plus sensible ?</h4>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="inputNutritionnelTeneur">
+                    <label class="form-check-label" for="inputNutritionnelTeneur">liste et teneur en nutriments apportés (lipides, glucide, protéines, minéraux, vitamines, fibres, oligoéléments, etc.)</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="inputNutritionnelConforme">
+                    <label class="form-check-label" for="inputNutritionnelConforme">conformité de l’apport en nutriments par rapport aux recommandations nationales</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="inputNutritionnelIndicateur">
+                    <label class="form-check-label" for="inputNutritionnelIndicateur">présence d'un indicateur de la valeur nutritionnelle de l'aliment (ex : Nutri-Score)</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="inputNutritionnelIndirect">
+                    <label class="form-check-label" for="inputNutritionnelIndirect">présence d'un indicateur indirect de la qualité nutritionnelle (marque, niveau de gamme)</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="inputNutritionnelRegime">
+                    <label class="form-check-label" for="inputNutritionnelRegime">compatibilité de l'aliment avec à un régime santé (sans sel, sans gluten, sans allergènes, etc.)</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="inputNutritionnelVertu">
+                    <label class="form-check-label" for="inputNutritionnelVertu">vertus particulières du produit (transit, énergie, éveil, etc.)</label>
+                </div>
+
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="inputNutritionnelAutre">
+                    <label class="form-check-label" for="inputNutritionnelAutre">autre critère (précisez ci-après)</label>
+                </div>
+                <input class="form-control w-100 mt-5" type="text" id="inputAutre" />
+            </div>
+            <div class="form-group text-center mt-5">
+                <button id="btnPrec" class="btn btn-primary">Précédent</button>
+                <button id="btnGoToQuestionnaireGeneral5" class="btn btn-primary">Suivant</button>
+            </div>
+        </div>
+    </div>
+</div>

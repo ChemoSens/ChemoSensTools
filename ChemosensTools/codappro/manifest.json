@@ -1,0 +1,16 @@
+{
+  "background_color": "#ffffff",
+  "description": "COD-Achats",
+  "display": "fullscreen",
+  "icons": [
+    {
+      "src": "img/icon.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    }
+  ],
+  "name": "COD-Achats",
+  "short_name": "COD-Achats",
+  "start_url": "index.html"
+}
+

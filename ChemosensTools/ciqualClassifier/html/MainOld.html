@@ -1,0 +1,120 @@
+﻿<div id="main" style="margin:10px">
+    <h1>Analyseur de désignations commerciales de produits alimentaires</h1>
+
+    <button class="btn btn-primary" id="btnRefresh">Actualiser</button>
+    <button class="btn btn-primary" id="btnNettoieDesignationFichierExcel">Sur le serveur</button>
+    <button class="btn btn-primary" id="btnUploadFichierExcel">Fichier Excel</button>
+
+    <h2>Saisir la désignation</h2>
+    <textarea style="width:1200px;height:80px;" id="textareaDesignation"></textarea>
+
+    <!--<h2>Mode de recherche</h2>
+    <div class="form-check">
+        <input class="form-check-input" type="radio" checked value="" name="modeRecherche" id="inputModeRechercheExact">
+        <label class="form-check-label" for="inputModeRechercheExact">Exact</label>
+    </div>-->
+    <h2>Filtre</h2>
+    <div class="form-check">
+        <input class="form-check-input" type="radio" checked value="" name="modeRecherche" id="inputModeRechercheTous">
+        <label class="form-check-label" for="inputModeRechercheTous">Pas de filtre</label>
+    </div>
+    <div class="form-check">
+        <input class="form-check-input" type="radio" value="" name="modeRecherche" id="inputModeRechercheConsomme">
+        <label class="form-check-label" for="inputModeRechercheConsomme">Aliments tels qu'ils sont consommés</label>
+    </div>
+    <div class="form-check">
+        <input class="form-check-input" type="radio" value="" name="modeRecherche" id="inputModeRechercheCommercialise">
+        <label class="form-check-label" for="inputModeRechercheCommercialise">Aliments tels qu'ils sont commercialisés</label>
+    </div>
+
+    <h2>Résultat</h2>
+    <p>Mots clés : <span id="spanMotsCles"></span></p>
+    <div id="divResultat">
+
+    </div>
+    <!--<table>-->
+    <!--<tr>
+        <td>- Mots clés désignation&nbsp;&nbsp;&nbsp;&nbsp;</td>
+        <td><span id="pDesignationNettoyee"></span></td>
+    </tr>
+    <tr>
+        <td>- Mots clés logigramme&nbsp;&nbsp;&nbsp;&nbsp;</td>
+        <td><span id="pMotsClesLogigramme"></span></td>
+    </tr>
+    <tr>
+        <td>- Logigramme&nbsp;&nbsp;&nbsp;&nbsp;</td>
+        <td><span id="pLogigramme" style="font-weight:bold"></span></td>
+    </tr>
+    <tr>
+        <td>- Mots clés CIQUAL&nbsp;&nbsp;&nbsp;&nbsp;</td>
+        <td><span id="pMotsClesCiqual"></span></td>
+    </tr>
+    <tr>
+        <td valign="top">- Désignation CIQUAL&nbsp;&nbsp;&nbsp;&nbsp;</td>
+        <td><span id="pDesignationCIQUAL" style="font-weight:bold;color:darkgreen"></span></td>
+    </tr>-->
+    <!--<tr>
+        <td>- Alternatives</td>
+        <td><span id="pAlternatives" style="font-weight:bold"></span></td>
+    </tr>
+    <tr>
+        <td>- Allégations</td>
+        <td><span id="pAllegations" style="font-weight:bold"></span></td>
+    </tr>
+    <tr>
+        <td>- Nutriscore moyen</td>
+        <td><span id="pNutriscore" style="font-weight:bold"></span></td>
+    </tr>
+    <tr>
+        <td>- Trafic light sucre moyen</td>
+        <td><span id="pTLSucre" style="font-weight:bold"></span></td>
+    </tr>
+    <tr>
+        <td>- Trafic light sodium moyen</td>
+        <td><span id="pTLSodium" style="font-weight:bold"></span></td>
+    </tr>
+    <tr>
+        <td>- Trafic light lipide moyen</td>
+        <td><span id="pTLLipide" style="font-weight:bold"></span></td>
+    </tr>
+    <tr>
+        <td>- Trafic light AG saturé moyen</td>
+        <td><span id="pTLAGSature" style="font-weight:bold"></span></td>
+    </tr>
+    <tr>
+        <td>- Score EF moyen</td>
+        <td><span id="pEF" style="font-weight:bold"></span></td>
+    </tr>
+    <tr>
+        <td>- Emission GES moyen</td>
+        <td><span id="pGES" style="font-weight:bold"></span></td>
+    </tr>-->
+    <!--</table>-->
+    <!--<h2>Détail</h2>
+    <p>- Désignation nettoyée : <span id="pDesignationNettoyee" style="font-weight:bold"></span></p>
+    <p>- Mots clés : <span id="pMotsCles" style="font-weight:bold"></span></p>
+    <div id="divResultatAlgorithme"></div>-->
+    <!--<h2>Ressources</h2>
+    <p>Documentation</p>
+    <p>Table de passage</p>-->
+    <!--<button class="btn btn-primary" id="btnRefresh">Actualiser table passage ingredients</button>
+    <button class="btn btn-primary" id="btnUploadFichierExcel2">Sur le serveur</button>
+    <button class="btn btn-primary" id="btnUploadFichierExcel">A partir d'un fichier XLSX</button>
+    <button class="btn btn-primary" id="btnUploadImage">A partir d'une image</button>
+
+    <table style="width:1200px">
+        <tr>
+            <td>Ingrédients</td>
+            <td colspan="2">Composition</td>
+        </tr>
+        <tr>
+            <td style="width:600px"><textarea style="width:600px;height:400px;" id="textareaDescription"></textarea></td>
+            <td colspan="2" style="width:600px"><textarea style="width:600px;height:400px;" id="textareaIngredients"></textarea></td>
+        </tr>
+        <tr>
+            <td colspan="2"><textarea style="width:1100px;height:80px;" id="textareaIngredients2"></textarea></td>
+            <td><button style="width:100px;height:80px;" class="btn btn-primary" id="btnCopy">Copier</button></td>
+        </tr>
+    </table>-->
+
+</div>

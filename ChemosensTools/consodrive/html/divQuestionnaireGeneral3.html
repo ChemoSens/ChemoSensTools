@@ -1,0 +1,51 @@
+﻿<div id="divQuestionnaireGeneral3" class="container h-100">
+    <div class="row h-100 justify-content-center align-items-center">
+        <div class="col-12">
+            <h2 class="text-center"><b>De manière générale</b>, quel degré d'importance accordez-vous à la <b>qualité sanitaire</b> des aliments lors de vos achats ?</h2>
+
+            <p class="text-center alert alert-info">"Critère secondaire" = critère pris en compte dans vos choix mais qui, seul, n'est pas décisif, "Critère primordial" = si ce critère n'est pas respecté, vous préférez ne pas acheter l'aliment. Si ce critère n'a aucune importance pour vos décisions d'achat, cochez la case prévue à cet effet.</p>
+
+            <div class="text-center mt-5"><div style="float:left;width:40%;text-align:right">Secondaire</div><div class="text-center scale-2" style="float:left;width:20%" id="divRanking"></div><div style="float:left;width:40%;text-align:left">Primordial</div><div style="clear:both"></div></div>
+
+
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="inputQualiteSanitairePasSensible">
+                <label class="form-check-label" for="inputQualiteSanitairePasSensible">globalement, je ne me soucie pas de la qualité sanitaire des aliments lors de mes achats</label>
+            </div>
+
+            <div id="divCriteres">
+                <h4 class="mt-5">A quel(s) critère(s) êtes-vous le plus sensible ?</h4>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="inputQualiteSanitairePesticide">
+                    <label class="form-check-label" for="inputQualiteSanitairePesticide">présence de résidus de pesticides dans ou sur l'aliment</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="inputQualiteSanitaireContaminant">
+                    <label class="form-check-label" for="inputQualiteSanitaireContaminant">présence de contaminants des emballages (plastiques, vernis)</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="inputQualiteSanitaireToxine">
+                    <label class="form-check-label" for="inputQualiteSanitaireToxine">présence de mycotoxines</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="inputQualiteSanitaireAdditif">
+                    <label class="form-check-label" for="inputQualiteSanitaireAdditif">présence d'additifs controversés</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="inputQualiteSanitaireToxique">
+                    <label class="form-check-label" for="inputQualiteSanitaireToxique">présence de composés toxiques générés pendant la fabrication</label>
+                </div>
+
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="inputQualiteSanitaireAutre">
+                    <label class="form-check-label" for="inputQualiteSanitaireAutre">autre critère (précisez ci-après)</label>
+                </div>
+                <input class="form-control w-100 mt-5" type="text" id="inputAutre" />
+            </div>
+            <div class="form-group text-center mt-5">
+                <button id="btnPrec" class="btn btn-primary">Précédent</button>
+                <button id="btnGoToQuestionnaireGeneral4" class="btn btn-primary">Suivant</button>
+            </div>
+        </div>
+    </div>
+</div>
