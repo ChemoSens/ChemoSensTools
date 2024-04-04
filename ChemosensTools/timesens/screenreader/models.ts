@@ -520,7 +520,7 @@
                 TableData.ListColumns.push(col11);
             }
 
-            if (selectedDataType == "Sentiment" || selectedDataType == "Question" || selectedDataType == "FreeTextQuestion" || selectedDataType == "SpeechToText" || selectedDataType == "SingleAnswerQuestion" || selectedDataType == "MultipleAnswersQuestion") {
+            if (selectedDataType == "Sentiment" || selectedDataType == "Question" || selectedDataType == "FreeTextQuestion" || selectedDataType == "SpeechToText" || selectedDataType == "SingleAnswerQuestion" || selectedDataType == "MultipleAnswersQuestion" || selectedDataType == "Sorting") {
 
                 let col12 = new Framework.Form.TableColumn();
                 col12.Name = "Description";

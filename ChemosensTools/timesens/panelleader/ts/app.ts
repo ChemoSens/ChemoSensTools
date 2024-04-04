@@ -7545,15 +7545,15 @@
                 }, Framework.LocalizationManager.Get("SortingControl"), ["textButton"]);
                 controlsDiv.Append(btnAddControlSorting);
 
-                //let btnAddControlGroupDescription = Framework.Form.Button.Create(() => {
-                //    return self.CurrentScreen.ExperimentalDesignId == 0 && self.GetListSortingControlNames().length > 0;
-                //}, (e) => {
-                //    control = ScreenReader.Controls.GroupDescriptionControl.Create();
-                //    (<ScreenReader.Controls.GroupDescriptionControl>control).ListControlNames = self.GetListSortingControlNames();
-                //    (<ScreenReader.Controls.GroupDescriptionControl>control).ListExperimentalDesigns = PanelLeaderModels.Session.GetDefaultExperimentalDesign(self.listDesigns, 'Attribute');
-                //    setForm(control);
-                //}, Framework.LocalizationManager.Get("GroupDescriptionControl"), ["textButton"]);
-                //controlsDiv.Append(btnAddControlGroupDescription);
+                let btnAddControlGroupDescription = Framework.Form.Button.Create(() => {
+                    return self.CurrentScreen.ExperimentalDesignId == 0 && self.GetListSortingControlNames().length > 0;
+                }, (e) => {
+                    control = ScreenReader.Controls.GroupDescriptionControl.Create();
+                    (<ScreenReader.Controls.GroupDescriptionControl>control).ListControlNames = self.GetListSortingControlNames();
+                    (<ScreenReader.Controls.GroupDescriptionControl>control).ListExperimentalDesigns = PanelLeaderModels.Session.GetDefaultExperimentalDesign(self.listDesigns, 'Attribute');
+                    setForm(control);
+                }, Framework.LocalizationManager.Get("GroupDescriptionControl"), ["textButton"]);
+                controlsDiv.Append(btnAddControlGroupDescription);
 
                 //let btnAddControlNapping = Framework.Form.Button.Create(() => { return self.CurrentScreen.ExperimentalDesignId == 0 && self.listDesigns.filter((x) => { return x.Type == "Product" }).length > 0 }, (e) => {
                 //    control = ScreenReader.Controls.NappingControl.Create();

@@ -13696,15 +13696,16 @@
         class GroupDescription {
             public Group: string = "";
             public Products: string = "";
-            public Description: string[] = [];
+            /*public Description: string[] = [];*/
+            public Description: string = "";
         }
 
         export class GroupDescriptionControl extends GroupedControl {
 
-            public _CanAddDescription: boolean = true; // Possibilité d'ajouter une description
+            /*public _CanAddDescription: boolean = true; // Possibilité d'ajouter une description*/
             public _AssociatedControlId: string; // ID du contrôle qui a permis de générer les groupes
-            public _MinNumberOfTerms: number = 0; // Nombre de descripteurs minimal
-            public _MaxNumberOfTerms: number = 10; // Nombre de descripteurs maximal
+            //public _MinNumberOfTerms: number = 0; // Nombre de descripteurs minimal
+            //public _MaxNumberOfTerms: number = 10; // Nombre de descripteurs maximal
 
             public ListControlNames: string[] = [];
 
@@ -13744,20 +13745,20 @@
                     properties.push(formSetControlId);
                     validateFormSetControlId();
 
-                    let formSetMinNumberOfTerms = Framework.Form.PropertyEditorWithNumericUpDown.Render("Parameters", "MinNumberOfTermsProperty", self._MinNumberOfTerms, 0, this.Items.length, (x) => {
-                        self.changeProperty("_MinNumberOfTerms", x);
-                    });
-                    properties.push(formSetMinNumberOfTerms);
+                    //let formSetMinNumberOfTerms = Framework.Form.PropertyEditorWithNumericUpDown.Render("Parameters", "MinNumberOfTermsProperty", self._MinNumberOfTerms, 0, this.Items.length, (x) => {
+                    //    self.changeProperty("_MinNumberOfTerms", x);
+                    //});
+                    //properties.push(formSetMinNumberOfTerms);
 
-                    let formSetMaxNumberOfTerms = Framework.Form.PropertyEditorWithNumericUpDown.Render("Parameters", "MaxNumberOfTermsProperty", self._MaxNumberOfTerms, 0, this.Items.length, (x) => {
-                        self.changeProperty("_MaxNumberOfTerms", x);
-                    });
-                    properties.push(formSetMaxNumberOfTerms);
+                    //let formSetMaxNumberOfTerms = Framework.Form.PropertyEditorWithNumericUpDown.Render("Parameters", "MaxNumberOfTermsProperty", self._MaxNumberOfTerms, 0, this.Items.length, (x) => {
+                    //    self.changeProperty("_MaxNumberOfTerms", x);
+                    //});
+                    //properties.push(formSetMaxNumberOfTerms);
 
-                    let formSetCanAddDescription = Framework.Form.PropertyEditorWithToggle.Render("Parameters", "CanAddDescription", self._CanAddDescription, (x) => {
-                        self.changeProperty("_CanAddDescription", x);
-                    });
-                    properties.push(formSetCanAddDescription);
+                    //let formSetCanAddDescription = Framework.Form.PropertyEditorWithToggle.Render("Parameters", "CanAddDescription", self._CanAddDescription, (x) => {
+                    //    self.changeProperty("_CanAddDescription", x);
+                    //});
+                   /* properties.push(formSetCanAddDescription);*/
 
                 }
 
@@ -13790,15 +13791,11 @@
                 this.ValidationMessage = "";
                 this.IsValid = true;
 
-                for (var i = 0; i < this.groupDescriptions.length; i++) {
-                    if (this.groupDescriptions[i].Description.length > self._MaxNumberOfTerms) {
+                for (var i = 0; i < this.ListData.length; i++) {
+                    if (this.ListData[i].Description==undefined || this.ListData[i].Description.length < 5) {
                         self.IsValid = false;
-                        self.ValidationMessage += Framework.LocalizationManager.Format("MaxNumberOfTerms", [self._MaxNumberOfTerms.toString(), this.groupDescriptions[i].Group]) + '\r\n';
-                    }
-                    if (this.groupDescriptions[i].Description.length < self._MinNumberOfTerms) {
-                        self.IsValid = false;
-                        self.ValidationMessage += Framework.LocalizationManager.Format("MinNumberOfTerms", [self._MinNumberOfTerms.toString(), this.groupDescriptions[i].Group]) + '\r\n';
-                    }
+                        self.ValidationMessage += "Longueur minimale de 5 caractères pour (groupe" + this.ListData[i].Group + ")";
+                    }                    
                 }
             }
 
@@ -13836,104 +13833,133 @@
 
                 self.groupDescriptions.sort(f);
 
-                let dtParameters = new Framework.Form.DataTableParameters();
-                dtParameters.ListData = self.groupDescriptions;
+                let table = document.createElement("table");
+                let tr = document.createElement("tr"); table.appendChild(tr);
+                let td1 = document.createElement("td"); tr.appendChild(td1); td1.innerHTML = "Groupe";
+                let td2 = document.createElement("td"); tr.appendChild(td2); td2.innerHTML = "Produits";
+                let td3 = document.createElement("td"); tr.appendChild(td3); td3.innerHTML = "Description";
 
-                dtParameters.ListColumns = [
-                    {
-                        data: "Group", title: Framework.LocalizationManager.Get("Group"), render: function (data, type, row) {
-                            return data;
-                        }
-                    },
-                    {
-                        data: "Products", title: Framework.LocalizationManager.Get("Products"), render: function (data, type, row) {
-                            return data;
-                        }
-                    },
-                    {
-                        data: "Description", title: Framework.LocalizationManager.Get("Description"), render: function (data, type, row) {
-                            if (data.length == 0) {
-                                return Framework.LocalizationManager.Get("NoDescription");
-                            }
-                            return data.join(', ');
-                        }
-                    }
-                ];
-                dtParameters.Order = [[0, 'desc']];
-                dtParameters.Paging = false;
-                dtParameters.Filtering = false;
-                dtParameters.Ordering = false;
+                
 
-                if (editMode == false) {
-                    dtParameters.OnEditCell = (propertyName, data) => {
-                        if (propertyName == "Description") {
+                self.groupDescriptions.forEach((x) => {
 
-                            let div = document.createElement("div");
-
-                            let getAttributeForm = (attribute: Models.CodeLabel) => {
-                                let pr = Framework.Form.PropertyEditorWithToggle.Render("", attribute.Label, data["Description"].indexOf(attribute.Code) > -1, (x) => {
-                                    let arr: string[] = data["Description"];
-                                    if (arr.length > 0 && arr.indexOf(attribute.Code) > -1) {
-                                        self.RemoveDescription(data["Group"], attribute.Code);
-                                        ////Framework.Array.Remove(data["Description"], attribute.Code);
-                                    } else {
-                                        //arr.push(attribute.Code);
-                                        self.AddDescription(data["Group"], attribute.Code);
-                                    }
-                                });
-                                pr.Editor.HtmlElement.classList.add("noDot");
-                                return pr;
-                            }
-
-                            let getDescriptionForm = () => {
-                                let pr = Framework.Form.Button.Create(() => { return true; }, () => {
-                                    let input = Framework.Form.InputText.Create("", () => { }, Framework.Form.Validator.MinLength(3), false, ['tableInput']);
-                                    Framework.Modal.Confirm(Framework.LocalizationManager.Get("PleaseEnterNewDescriptor"), input.HtmlElement, () => {
-                                        if (input.ValidationMessage == "") {
-                                            div.removeChild(pr.HtmlElement);
-                                            let newAttribute = new Models.CodeLabel(input.Value, input.Value);
-                                            self.Attributes.push(newAttribute);
-                                            let arr: string[] = data["Description"];
-                                            arr.push(input.Value);
-                                            let pr1 = getAttributeForm(newAttribute);
-                                            div.appendChild(pr1.Editor.HtmlElement);
-                                            let pr2 = getDescriptionForm();
-                                            div.appendChild(pr2.HtmlElement);
-                                        }
-                                    });
-                                }, Framework.LocalizationManager.Get("Descriptor"), ['tableInput', 'btnEditableProperty', 'editableProperty']);
-                                return pr;
-                            }
-
-                            // Liste de cases à cocher
-                            self.Attributes.forEach((attribute) => {
-                                let pr = getAttributeForm(attribute);
-                                div.appendChild(pr.Editor.HtmlElement);
-                            });
-
-                            if (self._CanAddDescription == true) {
-                                let pr = getDescriptionForm();
-                                div.appendChild(pr.HtmlElement);
-                            }
-
-                            return div;
-                        }
-                    }
-                }
-
-                dtParameters.TdHeight = 20;
-
-                let dtTable: Framework.Form.DataTable;
-
-                Framework.Form.DataTable.AppendToDiv(undefined, this._Height + "px", this.HtmlElement, dtParameters, (dt) => {
-                    dtTable = dt;
-                    dt.SetStyle('td', 'text-align', 'left');
-                    dt.SetStyle('td', 'font-weight', self._FontWeight);
-                    dt.SetStyle('td', 'font-style', self._FontStyle);
-                    dt.SetStyle('td', 'font-size', self._FontSize + "px");
-                    dt.SetStyle('td', 'color', self._Foreground);
-                    dt.SetStyle('td', 'font-family', self._FontFamily);
+                    let tr = document.createElement("tr"); table.appendChild(tr);
+                    let td1 = document.createElement("td"); tr.appendChild(td1); td1.innerHTML = x.Group;
+                    let td2 = document.createElement("td"); tr.appendChild(td2); td2.innerHTML = x.Products;
+                    let td3 = document.createElement("td"); tr.appendChild(td3);
+                    let input = Framework.Form.InputText.Create("", (newVal, sender) => {
+                        let group = sender.CustomAttributes.Get("group");
+                        let data = self.ListData.filter(x => x.Group == group);
+                        data.forEach(x => x.Description = newVal);                        
+                        self.validate();
+                    }, Framework.Form.Validator.MinLength(4), true);
+                    input.CustomAttributes.Add("group", x.Group);
+                    td3.appendChild(input.HtmlElement);
                 });
+
+                this.HtmlElement.appendChild(table);
+
+                //let dtParameters = new Framework.Form.DataTableParameters();
+                //dtParameters.ListData = self.groupDescriptions;
+
+                //dtParameters.ListColumns = [
+                //    {
+                //        data: "Group", title: Framework.LocalizationManager.Get("Group"), render: function (data, type, row) {
+                //            return data;
+                //        }
+                //    },
+                //    {
+                //        data: "Products", title: Framework.LocalizationManager.Get("Products"), render: function (data, type, row) {
+                //            return data;
+                //        }
+                //    },
+                //    {
+                //        data: "Description", title: Framework.LocalizationManager.Get("Description"), render: function (data, type, row) {
+                //            if (data.length == 0) {
+                //                return Framework.LocalizationManager.Get("NoDescription");
+                //            }
+                //            return data.join(', ');
+                //        }
+                //    }
+                //];
+                //dtParameters.Order = [[0, 'desc']];
+                //dtParameters.Paging = false;
+                //dtParameters.Filtering = false;
+                //dtParameters.Ordering = false;
+
+                //if (editMode == false) {
+                //    dtParameters.OnEditCell = (propertyName, data) => {
+                //        if (propertyName == "Description") {
+
+                //            let div = document.createElement("div");
+
+                //            let getAttributeForm = (attribute: Models.CodeLabel) => {
+                //                let pr = Framework.Form.PropertyEditorWithToggle.Render("", attribute.Label, data["Description"].indexOf(attribute.Code) > -1, (x) => {
+                //                    let arr: string[] = data["Description"];
+                //                    if (arr.length > 0 && arr.indexOf(attribute.Code) > -1) {
+                //                        self.RemoveDescription(data["Group"], attribute.Code);
+                //                        ////Framework.Array.Remove(data["Description"], attribute.Code);
+                //                    } else {
+                //                        //arr.push(attribute.Code);
+                //                        self.AddDescription(data["Group"], attribute.Code);
+                //                    }
+                //                });
+                //                pr.Editor.HtmlElement.classList.add("noDot");
+                //                return pr;
+                //            }
+
+                //            let getDescriptionForm = () => {
+                //                let pr = Framework.Form.Button.Create(() => { return true; }, () => {
+                //                    let input = Framework.Form.InputText.Create("", () => { }, Framework.Form.Validator.MinLength(3), false, ['tableInput']);
+                //                    Framework.Modal.Confirm(Framework.LocalizationManager.Get("PleaseEnterNewDescriptor"), input.HtmlElement, () => {
+                //                        if (input.ValidationMessage == "") {
+                //                            div.removeChild(pr.HtmlElement);
+                //                            let newAttribute = new Models.CodeLabel(input.Value, input.Value);
+                //                            self.Attributes.push(newAttribute);
+                //                            let arr: string[] = data["Description"];
+                //                            arr.push(input.Value);
+                //                            let pr1 = getAttributeForm(newAttribute);
+                //                            div.appendChild(pr1.Editor.HtmlElement);
+                //                            let pr2 = getDescriptionForm();
+                //                            div.appendChild(pr2.HtmlElement);
+                //                        }
+                //                    });
+                //                }, Framework.LocalizationManager.Get("Descriptor"), ['tableInput', 'btnEditableProperty', 'editableProperty']);
+                //                return pr;
+                //            }
+
+                //            // Liste de cases à cocher
+                //            //self.Attributes.forEach((attribute) => {
+                //            //    let pr = getAttributeForm(attribute);
+                //            //    div.appendChild(pr.Editor.HtmlElement);
+                //            //});
+
+                //            //if (self._CanAddDescription == true) {
+                //            //    let pr = getDescriptionForm();
+                //            //    div.appendChild(pr.HtmlElement);
+                //            //}
+
+                //            let input = Framework.Form.InputText.Create("", () => { }, Framework.Form.Validator.MinLength(3), false, ['tableInput']);
+                //            div.appendChild(input.HtmlElement);
+
+                //            return div;
+                //        }
+                //    }
+                //}
+
+                //dtParameters.TdHeight = 20;
+
+                //let dtTable: Framework.Form.DataTable;
+
+                //Framework.Form.DataTable.AppendToDiv(undefined, this._Height + "px", this.HtmlElement, dtParameters, (dt) => {
+                //    dtTable = dt;
+                //    dt.SetStyle('td', 'text-align', 'left');
+                //    dt.SetStyle('td', 'font-weight', self._FontWeight);
+                //    dt.SetStyle('td', 'font-style', self._FontStyle);
+                //    dt.SetStyle('td', 'font-size', self._FontSize + "px");
+                //    dt.SetStyle('td', 'color', self._Foreground);
+                //    dt.SetStyle('td', 'font-family', self._FontFamily);
+                //});
 
 
 
@@ -14220,41 +14246,41 @@
             //    }
             //}
 
-            public AddDescription(group: string, attribute: string) {
-                let self = this;
-                let data: Models.Data[] = this.ListData.filter((x) => { return x.Group == group });
-                let groupDescription = self.groupDescriptions.filter((x) => x.Group == group)[0];
-                groupDescription.Description.push(attribute);
+            //public AddDescription(group: string, attribute: string) {
+            //    let self = this;
+            //    let data: Models.Data[] = this.ListData.filter((x) => { return x.Group == group });
+            //    let groupDescription = self.groupDescriptions.filter((x) => x.Group == group)[0];
+            //    groupDescription.Description.push(attribute);
 
-                data.forEach((x) => {
-                    let tab = Framework.Array.Unique((x.Description + "," + attribute).split(","));
-                    if (tab.indexOf('') >= 0) {
-                        tab.splice(tab.indexOf(''), 1);
-                    }
-                    x.Description = tab.join(",");
-                    self.onDataChanged(x);
-                });
-                self.validate();
-            }
+            //    data.forEach((x) => {
+            //        let tab = Framework.Array.Unique((x.Description + "," + attribute).split(","));
+            //        if (tab.indexOf('') >= 0) {
+            //            tab.splice(tab.indexOf(''), 1);
+            //        }
+            //        x.Description = tab.join(",");
+            //        self.onDataChanged(x);
+            //    });
+            //    self.validate();
+            //}
 
-            public RemoveDescription(group: string, attribute: string) {
-                let self = this;
-                let data: Models.Data[] = this.ListData.filter((x) => { return x.Group == group });
-                let gd = self.groupDescriptions.filter((x) => x.Group == group)[0];
-                let index = gd.Description.indexOf(attribute);
-                gd.Description.splice(index, 1);
+            //public RemoveDescription(group: string, attribute: string) {
+            //    let self = this;
+            //    let data: Models.Data[] = this.ListData.filter((x) => { return x.Group == group });
+            //    let gd = self.groupDescriptions.filter((x) => x.Group == group)[0];
+            //    let index = gd.Description.indexOf(attribute);
+            //    gd.Description.splice(index, 1);
 
-                data.forEach((x) => {
-                    let tab = Framework.Array.Unique(x.Description.replace(attribute, "").split(","));
-                    if (tab.indexOf('') >= 0) {
-                        tab.splice(tab.indexOf(''), 1);
-                    }
-                    x.Description = tab.join(",");
-                    self.onDataChanged(x);
-                });
+            //    data.forEach((x) => {
+            //        let tab = Framework.Array.Unique(x.Description.replace(attribute, "").split(","));
+            //        if (tab.indexOf('') >= 0) {
+            //            tab.splice(tab.indexOf(''), 1);
+            //        }
+            //        x.Description = tab.join(",");
+            //        self.onDataChanged(x);
+            //    });
 
-                self.validate();
-            }
+            //    self.validate();
+            //}
 
             //public GetListAnchors(): HTMLAnchorElement[] {
             //    return this.listAnchors;
