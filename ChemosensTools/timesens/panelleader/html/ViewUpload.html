@@ -1,0 +1,103 @@
+﻿<div id="uploadViewContainer">
+
+    <form>
+        <div class="form-group ">
+            <label data-localize="Description"></label>
+            <div class="input-group">
+                <div class="input-group-addon">
+                    <i class="fas fa-info"></i>
+                </div>
+                <input type="text" class="form-control" id="inputUploadDescription">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label data-localize="ServerCode"></label>
+            <div class="input-group">
+                <div class="input-group-addon">
+                    <i class="fas fa-cloud-upload-alt"></i>
+                </div>
+                <input type="text" class="form-control transparentDisabled" id="inputUploadInformation" contenteditable="false" disabled />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label data-localize="ExpirationDate"></label>
+            <div class="input-group date ">
+                <div class="input-group-addon">
+                    <i class="fa fa-calendar-alt"></i>
+                </div>
+                <input type="text" class="form-control" id="inputUploadExpiration" contenteditable="false">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label data-localize="PanelistCodeDisplayMode"></label>
+            <div class="input-group">
+                <div class="input-group-addon">
+                    <i class="fa fa-caret-square-o-down"></i>
+                </div>
+                <select class="form-control" id="selectUploadPanelistCodeDisplayMode"></select>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label data-localize="PanelistCodeAnonymousMode"></label>
+            <div class="input-group">
+                <div class="input-group-addon">
+                    <i class="fa fa-id-card"></i>
+                </div>
+                <select class="form-control" id="selectUploadPanelistCodeAnonymousMode"></select>
+            </div>
+        </div>
+
+        <div class="form-group ">
+            <label data-localize="PasswordForOfflineMode"></label>
+            <div class="input-group">
+                <div class="input-group-addon">
+                    <i class="fas fa-key"></i>
+                </div>
+                <input type="text" class="form-control" id="inputUploadPassword">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label data-localize="MinTimeBetweenConnections"></label>
+            <div class="input-group">
+                <div class="input-group-addon">
+                    <i class="fa fa-hourglass-half"></i>
+                </div>
+                <select class="form-control" id="selectMinTimeBetweenConnections"></select>
+            </div>
+        </div>
+
+        <!--<div class="form-group">
+            <label data-localize="PanelistCheckBrowserMode"></label>
+            <div class="input-group">
+                <div class="input-group-addon">
+                    <i class="fa fa-check"></i>
+                </div>
+                <select class="form-control" id="selectPanelistCheckBrowserMode"></select>
+            </div>
+        </div>-->
+    </form>
+
+    <div class="text-center navbar-fixed-bottom inlineBlock" style="padding-bottom:5px;">
+
+        <button type="button" data-localize-tooltip="Upload" class="btnCircle" id="btnUploadBlock"><i class="fas fa-cloud-upload-alt"></i></button>
+        <button type="button" data-localize-tooltip="Update" class="btnCircle" id="btnUpdateBlock"><i class="fas fa-sync"></i></button>
+        <button type="button" data-localize-tooltip="Delete" class="btnCircle" id="btnDeleteBlock"><i class="fas fa-trash"></i></button>
+
+        <!--<div class="dropdown actionButton">
+            <button class="btn btn-primary btn-lg dropdown-toggle" type="button" data-toggle="dropdown">
+                <span data-localize="Actions"></span> <i class="fa fa-caret-up"></i>
+            </button>
+            <ul class="dropdown-menu dropup text-left dropdown-menu-right">
+                <li><button type="button" class="actionButtonItem" id="btnUploadBlock"><i class="fas fa-cloud-upload-alt"></i> <span data-localize="Upload"></span></button></li>
+                <li><button type="button" class="actionButtonItem" id="btnUpdateBlock"><i class="fas fa-sync"></i> <span data-localize="Update"></span></button></li>
+                <li><button type="button" class="actionButtonItem" id="btnDeleteBlock"><i class="fas fa-trash"></i> <span data-localize="Delete"></span></button></li>
+            </ul>
+        </div>-->
+    </div>
+
+</div>

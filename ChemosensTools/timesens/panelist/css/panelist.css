@@ -1,0 +1,815 @@
+﻿@font-face {
+    font-family: Genome-Thin;
+    src: url(../fonts/Genome-Thin.woff);
+}
+
+@font-face {
+    font-family: Digit;
+    src: url(../fonts/digit.ttf);
+}
+
+/*html.hidden {
+        visibility: visible !important;
+        display: block !important;
+    }*/
+
+html, body {
+    position: fixed;
+    overflow-y: hidden;
+    height: 100%;
+}
+
+body {
+    -webkit-touch-callout: none; /* prevent callout to copy image, etc when tap to hold */
+    -webkit-text-size-adjust: none;
+    -moz-text-size-adjust: none;
+    -ms-text-size-adjust: none;
+    text-size-adjust: none; /* prevent webkit from resizing text to fit */
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none; /* prevent copy paste, to allow, change 'none' to 'text' */
+    height: 100%;
+    margin: 0px;
+    padding: 0px;
+    width: 100%;
+    font-family: Genome-Thin;
+    overflow: hidden;
+}
+
+#header {
+    background-color: #0c61a4;
+    height: 25%;
+    width: 100%;
+    color: white;
+    position: absolute;
+    top: 0;
+    left: 0;
+    -moz-box-shadow: 0 10px 5px 2px #cfcfcf;
+    -webkit-box-shadow: 0 10px 5px 2px #cfcfcf;
+    box-shadow: 0 10px 5px 2px #cfcfcf;
+    filter: progid:DXImageTransform.Microsoft.Shadow(color=#cfcfcf, Direction=180, Strength=5);
+}
+
+
+/* Div qui contient la vue active */
+#content {
+    text-align: center;
+    overflow-x: hidden;
+    overflow-y: hidden;
+    height: 65%;
+    width: 100%;
+    position: absolute;
+    top: 25%;
+    background-color: #f8fdff;
+    background: url("../images/background.jpg");
+    background-position: center;
+    background-size: cover;
+    background-attachment: fixed;
+    /*font-size: 2vw;
+    font-weight: bold;*/
+}
+
+
+
+#footer {
+    height: 10vh;
+    width: 100%;
+    font-size: 2vw;
+    background: #3d7cad;
+    position: absolute;
+    top: 90vh;
+}
+
+#logo {
+    height: 100%;
+    width: 100%;
+    background: url('../images/logo_blanc.png') no-repeat center;
+    /*background: url('../images/svg/logo_blanc.svg') no-repeat center;*/
+    background-size: 50vh;
+}
+
+#currentScreen {
+    text-align: left;
+    font-weight:normal;
+}
+
+
+.input, .smallSelect {
+    width: 30%;
+    height: 80%;
+    line-height: 80%;
+    margin: 2px auto;
+    padding: 5px;
+    border: 3px solid #26567c;
+    background-color: #f8fdff;
+    color: #26567c;
+    text-shadow: 0px 0px 0px #000;
+    -webkit-text-fill-color: transparent;
+    font-size: 1.8vw;
+}
+
+input, select {
+    margin: 0;
+    padding: 0;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+/*.smallSelect {
+    background-color: transparent;
+    border: 0;
+    height:80%;   
+}*/
+
+.btnSelect {
+    background-color: transparent;
+    height: 80%;
+    padding: 0;
+    border: 0;
+    vertical-align: middle;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+    .btnSelect:disabled,
+    .btnSelect[disabled] {
+        cursor: not-allowed;
+    }
+
+
+select:required:invalid {
+    color: #cfcfcf;
+    font-style: italic;
+}
+
+option[value=""][disabled] {
+    display: none;
+}
+
+/* Watermark des input text */
+::-webkit-input-placeholder {
+    color: #cfcfcf;
+    font-style: italic;
+}
+
+:-moz-placeholder { /* Firefox 18- */
+    color: #cfcfcf;
+    font-style: italic;
+}
+
+::-moz-placeholder { /* Firefox 19+ */
+    color: #cfcfcf;
+    font-style: italic;
+}
+
+:-ms-input-placeholder {
+    color: #cfcfcf;
+    font-style: italic;
+}
+
+/*.progressBar {
+    width: 200px;
+    height: 30px;
+    background: yellow;
+}*/
+
+
+
+.tableLocalSessions {
+    width: 80%;
+    text-align: center;
+    margin: auto;
+    font-size: 2vh;
+    height: 80%;
+    background: white;
+    border: 1px solid black;
+    border-spacing: 0;
+    border-collapse: separate;
+    margin-top: 2%;
+    margin-bottom: 2%;
+}
+
+    .tableLocalSessions td {
+        border: 1px solid darkgray;
+        padding: 0;
+        margin: 0;
+    }
+
+    .tableLocalSessions th {
+        border: 1px solid darkgray;
+        padding: 0;
+        margin: 0;
+    }
+
+.back img {
+    height: 100%;
+}
+
+
+
+/*.btnDataNotification {
+    background: url('../images/48/about.png') no-repeat center;
+    background: url('../images/svg/sharpicons_cmyk.svg') no-repeat center;
+    margin-right: 5px;
+    margin-left: 25px;
+}*/
+
+.title {
+    margin: 50px;    
+}
+
+.progressBar {
+    background-color: rgba(38, 76, 114, .5);
+    pointer-events: auto;
+    display: block;
+    z-index: 1000;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+}
+
+    .progressBar > div {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%,-50%);
+        padding: 10px 40px 10px 40px;
+        text-align: center;
+        background: #264C72;
+        opacity: 0.9;
+    }
+
+        .progressBar > div > p {
+            text-align: center;
+            font-size: 2em;
+            font-weight: bold;
+            text-shadow: 4px 4px black;
+            color: white;
+        }
+
+/*.hiddenProgressBar {
+    opacity: 0;
+    display: none;
+}*/
+
+.modalBox {
+    font-size: 1.2vw;
+    margin: 0;
+    padding: 10px;
+    overflow-y:auto;
+
+    /*position: absolute;
+    left: 50%;
+    top: 50%;
+    -moz-transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+    -o-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    height:200px;*/
+
+}
+
+    .modalBox input {
+        width: 100%;
+        height: 1.4vw;
+        font-size: 1.2vw;
+        padding: 3px;
+    }
+
+.smallbutton {
+    display: inline-block;
+    float: right;
+    width: 30%;
+    min-height: 2.5vh;
+    line-height: 2.5vh;
+    margin-left: 5px;
+    padding: 0;
+    border: 2px solid #26567c;
+    background-color: #0c61a4;
+    color: #f8fdff;
+    text-shadow: 0px 0px 0px #000;
+    -webkit-text-fill-color: transparent;
+    cursor: pointer;
+    font-size: 1.2vw;
+    text-align: center;
+    text-decoration: none;
+}
+
+    .smallbutton:hover {
+        border: 2px solid #28bdee;
+        background-color: #3d7cad;
+    }
+
+.modalTitle {
+    font-size: 1.6vw;
+    font-weight: bold;
+    border-bottom: 1px solid;
+    margin-bottom: 10px;
+}
+
+.logo {
+    height: 100%;
+    width: 100%;
+    background: url('../images/logo.png') no-repeat center;
+}
+
+.version {
+    font-size: 1em;
+    color: white;
+    float: right;
+    margin-right: 30px;
+/*    cursor: pointer;*/
+    margin-top: 30px;
+}
+
+/* Navigation */
+.navButton {
+    border: 2px solid #0c61a4;
+    background-color: #0c61a4;
+    text-align: center;
+    color: white;
+    font-size: 2.8vh;
+    margin: 10px;
+    cursor: pointer;
+    border-radius: 10px;
+    background-position: top;
+    background-position-x: center;
+    background-position-y: top;
+    background-repeat: no-repeat;
+    display: inline-block;
+    height: 30vh;
+    width: 15vw;
+    margin-top: 5vh;
+}
+
+    .navButton:hover {
+        border: 2px solid #26567c;
+        background-color: #3d7cad;
+    }
+
+    .navButton .img {
+        height: 80%;
+    }
+
+    .navButton div {
+        height: 20%;
+    }
+
+.smallNavButton {
+    font-size: 0;
+    height: 6vh;
+    width: 6vh;
+    border: 2px solid #26567c;
+    background-color: #0c61a4;
+    text-align: center;
+    color: white;
+    margin: 10px;
+    cursor: pointer;
+    border-radius: 0;
+    background-position: top;
+    background-position-x: center;
+    background-position-y: top;
+    background-repeat: no-repeat;
+    display: inline-block;
+}
+
+    .smallNavButton:hover {
+        border: 2px solid #26567c;
+        background-color: #3d7cad;
+    }
+
+    .smallNavButton .img {
+        height: 100%;
+    }
+
+    .smallNavButton div {
+        height: 0;
+    }
+
+.btnShowRunSessionMenu .img {    
+    background: url('../images/sharpicons_touch.svg') no-repeat center;
+    background-size: contain;
+}
+
+.btnShowLocalSessionsMenu .img {    
+    background: url('../images/sharpicons_database.svg') no-repeat center;
+    background-size: contain;
+}
+
+.btnShowSettingsMenu .img {    
+    background: url('../images/sharpicons_settings.svg') no-repeat center;
+    background-size: contain;
+}
+
+.btnShowHelpMenu .img {    
+    background: url('../images/sharpicons_support.svg') no-repeat center;
+    background-size: contain;
+}
+
+.btnShowStartFromServerCodeMenu .img {    
+    background: url('../images/sharpicons_enter-pin.svg') no-repeat center;
+    background-size: contain;
+}
+
+.btnShowStartFromLocalFileMenu .img {
+    background: url('../images/sharpicons_search-open-folder.svg') no-repeat center;
+    background-size: contain;
+}
+
+.btnToggleLanguage .img {
+    background: url('../images/sharpicons_flag.svg') no-repeat center;
+    background-size: contain;
+}
+
+.btnToggleVirtualKeyboard .img {
+    background: url('../images/sharpicons_keyboard.svg') no-repeat center;
+    background-size: contain;
+}
+
+.btnToggleLock .img {
+    background: url('../images/sharpicons_keylock.svg') no-repeat center;
+    background-size: contain;
+}
+
+.btnToggleFullScreen .img {
+    background: url('../images/sharpicons_full-expand.svg') no-repeat center;
+    background-size: contain;
+}
+
+.btnToggleSynchronization .img {
+    background: url('../images/sharpicons_cloud-refresh.svg') no-repeat center;
+    background-size: contain;
+}
+
+.menuTitle {
+    margin-top:2em !important;
+    margin-bottom:0.3em !important;
+    font-weight: bold;
+}
+
+
+/* Footer */
+.footerButton {
+    cursor: help;
+    display: inline-block;
+    height: 8vh;
+    width: 8vh;
+    margin-left: 2vw;
+    margin-top: 1vh;
+}
+
+    .footerButton .img {
+        height: 100%;
+    }
+
+    .footerButton .buttonLabel {
+        height: 0;
+        width: 0;
+        overflow: hidden;
+    }
+
+.btnBrowserCompatibility .img {
+    background: url('../images/sharpicons_badge-4.svg') no-repeat center;
+    background-size: contain;
+}
+
+.btnBrowserCompatibilityWarning .img {
+    background: url('../images/sharpicons_badge-4-orange.svg') no-repeat center;
+    background-size: contain;
+}
+
+.btnBrowserCompatibilityCritical .img {
+    background: url('../images/sharpicons_badge-4-red.svg') no-repeat center;
+    background-size: contain;
+}
+
+.btnLocalStorage .img {
+    background: url('../images/sharpicons_database-confirm.svg') no-repeat center;
+    background-size: contain;
+}
+
+.btnInternetConnection .img {
+    background: url('../images/sharpicons_wifi-3.svg') no-repeat center;
+    background-size: contain;
+}
+
+.btnInstall .img {
+    background: url('../images/sharpicons_top-favorites.svg') no-repeat center;
+    background-size: contain;
+    cursor: pointer;
+}
+
+.mediaRecorderButton {
+    height: 32px;
+    width: 32px;
+    margin: 2px;
+    background-size: contain;
+    cursor: pointer;
+    border: 1px solid black;
+}
+
+.recordButton {
+    background: white url('../images/sharpicons_record-button.svg') no-repeat center;
+}
+
+    .recordButton:disabled {
+        background: gray url('../images/sharpicons_record-button.svg') no-repeat center;
+        cursor: not-allowed;
+    }
+
+.pictureButton {
+    background: white url('../images/sharpicons_add-camera.svg') no-repeat center;
+}
+
+.stopButton {
+    background: white url('../images/sharpicons_stop-button.svg') no-repeat center;
+}
+
+.showButton {
+    background: white url('../images/sharpicons_zoom-tool.svg') no-repeat center;
+}
+
+.pauseButton {
+    background: white url('../images/sharpicons_pause-button.svg') no-repeat center;
+}
+
+.uploadButton {
+    background: white url('../images/sharpicons_cloud-upload.svg') no-repeat center;
+}
+
+.saveButton {
+    background: white url('../images/sharpicons_floppy-disc.svg') no-repeat center;
+}
+
+.closeButton {
+    background: white url('../images/sharpicons_bin.svg') no-repeat center;
+}
+
+/*.recordingButton {
+    background: white url('../../framework/images/progressbar.gif') no-repeat center;
+}*/
+
+.btnZipLocalSessions .img {
+    background: url('../images/sharpicons_floppy-disc.svg') no-repeat center;
+    background-size: contain;
+}
+
+.btnShowDownloadLocalSessionsMenu .img {
+    background: url('../images/sharpicons_download-web-button.svg') no-repeat center;
+    background-size: contain;
+}
+
+.btnDeleteLocalSessions .img {
+    background: url('../images/sharpicons_delete-bin-trash2.svg') no-repeat center;
+    background-size: contain;
+}
+
+.btnResetLocalSessions .img {
+    background: url('../images/sharpicons_fast-backward.svg') no-repeat center;
+    background-size: contain;
+}
+
+.btnSynchronizeLocalSessions .img {
+    background: url('../images/sharpicons_cloud-refresh.svg') no-repeat center;
+    background-size: contain;
+}
+
+.buttonLabel {
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* Retour écran précédent */
+.backButton {
+    position: absolute;
+    display: block;
+    left: 1%;
+    top: 30%;
+    height: 20%;
+    margin: auto;
+    cursor: pointer;
+}
+
+    .backButton .img {
+        height: 15vh;        
+        background: url('../images/sharpicons_left-big-arrow.svg') no-repeat center;
+        background-size: contain;
+    }
+
+    .backButton .buttonLabel {
+        height: 0;
+        overflow: hidden;
+    }
+
+/* Continuer */
+.continueButton {
+    border: 2px solid #0c61a4;
+    background-color: #0c61a4;
+    text-align: center;
+    color: white;
+    font-size: 3vh;
+    cursor: pointer;
+    display: inline-block;
+    height: 5vh;
+    line-height: 5vh;
+    width: 12vw;
+    margin: 3px;
+}
+
+    .continueButton:hover {
+        border: 2px solid #26567c;
+        background-color: #3d7cad;
+    }
+
+    .continueButton .img {
+        height: 0%;
+        display: none;
+    }
+
+    .continueButton div {
+        height: 100%;
+    }
+
+
+
+.localSessionsTable {
+    font-size: 16px;
+}
+
+
+
+
+/*.btop, .bbottom {
+    background-repeat: no-repeat;
+    background-size: contain;
+    border: 0;
+    background: transparent;
+    height: 15px;
+    width: 15px;
+}
+
+.btop {
+    background-image: url(../images/32/up.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+    text-align: center;
+}
+
+.bbottom {
+    background-image: url(../images/32/down.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+    text-align: center;
+}*/
+
+
+
+.aboutModal {
+    font-size:16px;
+}
+
+.aboutModal h1, h2, h3, p, ul {
+    margin-bottom:0 !important;
+    margin-top:0 !important;
+    padding-top:0 !important;
+    padding-bottom:0 !important;
+}
+
+.aboutModal > ul li {
+    margin-bottom:0 !important;
+    margin-top:0 !important;
+    padding-top:0 !important;
+    padding-bottom:0 !important;
+}
+
+/*.toolboxbutton {
+    background-color: white;
+    border: 1px solid;
+    padding:0;
+    overflow:hidden;
+}
+
+    .toolboxbutton:hover {
+        border-color: #00fff7;
+    }
+
+    .toolboxbutton:disabled {
+        background-color: darkgray;
+    }
+
+    .toolboxbutton.toggled {
+        background-color: #28ded9;
+    }*/
+
+
+@media screen and (orientation: landscape) {
+    #content {
+        font-size: 2vw;
+    }
+
+    #footer {
+        font-size: 2vw;
+    }
+
+    .input, .smallSelect {
+        font-size: 1.8vw;
+    }
+
+    .tableLocalSessions {
+        font-size: 2vh;
+    }
+
+    .smallbutton {
+        min-height: 2.5vh;
+        line-height: 2.5vh;
+        font-size: 1.2vw;
+    }
+
+    .navButton {
+        font-size: 2.8vh;
+        height: 30vh;
+        width: 15vw;
+        margin-top: 5vh;
+    }
+
+    .backButton .img {
+        height: 15vh;
+    }
+
+    .continueButton {
+        font-size: 3vh;
+    }
+}
+
+@media screen and (orientation: portrait) {
+    #content {
+        font-size: 2vh;
+    }
+
+    #footer {
+        font-size: 2vh;
+    }
+
+    .input, .smallSelect {
+        font-size: 1.8vh;
+    }
+
+    .tableLocalSessions {
+        font-size: 2vw;
+    }
+
+    .smallbutton {
+        min-height: 2.5vw;
+        line-height: 2.5vw;
+        font-size: 1.2vh;
+    }
+
+    .navButton {
+        font-size: 2.8vw;
+        height: 30vw;
+        width: 15vh;
+        margin-top: 5vw;
+    }
+
+    .backButton .img {
+        height: 15vw;
+    }
+
+    .continueButton {
+        font-size: 3vw;
+    }
+}
+
+.disabled {
+    opacity:0.5 !important;
+    pointer-events: none;
+}
+
+font[size='1'] {
+    font-size: 0.5em !important;
+}
+
+font[size='2'] {
+    font-size: 0.75em !important;
+}
+
+font[size='3'] {
+    font-size: 1em !important;
+}
+
+font[size='4'] {
+    font-size: 1.25em !important;
+}
+
+font[size='5'] {
+    font-size: 1.5em !important;
+}
+
+font[size='6'] {
+    font-size: 2em !important;
+}

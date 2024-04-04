@@ -1,0 +1,503 @@
+﻿* {
+    -webkit-font-smoothing: subpixel-antialiased;
+    will-change: auto;
+    backface-visibility: hidden;
+}
+
+.adornerHandle {
+    z-index: 2147483647;
+    position: absolute;
+}
+
+/*.adornerBorder {
+    box-shadow: 1px 1px 6px #26567c;
+    border: 1px solid #26567c;
+}*/
+
+.selectedControlInsideAdorner {
+    border: 1px dashed yellow !important;
+}
+
+.toolbar {
+    position: absolute;
+    z-index: 2147483647;
+    /*left: 0px;*/
+    top: -13px;
+    left: -18px;
+    /*width:32px;*/
+    /*text-align:left;*/
+    /*background:red;*/
+}
+
+.editPropertiesButton {
+    /*background: transparent url('../images/edit.svg') no-repeat center;*/
+    /*height: 24px;
+    width: 24px;*/
+    /*color:black;*/
+    position: absolute;
+    /*bottom:-24px;
+    left:10px;*/
+    /*border:1px solid black;*/
+    background: transparent;
+    border: 0;
+    cursor: pointer;
+}
+
+    .editPropertiesButton:hover {
+        color: blue;
+    }
+
+/*.draggableDiv {
+    cursor: grab;
+    margin-right: 0px;
+    margin-top: -13px;
+    position: absolute;
+    right: -13px;
+    z-index: 2147483647;
+}*/
+
+.draggableDiv {
+    cursor: grab;
+    margin-left: -2px;
+    margin-right: -2px;
+    margin-top: -2px;
+    margin-bottom: -2px;
+    position: absolute;
+    z-index: 1;
+    box-shadow: 1px 1px 6px #26567c;
+    height: 100%;
+    width: 100%;
+    border: 3px solid #26567c;
+}
+
+
+.goToFirstScreenButton {
+    background: white url('../images/left-arrows.svg') no-repeat center;
+}
+
+.goToPreviousScreenButton {
+    background: white url('../images/left-arrow-2.svg') no-repeat center;
+}
+
+.goToNextScreenButton {
+    background: white url('../images/right-arrow.svg') no-repeat center;
+}
+
+.goToLastScreenButton {
+    background: white url('../images/right-arrows.svg') no-repeat center;
+}
+
+.saveProgressButton {
+    background: white url('../images/placeholder.svg') no-repeat center;
+}
+
+.saveSessionFileButton {
+    background: white url('../images/download-symbol-1.svg') no-repeat center;
+}
+
+.closeSimulationButton {
+    background: white url('../images/close-button.svg') no-repeat center;
+}
+
+.getProgressInfoButton {
+    background: white url('../images/info-1.svg') no-repeat center;
+}
+
+.changeSimulationSettingsButton {
+    background: white url('../images/cogwheel.svg') no-repeat center;
+}
+
+.simulationToolBar {
+    position: absolute;
+    padding-left: 5px;
+    background: lightgray;
+    left: 10px;
+    top: 10px;
+    border: 1px solid DarkSlateGray;
+    border-left: 16px solid DarkSlateGray;
+    cursor: move;
+}
+
+.hiddenOverflow {
+    overflow-x: hidden;
+    overflow-y: hidden;
+}
+
+    .hiddenOverflow:hover {
+        overflow-y: scroll !important;
+    }
+
+.customImageButton:hover {
+    background-color: yellow;
+}
+
+.subjectsummary_button {
+    height: 32px;
+    width: 32px;
+    margin-left: 10px;
+    float: right;
+    cursor: pointer;
+    opacity: 0.1;
+}
+
+    .subjectsummary_button:hover {
+        opacity: 1;
+    }
+
+    .subjectsummary_button img {
+        height: 32px;
+        width: 32px;
+    }
+
+.mediaRecorderButton {
+    height: 32px;
+    width: 32px;
+    margin: 2px;
+    background-size: contain;
+    cursor: pointer;
+    border: 1px solid black;
+}
+
+.recordButton {
+    background: white url('../images/sharpicons_record-button.svg') no-repeat center;
+}
+
+    .recordButton:disabled {
+        background: gray url('../images/sharpicons_record-button.svg') no-repeat center;
+        cursor: not-allowed;
+    }
+
+.pictureButton {
+    background: white url('../images/sharpicons_add-camera.svg') no-repeat center;
+}
+
+.stopButton {
+    background: white url('../images/sharpicons_stop-button.svg') no-repeat center;
+}
+
+.showButton {
+    background: white url('../images/sharpicons_zoom-tool.svg') no-repeat center;
+}
+
+.pauseButton {
+    background: white url('../images/sharpicons_pause-button.svg') no-repeat center;
+}
+
+.uploadButton {
+    background: white url('../images/sharpicons_cloud-upload.svg') no-repeat center;
+}
+
+.saveButton {
+    background: white url('../images/sharpicons_floppy-disc.svg') no-repeat center;
+}
+
+.closeButton {
+    background: white url('../images/sharpicons_bin.svg') no-repeat center;
+}
+
+.recordingButton {
+    background: white url('../images/sharpicons_record-button.svg') no-repeat center;
+}
+
+li.ui-sortable-helper {
+    cursor: move;
+}
+
+/*.toolboxbutton {
+    background-color: white;
+    border: 1px solid;
+    padding: 0;
+    overflow: hidden;
+    line-height: 32px;
+    height: 32px;
+    width: 32px;
+}
+
+    .toolboxbutton:hover {
+        border-color: #00fff7;
+    }
+
+    .toolboxbutton:disabled {
+        background-color: darkgray;
+    }
+
+    .toolboxbutton.toggled {
+        background-color: #28ded9;
+    }*/
+
+.verticalWriting {
+    writing-mode: vertical-lr;
+    writing-mode: bt-rl;
+    text-orientation: sideways;
+    text-align: center !important;
+}
+
+
+.toolBarArial {
+    font-family: Arial;
+}
+
+.toolBarCalibri {
+    font-family: Calibri;
+}
+
+.toolBarComicSansMs {
+    font-family: 'Comic Sans MS';
+}
+
+.toolBarCourierNew {
+    font-family: 'Courier New';
+}
+
+.toolBarGeorgia {
+    font-family: Georgia;
+}
+
+.toolBarHelvetica {
+    font-family: Helvetica;
+}
+
+.toolBarPalatino {
+    font-family: 'Palatino Linotype';
+}
+
+.toolBarTimes {
+    font-family: 'Times New Roman';
+}
+
+.toolBarTrebuchet {
+    font-family: 'Trebuchet MS';
+}
+
+.toolBarVerdana {
+    font-family: Verdana;
+}
+
+/*.emptyVideo {
+    background: url('../images/svg/play-file.svg') no-repeat center;
+}*/
+
+.item {
+    margin-left: 5px;
+}
+
+    .item:hover {
+        text-decoration: underline;
+    }
+
+.itemInput {
+    color: black;
+    height: 24px;
+}
+
+.button22 {
+    height: 22px;
+    width: 22px;
+    border: 0;
+    display: inline;
+    margin: 0;
+}
+
+.controlVisible {
+    background: white url('../images/eye.svg') no-repeat center;
+}
+
+.controlHidden {
+    background: white url('../images/eye-slash.svg') no-repeat center;
+}
+
+.propertyHeader {
+    font-size: 16px;
+    line-height: 12px !important;
+    border-bottom: 1px solid gray;
+    padding-bottom: 3px;
+    margin-top: 10px;
+    margin-bottom: 5px;
+}
+
+
+.controlProperty {
+    border: 0;
+    background: transparent;
+    font-size: 14px;
+    color: black;
+    margin: 5px;
+    line-height: 12px !important;
+    display: block;
+}
+
+    .controlProperty.collapse {
+        display: none;
+    }
+
+        .controlProperty.collapse.in {
+            display: block;
+        }
+
+    .controlProperty.blockOption {
+        margin-left: 20px;
+    }
+
+        .controlProperty.blockOption:before {
+            content: "- ";
+        }
+
+    .controlProperty span:first-of-type {
+        /*width: 180px;*/
+        float: left;
+        text-align: left;
+    }
+
+/*input.controlProperty {
+    margin-left: 25px;
+    color: black;
+    border: 1px solid black;
+    line-height: 1;
+}*/
+
+div.controlProperty {
+    margin-left: 13px;
+    line-height: 1;
+}
+
+.controlPropertyInput {
+    font-size: 14px;
+    color: black;
+}
+
+.inputTextProperty {
+    border: 0 !important;
+    border-bottom: 1px solid black dashed !important;
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+    margin-left: 0;
+    line-height: 1;
+}
+
+.popupProperty {
+    color: white;
+    border: 0;
+    background: transparent;
+    font-size: 14px;
+}
+
+.arrow-up {
+    width: 0;
+    height: 0;
+    border-left: 6px solid transparent;
+    border-right: 6px solid transparent;
+    border-bottom: 6px solid #101064;
+}
+
+.arrow-down {
+    width: 0;
+    height: 0;
+    border-left: 6px solid transparent;
+    border-right: 6px solid transparent;
+    border-top: 6px solid #101064;
+}
+
+.arrow-right {
+    width: 0;
+    height: 0;
+    border-top: 6px solid transparent;
+    border-bottom: 6px solid transparent;
+    border-left: 6px solid #101064;
+}
+
+.arrow-left {
+    width: 0;
+    height: 0;
+    border-top: 6px solid transparent;
+    border-bottom: 6px solid transparent;
+    border-right: 6px solid #101064;
+}
+
+.handleCircleTopLeft {
+    left: -4px;
+    top: -4px;
+    height: 8px;
+    width: 8px;
+    background: #101064;
+    border-radius: 50%;
+    position: absolute;
+    z-index: 2147483647;
+}
+
+.handleCircleTopRight {
+    right: 0px;
+    top: -4px;
+    height: 8px;
+    width: 8px;
+    background: #101064;
+    border-radius: 50%;
+    position: absolute;
+    z-index: 2147483647;
+}
+
+.handleCircleBottomLeft {
+    left: -4px;
+    bottom: 0px;
+    height: 8px;
+    width: 8px;
+    background: #101064;
+    border-radius: 50%;
+    position: absolute;
+    z-index: 2147483647;
+}
+
+.handleCircleBottomRight {
+    right: 0px;
+    bottom: 0px;
+    height: 8px;
+    width: 8px;
+    background: #101064;
+    border-radius: 50%;
+    position: absolute;
+    z-index: 2147483647;
+}
+
+.speechRecognitionLoading {
+    background: url(../images/sharpicons_mic.svg) no-repeat center !important;
+    background-size: contain !important;
+    border: 0 !important;
+}
+
+.speechRecognitionError {
+    background: url(../images/sharpicons_remove-mic.svg) no-repeat center !important;
+    background-size: contain !important;
+    border: 0 !important;
+}
+
+.speechRecognitionStarted {
+    background: url(../images/sharpicons_confirm-mic.svg) no-repeat center !important;
+    background-size: contain !important;
+    border: 0 !important;
+}
+
+.speechRecognitionWaiting {
+    background: url(../images/sharpicons_remove-mic-2.svg) no-repeat center !important;
+    background-size: contain !important;
+    border: 0 !important;
+}
+
+.speechRecognitionRecording {
+    background: url(../images/sharpicons_add-mic.svg) no-repeat center !important;
+    background-size: contain !important;
+    border: 0 !important;
+}
+
+[contenteditable]:focus {
+    outline: 0px solid transparent;
+}
+
+textarea, input,
+[contenteditable] {
+    -webkit-user-select: text;
+    user-select: text;
+}
+
+.customButton.disabled {
+    color:inherit !important;
+}

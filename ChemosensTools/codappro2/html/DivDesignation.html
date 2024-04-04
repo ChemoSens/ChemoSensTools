@@ -1,0 +1,137 @@
+﻿<div id="divDesignation" class="container">
+    <div class="row">
+        <div class="col">
+           
+            <span tabindex="0" id="prevent-outside-tab"></span>
+
+            <div class="input-group">
+                <h5><strong>Veuillez choisir un aliment</strong></h5>
+                <input tabindex="0" type="text" class="form-control" autocomplete="off" placeholder="Désignation commerciale" id="inputDesignation" list="selectAliment" style="display:inline!important;width:75%">
+                <button tabindex="-1" id="btnDesignationChecked" class="btn btn-primary" style="display:inline!important;"></button>
+                <datalist tabindex="0" id="selectAliment"></datalist>
+
+                <div id="divTexteAliment">
+                    <h5><strong>Si vous ne trouvez pas un aliment, veuillez saisir son nom</strong></h5>
+                    <input tabindex="0" type="text" class="form-control" placeholder="Désignation commerciale qui n'apparait pas dans la liste" id="inputDesignation2" style="display:inline!important;width:75%">
+                </div>
+
+                <div id="divListeSimplifiee" class="hidden">
+                    <div style="clear:both"></div>
+                    <h5><strong>ou sélectionner une catégorie d'aliment dans une des listes ci-dessous</strong></h5>
+                    <select tabindex="0" id="selectFoodCategory" class="form-control" style="display:inline!important;width:75%"></select>
+                    <select tabindex="0" id="selectFoodCategory2" class="form-control" style="display:inline!important;width:75%"></select>
+                </div>
+
+
+            </div>
+           
+            <div class="input-group mt-5">
+                <h5><strong>Veuillez saisir la quantité totale et saisir la mesure</strong></h5>
+                <input tabindex="0" type="text" class="form-control" placeholder="Quantité" id="inputPoids" style="display:inline!important;width:75%">
+                <div class="btn-group">
+                    <button tabindex="0" id="btnGrammes" class="btn btn-primary" style="display:inline!important;font-size:0.9em">G</button>
+                    <button tabindex="0" id="btnKilos" class="btn btn-primary" style="display:inline!important;font-size:0.9em">KG</button>
+                    <button tabindex="0" id="btnLitres" class="btn btn-primary" style="display:inline!important;font-size:0.9em">L</button>
+                    <button tabindex="0" id="btnCentilitres" class="btn btn-primary" style="display:inline!important;font-size:0.9em">CL</button>
+                    <button tabindex="0" id="btnUnites" class="btn btn-primary" style="display:inline!important;font-size:0.9em">Unité(s)</button>
+                </div>
+
+                <div class="form-check" style="padding-top:5px">
+                    <input tabindex="0" class="form-check-input" type="checkbox" value="" name="inputPasPoids" id="inputPasPoids">
+                    <label class="form-check-label" for="inputPasPoids" style="font-weight:normal">Je ne connais pas le poids</label>
+                </div>
+
+            </div>
+
+            <div class="input-group mt-5" id="divPrix">
+                <h5><strong>Veuillez saisir le prix total TTC, en euros</strong></h5>
+                <input tabindex="0" type="text" class="form-control" placeholder="Prix TTC (€)" id="inputPrix" style="width:75%">
+                <button tabindex="-1" id="btnPrixChecked" class="btn btn-primary" style="display:inline!important;"></button>
+                <div class="form-check" style="padding-top:5px">
+                    <input tabindex="0" class="form-check-input" type="checkbox" value="" name="inputPasAchete" id="inputPasAchete">
+                    <label class="form-check-label" for="inputPasAchete" style="font-weight:normal">Je ne connais pas le prix</label>
+                </div>
+            </div>
+
+            <div class="input-group mt-5">
+                <h5><strong>Quels sont les labels associés à cet aliment ?</strong></h5>
+
+                <table id="tableLabels">
+                    <!--<tr>
+                        <td>
+                            <div class="form-check form-check-inline">
+                                <input tabindex="0" class="form-check-input" type="checkbox" value="" name="inputBio" id="inputBio">
+                                <label class="form-check-label" for="inputBio" style="font-weight:normal">Biologique</label>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="form-check form-check-inline">
+                                <input tabindex="0" class="form-check-input" type="checkbox" value="" name="inputAocAop" id="inputAocAop">
+                                <label class="form-check-label" for="inputAocAop" style="font-weight:normal">AOC/AOP</label>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="form-check form-check-inline">
+                                <input tabindex="0" class="form-check-input" type="checkbox" value="" name="inputLabelRouge" id="inputLabelRouge">
+                                <label class="form-check-label" for="inputLabelRouge" style="font-weight:normal">Label rouge</label>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="form-check form-check-inline">
+                                <input tabindex="0" class="form-check-input" type="checkbox" value="" name="inputPecheDurable" id="inputPecheDurable">
+                                <label class="form-check-label" for="inputPecheDurable" style="font-weight:normal">Pêche durable</label>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="form-check form-check-inline">
+                                <input tabindex="0" class="form-check-input" type="checkbox" value="" name="inputCommerceEquitable" id="inputCommerceEquitable">
+                                <label class="form-check-label" for="inputCommerceEquitable" style="font-weight:normal">Commerce équitable</label>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="form-check form-check-inline">
+                                <input tabindex="0" class="form-check-input" type="checkbox" value="" name="inputAutre" id="inputAutre">
+                                <label class="form-check-label" for="inputAutre" style="font-weight:normal">Autre</label>
+                            </div>
+                        </td>
+                    </tr>-->
+                </table>
+
+            </div>
+
+            <div class="input-group mt-5">
+                <h5><strong>Est-ce que en général vous aimez le goût de cet aliment ?</strong></h5>
+                <table>
+                    <tr>
+                        <td><div id="divLikingRank"></div></td>
+                        <td style="width:20px"></td>
+                        <td>
+                            <div class="form-check" style="padding-top:5px">
+                                <input tabindex="0" class="form-check-input" type="checkbox" value="" name="inputJamaisGoute" id="inputJamaisGoute">
+                                <label class="form-check-label" for="inputJamaisGoute" style="font-weight:normal">Jamais goûté</label>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+
+            <div id="divWarningPrix" class="input-group mt-5 hidden">
+                <p style="color:red">Veuillez vérifier la quantité, la mesure ou le prix saisi.</p>
+            </div>
+
+            <div class="form-group mt-5">
+                <button tabindex="0" id="btnContinuer" class="btn btn-success btn-lg  mt-2" style="width:22%;height:80px;font-size:0.9em;padding:0;margin:0" type="submit">Nouvel<br />aliment</button>
+                <button tabindex="0" id="btnNouveauTicket" class="btn btn-primary btn-lg mt-2" style="width:22%;height:80px;font-size:0.9em;padding:0;margin:0" type="submit">Nouveau<br />ticket</button>
+                <button tabindex="-1" id="btnTerminerEnregistrer" class="btn btn-danger btn-lg mt-2" style="width:22%;height:80px;font-size:0.9em;padding:0;margin:0" type="submit">Quitter et<br />enregistrer</button>
+                <button tabindex="-1" id="btnTerminer" class="btn btn-danger btn-lg mt-2" style="width:22%;height:80px;font-size:0.9em;padding:0;margin:0" type="submit">Quitter sans<br />enregistrer</button>
+            </div>
+
+            <span tabindex="0" id="lastSpan"></span>
+
+        </div>
+    </div>
+</div>

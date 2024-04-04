@@ -1,0 +1,328 @@
+﻿[
+  {
+    "key": "AlphaCorrectionForMultipleTests",
+    "en": "Alpha correction for multiple tests",
+    "fr": "Correction de alpha pour les tests multiples"
+  },
+  {
+    "key": "AlphaForContrastTests",
+    "en": "Alpha for contrast tests",
+    "fr": "Alpha pour les tests de contrastes"
+  },
+  {
+    "key": "AlphaForIndividualAgreementTests",
+    "en": "Alpha for individual agreement tests",
+    "fr": "Alpha pour les tests d'accord individuels"
+  },
+  {
+    "key": "AlphaForIndividualDiscriminationTests",
+    "en": "Alpha for individual discrimination tests",
+    "fr": "Alpha pour les tests de discrimination individuels"
+  },
+  {
+    "key": "AlphaForIndividualRepeatabilityTests",
+    "en": "Alpha for individual repeatability tests",
+    "fr": "Alpha pour les tests de répétabilité individuels"
+  },
+  {
+    "key": "AlphaForLsMeans",
+    "en": "Alpha for Lsmeans",
+    "fr": "Alpha pour Lsmeans"
+  },
+  {
+    "key": "AlphaForPanelTests",
+    "en": "Alpha for panel tests",
+    "fr": "Alpha pour les tests panel"
+  },
+  {
+    "key": "AlphaForVariableSelection",
+    "en": "Alpha for variable selection",
+    "fr": "Alpha pour la sélection de variables"
+  },
+  {
+    "key": "AnalysisProfile",
+    "en": "Profile",
+    "fr": "Profil"
+  },
+  {
+    "key": "AnalysisProfileDescription",
+    "en": "Quantitative profile data analysis.",
+    "fr": "Analyse de données de profil quantitatif."
+  },
+  {
+    "key": "ANOVAModel",
+    "en": "Model",
+    "fr": "Modèle"
+  },
+  {
+    "key": "ANOVATable",
+    "en": "ANOVA table",
+    "fr": "Table d'ANOVA"
+  },
+  {
+    "key": "Barplot",
+    "en": "Barplot",
+    "fr": "Graphique en bandes"
+  },
+  {
+    "key": "Boxplot",
+    "en": "Boxplot",
+    "fr": "Boites à moustaches"
+  },
+  {
+    "key": "CalculationMode",
+    "en": "Calculation mode",
+    "fr": "Mode de calcul"
+  },
+  {
+    "key": "CAPTable",
+    "en": "CAP table",
+    "fr": "Table CAP"
+  },
+  {
+    "key": "ClusteringMethod",
+    "en": "Clustering method",
+    "fr": "Méthode de clustering"
+  },
+  {
+    "key": "Correlation",
+    "en": "Correlation",
+    "fr": "Co rrélation"
+  },
+  {
+    "key": "CorrelationTests",
+    "en": "Correlation tests",
+    "fr": "Tests de corrélation"
+  },
+   {
+    "key": "Covariance",
+    "en": "Covariance",
+    "fr": "Covariance"
+  },
+  {
+    "key": "CVA",
+    "en": "CVA",
+    "fr": "CVA"
+  },
+  {
+    "key": "CVAModel",
+    "en": "Model",
+    "fr": "Modèle"
+  },
+  {
+    "key": "DescriptiveStatisticsTableByAttribute",
+    "en": "Descriptive statistics (by attribute)",
+    "fr": "Statistiques descriptives (par descripteur)"
+  },
+  {
+    "key": "DescriptiveStatisticsTableByProduct",
+    "en": "Descriptive statistics (by product)",
+    "fr": "Statistiques descriptives (par produit)"
+  },
+  {
+    "key": "Distributions",
+    "en": "Distributions",
+    "fr": "Distributions"
+  },
+  {
+    "key": "FlashTable",
+    "en": "Flash table",
+    "fr": "Table flash"
+  },
+  {
+    "key": "Model",
+    "en": "Model",
+    "fr": "Model"
+  },
+  {
+    "key": "GrandMeanComparison",
+    "en": "Comparison to grand mean",
+    "fr": "Comparaison à la moyenne globale"
+  },
+  {
+    "key": "Graphic",
+    "en": "Graphic",
+    "fr": "Graphique"
+  },  
+  {
+    "key": "HistogramByAttribute",
+    "en": "Histogram (by attribute)",
+    "fr": "Histogramme (par descripteur)"
+  },
+  {
+    "key": "HistogramByProduct",
+    "en": "Histogram (by product)",
+    "fr": "Histogramme (par produit)"
+  },
+  {
+    "key": "HomoscedasticityTest",
+    "en": "Homoscedasticity test",
+    "fr": "Test d'homoscédasticité"
+  },
+  {
+    "key": "HotellingLawley",
+    "en": "Hotelling-Lawley",
+    "fr": "Hotelling-Lawley"
+  },
+  {
+    "key": "KolmogorovSmirnov",
+    "en": "Kolmogorov-Smirnov",
+    "fr": "Kolmogorov-Smirnov"
+  },
+  {
+    "key": "Level",
+    "en": "Level",
+    "fr": "Level"
+  },
+  {
+    "key": "LsMeansAdjustmentMethod",
+    "en": "Lsmeans adjustment method",
+    "fr": "Méthode d'ajustement Lsmeans"
+  },
+  {
+    "key": "Map",
+    "en": "Map",
+    "fr": "Carte"
+  },
+  {
+    "key": "MapType",
+    "en": "Map type",
+    "fr": "Type de carte"
+  },
+  {
+    "key": "MaximumLikelihood",
+    "en": "Maximum Likelihood",
+    "fr": "Maximum de vraisemblance"
+  },
+  {
+    "key": "MinimumPercentageOfExplainedVariance",
+    "en": "Minimum percentage of explained variance",
+    "fr": "Pourcentage minimum de variance expliquée"
+  },
+  {
+    "key": "MixedAssessorModel",
+    "en": "Mixed assessor model",
+    "fr": "Mixed assessor model"
+  },  
+  {
+    "key": "MultidimensionalTest",
+    "en": "Multidimensional test",
+    "fr": "Test multidimensionnel"
+  },
+  {
+    "key": "NoGroup",
+    "en": "No adjustment",
+    "fr": "Pas d'ajustement"
+  },
+  {
+    "key": "NormalityTest",
+    "en": "Normality test",
+    "fr": "Test de normalité"
+  },
+  {
+    "key": "NumberOfDimensions",
+    "en": "Number of dimensions",
+    "fr": "Nombre de dimensions"
+  },
+  {
+    "key": "OneWayANOVA",
+    "en": "One-way ANOVA",
+    "fr": "ANOVA à un facteur"
+  },
+  {
+    "key": "OneWayMANOVA",
+    "en": "One-way MANOVA",
+    "fr": "MANOVA à un facteur"
+  },
+   {
+    "key": "Option",
+    "en": "Option",
+    "fr": "Option"
+  },
+  {
+    "key": "OrdinaryLeastSquares",
+    "en": "Ordinary Least Squares",
+    "fr": "Moindres Carrés Ordinaire"
+  },
+  {
+    "key": "PanelPerformances",
+    "en": "Panel performances",
+    "fr": "Performances du panel"
+  },
+  {
+    "key": "PCA",
+    "en": "PCA",
+    "fr": "ACP"
+  },
+  {
+    "key": "ProductComparison",
+    "en": "Product comparison",
+    "fr": "Comparaison des produits"
+  },
+  {
+    "key": "Profile",
+    "en": "Profile",
+    "fr": "Profil"
+  },
+  {
+    "key": "Radarplot",
+    "en": "Radarplot",
+    "fr": "Graphique en étoile"
+  },
+  {
+    "key": "RandomSubjectEffect",
+    "en": "Random subject effect",
+    "fr": "Effet juge aléatoire"
+  },
+  {
+    "key": "ReferenceProduct",
+    "en": "Reference product",
+    "fr": "Produit référence"
+  },
+  {
+    "key": "ReferenceProductComparison",
+    "en": "Comparison to reference product",
+    "fr": "Comparaison à un produit référence"
+  },
+  {
+    "key": "ShapiroWilks",
+    "en": "Shapiro-Wilks",
+    "fr": "Shapiro-Wilks"
+  },
+  {
+    "key": "Similarity",
+    "en": "Similarity",
+    "fr": "Similarité"
+  },
+  {
+    "key": "Table",
+    "en": "Table",
+    "fr": "Tableau"
+  },
+  {
+    "key": "TwoMaps",
+    "en": "Variables and individuals maps",
+    "fr": "Carte des variables et des individus"
+  },
+  {
+    "key": "TwoWayANOVA",
+    "en": "Two-way ANOVA",
+    "fr": "ANOVA à 2 facteurs"
+  },
+  {
+    "key": "TwoWayMANOVA",
+    "en": "Two-way MANOVA",
+    "fr": "MANOVA à 2 facteurs"
+  },
+  {
+    "key": "UseReplicateInIndividualModel",
+    "en": "Use 'replicate' in individual models",
+    "fr": "Utiliser 'répétition' dans les modèles individuels"
+  },
+  {
+    "key": "VariableSelection",
+    "en": "Variable selection",
+    "fr": "Sélection de variables"
+  }
+
+]

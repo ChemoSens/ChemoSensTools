@@ -1,0 +1,90 @@
+﻿<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <!--<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">-->
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=3, user-scalable=yes">
+    <meta name="google" content="notranslate">
+
+    <!--[if IE]>
+    <meta http-equiv="X-UA-Compatible" content="IE=10">
+    <![endif]-->
+    <title>TimeSens.JS</title>
+
+    <link rel="icon" href="images/favicon.png">
+
+    <link rel="manifest" href="manifest.json">
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
+
+    <!-- fichiers ts transpilés -->
+    <script src="../../framework/framework.js" type="text/javascript"></script>
+    <script src="ts/app.js" type="text/javascript"></script>
+    <script src="ts/index.js" type="text/javascript"></script>
+
+    <script>
+        if (window.location.href.indexOf("localhost") < 0 && window.location.href.substr(0, 5) !== 'https') {
+            window.location.href = window.location.href.replace('http', 'https');
+        }
+    </script>
+
+</head>
+<body style="visibility:hidden">
+
+    <div id="header">
+        <div id="logo"></div>
+    </div>
+
+    <div id="content">                                            
+    </div>
+
+    <div id="footer">
+
+        <div class="footerButton btnBrowserCompatibilityWarning hidden" id="btnBrowserCompatibilityIssue" data-localize-tooltip="BrowserCompatibilityIssue">
+            <div class="img"></div>
+            <div class="buttonLabel"></div>
+        </div>
+        <div class="footerButton btnBrowserCompatibilityCritical hidden" id="btnBrowserCompatibilityError" data-localize-tooltip="BrowserCompatibilityError">
+            <div class="img"></div>
+            <div class="buttonLabel"></div>
+        </div>
+        <div class="footerButton btnBrowserCompatibility hidden" id="btnBrowserCompatibility" data-localize-tooltip="BrowserCompatibility">
+            <div class="img"></div>
+            <div class="buttonLabel"></div>
+        </div>
+        <div class="btnLocalStorage footerButton" id="btnLocalStorage" data-localize-tooltip="LocalStorageEnable">
+            <div class="img"></div>
+            <div class="buttonLabel"></div>
+        </div>
+        <div class="btnInternetConnection footerButton hidden" id="btnInternetConnection" data-localize-tooltip="InternetAccessEnable">
+            <div class="img"></div>
+            <div class="buttonLabel"></div>
+        </div>
+        <div class="btnInternetConnection footerButton hidden" id="btnNoInternetConnection" data-localize-tooltip="InternetAccessDisable">
+            <div class="img"></div>
+            <div class="buttonLabel"></div>
+        </div>
+        <!--<div class="btnInstall footerButton" id="btnInstall" data-localize-tooltip="InstallInstructions">
+            <div class="img"></div>
+            <div class="buttonLabel"></div>
+        </div>-->
+        <!--<a class="version" id="anchorVersion" data-localize-tooltip="ClickToSeeChangeLog">
+        <span data-localize="TimeSensForPanelist"></span> <span id="spanVersion"></span>
+    </a>-->
+        <div class="version" id="anchorVersion" >
+            <span data-localize="TimeSensForPanelist"></span> <span id="spanVersion"></span>
+        </div>
+
+    </div>
+
+    <div id="progress" class="hidden">
+        <div class="progressBar">
+            <div>
+                <p id="pModalMessage"></p><img src="../framework/images/progressbar.gif">
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,391 @@
+﻿
+        private void setCustomButton()
+        {
+            try
+            {
+
+                var controls = currentCanvas.Children.Where(i => i is CustomButton).ToList();
+                foreach (CustomButton t in controls)
+                {
+                    t.IsInCreationMode = false;
+
+
+                    if (t.Action == "StartSameSession")
+                    {
+                        if (IsTimeSense)
+                        {
+                            t.Click += (s, e) =>
+                            {
+                                close(false);
+                            };
+                        }
+                        else
+                        {
+                            t.Click += (s, e) =>
+                        {
+                            string subjectCode = "";
+                            string password = "";
+                            if (MySeance.Access.AnonymousMode == "CreateJudgeAuto")
+                            {
+                                subjectCode = "ANONYMOUS";
+                                password = MySeance.Access.Password;
+                            }
+                            string url = GetUrl(subjectCode, password, MySeance.Access.ServerCode, false, false);
+                            if (Application.Current.IsRunningOutOfBrowser)
+                            {
+                                //TODO : restart TimeSens
+                                MyHyperlinkButton button = new MyHyperlinkButton();
+                                button.NavigateUri = new Uri(url);
+                                button.TargetName = "_blank";
+                                button.ClickMe();
+                            }
+                            else
+                            {
+                                System.Windows.Browser.HtmlPage.Window.Navigate(new Uri(url));
+                            }
+
+                            //MySeance.Access.ServerCode;
+                            //if (MySeance.Access.AnonymousMode== "CreateJudgeAuto")
+                            //{
+                            //    MySeance.Access.SubjectCode = "ANONYMOUS";
+                            //}
+                            //goToUrl(t.URL);
+                        };
+                        }
+                    }
+
+
+
+                    if (t.Action == "SendSMSAndGoNextPage" || t.Action == "SendSMSLeaveSession")
+                    {
+                        t.Click += (s, e) =>
+                        {
+                            try
+                            {
+                                if (checkImperative())
+                                    if (!IsTimeSense)
+                                    {
+                                        if (IsNetworkAvailable && !MySeance.Access.LocalSession)
+                                        {
+                                            if (!String.IsNullOrEmpty(MySeance.Subject.Phone))
+                                            {
+                                                SMS sms = new SMS(t.SMSBody, MySeance.Subject.Phone, SMS.SmsTypeEnum.Individual);
+                                                sms.SubjectCode = MySeance.Access.SubjectCode;
+                                                sms.AddSendingHourToday(t.SMSHour);
+                                                sms.AddSendingHourFromDelay(t.SMSDelay);
+                                                sms.LongUrl = GetUrl(MySeance.Access.SubjectCode, MySeance.Access.Password, MySeance.Access.ServerCode);
+                                                sms.FirstName = MySeance.Subject.FirstName;
+                                                sms.LastName = MySeance.Subject.LastName;
+                                                sms.SessionCode = MySeance.Access.ServerCode;
+                                                sms.SubjectCode = MySeance.Access.SubjectCode;
+                                                sms.Password = MySeance.Access.Password;
+
+                                                proxy.UploadSMSCompleted += new EventHandler<AsyncCompletedEventArgs>(proxy_UploadSMSCompleted);
+                                                proxy.UploadSMSAsync(Serializer.SerializeToString(sms), MySeance.Access.ServerCode, t.Action);
+                                            }
+                                            else
+                                            {
+                                                if (t.Action.ToString() == "SendSMSAndGoNextPage")
+                                                {
+                                                    Next(false);
+                                                }
+                                                else if (t.Action.ToString() == "SendSMSLeaveSession")
+                                                {
+                                                    close(false);
+                                                }
+                                            }
+                                        }
+                                    }
+                                    else
+                                    {
+                                        if (t.Action.ToString() == "SendSMSAndGoNextPage")
+                                        {
+                                            Next(false);
+                                        }
+                                        else if (t.Action.ToString() == "SendSMSLeaveSession")
+                                        {
+                                            close(false);
+                                        }
+                                    }
+                            }
+                            catch (Exception ex)
+                            {
+                                MessageBox.Show(TimeSense.SLResources.Language.UnexpectedError);
+                            }
+                        };
+                    }
+                }
+            }
+            catch
+            {
+            }
+        }
+
+     
+
+        private void close(bool sendMail)
+        {
+            if (sendMail == true)
+            {
+                proxy = WCFHelper.CreateTimeSensService();
+                string html = "<html><body>";
+                html += "<p><a href='" + GetUrl(MySeance.Subject.Code, MySeance.Subject.Password, MySeance.Access.ServerCode) + "'>" + TimeSense.SLResources.Language.ClickToContinueStudy + "</a></p>";
+                html += "</body></html>";
+                proxy.SendOneMailAsync("contact@timesens.com", MySeance.Subject.Mail, TimeSense.SLResources.Language.StudyToComplete, html, "timesens", "timesens", MySeance.Subject.Code, "contact@timesens.com", "contact@timesens.com", null, null, null);
+            }
+
+            nextButton_Click(this, null);
+
+            // Ecran de fin
+            if (!IsTimeSense)
+            {
+                SeanceFinished(this, new SeanceFinishedEventArgs());
+            }
+            else
+            {
+                if (SimulationClosed != null)
+                {
+                    SimulationClosed(this, new SimulationClosedEventArgs());
+                }
+            }
+        }
+
+
+       
+
+        private bool checkImperative(bool showWarning = true)
+        {
+            string isOK = "";
+            try
+            {
+                //si il y a un chrono qui est arrivé à son maximum, on annule l'obligation de réponse
+                var chronos = currentCanvas.Children.Where(i => i is CustomChronometer);
+                foreach (CustomChronometer cc in chronos)
+                {
+                    if (cc.MaxTimeReached)
+                        return true;
+                }
+
+                // Test : questions impératives remplies
+                string questText = "";
+                var questions = currentCanvas.Children.Where(t => t is QuestionControl).ToList();
+                foreach (QuestionControl q in questions)
+                {
+                    questText += q.CheckImperative();
+                }
+                if (questText.Length > 0)
+                {
+                    //questText = TimeSense.Common.Assets.Resources.Language.MustFillQuestions + "\n" + questText;
+                }
+
+                // Test : tableau de questions impératives remplies
+                string TablequestText = "";
+                var Tablequestions = currentCanvas.Children.Where(t => t is QuestionTableControl).ToList();
+                foreach (QuestionTableControl q in Tablequestions)
+                {
+                    if (!q.IsDataValid())
+                    {
+                        TablequestText = TimeSense.SLResources.Language.MustFillQuestions + "\n";
+                        //q.SetImperativeVisuals();
+                    }
+                }
+
+                // Test : items MustAnswerAllAttributes
+                string controlsText = "";
+                var controls = currentCanvas.Children.Where(t => t is StackedControl).ToList();
+                foreach (StackedControl sc in controls)
+                {
+                    List<KeyValuePair<string, string>> listItems = sc.getRankedItems();
+                    if (sc.MustAnswerAllAttributes == true)
+                    {
+                        if (sc.DataType == Data.DataTypeEnum.TDS || sc.DataType == Data.DataTypeEnum.CATA || sc.DataType == Data.DataTypeEnum.TCATA)
+                        {
+                            int cpt = 0;
+                            foreach (KeyValuePair<string, string> kvp in listItems)
+                            {
+                                cpt += (from x in sc.ListData
+                                        where x.AttributeCode == kvp.Key
+                                        select x).Count();
+                            }
+                            if (cpt == 0)
+                            {
+                                controlsText = controlsText + TimeSense.SLResources.Language.AtLeastOneAttributeMustBeSelected + "\n";
+                            }
+                        }
+                        else
+                        {
+                            foreach (KeyValuePair<string, string> kvp in listItems)
+                            {
+                                int cpt = 0;
+
+                                if (sc.EvaluationMode == ExperimentalDesign.TypeEnum.Attribute)
+                                {
+                                    cpt = (from x in sc.ListData
+                                           where x.ProductCode == kvp.Key
+                                           select x).Count();
+                                }
+                                else if (sc.EvaluationMode == ExperimentalDesign.TypeEnum.Product)
+                                {
+                                    cpt = (from x in sc.ListData
+                                           where x.AttributeCode == kvp.Key
+                                           select x).Count();
+                                }
+                                if (cpt == 0)
+                                {
+                                    controlsText = controlsText + kvp.Value + "\n";
+                                }
+
+                            }
+                        }
+                        if (controlsText.Length > 0)
+                        {
+                            controlsText = TimeSense.SLResources.Language.MustScoreDescriptors + "\n" + controlsText;
+                        }
+                    }
+                }
+
+                // Test : ranking 
+                string rankingText = "";
+                var rankings = currentCanvas.Children.Where(t => t is RankingControl).ToList();
+                foreach (RankingControl sc in rankings)
+                {
+                    if (!sc.AreAllItemsSorted())
+                    {
+                        rankingText += TimeSense.SLResources.Language.AllProductsMustBeSorted + "\n";
+                    }
+                }
+
+                // Test : sorting 
+                string sortingText = "";
+                var sortings = currentCanvas.Children.Where(t => t is SortingControl).ToList();
+                foreach (SortingControl sc in sortings)
+                {
+                    if (!sc.CheckAllProductsAreSorted())
+                    {
+                        sortingText += TimeSense.SLResources.Language.AllProductsMustBeSorted + "\n";
+                    }
+                    if (!sc.CheckMinGroup())
+                    {
+                        sortingText += TimeSense.SLResources.Language.MinNumberOfGroups + ": " + sc.MinNumberOfGroups + "\n";
+                    }
+                }
+
+                // Test : TOS
+                string tosText = "";
+                var tos = currentCanvas.Children.Where(t => t is TOSControl).ToList();
+                foreach (TOSControl sc in tos)
+                {
+                    if (!sc.AreAllMeasuresTaken())
+                    {
+                        tosText += TimeSense.SLResources.Language.AllAnswersAreImperative + "\n";
+                    }
+                }
+
+                // Test : Triangle Test
+                string triangleText = "";
+                var triangle = currentCanvas.Children.Where(t => t is TriangleTestControl).ToList();
+                foreach (TriangleTestControl sc in triangle)
+                {
+                    if (!sc.AreAllMeasuresTaken())
+                    {
+                        triangleText += TimeSense.SLResources.Language.AllAnswersAreImperative + "\n";
+                    }
+                }
+
+                // Test : FreeListOfTerms
+                string freeListOfTermsText = "";
+                var freeListOfTerms = currentCanvas.Children.Where(t => t is FreeListOfTerms).ToList();
+                foreach (FreeListOfTerms sc in freeListOfTerms)
+                {
+                    if (!sc.Check())
+                    {
+                        freeListOfTermsText += string.Format(TimeSense.SLResources.Language.FreeListOfTermsCheck, sc.MinNumberOfItems, sc.MaxNumberOfItems) + "\n";
+                    }
+                }
+
+                //TODO : pareil avec napping
+
+                // Test : formulaire sujet
+                string formText = "";
+                var forms = currentCanvas.Children.Where(t => t is SubjectForm).ToList();
+                foreach (SubjectForm sf in forms)
+                {
+                    if (sf.MyAddress.Visibility == Visibility.Visible && MySeance.Subject.Address.Length < 1)
+                    {
+                        formText += TimeSense.SLResources.Language.TheField + " " + TimeSense.SLResources.Language.Address + " " + TimeSense.SLResources.Language.MustBeFilled + "\n";
+                    }
+                    if (sf.MyBirthDate.Visibility == Visibility.Visible && MySeance.Subject.BirthDate == null)
+                    {
+                        formText += TimeSense.SLResources.Language.TheField + " " + TimeSense.SLResources.Language.BirthDate + " " + TimeSense.SLResources.Language.MustBeFilled + "\n";
+                    }
+                    if (sf.MyCity.Visibility == Visibility.Visible && MySeance.Subject.City.Length < 1)
+                    {
+                        formText += TimeSense.SLResources.Language.TheField + " " + TimeSense.SLResources.Language.City + " " + TimeSense.SLResources.Language.MustBeFilled + "\n";
+                    }
+                    if (sf.MyCountry.Visibility == Visibility.Visible && MySeance.Subject.Country.Length < 1)
+                    {
+                        formText += TimeSense.SLResources.Language.TheField + " " + TimeSense.SLResources.Language.Country + " " + TimeSense.SLResources.Language.MustBeFilled + "\n";
+                    }
+                    if (sf.MyEducationLevel.Visibility == Visibility.Visible && MySeance.Subject.EducationLevel == "None")
+                    {
+                        formText += TimeSense.SLResources.Language.TheField + " " + TimeSense.SLResources.Language.EducationLevel + " " + TimeSense.SLResources.Language.MustBeFilled + "\n";
+                    }
+                    //if (sf.MyExperience.Visibility == Visibility.Visible && MySeance.Subject.Experience == "None")
+                    //{
+                    //    formText += TimeSense.SLResources.Language.TheField + " " + TimeSense.SLResources.Language.Experience + " " + TimeSense.SLResources.Language.MustBeFilled + "\n";
+                    //}
+                    if (sf.MyFamilialStatus.Visibility == Visibility.Visible && MySeance.Subject.FamilialStatus == "None")
+                    {
+                        formText += TimeSense.SLResources.Language.TheField + " " + TimeSense.SLResources.Language.FamilialStatus + " " + TimeSense.SLResources.Language.MustBeFilled + "\n";
+                    }
+                    if (sf.MyGender.Visibility == Visibility.Visible && MySeance.Subject.Gender == "None")
+                    {
+                        formText += TimeSense.SLResources.Language.TheField + " " + TimeSense.SLResources.Language.Gender + " " + TimeSense.SLResources.Language.MustBeFilled + "\n";
+                    }
+                    if (sf.MyProfessionalActivity.Visibility == Visibility.Visible && MySeance.Subject.ProfessionalActivity == "None")
+                    {
+                        formText += TimeSense.SLResources.Language.TheField + " " + TimeSense.SLResources.Language.ProfessionalActivity + " " + TimeSense.SLResources.Language.MustBeFilled + "\n";
+                    }
+                    if (sf.MyFirstName.Visibility == Visibility.Visible && MySeance.Subject.FirstName.Length < 1)
+                    {
+                        formText += TimeSense.SLResources.Language.TheField + " " + TimeSense.SLResources.Language.FirstName + " " + TimeSense.SLResources.Language.MustBeFilled + "\n";
+                    }
+                    if (sf.MyLastName.Visibility == Visibility.Visible && MySeance.Subject.LastName.Length < 1)
+                    {
+                        formText += TimeSense.SLResources.Language.TheField + " " + TimeSense.SLResources.Language.LastName + " " + TimeSense.SLResources.Language.MustBeFilled + "\n";
+                    }
+                    if (sf.MyMail.Visibility == Visibility.Visible && Regex.IsMatch(MySeance.Subject.Mail,
+              @"^(?("")(""[^""]+?""@)|(([0-9a-zA-Z]((\.(?!\.))|[-!#\$%&'\*\+/=\?\^`\{\}\|~\w])*)(?<=[0-9a-zA-Z])@))" +
+              @"(?(\[)(\[(\d{1,3}\.){3}\d{1,3}\])|(([0-9a-zA-Z][-\w]*[0-9a-zA-Z]\.)+[a-zA-Z]{2,6}))$") == false)
+                    {
+                        formText += TimeSense.SLResources.Language.TheField + " " + TimeSense.SLResources.Language.Mail + " " + TimeSense.SLResources.Language.MustBeFilled + "\n";
+                    }
+                    if (sf.MyMail.Visibility == Visibility.Visible && ((TextBox)sf.MyMailConfirmation.Content).Text != ((TextBox)sf.MyMail.Content).Text)
+                    {
+                        formText += TimeSense.SLResources.Language.TheField + " " + TimeSense.SLResources.Language.MailConfirmation + " " + TimeSense.SLResources.Language.MustBeFilled + "\n";
+                    }
+
+                }
+
+                isOK = questText + TablequestText + controlsText + rankingText + sortingText + tosText + formText + triangleText + freeListOfTermsText;
+
+                if (isOK.Length > 0)
+                {
+                    if (showWarning == true)
+                    {
+                        DialogParameters dp = new DialogParameters();
+                        dp.Theme = new Windows8Theme();
+                        dp.Content = new TextBlock() { Text = isOK, Width = 350, TextWrapping = TextWrapping.Wrap };
+                        dp.Header = TimeSense.SLResources.Language.VerifyAnswers;
+                        Telerik.Windows.Controls.RadWindow.Alert(dp);
+                    }
+                    return false;
+                }
+                else return true;
+            }
+            catch
+            {
+                return false;
+            }
+
+        }

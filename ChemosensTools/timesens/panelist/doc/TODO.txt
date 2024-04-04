@@ -1,0 +1,46 @@
+﻿//Mode déconnecté
+//Check compatibility au démarrage(caniuse, jscc.info, javascript compatibility checker, css checker)
+//Mise en page dans css si possible(pas dans code)
+//Interface client: où placer go to home page, exit, send ticket, localisation, contact, about, copyright, www ?
+//Aide client
+//Migration nouveau serveur test + rédaction procédure
+//API notification
+//Améliorer clavier virtuel
+//Progressive Web App et offline mode
+//App manifest, icone…
+//Test: captures d'écrans (selenium, chutzpah ?)
+//Enable / disable en fonction de réseau, espace disque…
+//Save sans boite de dialogue ?
+//Obuscation(javascript obfuscator) / minification.Uglify / opimisation
+//Synchro auto
+//MAJ auto
+//Clé de sérialisation pas en dur dans le code
+//Liens rapides vers download, install, configure…
+//subjectcode: liste déroulante non affichée sur ios / ipad ?
+//logo en svg + doubler icones svg par png identique
+//si contrôle particulier(capture vidéo), checker au démarrage de panelist
+//[TimeSens panéliste]Clavier virtuel azerty / qwerty / asiatique
+//[TS Panéliste]Warning quand download / upload + fichier existant(voulez vous écraser…) + pareil ds TS panel leader
+//Synchronisation auto ON par défaut
+//Compatibilité du navigateur : plus explicite
+//Recommander usage de Chrome / Firefox
+Bouton installer
+TS Panéliste : 
+Expliquer les paramètres d’URL : ?servercode, subjectcode, password, language
+
+//Mode déconnecté et test connectivité
+//Check compatibility au démarrage(caniuse, jscc.info, javascript compatibility checker, css checker)
+//Mise en page dans css si possible(pas dans code)
+//Aide
+//Migration nouveau serveur test + rédaction procédure
+//API notification
+//Progressive Web App et offline mode
+//App manifest, icone…
+//Enable / disable en fonction de réseau, espace disque…
+//Save sans boite de dialogue ?
+//Obfuscation(javascript obfuscator) / minification.Uglify / opimisation
+//Synchro auto
+//MAJ auto
+//Clé de sérialisation pas en dur dans le code
+//Liens rapides vers download, install, configure…
+//déploiement en boxes: appli benjamin

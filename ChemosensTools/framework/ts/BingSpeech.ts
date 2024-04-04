@@ -243,8 +243,8 @@ module BingSpeech {
             this._tools = new Tools(apiKey);
             this._tools.checkAuthToken();
             this._locale = locale;
-            navigator.getUserMedia = navigator.getUserMedia || navigator.mozGetUserMedia || navigator.webkitGetUserMedia || navigator.msGetUserMedia;
-            if (!navigator.getUserMedia) {
+            navigator.msGetUserMedia = navigator.msGetUserMedia || navigator.mozGetUserMedia || navigator.webkitGetUserMedia || navigator.msGetUserMedia;
+            if (!navigator.msGetUserMedia) {
                 throw "Sorry, your browser doesn't have microphone support.";
             }
         }
@@ -278,7 +278,7 @@ module BingSpeech {
         }
 
         private _continueListening() {
-            navigator.getUserMedia({ audio: true }, (stream) => {
+            navigator.msGetUserMedia({ audio: true }, (stream) => {
                 this._startVoiceDetection(stream);
             }, function (e) {
                 console.log("No live audio input in this browser: " + e);

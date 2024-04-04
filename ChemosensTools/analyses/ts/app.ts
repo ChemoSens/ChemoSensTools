@@ -43,9 +43,13 @@
 
         super.start(fullScreen);
 
-        //let self = this;
-        this.showModalLogin();
-
+        if (window.location.href.indexOf("tds_analyses") > -1) {
+            this.showModalLogin();
+        } else {
+            this.login = "test";
+            this.password = "test";
+            this.showMain("Main","");
+        }
 
     }
 
@@ -81,7 +85,7 @@
                         self.login = inputLoginId.Value;
                         self.password = inputLoginPassword.Value;
                         mw.Close();
-                        self.showMain();
+                        self.showMain("tds_analyses", "tds_analyses");
                     } else {
                         divLoginError.SetHtml(res.ErrorMessage);
                         divLoginError.Show();
@@ -98,45 +102,43 @@
 
     }
 
-    private showMain() {
+    private showMain(location:string, app:string) {
         let self = this;
 
-        this.show("html/Main.html", () => {
-            let btnAnalysesTDS = Framework.Form.Button.Register("btnAnalysesTDS", () => { return true; }, () => {
-
-                Framework.FileHelper.BrowseBinaries("xlsx", (binaries: string) => {
-
-                    self.CallWCF('RAnalyze', { login: self.login, password: self.password, analysis: "tds", data:binaries }, () => {
-                        Framework.Progress.Show(Framework.LocalizationManager.Get("Computation..."));
-                    }, (res) => {
-                        Framework.Progress.Hide();
-                            if (res.Status == 'success') {
-                                let result = JSON.parse(res.Result);
-                                let URL = result.URL;
-
-                                Framework.Browser.OpenNew(URL);
-
-                                //let log = result.Log;
-                                //Framework.Modal.Alert("Log", log, () => {
-                                //    Framework.FileHelper.SaveBase64As(result.PPTasString, "report.pptx");
-                                //})
-                                
-                        } else {
-                            Framework.Modal.Alert("Erreur", res.ErrorMessage);
-                        }
-                    });
-
-                });
-
-
-                
-            });
-
-            
+        this.show("html/" + location + ".html", () => {
+            self.run(app)
         });
     }
 
-    
+    private run(app:string) {
+        let self = this;
+        let btnAnalysesTDS = Framework.Form.Button.Register("btnAnalysesTDS", () => { return true; }, () => {
+
+            Framework.FileHelper.BrowseBinaries("xlsx", (binaries: string, filename: string) => {
+
+                //self.CallWCF('RAnalyze', { login: self.login, password: self.password, analysis: filename.replace(".xlsx", ""), data: binaries,app:app }, () => {
+                self.CallWCF('RAnalyze', { login: self.login, password: self.password, analysis: "tds_renata", data: binaries, app: app }, () => {
+                    Framework.Progress.Show(Framework.LocalizationManager.Get("Computation..."));
+                }, (res) => {
+                    Framework.Progress.Hide();
+                    if (res.Status == 'success') {
+                        let result = JSON.parse(res.Result);
+                        let URL = result.URL;
+
+                        Framework.Browser.OpenNew(URL);
+                    } else {
+                        Framework.Modal.Alert("Erreur", res.ErrorMessage);
+                    }
+                });
+
+            });
+
+
+
+        });
+    }
+
+
 
 }
 

@@ -2,24 +2,31 @@
     <h1>ChemoSens tools - Statistical analyses</h1>
 
     <h2>How it works?</h2>
-    <p>1) Download the template associated with the chosen analysis.</p>
-    <p>2) Replace the data in the "Data" tab.</p>
-    <p>3) Change the parameters in the "Parameters" tab (requires a paid account).</p>
-    <p>4) Click on "Run", wait for the analysis to be run on the server, then visualize the results on an HTML page.</p>
-    <p>5) Optionally click on a picture to download it, or on "Download as ZIP"/"Download as PPTX" to download all the outputs as an archive (ZIP) or PowerPoint (PPXT) file.</p>
+    <p>1) <b>Download the XLSX template</b> associated with the chosen analysis by clicking below:</p>
 
-    <h2>Templates</h2>
     <div class="card-deck">
         <div class="card">
-            <p class="text-center">TDS</p>
-            <img class="card-img-top" src="img/tds.png" alt="TDS">
+            <a href="data/templates/time_variability_plot.xlsx" target="_blank">
+                <img class="card-img-top" src="img/time-variability-plot.png" alt="TDS">
+            </a>
             <div class="card-body">
-                <p class="text-center"> <a href="data/templates/template_tds.xlsx" target="_blank">Download TDS template (XLSX)</a></p>
-                <p class="text-center"><button id="btnAnalysesTDS">Run</button></p>
+                <p class="text-center"> <a href="data/templates/time_variability_plot.xlsx" target="_blank">Time variability plots</a></p>
             </div>
         </div>
-
     </div>
+
+    <p style="margin-top:10px">2) <b>Replace the data</b> in the "Data" sheet of the XLSX template.</p>
+    <p>3) <b>Change the default parameters</b> in the "Parameters" sheet of the XLSX template (optional).</p>
+    <p>4) <b>Save the template</b> without renaming it.</p>
+    <p>5) <b>Click on "Run"</b>, select the updated template, then wait for the analysis to be run on the server.</p>
+
+    <p class="text-left"><button id="btnAnalysesTDS" class="btn btn-primary btn-lg" style="width:200px">Run</button></p>
+
+    <p>6) <b>Visualize the results</b> on an HTML page. Click on a picture to zoom, then right-click on "save picture as" to save it or click on "Download as ZIP"/"Download as PPTX" to download all the outputs as an archive (ZIP) or PowerPoint (PPXT) file.</p>
+
+
+
+
 
 
 </div>

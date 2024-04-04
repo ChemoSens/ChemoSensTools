@@ -6,13 +6,13 @@ declare var localforage: any;
 declare var noUiSlider: any;
 declare var YT: any;
 declare var interact: any;
-declare var MediaRecorder: any;
+//declare var MediaRecorder: any;
 declare var d3: any;
 //declare var SpeechRecognition: any;
 //declare var SpeechGrammarList: any;
 declare var Quagga: any;
 declare var tinymce: any;
-declare var ClipboardItem: any;
+//declare var ClipboardItem: any;
 declare var Tesseract: any;
 declare var saveTextAs: any;
 //TODO : boostrap 4
@@ -565,7 +565,7 @@ module Framework {
             //}
 
             let ua = navigator.userAgent;
-            let browser = /Edge\/\d+/.test(ua) ? 'ed' : /MSIE 9/.test(ua) ? 'ie9' : /MSIE 10/.test(ua) ? 'ie10' : /MSIE 11/.test(ua) ? 'ie11' : /MSIE\s\d/.test(ua) ? 'ie?' : /rv\:11/.test(ua) ? 'ie11' : /Firefox\W\d/.test(ua) ? 'ff' : /Chrom(e|ium)\W\d|CriOS\W\d/.test(ua) ? 'gc' : /\bSafari\W\d/.test(ua) ? 'sa' : /\bOpera\W\d/.test(ua) ? 'op' : /\bOPR\W\d/i.test(ua) ? 'op' : typeof MSPointerEvent !== 'undefined' ? 'ie?' : '';
+            let browser = /Edge\/\d+/.test(ua) ? 'ed' : /MSIE 9/.test(ua) ? 'ie9' : /MSIE 10/.test(ua) ? 'ie10' : /MSIE 11/.test(ua) ? 'ie11' : /MSIE\s\d/.test(ua) ? 'ie?' : /rv\:11/.test(ua) ? 'ie11' : /Firefox\W\d/.test(ua) ? 'ff' : /Chrom(e|ium)\W\d|CriOS\W\d/.test(ua) ? 'gc' : /\bSafari\W\d/.test(ua) ? 'sa' : /\bOpera\W\d/.test(ua) ? 'op' : /\bOPR\W\d/i.test(ua) ? 'op' : typeof PointerEvent !== 'undefined' ? 'ie?' : '';
             let os = /Windows NT 10/.test(ua) ? "win10" : /Windows NT 6\.0/.test(ua) ? "winvista" : /Windows NT 6\.1/.test(ua) ? "win7" : /Windows NT 6\.\d/.test(ua) ? "win8" : /Windows NT 5\.1/.test(ua) ? "winxp" : /Windows NT [1-5]\./.test(ua) ? "winnt" : /Mac/.test(ua) ? "mac" : /Linux/.test(ua) ? "linux" : /X11/.test(ua) ? "nix" : "";
             let touch = 'ontouchstart' in document.documentElement;
             let mobile = /IEMobile|Windows Phone|Lumia/i.test(ua) ? 'w' : /iPhone|iP[oa]d/.test(ua) ? 'i' : /Android/.test(ua) ? 'a' : /BlackBerry|PlayBook|BB10/.test(ua) ? 'b' : /Mobile Safari/.test(ua) ? 's' : /webOS|Mobile|Tablet|Opera Mini|\bCrMo\/|Opera Mobi/i.test(ua) ? 1 : 0;
@@ -5079,7 +5079,8 @@ module Framework {
                 let res = new CustomValidator();
 
                 let f = function (text: string): string {
-                    return IsNotEmpty(text, errorMessage);
+                    //return IsNotEmpty(text, errorMessage);
+                    return "";
                 }
 
                 res.Function = f;
@@ -9328,7 +9329,7 @@ module Framework {
 
         }
 
-        export function BrowseBinaries(extension: string, onLoad: (binaries: string) => void) {
+        export function BrowseBinaries(extension: string, onLoad: (binaries: string, filename:string) => void) {
             let input: HTMLInputElement = document.createElement("input");
             input.type = "file";
             input.accept = extension;
@@ -9338,10 +9339,11 @@ module Framework {
                 let file = (<HTMLInputElement>this).files[0];
 
                 var fileReader: FileReader = new FileReader();
-                fileReader.onload = function (e) {
+                fileReader.onload = function (e) {                    
                     let binaries: string = <any>fileReader.result;
-                    onLoad(binaries);
+                    onLoad(binaries, file.name);
                 }
+
                 fileReader.readAsDataURL(file);
 
                 document.body.removeChild(input);

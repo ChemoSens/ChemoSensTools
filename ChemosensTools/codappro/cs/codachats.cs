@@ -42,6 +42,7 @@ namespace ChemosensTools.CodAchats
         public decimal MontantChequeAlimentaire;
         public string DateSaisie;
         public string DateModif;
+        public string Image;
     }
 
     public class CodAchats
@@ -94,8 +95,9 @@ namespace ChemosensTools.CodAchats
 
         public static void ImportQuestionnaire(string data, string authorizedCodesFilePath, string dataDirPath, string hashKey)
         {
-                        
-            byte[] bytes = Org.BouncyCastle.Utilities.Encoders.Base64.Decode(data.Replace("data:application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;base64,", ""));
+
+            //byte[] bytes = Org.BouncyCastle.Utilities.Encoders.Base64.Decode(data.Replace("data:application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;base64,", ""));
+            byte[] bytes = Convert.FromBase64String(data.Replace("data:application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;base64,", ""));
             ExcelPackage.LicenseContext = LicenseContext.NonCommercial;
             MemoryStream stream = new MemoryStream(bytes);
             ExcelPackage xlPackage = new ExcelPackage(stream);
@@ -111,7 +113,7 @@ namespace ChemosensTools.CodAchats
             {
 
                 Aliment o = new Aliment();
-                o.Code= (myWorksheet.Cells[rowNum, EPPlusHelper.GetColumnByName(myWorksheet, "Code")].Value ?? string.Empty).ToString();
+                o.Code = (myWorksheet.Cells[rowNum, EPPlusHelper.GetColumnByName(myWorksheet, "Code")].Value ?? string.Empty).ToString();
                 o.Lieu = (myWorksheet.Cells[rowNum, EPPlusHelper.GetColumnByName(myWorksheet, "Lieu")].Value ?? string.Empty).ToString();
                 o.Date = (myWorksheet.Cells[rowNum, EPPlusHelper.GetColumnByName(myWorksheet, "Date")].Value ?? string.Empty).ToString();
                 o.CodeCIQUAL = (myWorksheet.Cells[rowNum, EPPlusHelper.GetColumnByName(myWorksheet, "CodeCIQUAL")].Value ?? string.Empty).ToString();
@@ -130,7 +132,7 @@ namespace ChemosensTools.CodAchats
                 {
                     o.Prix = Convert.ToDecimal(prix);
                 }
-                
+
                 //o.Appreciation = (myWorksheet.Cells[rowNum, EPPlusHelper.GetColumnByName(myWorksheet, "Appreciation")].Value ?? string.Empty).ToString();
                 //o.Labels = (myWorksheet.Cells[rowNum, EPPlusHelper.GetColumnByName(myWorksheet, "Labels")].Value ?? string.Empty).ToString().Split(',');
                 o.Menu = (myWorksheet.Cells[rowNum, EPPlusHelper.GetColumnByName(myWorksheet, "Menu")].Value ?? string.Empty).ToString();
@@ -161,7 +163,7 @@ namespace ChemosensTools.CodAchats
                 else
                 {
                     quest = new QuestionnaireCodAchats();
-                    quest.Code = code;                    
+                    quest.Code = code;
                 }
 
                 foreach (Aliment al in list.Where(x => x.Code == code))
@@ -177,16 +179,16 @@ namespace ChemosensTools.CodAchats
 
                 //var jsonString = Newtonsoft.Json.JsonConvert.SerializeObject(list);
             });
-            
+
         }
 
         public static void SaveQuestionnaire(string authorizedCodesFilePath, string dataDirPath, string code, string jsonQuestionnaire, string hashKey)
         {
             try
-            {                
-                CheckAccess(authorizedCodesFilePath, code);                
-                string file = dataDirPath + code + ".json";                
-                File.WriteAllText(file, Serializer.Encrypt(System.Uri.UnescapeDataString(jsonQuestionnaire), hashKey));                
+            {
+                CheckAccess(authorizedCodesFilePath, code);
+                string file = dataDirPath + code + ".json";
+                File.WriteAllText(file, Serializer.Encrypt(System.Uri.UnescapeDataString(jsonQuestionnaire), hashKey));
             }
             catch (Exception ex)
             {
@@ -232,6 +234,7 @@ namespace ChemosensTools.CodAchats
                     sheet.Cells[1, 16].Value = "MontantChequeAlimentaire";
                     sheet.Cells[1, 17].Value = "DateSaisie";
                     sheet.Cells[1, 18].Value = "DateMAJ";
+                    sheet.Cells[1, 19].Value = "Photo";
 
 
 
@@ -240,6 +243,7 @@ namespace ChemosensTools.CodAchats
                         try
                         {
                             QuestionnaireCodAchats quest = Serializer.Deserialize<QuestionnaireCodAchats>(f, hashKey);
+
                             foreach (Aliment al in quest.Aliments)
                             {
                                 sheet.Cells[index, 1].Value = quest.Code;
@@ -260,16 +264,57 @@ namespace ChemosensTools.CodAchats
                                 sheet.Cells[index, 15].Value = al.LibelleCustom;
                                 sheet.Cells[index, 16].Value = al.MontantChequeAlimentaire;
 
+                                try
+                                {
+                                    if (al.DateSaisie != null &&  al.DateSaisie.IndexOf("/") > -1)
+                                    {
+                                        string[] t = al.DateSaisie.Split('/');
+                                        al.DateSaisie = t[2] + "-" + Convert.ToInt32(t[0]).ToString("D2") + "-" + Convert.ToInt32(t[1]).ToString("D2");
+                                    }
+                                }
+                                catch
+                                { }
                                 sheet.Cells[index, 17].Value = al.DateSaisie;
+
+                                try
+                                {
+                                    if (al.DateModif != null && al.DateModif.IndexOf("/") > -1)
+                                    {
+                                        string[] t = al.DateModif.Split('/');
+                                        al.DateModif = t[2] + "-" + Convert.ToInt32(t[0]).ToString("D2") + "-" + Convert.ToInt32(t[1]).ToString("D2");
+                                    }
+                                }
+                                catch
+                                { }
                                 sheet.Cells[index, 18].Value = al.DateModif;
+
+
+                                sheet.Cells[index, 19].Value = 0;
+
+                                // Verif photo                                                                  
+                                if (al.DateSaisie != null)
+                                {
+                                    string file = quest.Code + "_" + al.DateSaisie.Replace("-", "") + "*";
+
+                                    try
+                                    {
+                                        string[] matches = Directory.GetFiles(ConfigurationManager.AppSettings["CodApproImgDirPath"], file);
+                                        if (matches.Count() > 0)
+                                        {
+                                            sheet.Cells[index, 19].Value = 1;
+                                        }
+                                    }
+                                    catch
+                                    { }
+                                }
 
                                 index++;
                             }
 
                         }
-                        catch (Exception)
+                        catch (Exception ex)
                         {
-
+                            string s = "";
                         }
                     }
 

@@ -1,0 +1,2192 @@
+﻿[
+	{
+		"key": "AccessToWebcamNotAllowedByBrowser",
+		"en": "Access to webcam not allowed by browser.",
+		"fr": "L'accès à la webcam n'est pas autorisé par le navigateur."
+	},
+	{
+		"key": "Action",
+		"en": "Action",
+		"fr": "Action"
+	},
+	{
+		"key": "ActionWhenSelectedButtonChanged",
+		"en": "Action when selected button changed",
+		"fr": "Action quand le bouton sélectionné change"
+	},
+	{
+		"key": "ActiveButtonBackgroundColor",
+		"en": "Active button ackground color",
+		"fr": "Couleur d'arrière plan du bouton actif"
+	},
+	{
+		"key": "ActiveButtonBorderColor",
+		"en": "Active button border color",
+		"fr": "Couleur de la bordure du bouton actif"
+	},
+	{
+		"key": "AddFreeText",
+		"en": "Free text option",
+		"fr": "Option avec texte libre"
+	},
+	{
+		"key": "AddIntakeThenGoToNextPage",
+		"en": "Declare a new intake then go to next screen",
+		"fr": "Déclarer une nouvelle prise puis passer à l'écran suivant"
+	},
+	{
+		"key": "AddRep",
+		"en": "Add replicate",
+		"fr": "Ajouter une répétition"
+	},
+	{
+		"key": "Address",
+		"en": "Address",
+		"fr": "Adresse"
+	},
+	{
+		"key": "AfterDelay",
+		"en": "After a delay",
+		"fr": "Après un délai"
+	},
+	{
+		"key": "All",
+		"en": "All",
+		"fr": "Tous"
+	},
+	{
+		"key": "Alone",
+		"en": "Alone",
+		"fr": "Seul(e)"
+	},
+	{
+		"key": "AloneWithOneChild",
+		"en": "Alone with one child",
+		"fr": "Seul(e) avec un enfant"
+	},
+	{
+		"key": "AloneWithTwoOrMoreChild",
+		"en": "Alone with two children or more",
+		"fr": "Seul(e) avec deux enfants ou plus"
+	},
+	{
+		"key": "AlwaysVisible",
+		"en": "Visible in all scales",
+		"fr": "Visibles pour toutes les échelles"
+	},
+	{
+		"key": "Anchor",
+		"en": "Anchor",
+		"fr": "Ancre"
+	},
+	{
+		"key": "AnonymousConnexion",
+		"en": "Anonymous login",
+		"fr": "Connexion anonyme"
+	},
+	{
+		"key": "Answer",
+		"en": "Answer",
+		"fr": "Réponse"
+	},
+	{
+		"key": "AnswerDesign",
+		"en": "Design (answer)",
+		"fr": "Design (réponse)"
+	},
+	{
+		"key": "ApplyDesignTo",
+		"en": "Design applied to",
+		"fr": "Mise en forme appliquée à"
+	},
+	{
+		"key": "AreYouSureToWantToExit",
+		"en": "Please confirm your choice.",
+		"fr": "Merci de confirmer votre choix."
+	},
+	{
+		"key": "AreYouSureToWantToRefreshPage",
+		"en": "Do you confirm you want to actualize this page? This action can results in program malfunctions.",
+		"fr": "Etes-vous sûr de vouloir rafraichir la page ? Cette action peut entrainer un dysfonctionnement de l'application."
+	},
+	{
+		"key": "AtLeast6Digits",
+		"en": "At least 6 digits.",
+		"fr": "Au moins 6 chiffres."
+	},
+	{
+		"key": "AtLeastOneAttributeHaveToBeSelected",
+		"en": "At least one attribute have to be selected.",
+		"fr": "Au moins un descripteur doit être sélectionné."
+	},
+	{
+		"key": "Attribute",
+		"en": "Attribute",
+		"fr": "Descripteur"
+	},
+	{
+		"key": "AttributeExperimentalDesign",
+		"en": "Experimental design (attributes)",
+		"fr": "Plan de présentation (descripteurs)"
+	},
+	{
+		"key": "AttributeLabelsHaveToBeUnique",
+		"en": "Attribute labels have to be unique.",
+		"fr": "Les libellés des descripteurs doivent être uniques."
+	},
+	{
+		"key": "AttributeList",
+		"en": "Your list of descriptors:",
+		"fr": "Votre liste de descripteurs : "
+	},
+	{
+		"key": "Back",
+		"en": "Back",
+		"fr": "Retour"
+	},
+	{
+		"key": "BackgroundColor",
+		"en": "Background",
+		"fr": "Couleur d'arrière plan"
+	},
+	{
+		"key": "BackgroundMode",
+		"en": "Background mode",
+		"fr": "Type d'arrière plan"
+	},
+	{
+		"key": "Backward",
+		"en": "Backward",
+		"fr": "Arrière plan"
+	},
+	{
+		"key": "Bar",
+		"en": "Progress bar",
+		"fr": "Barre d'avancement"
+	},
+	{
+		"key": "Barcode",
+		"en": "Barcode",
+		"fr": "Code barre"
+	},
+	{
+		"key": "BarcodeNotRecognized",
+		"en": "Unknow barcode",
+		"fr": "Code barre inconnu"
+	},
+	{
+		"key": "Binaries",
+		"en": "File",
+		"fr": "Fichier"
+	},
+	{
+		"key": "BirthDate",
+		"en": "Birth date",
+		"fr": "Date de naissance"
+	},
+	{
+		"key": "BorderColor",
+		"en": "Border color",
+		"fr": "Couleur de la bordure"
+	},
+	{
+		"key": "BorderColorWithError",
+		"en": "Border color, if error",
+		"fr": "Couleur de la bordure, si erreur"
+	},
+	{
+		"key": "BorderThickness",
+		"en": "Border thickness",
+		"fr": "Epaisseur de la bordure"
+	},
+	{
+		"key": "Bottom",
+		"en": "Bottom",
+		"fr": "Bas"
+	},
+	{
+		"key": "BottomCenter",
+		"en": "Bottom center",
+		"fr": "Bas, centré"
+	},
+	{
+		"key": "BottomLeft",
+		"en": "Bottom left",
+		"fr": "Bas, à gauche"
+	},
+	{
+		"key": "BottomRight",
+		"en": "Bottom right",
+		"fr": "Bas, à droite"
+	},
+	{
+		"key": "BoxSize",
+		"en": "Box size",
+		"fr": "Taille des boites"
+	},
+	{
+		"key": "Browse",
+		"en": "Browse...",
+		"fr": "Parcourir..."
+	},
+	{
+		"key": "BrowserCompatibility",
+		"en": "Browser compatibility",
+		"fr": "Compatibilité du navigateur"
+	},
+	{
+		"key": "Button",
+		"en": "Button",
+		"fr": "Bouton"
+	},
+	{
+		"key": "ButtonAction",
+		"en": "Action",
+		"fr": "Action"
+	},
+	{
+		"key": "ButtonList",
+		"en": "Button list (TDS/CATA)",
+		"fr": "Liste de boutons (DTS/CATA)"
+	},
+	{
+		"key": "ButtonsBackgroundColor",
+		"en": "Buttons' background color",
+		"fr": "Couleur d'arrière plan des boutons"
+	},
+	{
+		"key": "ButtonsBorderColor",
+		"en": "Buttons' border color",
+		"fr": "Couleur de la bordure des boutons"
+	},
+	{
+		"key": "ButtonsBorderThickness",
+		"en": "Buttons' border thickness",
+		"fr": "Epaisseur de la bordure des boutons"
+	},
+	{
+		"key": "CanAddDescription",
+		"en": "Can add free description",
+		"fr": "Texte libre autorisé"
+	},
+	{
+		"key": "CanUncheck",
+		"en": "Can uncheck",
+		"fr": "Cases à cocher déclicables"
+	},
+	{
+		"key": "Cancel",
+		"en": "Cancel",
+		"fr": "Annuler"
+	},
+	{
+		"key": "CATAControl",
+		"en": "List of checkboxes",
+		"fr": "Liste de cases à cocher"
+	},
+	{
+		"key": "Center",
+		"en": "Center",
+		"fr": "Centre"
+	},
+	{
+		"key": "ChangeBackground",
+		"en": "Change background",
+		"fr": "Changer l'arrière plan"
+	},
+	{
+		"key": "ChangeBackgroundAndBorder",
+		"en": "Change background and border",
+		"fr": "Changer la bordure et l'arrière plan"
+	},
+	{
+		"key": "ChangeBorder",
+		"en": "Change border",
+		"fr": "Changer la bordure"
+	},
+	{
+		"key": "CheckBoxSize",
+		"en": "Checkbox size",
+		"fr": "Taille de la case à cocher"
+	},
+	{
+		"key": "CheckBoxWidth",
+		"en": "Checkbox size",
+		"fr": "Taille de la case à cocher"
+	},
+	{
+		"key": "CheckboxBackgroundColor",
+		"en": "Checkboxes' background color",
+		"fr": "Couleur d'arrière plan des cases à cocher"
+	},
+	{
+		"key": "CheckboxBorderColor",
+		"en": "Checkboxes' border color",
+		"fr": "Couleur de la bordure des cases à cocher"
+	},
+	{
+		"key": "CheckboxBorderThickness",
+		"en": "Checkboxes' border thickness",
+		"fr": "Epaisseur de la bordure des cases à cocher"
+	},
+	{
+		"key": "CheckboxDesign",
+		"en": "Design (checkboxes)",
+		"fr": "Design (cases à cocher)"
+	},
+	{
+		"key": "CheckboxList",
+		"en": "Checkboxes list (CATA)",
+		"fr": "Liste de cases à cocher (CATA)"
+	},
+	{
+		"key": "CheckboxQuestion",
+		"en": "Multiple answers question (checkboxes)",
+		"fr": "Question à choix multiple (cases à cocher)"
+	},
+	{
+		"key": "CheckboxQuestionControl",
+		"en": "Multiple answers question (checkboxes)",
+		"fr": "Question à choix multiples (cases à cocher)"
+	},
+	{
+		"key": "Chronometer",
+		"en": "Chronometer",
+		"fr": "Chronomètre"
+	},
+	{
+		"key": "ChronometerMaxTime",
+		"en": "Max time before disabling data controls",
+		"fr": "Temps avant de désactiver les contrôles"
+	},
+	{
+		"key": "ChronometerVisibility",
+		"en": "Chronometer visibility",
+		"fr": "Visibilité du chronomètre"
+	},
+	{
+		"key": "City",
+		"en": "City",
+		"fr": "Ville"
+	},
+	{
+		"key": "ClickOnListUnderGroupToDisplayDescriptors",
+		"en": "Click on the list at the bottom of the group number to display and select the attributes for this group.",
+		"fr": "Cliquez sur la liste sous le numéro de groupe pour afficher et sélectionner les descripteurs pour ce groupe."
+	},
+	{
+		"key": "ClickOnMedia",
+		"en": "Click on player",
+		"fr": "Clic sur le lecteur"
+	},
+	{
+		"key": "ClickOnNextButton",
+		"en": "Click on 'Next' button",
+		"fr": "Clic sur le bouton 'Suivant'"
+	},
+	{
+		"key": "ClickOnStartRecord",
+		"en": "Click on recorder 'Start' button",
+		"fr": "Clic sur le bouton 'Démarrer' de l'enregistreur"
+	},
+	{
+		"key": "ClickOnStart",
+		"en": "Click on 'Start' button",
+		"fr": "Clic sur le bouton 'Démarrer'"
+	},
+	{
+		"key": "ClickOnStartButton",
+		"en": "Click on 'Start' button",
+		"fr": "Clic sur le bouton 'Démarrer'"
+	},
+	{
+		"key": "ClickOnStopButton",
+		"en": "Click on 'Stop' button",
+		"fr": "Clic sur le bouton 'Arrêter'"
+	},
+	{
+		"key": "ClickOnStopRecord",
+		"en": "Click on recorder 'Stop' button",
+		"fr": "Clic sur le bouton 'Arrêter' de l'enregistreur"
+	},
+	{
+		"key": "ClickToEdit",
+		"en": "Click to edit",
+		"fr": "Cliquer pour éditer"
+	},
+	{
+		"key": "ClickToSelect",
+		"en": "Click to select an option",
+		"fr": "Cliquer pour sélectionner une option"
+	},
+	{
+		"key": "Columns",
+		"en": "Columns",
+		"fr": "Colonnes"
+	},
+	{
+		"key": "CommonDesign",
+		"en": "Uniform design",
+		"fr": "Mise en forme uniforme"
+	},
+	{
+		"key": "ComboboxQuestionControl",
+		"en": "Unique choice question (combobox)",
+		"fr": "Question à choix unique (liste déroulante)"
+	},
+	{
+		"key": "ConfirmationRequired",
+		"en": "Confirmation required.",
+		"fr": "Confirmation requise."
+	},
+	{
+		"key": "ConflictBetweenServerAndLocalProgress",
+		"en": "Conflict between server and local progress.",
+		"fr": "Conflit entre l'avancemebnt sur le serveur et l'avancement local."
+	},
+	{
+		"key": "Continue",
+		"en": "Continue",
+		"fr": "Continuer"
+	},
+	{
+		"key": "ContinueInThisBrowser",
+		"en": "Continue with this browser (potetial issues)",
+		"fr": "Continuer avec ce navigateur (problèmes potentiels)"
+	},
+	{
+		"key": "ContinueWithLocalProgress",
+		"en": "Local progress",
+		"fr": "Progrès local"
+	},
+	{
+		"key": "ContinueWithServerProgress",
+		"en": "Server progress",
+		"fr": "Progrès serveur"
+	},
+	{
+		"key": "ContinuousScalesList",
+		"en": "Continuous scales list",
+		"fr": "Liste d'échelles continues"
+	},
+	{
+		"key": "ControlDesign",
+		"en": "Design (controls)",
+		"fr": "Mise en forme (contrôles)"
+	},
+	{
+		"key": "ControlId",
+		"en": "Control ID",
+		"fr": "ID du contrôle"
+	},
+	{
+		"key": "ControlId2",
+		"en": "Control ID",
+		"fr": "ID du contrôle"
+	},
+	{
+		"key": "ControlNotCompatibleWithBrowser",
+		"en": "Control not compatible with current browser.",
+		"fr": "Ce contrôle n'est pas compatible avec le navigateur utilisé."
+	},
+	{
+		"key": "ControlOptions",
+		"en": "{0} options",
+		"fr": "Options de {0}"
+	},
+	{
+		"key": "CoordinatesSizeAndBorder",
+		"en": "Coordinates",
+		"fr": "Coordonnées"
+	},
+	{
+		"key": "CopiedControl",
+		"en": "Copied control",
+		"fr": "Contrôle copié"
+	},
+	{
+		"key": "CopyPasteURL",
+		"en": "Copy/paste this URL to reconnect<br/>to this session later:",
+		"fr": "Copiez/collez ce lien pour vous</br/>reconnecter à cette séance plus tard :"
+	},
+	{
+		"key": "Country",
+		"en": "Country",
+		"fr": "Pays"
+	},
+	{
+		"key": "Couple",
+		"en": "Couple",
+		"fr": "Couple"
+	},
+	{
+		"key": "CoupleWithOneChild",
+		"en": "Couple with one child",
+		"fr": "Couple avec un enfant"
+	},
+	{
+		"key": "CoupleWithTwoOrMoreChild",
+		"en": "Couple with two children or more",
+		"fr": "Couple avec deux enfants ou plus"
+	},
+	{
+		"key": "CraftmanOrMerchant",
+		"en": "Craftman or merchant",
+		"fr": "Artisan ou comemrçant"
+	},
+	{
+		"key": "CurrentButtonDesign",
+		"en": "Design (selected button)",
+		"fr": "Design (bouton sélectionné)"
+	},
+	{
+		"key": "CurrentProgressWillReplacePreviousOne",
+		"en": "Current progress will replace previous one, do you confirm?",
+		"fr": "La progression actuelle va remplacer la progression précédente, êtes-vous sûr(e) ?"
+	},
+	{
+		"key": "CurrentScaleDesign",
+		"en": "Design (selected scale)",
+		"fr": "Design (échelle sélectionnée)"
+	},
+	{
+		"key": "CursorColor",
+		"en": "Cursor's color",
+		"fr": "Couleur du curseur"
+	},
+	{
+		"key": "CursorWidth",
+		"en": "Cursor's width",
+		"fr": "Largeur du curseur"
+	},
+	{
+		"key": "CustomButton",
+		"en": "Button",
+		"fr": "Bouton"
+	},
+	{
+		"key": "CustomChronometer",
+		"en": "Chronometer",
+		"fr": "Chronomètre"
+	},
+	{
+		"key": "CustomErrorMessage",
+		"en": "Custom error message",
+		"fr": "Message d'erreur"
+	},
+	{
+		"key": "CustomImage",
+		"en": "Image",
+		"fr": "Image"
+	},
+	{
+		"key": "CustomMedia",
+		"en": "Media player",
+		"fr": "Lecteur vidéo"
+	},
+	{
+		"key": "CustomProgressBar",
+		"en": "Progress indicator",
+		"fr": "Indicateur d'avancement"
+	},
+	{
+		"key": "CustomSound",
+		"en": "Custom sound",
+		"fr": "Son personnalisé"
+	},
+	{
+		"key": "CustomTimer",
+		"en": "Timer",
+		"fr": "Minuteur"
+	},
+	{
+		"key": "DTSButtonsControl",
+		"en": "Buttons list",
+		"fr": "Liste de boutons"
+	},
+	{
+		"key": "Data",
+		"en": "Data",
+		"fr": "Données"
+	},
+	{
+		"key": "DataType",
+		"en": "Data type",
+		"fr": "Type de données"
+	},
+	{
+		"key": "Database",
+		"en": "Database",
+		"fr": "Base de données"
+	},
+	{
+		"key": "DateFormat",
+		"en": "dd/mm/yy",
+		"fr": "yy-mm-dd"
+	},
+	{
+		"key": "DefaultSound",
+		"en": "Default sound",
+		"fr": "Son par défaut"
+	},
+	{
+		"key": "DefaultText",
+		"en": "Default text",
+		"fr": "Texte par défaut"
+	},
+	{
+		"key": "Delete",
+		"en": "Delete",
+		"fr": "Supprimer"
+	},
+	{
+		"key": "Descriptor",
+		"en": "Descriptor",
+		"fr": "Descripteur"
+	},
+	{
+		"key": "DiscreteScale5Points",
+		"en": "5 points discrete scale",
+		"fr": "Echelle discrète en 5 points"
+	},
+	{
+		"key": "DiscreteScale7Points",
+		"en": "7 points discrete scale",
+		"fr": "Echelle discrète en 7 points"
+	},
+	{
+		"key": "DiscreteScale9Points",
+		"en": "9 points discrete scale",
+		"fr": "Echelle discrète en 9 points"
+	},
+	{
+		"key": "DiscreteScaleOptions",
+		"en": "Discrete scale options",
+		"fr": "Options de l'échelle discrète"
+	},
+	{
+		"key": "DiscreteScalesControl",
+		"en": "List of discrete scales",
+		"fr": "Liste d'échelles discrète"
+	},
+	{
+		"key": "DiscreteScalesList",
+		"en": "Discrete scales list",
+		"fr": "Liste d'échelles discrètes"
+	},
+	{
+		"key": "DiscriminationTest",
+		"en": "DiscriminationTest",
+		"fr": "Test de discrimination"
+	},
+	{
+		"key": "DisplayedText",
+		"en": "Displayed text",
+		"fr": "Texte affiché"
+	},
+	{
+		"key": "DoNothing",
+		"en": "Change nothing",
+		"fr": "Ne rien changer"
+	},
+	{
+		"key": "DominanceMode",
+		"en": "Dominance mode",
+		"fr": "Mode de dominance"
+	},
+	{
+		"key": "DominantForALimitedDuration",
+		"en": "Dominant for a limited duration",
+		"fr": "Dominant pendant une durée limitée"
+	},
+	{
+		"key": "DominantUntilNextClick",
+		"en": "Dominant until a new attribute is clicked",
+		"fr": "Dominant jusqu'à ce qu'un autre descripteur soit cliqué"
+	},
+	{
+		"key": "DominantUntilNextClickOrUnclick",
+		"en": "Dominant until a new attribute is clicked or this attribute is unclicked",
+		"fr": "Dominant jusqu'à ce qu'un autre descripteur soit cliqué ou que ce descripteur soit décliqué"
+	},
+	{
+		"key": "DominantWhileHeldDown",
+		"en": "Dominant while button is held down",
+		"fr": "Dominant tant que le bouton reste appuyé"
+	},
+	{
+		"key": "DownloadingResults",
+		"en": "Downloading results...",
+		"fr": "Téléchargement des résultats..."
+	},
+	{
+		"key": "DurationBeforeFading",
+		"en": "Duration before fading (s)",
+		"fr": "Durée avant extinction (s)"
+	},
+	{
+		"key": "DynamicLiking",
+		"en": "Dynamic liking",
+		"fr": "Liking dynamique"
+	},
+	{
+		"key": "DynamicProfile",
+		"en": "Dynamic profile",
+		"fr": "Profil dynamique"
+	},
+	{
+		"key": "EducationLevel",
+		"en": "Education level",
+		"fr": "Niveau d'éducation"
+	},
+	{
+		"key": "Employee",
+		"en": "Employee",
+		"fr": "Employé"
+	},
+	{
+		"key": "EnterAttribute",
+		"en": "Enter attribute",
+		"fr": "Saisir un descripteur"
+	},
+	{
+		"key": "EnterDescription",
+		"en": "Enter description",
+		"fr": "Saisir une description"
+	},
+	{
+		"key": "EnterQuestionLabel",
+		"en": "Enter question label",
+		"fr": "Saisir le libellé de la question"
+	},
+	{
+		"key": "EnterSampleLabel",
+		"en": "Enter current sample label",
+		"fr": "Entrer l'étiquette de l'échantillon"
+	},
+	{
+		"key": "EnterSortingControlID",
+		"en": "Enter ID of control 'List of elements to sort'",
+		"fr": "Entrer ID du contrôle 'Liste d'éléments à trier'"
+	},
+	{
+		"key": "Error",
+		"en": "Error",
+		"fr": "Erreur"
+	},
+	{
+		"key": "ErrorWhileUploadingProgress",
+		"en": "Error while uploading progress on server.",
+		"fr": "Erreur pendant la mise à jour sur le serveur."
+	},
+	{
+		"key": "Event",
+		"en": "Event",
+		"fr": "Evénement"
+	},
+	{
+		"key": "EventName",
+		"en": "Event name",
+		"fr": "Nom de l'événement"
+	},
+	{
+		"key": "ExcludedWords",
+		"en": "Excluded words",
+		"fr": "Mots exclus"
+	},
+	{
+		"key": "ExecutiveAndUpperIntellectualProfession",
+		"en": "Executive or upper intellectual profession",
+		"fr": "Cadre ou profession supérieure"
+	},
+	{
+		"key": "Exit",
+		"en": "Complete",
+		"fr": "Terminer"
+	},
+	{
+		"key": "ExternalImage",
+		"en": "URL",
+		"fr": "URL"
+	},
+	{
+		"key": "ExternalVideo",
+		"en": "URL",
+		"fr": "URL"
+	},
+	{
+		"key": "FILE_NOT_EXISTS",
+		"en": "No matching session file on the server.",
+		"fr": "Aucun fichier séance correspondant sur le serveur."
+	},
+	{
+		"key": "FamilialStatus",
+		"en": "Familial status",
+		"fr": "Statut familial"
+	},
+	{
+		"key": "Farmer",
+		"en": "Farmer",
+		"fr": "Agriculteur"
+	},
+	{
+		"key": "Feedback",
+		"en": "Panelist feedback",
+		"fr": "Retour panéliste"
+	},
+	{
+		"key": "Female",
+		"en": "Female",
+		"fr": "Femme"
+	},
+	{
+		"key": "FirstItemRank",
+		"en": "First item rank",
+		"fr": "Rang du premier item"
+	},
+	{
+		"key": "FirstName",
+		"en": "First name",
+		"fr": "Prénom"
+	},
+	{
+		"key": "FirstScreen",
+		"en": "First screen",
+		"fr": "Premier écran"
+	},
+	{
+		"key": "FixedPartDocumentURL",
+		"en": "Base URL",
+		"fr": "URL de base"
+	},
+	{
+		"key": "FollowingAttributesHaveToBeScored",
+		"en": "All attributes have to be scored.",
+		"fr": "Tous les descripteurs doivent être notés."
+	},
+	{
+		"key": "FollowingProductsHaveToBeRanked",
+		"en": "All products have to be ranked.",
+		"fr": "Tous les produits doivent être classés."
+	},
+	{
+		"key": "FollowingProductsHaveToBeSorted",
+		"fr": "Tous les produits doivent être triés.",
+		"en": "All products have to be sorted."
+	},
+	{
+		"key": "Forward",
+		"en": "Forward",
+		"fr": "Premier plan"
+	},
+	{
+		"key": "FreeListOfTerms",
+		"en": "Free list of terms",
+		"fr": "Liste de termes libres"
+	},
+	{
+		"key": "FreeTextQuestionControl",
+		"en": "Free text question",
+		"fr": "Question à texte libre"
+	},
+	{
+		"key": "FriendlyName",
+		"en": "Control ID",
+		"fr": "ID du contrôle"
+	},
+	{
+		"key": "Gender",
+		"en": "Gender",
+		"fr": "Genre"
+	},
+	{
+		"key": "GoToLoginScreen",
+		"en": "Go to login screen",
+		"fr": "Rediriger vers l'écran d'accueil de TimeSens pour panéliste"
+	},
+	{
+		"key": "GoToNextPage",
+		"en": "Go to next screen",
+		"fr": "Aller à l'écran suivant"
+	},
+	{
+		"key": "GoToPreviousPage",
+		"en": "Go to previous screen",
+		"fr": "Aller à l'écran précédent"
+	},
+	{
+		"key": "GoToScreen",
+		"en": "Go to specific screen",
+		"fr": "Rediriger vers un écran spécifique"
+	},
+	{
+		"key": "GoToScreenIf",
+		"en": "Go to specific screen (conditional)",
+		"fr": "Rediriger vers un écran spécifique (conditionnel)"
+	},
+	{
+		"key": "GoToURL",
+		"en": "Go to URL",
+		"fr": "Rediriger vers une URL"
+	},
+	{
+		"key": "GoToUrl",
+		"en": "Go to URL",
+		"fr": "Rediriger vers une URL"
+	},
+	{
+		"key": "GoToUrlAndGoToNextPage",
+		"en": "Go to URL and go to next screen",
+		"fr": "Rediriger vers une URL et passer à l'écran suivant"
+	},
+	{
+		"key": "GraduateStudies",
+		"en": "Graduate studies",
+		"fr": "Etudes supérieures"
+	},
+	{
+		"key": "Group",
+		"en": "Group",
+		"fr": "Groupe"
+	},
+	{
+		"key": "GroupID",
+		"en": "Group ID",
+		"fr": "ID du groupe"
+	},
+	{
+		"key": "Height",
+		"en": "Height",
+		"fr": "Hauteur"
+	},
+	{
+		"key": "HideControl",
+		"en": "Hide group of control",
+		"fr": "Masquer un groupe de contrôles"
+	},
+	{
+		"key": "Horizontal",
+		"en": "Horizontal",
+		"fr": "Horizontale"
+	},
+	{
+		"key": "HorizontalAlignCenter",
+		"en": "Horizontal align center",
+		"fr": "Aligné horizontalement au centre"
+	},
+	{
+		"key": "HorizontalAlignLeft",
+		"en": "Horizontal align left",
+		"fr": "Aligné horizontalement à gauche"
+	},
+	{
+		"key": "HorizontalAlignRight",
+		"en": "Horizontal align right",
+		"fr": "Aligné horizontalement à droite"
+	},
+	{
+		"key": "HoverBackgroundColor",
+		"en": "Background color (hover)",
+		"fr": "Couleur d'arrière plan (survol)"
+	},
+	{
+		"key": "Icon",
+		"en": "Icon",
+		"fr": "Icône"
+	},
+	{
+		"key": "IDHasToBeUnique",
+		"en": "ID has to be unique.",
+		"fr": "ID doit être unique."
+	},
+	{
+		"key": "ImageFile",
+		"en": "Image file",
+		"fr": "Fichier image"
+	},
+	{
+		"key": "Information",
+		"en": "Information",
+		"fr": "Information"
+	},
+	{
+		"key": "InteractiveWheel",
+		"en": "Interactive wheel",
+		"fr": "Roue interactive"
+	},
+	{
+		"key": "IntermediateProfession",
+		"en": "Intermediate profession",
+		"fr": "Profession intermédiaire"
+	},
+	{
+		"key": "IsEqual",
+		"en": "Is equal to",
+		"fr": "Est égal à"
+	},
+	{
+		"key": "IsNotEqual",
+		"en": "Is not equal to",
+		"fr": "N'est pas égal à"
+	},
+	{
+		"key": "Item",
+		"en": "Item",
+		"fr": "Elément"
+	},
+	{
+		"key": "ItemsMustBeBetweenAnd",
+		"en": "Number of attributes must be between {0} and {1}.",
+		"fr": "Le nombre de descripteur doit être compris entre {0} et {1}."
+	},
+	{
+		"key": "Label",
+		"en": "Label",
+		"fr": "Etiquette"
+	},
+	{
+		"key": "LabelPosition",
+		"en": "Labels position",
+		"fr": "Position des étiquettes"
+	},
+	{
+		"key": "LabelWidth",
+		"en": "Labels width",
+		"fr": "Largeur des étiquettes"
+	},
+	{
+		"key": "LabeledContinuousScale0-10",
+		"en": "0-10 labeled continuous scale",
+		"fr": "Echelle continue de 0 à 10 avec libellés"
+	},
+	{
+		"key": "LastItemRank",
+		"en": "Last item rank",
+		"fr": "Rang du dernier item"
+	},
+	{
+		"key": "LastName",
+		"en": "Last name",
+		"fr": "Nom"
+	},
+	{
+		"key": "LastScreen",
+		"en": "Last screen",
+		"fr": "Dernier écran"
+	},
+	{
+		"key": "Left",
+		"en": "Left",
+		"fr": "Gauche"
+	},
+	{
+		"key": "LimitedDuration",
+		"en": "Duration before unselection (s)",
+		"fr": "Durée avant désélection (s)"
+	},
+	{
+		"key": "LimitedDuration1",
+		"en": "Duration before unselection (s)",
+		"fr": "Durée avant désélection (s)"
+	},
+	{
+		"key": "LineSpacing",
+		"en": "Space between scales",
+		"fr": "Espace entre les échelles"
+	},
+	{
+		"key": "ListAnswers",
+		"en": "List",
+		"fr": "Liste"
+	},
+	{
+		"key": "ListAnswersMode",
+		"en": "Answers list",
+		"fr": "Liste des réponses"
+	},
+	{
+		"key": "ListAuthorizedCodes",
+		"en": "List of authorized codes",
+		"fr": "Liste des codes autorisés"
+	},
+	{
+		"key": "LiveStream",
+		"en": "Live stream",
+		"fr": "Flux vidéo"
+	},
+	{
+		"key": "LocalImage",
+		"en": "Local disk",
+		"fr": "Disque dur"
+	},
+	{
+		"key": "LocalVideo",
+		"en": "Local disk",
+		"fr": "Disque dur"
+	},
+	{
+		"key": "LoggedAsPanelist",
+		"en": "Vous êtes connecté(e) en tant que :<br/>panéliste ",
+		"fr": "Your are logged-in as:<br/>panelist "
+	},
+	{
+		"key": "Mail",
+		"en": "Mail",
+		"fr": "Adresse mail"
+	},
+	{
+		"key": "Male",
+		"en": "Male",
+		"fr": "Homme"
+	},
+	{
+		"key": "MandatoryAnswer",
+		"en": "Mandatory answer",
+		"fr": "Réponse obligatoire"
+	},
+	{
+		"key": "MandatoryRecord",
+		"en": "Mandatory record",
+		"fr": "Enregistrement obligatoire"
+	},
+	{
+		"key": "MarginBetweenButtonAndLabel",
+		"en": "Margin between buttons and labels",
+		"fr": "Marge entre les boutons et les étiquettes"
+	},
+	{
+		"key": "MarginBetweenButtons",
+		"en": "Margin between buttons",
+		"fr": "Marge entre les boutons"
+	},
+	{
+		"key": "MarginBetweenCheckboxAndLabel",
+		"en": "Margin between checboxes and labels",
+		"fr": "Marge entre les cases à cocher et les étiquettes"
+	},
+	{
+		"key": "MarginBetweenCheckboxes",
+		"en": "Margin between checboxes",
+		"fr": "Marge entre les cases à cocher"
+	},
+	{
+		"key": "MarginBetweenSliders",
+		"en": "Margin between sliders",
+		"fr": "Marge entre les échelles"
+	},
+	{
+		"key": "MarginBottom",
+		"en": "Bottom margin",
+		"fr": "Marge en bas"
+	},
+	{
+		"key": "MarginLeft",
+		"en": "Left margin",
+		"fr": "Marge à gauche"
+	},
+	{
+		"key": "MarginRight",
+		"en": "Right margin",
+		"fr": "Marge à droite"
+	},
+	{
+		"key": "MarksAndLabels",
+		"en": "Labels and values of the scale",
+		"fr": "Etiquettes et valeurs de l'échelle"
+	},
+	{
+		"key": "Mask",
+		"en": "Mask",
+		"fr": "Masque de saisie"
+	},
+	{
+		"key": "MaxNumberOfAnswers",
+		"en": "Max number of answers",
+		"fr": "Nombre de réponses maximal"
+	},
+	{
+		"key": "MaxNumberOfAnswersF",
+		"en": "Max number of answers: {0}",
+		"fr": "Nombre de réponses maximal : {0}"
+	},
+	{
+		"key": "MaxNumberOfGroups",
+		"en": "Maximum number of groups is ",
+		"fr": "Le nombre de groupes maximal est de "
+	},
+	{
+		"key": "MaxNumberOfTermsProperty",
+		"en": "Maximum number of terms",
+		"fr": "Nombre de termes maximal"
+	},
+	{
+		"key": "MaxNumberOfGroupsProperty",
+		"en": "Maximum number of groups",
+		"fr": "Nombre de groupes maximal "
+	},
+	{
+		"key": "MaxNumberOfTerms",
+		"en": "Maximum number of terms is {0} for group {1}.",
+		"fr": "Le nombre maximal de termes est de {0} pour le groupe {1}."
+	},
+	{
+		"key": "Maximum",
+		"en": "Maximum",
+		"fr": "Maximum"
+	},
+	{
+		"key": "Milliseconds",
+		"en": "Milliseconds",
+		"fr": "Millisecondes"
+	},
+	{
+		"key": "MinLength",
+		"en": "Min length: {0}",
+		"fr": "Longueur minimale : {0}"
+	},
+	{
+		"key": "MinNumberOfAnswers",
+		"en": "Min number of answers",
+		"fr": "Nombre de réponses minimal"
+	},
+	{
+		"key": "MinNumberOfAnswersF",
+		"en": "Min number of answers: {0}",
+		"fr": "Nombre de réponses minimal : {0}"
+	},
+	{
+		"key": "MinNumberOfGroups",
+		"en": "Minimum number of groups is ",
+		"fr": "Le nombre de groupes minimal est de "
+	},
+	{
+		"key": "MinNumberOfGroupsProperty",
+		"en": "Minimum number of groups",
+		"fr": "Nombre de groupes minimal"
+	},
+	{
+		"key": "MinNumberOfTermsProperty",
+		"en": "Minimum number of terms",
+		"fr": "Nombre de termes minimal"
+	},
+	{
+		"key": "MinNumberOfTerms",
+		"en": "Minimum number of terms is {0} for group {1}.",
+		"fr": "Le nombre minimal de termes est de {0} pour le groupe {1}."
+	},
+	{
+		"key": "Minimum",
+		"en": "Minimum",
+		"fr": "Minimum"
+	},
+	{
+		"key": "Minutes",
+		"en": "Minutes",
+		"fr": "Minutes"
+	},
+	{
+		"key": "MonthNames",
+		"en": "January,February,March,April,May,June,July,August,September,October,November,December",
+		"fr": "Janvier,Février,Mars,Avril,Mai,Juin,Juillet,Aout,Septembre,Octobre,Novembre,Décembre"
+	},
+	{
+		"key": "MonthNamesShort",
+		"en": "Jan,Feb,Mar,Apr,May,Jun,Jul,Aug,Sep,Oct,Nov,Dec",
+		"fr": "Jan,Fév,Mar,Avr,Mai,Jun,Jul,Aou,Sep,Oct,Nov,Déc"
+	},
+	{
+		"key": "MustAnswerAllAttributes",
+		"en": "Mandatory response",
+		"fr": "Réponse obligatoire"
+	},
+	{
+		"key": "MustBeFilled",
+		"en": "{0} must be filled.",
+		"fr": "{0} doit être rempli."
+	},
+	{
+		"key": "NR",
+		"en": "-",
+		"fr": "-"
+	},
+	{
+		"key": "NappingControl",
+		"en": "To be positioned elements list",
+		"fr": "Liste d'élements à positionner"
+	},
+	{
+		"key": "NbColumns",
+		"en": "Number of columns",
+		"fr": "Nombre de colonnes"
+	},
+	{
+		"key": "NeverVisible",
+		"en": "Never visible",
+		"fr": "Jamais visibles"
+	},
+	{
+		"key": "NewControl",
+		"en": "New control",
+		"fr": "Nouveau contrôle"
+	},
+	{
+		"key": "NewDescriptor",
+		"en": "New descriptor",
+		"fr": "Nouveau descripteur"
+	},
+	{
+		"key": "Next",
+		"en": "Next",
+		"fr": "Suivant"
+	},
+	{
+		"key": "NextScreen",
+		"en": "Next screen",
+		"fr": "Passage à l'écran suivant"
+	},
+	{
+		"key": "No",
+		"en": "No",
+		"fr": "Non"
+	},
+	{
+		"key": "NoDescription",
+		"en": "Click to enter description.",
+		"fr": "Cliquez pour entrer une description."
+	},
+	{
+		"key": "NoProgressIndicator",
+		"en": "No progress indicator",
+		"fr": "Pas d'indicateur"
+	},
+	{
+		"key": "NoSound",
+		"en": "No sound",
+		"fr": "Pas de son"
+	},
+	{
+		"key": "None",
+		"en": "None",
+		"fr": "Aucun"
+	},
+	{
+		"key": "NotEmpty",
+		"en": "Selection should not be empty.",
+		"fr": "La sélection ne doit pas être vide."
+	},
+	{
+		"key": "Nothing",
+		"en": "-",
+		"fr": "-"
+	},
+	{
+		"key": "NotSorted",
+		"en": "Not sorted",
+		"fr": "Non trié(s)"
+	},
+	{
+		"key": "NotVisible",
+		"en": "Not visible",
+		"fr": "Non visible"
+	},
+	{
+		"key": "Numeric",
+		"en": "Numeric",
+		"fr": "Numérique"
+	},
+	{
+		"key": "NumericInputOnly",
+		"en": "This field accept only numeric input.",
+		"fr": "Ce champs n'accepte que des valeurs numériques."
+	},
+	{
+		"key": "NumericProgressIndicator",
+		"en": "Screen number",
+		"fr": "Numéro d'écran"
+	},
+	{
+		"key": "OK",
+		"en": "OK",
+		"fr": "OK"
+	},
+	{
+		"key": "OfflineAppUnableToDownloadResults",
+		"en": "The application is offline: results cannot be downloaded.",
+		"fr": "L'application est hors ligne : impossible de télécharger les résultats."
+	},
+	{
+		"key": "Opacity",
+		"en": "Opacity",
+		"fr": "Opacité"
+	},
+	{
+		"key": "Operator",
+		"en": "Operator",
+		"fr": "Opérateur"
+	},
+	{
+		"key": "Orientation",
+		"en": "Orientation",
+		"fr": "Orientation"
+	},
+	{
+		"key": "Other",
+		"en": "Other",
+		"fr": "Autre"
+	},
+	{
+		"key": "PageChanged",
+		"en": "On page changed",
+		"fr": "Au changement de page"
+	},
+	{
+		"key": "PageLoaded",
+		"en": "On page displayed",
+		"fr": "A l'affichage de la page"
+	},
+	{
+		"key": "Parameters",
+		"en": "Parameters",
+		"fr": "Paramètres"
+	},
+	{
+		"key": "Pause",
+		"en": "Pause",
+		"fr": "Pause"
+	},
+	{
+		"key": "Phone",
+		"en": "Phone",
+		"fr": "Téléphone"
+	},
+	{
+		"key": "Picture",
+		"en": "Picture",
+		"fr": "Image"
+	},
+	{
+		"key": "PictureTaken",
+		"en": "Picture taken.",
+		"fr": "Photo prise."
+	},
+	{
+		"key": "Placement",
+		"en": "Placement",
+		"fr": "Placement"
+	},
+	{
+		"key": "Play",
+		"en": "Play",
+		"fr": "Lecture"
+	},
+	{
+		"key": "PleaseChooseOneProduct",
+		"en": "Please check one product.",
+		"fr": "Veuillez cocher un produit."
+	},
+	{
+		"key": "PleaseChooseTwoProducts",
+		"en": "Please check two products.",
+		"fr": "Veuillez cocher deux produits."
+	},
+	{
+		"key": "PleaseEnterNewDescriptor",
+		"en": "Click to enter a new descriptor.",
+		"fr": "Cliquer pour saisir un nouveau descripteur."
+	},
+	{
+		"key": "PleasePasteAndCopyThisLinkInOneOfThisBrowser",
+		"en": "Click on this text to copy this URL {0} then open it in one of these browsers: {1}.",
+		"fr": "Cliquez sur le texte pour copier cette URL {0} puis ouvrez la dans un des navigateurs suivants : {1}."
+	},
+	{
+		"key": "Precision",
+		"en": "Precision",
+		"fr": "Précision"
+	},
+	{
+		"key": "Previous",
+		"en": "Previous",
+		"fr": "Précédent"
+	},
+	{
+		"key": "PreviousScreen",
+		"en": "Previous screen",
+		"fr": "Ecran précédent"
+	},
+	{
+		"key": "PrimaryStudies",
+		"en": "Primary studies",
+		"fr": "Etudes primaires"
+	},
+	{
+		"key": "Print",
+		"en": "Print",
+		"fr": "Imprimer"
+	},
+	{
+		"key": "ProfessionalActivity",
+		"en": "Professional activity",
+		"fr": "Activité professionnelle"
+	},
+	{
+		"key": "ProgressBarIndicator",
+		"en": "Progress bar",
+		"fr": "Barre d'avancement"
+	},
+	{
+		"key": "ProgressiveLiking",
+		"en": "Progressive liking",
+		"fr": "Liking progressif"
+	},
+	{
+		"key": "ProgressiveProfile",
+		"en": "Progressive profile",
+		"fr": "Profil progressif"
+	},
+	{
+		"key": "QuestionDesign",
+		"en": "Design (question)",
+		"fr": "Design (question)"
+	},
+	{
+		"key": "RandomizeAnswers",
+		"en": "Randomize answer order",
+		"fr": "Randomiser l'ordre des réponses"
+	},
+	{
+		"key": "RankingControl",
+		"en": "To be ranked elements list",
+		"fr": "Liste d'éléments à ordonner"
+	},
+	{
+		"key": "Record",
+		"en": "Record",
+		"fr": "Enregistrement"
+	},
+	{
+		"key": "Rectangle",
+		"en": "Rectangle",
+		"fr": "Rectangle"
+	},
+	{
+		"key": "Refresh",
+		"en": "Refresh",
+		"fr": "Actualiser"
+	},
+	{
+		"key": "Retired",
+		"en": "Retraité(e)",
+		"fr": "Retired"
+	},
+	{
+		"key": "Right",
+		"en": "Right",
+		"fr": "Droite"
+	},
+	{
+		"key": "SampleAlreadyTasted",
+		"en": "Sample already tasted.",
+		"fr": "Echantillon déjà testé."
+	},
+	{
+		"key": "SampleCodeInput",
+		"en": "Sample code input",
+		"fr": "Entrée de code échantillon"
+	},
+	{
+		"key": "Save",
+		"en": "Save",
+		"fr": "Enregistrer"
+	},
+	{
+		"key": "SaveAndUpload",
+		"en": "Save and upload",
+		"fr": "Enregistrer et télécharger"
+	},
+	{
+		"key": "SavedValue",
+		"en": "Saved value",
+		"fr": "Valeur enregistrée"
+	},
+	{
+		"key": "SaveEvent",
+		"en": "Save an event",
+		"fr": "Enregistrer un événement"
+	},
+	{
+		"key": "SaveEventThenGoToNextPage",
+		"en": "Save an event then go to next screen",
+		"fr": "Enregistrer un événement puis passer à l'écran suivant"
+	},
+	{
+		"key": "ScaleBackgroundColor",
+		"en": "Scales' background color",
+		"fr": "Couleur d'arrière plan des échelles"
+	},
+	{
+		"key": "ScaleBorderColor",
+		"en": "Scales' border color",
+		"fr": "Couleur de la bordure des échelles"
+	},
+	{
+		"key": "ScaleBorderThickness",
+		"en": "Scales' border thickness",
+		"fr": "Epaisseur de la bordure des échelles"
+	},
+	{
+		"key": "ScaleMaximumValue",
+		"en": "Scale maximum value",
+		"fr": "Valeur maximale de l'échelle"
+	},
+	{
+		"key": "ScaleMinimumValue",
+		"en": "Scale minimum value",
+		"fr": "Valeur minimale de l'échelle"
+	},
+	{
+		"key": "ScaleValues",
+		"en": "Tick marks",
+		"fr": "Repères de l'échelle"
+	},
+	{
+		"key": "Screen",
+		"en": "Screen",
+		"fr": "Ecran"
+	},
+	{
+		"key": "ScreenLoaded",
+		"en": "When screen is displayed",
+		"fr": "Dès que l'écran s'affiche"
+	},
+	{
+		"key": "SearchingSession",
+		"en": "Searching session...",
+		"fr": "Recherche de la séance..."
+	},
+	{
+		"key": "SecondaryStudies",
+		"en": "SecondaryStudies",
+		"fr": "Etudes secondaires"
+	},
+	{
+		"key": "Seconds",
+		"en": "Seconds",
+		"fr": "Secondes"
+	},
+	{
+		"key": "SelectAnAction",
+		"en": "Select an action",
+		"fr": "Choisir une action"
+	},
+	{
+		"key": "SelectAnchorId",
+		"en": "Select an anchor in the list.",
+		"fr": "Choisir une ancre dans la liste."
+	},
+	{
+		"key": "SelectedButtonDesign",
+		"en": "Design (selected button)",
+		"fr": "Mise en forme (bouton sélectionné)"
+	},
+	{
+		"key": "SelectDataType",
+		"en": "Select data type",
+		"fr": "Sélectionner le type de données"
+	},
+	{
+		"key": "SelectExperimentalDesign",
+		"en": "Select experimental design",
+		"fr": "Sélectionner le plan de présentation"
+	},
+	{
+		"key": "SelectOneOrSeveralControls",
+		"en": "Select one or several controls in the list.",
+		"fr": "Choisir un ou plusieurs contrôles dans la liste."
+	},
+	{
+		"key": "SelectSource",
+		"en": "Select source",
+		"fr": "Sélectionner la source"
+	},
+	{
+		"key": "SelectTypeOfScale",
+		"en": "Select type of scale",
+		"fr": "Sélectionner le type d'échelle"
+	},
+	{
+		"key": "SelectedBackgroundColor",
+		"en": "Background color (selected)",
+		"fr": "Couleur d'arrière plan (selection)"
+	},
+	{
+		"key": "SelectBinaries",
+		"en": "Select file",
+		"fr": "Choisir un fichier"
+	},
+	{
+		"key": "SelectedBorderColor",
+		"en": "Border color (selected)",
+		"fr": "Couleur de la bordure (sélection)"
+	},
+	{
+		"key": "SelectListAnswersMode",
+		"en": "Select answers' mode",
+		"fr": "Choisir le type de liste de réponses."
+	},
+	{
+		"key": "Send",
+		"en": "Envoyer par messagerie électronique",
+		"fr": "Send by e-mail"
+	},
+	{
+		"key": "ServerProgressMoreRecent",
+		"en": "L'avancement sur le serveur est plus récent que l'avancement local. Voulez-vous continuer :",
+		"fr": "Progress on server is more recent than local one. Do you want to continue with:"
+	},
+	{
+		"key": "ShowControl",
+		"en": "Show group of control",
+		"fr": "Afficher un groupe de contrôles"
+	},
+	{
+		"key": "SliderBarHeight",
+		"en": "Cursor's height",
+		"fr": "Hauteur du curseur"
+	},
+	{
+		"key": "SliderBorderColor",
+		"en": "Sliders border's color",
+		"fr": "Couleur de la bordure des échelles"
+	},
+	{
+		"key": "SliderColor",
+		"en": "Sliders color",
+		"fr": "Couleur des échelles"
+	},
+	{
+		"key": "SliderHeight",
+		"en": "Sliders height",
+		"fr": "Hauteur des échelles"
+	},
+	{
+		"key": "SliderMargin",
+		"en": "Sliders margin",
+		"fr": "Marge"
+	},
+	{
+		"key": "SlidersControl",
+		"en": "List of continuous scales",
+		"fr": "Liste d'échelles continues"
+	},
+	{
+		"key": "SortingControl",
+		"en": "List of elements to sort",
+		"fr": "Liste d'éléments à trier"
+	},
+	{
+		"key": "SortingControlID",
+		"en": "ID of control 'List of elements to sort'",
+		"fr": "ID du contrôle 'Liste d'éléments à trier'"
+	},
+	{
+		"key": "SoundFile",
+		"en": "Sound file",
+		"fr": "Fichier son"
+	},
+	{
+		"key": "Start",
+		"en": "Start",
+		"fr": "Démarrer"
+	},
+	{
+		"key": "StartAgain",
+		"en": "Start again",
+		"fr": "Recommencer"
+	},
+	{
+		"key": "StartChronometer",
+		"en": "Start chronometer",
+		"fr": "Démarrer le chronomètre"
+	},
+	{
+		"key": "StartMode",
+		"en": "Chronometer start mode",
+		"fr": "Démarrage du chronomètre"
+	},
+	{
+		"key": "StartSameSession",
+		"en": "Start the same session with a new panelist",
+		"fr": "Démarrer la séance avec un autre panéliste"
+	},
+	{
+		"key": "StartWithChronometer",
+		"en": "Start timing with chronometer",
+		"fr": "Démarrage du minutage avec le chronomètre"
+	},
+	{
+		"key": "Stop",
+		"en": "Stop",
+		"fr": "Arrêter"
+	},
+	{
+		"key": "StopChronometer",
+		"en": "Stop chronometer",
+		"fr": "Arrêter le chronomètre"
+	},
+	{
+		"key": "StopChronometerAndGoToNextPage",
+		"en": "Stop chronometer then go to next screen",
+		"fr": "Arrêter le chronomètre puis passer à l'écran suivant"
+	},
+	{
+		"key": "StopMode",
+		"en": "StopMode",
+		"fr": "Arrêt du chronomètre"
+	},
+	{
+		"key": "StopRecorder",
+		"en": "Stop recorder",
+		"fr": "Arrêt de l'enregistrement"
+	},
+	{
+		"key": "Student",
+		"en": "Student",
+		"fr": "Etudiant(e)"
+	},
+	{
+		"key": "TDS",
+		"en": "Temporal Dominance of Sensations",
+		"fr": "Dominance Temporelle des Sensations"
+	},
+	{
+		"key": "TDSDominanceMode",
+		"en": "Attribute dominance",
+		"fr": "Dominance du descripteur sélectionné"
+	},
+	{
+		"key": "TDSTutorialEvaluationNumber",
+		"en": "Evaluation number: {0}",
+		"fr": "Evaluation : "
+	},
+	{
+		"key": "TDSTrainingResult",
+		"en": "TDS training result",
+		"fr": "Résultat de l'entrainement"
+	},
+	{
+		"key": "TDSTutorialReactionTime",
+		"en": "Average reaction time: {0}s",
+		"fr": "Temps de réaction moyen : {0}s"
+	},
+	{
+		"key": "TDSTutorialResultKO",
+		"en": "Training uncompleted. Click to start again.",
+		"fr": "L'entrainement est incomplet. Cliquer pour recommencer."
+	},
+	{
+		"key": "TDSTutorialResultOK",
+		"en": "Training completed. Click to continue.",
+		"fr": "L'entrainement est terminé. Cliquer pour continuer."
+	},
+	{
+		"key": "TDSTutorialScore",
+		"en": "Score: {0}%",
+		"fr": "Score: {0}%"
+	},
+	{
+		"key": "Text",
+		"en": "Text",
+		"fr": "Texte"
+	},
+	{
+		"key": "TextAlignment",
+		"en": "Text alignment",
+		"fr": "Alignement du texte"
+	},
+	{
+		"key": "TextArea",
+		"en": "Text area",
+		"fr": "Zone de texte"
+	},
+	{
+		"key": "TextColor",
+		"en": "Text color",
+		"fr": "Couleur du texte"
+	},
+	{
+		"key": "TextFont",
+		"en": "Text font",
+		"fr": "Police du texte"
+	},
+	{
+		"key": "TextStyle",
+		"en": "Text style",
+		"fr": "Style du texte"
+	},
+	{
+		"key": "TickMarksVisibility",
+		"en": "Marks visibility",
+		"fr": "Visibilité des marques"
+	},
+	{
+		"key": "TieAllowed",
+		"en": "Tie",
+		"fr": "Ex-aequo"
+	},
+	{
+		"key": "TieNotAllowed",
+		"en": "Tie not allowed.",
+		"fr": "Ex-aequo non autorisé."
+	},
+	{
+		"key": "Time",
+		"en": "Time",
+		"fr": "Temps"
+	},
+	{
+		"key": "TimerValue1",
+		"en": "Timer max time",
+		"fr": "Temps maximal du minuteur"
+	},
+	{
+		"key": "TimerVisibility",
+		"en": "Timer visibility",
+		"fr": "Visibilité du minuteur"
+	},
+	{
+		"key": "Timing",
+		"en": "Timing",
+		"fr": "Minutage"
+	},
+	{
+		"key": "TimingEvents",
+		"en": "Events",
+		"fr": "Evénements"
+	},
+	{
+		"key": "Tip",
+		"en": "Tip",
+		"fr": "Astuce"
+	},
+	{
+		"key": "Top",
+		"en": "Top",
+		"fr": "Haut"
+	},
+	{
+		"key": "TopCenter",
+		"en": "Top center",
+		"fr": "Haut, centré"
+	},
+	{
+		"key": "TopLeft",
+		"en": "Top left",
+		"fr": "Haut, à gauche"
+	},
+	{
+		"key": "TopRight",
+		"en": "Top right",
+		"fr": "Haut, à droite"
+	},
+	{
+		"key": "TypeOfScale",
+		"en": "Type of scale",
+		"fr": "Type d'échelle"
+	},
+	{
+		"key": "URLFormatExpected",
+		"en": "URL format expected (ex: http(s)://www.mydomain.com)",
+		"fr": "URL attendue (ex : http(s)://www.mondomaine.com)"
+	},
+	{
+		"key": "Unemployed",
+		"en": "Unemployed",
+		"fr": "Sans emploi"
+	},
+	{
+		"key": "UnexpectedError",
+		"en": "Unexpected error.",
+		"fr": "Erreur inattendue."
+	},
+	{
+		"key": "UnexpectedFormat",
+		"en": "Unexpected format: ",
+		"fr": "Format inattendu : "
+	},
+	{
+		"key": "UnlabeledContinuousScale0-10",
+		"en": "0-10 unlabeled continuous scale",
+		"fr": "Echelle continue de 0 à 10 sans libellés"
+	},
+	{
+		"key": "UploadOnServer",
+		"en": "Upload",
+		"fr": "Télécharger"
+	},
+	{
+		"key": "URLCopiedInClipboard",
+		"en": "URL copied in clipboard. Open another browser then click on CTRL + V on these browser URL field.",
+		"fr": "L'URL a été copiée dans le presse-papier. Ouvrez un autre navigateur puis cliquez sur CTRL + V dans la barre d'URL de ce navigateur."
+	},
+	{
+		"key": "ValidationError",
+		"en": "Validation error",
+		"fr": "Erreur de validation"
+	},
+	{
+		"key": "Value",
+		"en": "Value",
+		"fr": "Valeur"
+	},
+	{
+		"key": "VariablePartDocumentURL",
+		"en": "Variable part URL",
+		"fr": "Part variable de l'URL"
+	},
+	{
+		"key": "Vertical",
+		"en": "Vertical",
+		"fr": "Verticale"
+	},
+	{
+		"key": "VerticalAlignBottom",
+		"en": "Vertical align bottom",
+		"fr": "Aligné verticalement en bas"
+	},
+	{
+		"key": "VerticalAlignCenter",
+		"en": "Vertical align center",
+		"fr": "Aligné verticalement au centre"
+	},
+	{
+		"key": "VerticalAlignTop",
+		"en": "Vertical align top",
+		"fr": "Aligné verticalement en haut"
+	},
+	{
+		"key": "VideoPlayer",
+		"en": "Video player",
+		"fr": "Lecteur vidéo"
+	},
+	{
+		"key": "VideoRecorder",
+		"en": "Video recorder (webcam)",
+		"fr": "Enregistreur vidéo (webcam)"
+	},
+	{
+		"key": "Visibility",
+		"en": "Visibility",
+		"fr": "Visibilité"
+	},
+	{
+		"key": "Visible",
+		"en": "Visible",
+		"fr": "Visible"
+	},
+	{
+		"key": "VisibleOnFirstLineOnly",
+		"en": "Visible on first scale",
+		"fr": "Visibles pour la première échelle"
+	},
+	{
+		"key": "VisibleOnLastLineOnly",
+		"en": "Visible on last scale",
+		"fr": "Visibles pour la dernière échelle"
+	},
+	{
+		"key": "Warning",
+		"en": "Warning",
+		"fr": "Alerte"
+	},
+	{
+		"key": "WhenTimerElapsed",
+		"en": "When timer reachs 0",
+		"fr": "Quand le minuteur atteint 0"
+	},
+	{
+		"key": "Width",
+		"en": "width",
+		"fr": "Largeur"
+	},
+	{
+		"key": "Worker",
+		"en": "Worker",
+		"fr": "Ouvrier"
+	},
+	{
+		"key": "WrongSampleCode",
+		"en": "Wrong sample code.",
+		"fr": "Le code n'existe pas."
+	},
+	{
+		"key": "Yes",
+		"en": "Oui",
+		"fr": "Oui"
+	},
+	{
+		"key": "YourAnswer",
+		"en": "Your answer",
+		"fr": "Votre réponse"
+	},
+	{
+		"key": "YourBrowserIsNotCompatible",
+		"en": "Your browser is not compatible with this session.",
+		"fr": "Votre navigateur n'est pas compatible avec cette séance."
+	},
+	{
+		"key": "YouShouldPasteAndCopyThisLinkInOneOfThisBrowser",
+		"en": "It is strongly adviced to copy this URL {0} by clicking on the text then open it in one of these browsers: {1}.",
+		"fr": "Nous vous recommandons de copier cette URL {0} en cliquant sur le texte puis en l'ouvrant dans un des navigateurs suivants : {1}."
+	},
+	{
+		"key": "YouTubeURLRequired",
+		"en": "YouTube URL required",
+		"fr": "URL YouTube requise"
+	},
+	{
+		"key": "YouTubeVideo",
+		"en": "YouTube video",
+		"fr": "Vidéo YouTube"
+	},
+	{
+		"key": "ZoomIn",
+		"en": "Zoom-in",
+		"fr": "Agrandir"
+	},
+	{
+		"key": "ZoomOut",
+		"en": "Zoom-out",
+		"fr": "Réduire"
+	},
+	{
+		"key": "en-EN",
+		"en": "English",
+		"fr": "Anglais"
+	},
+	{
+		"key": "false",
+		"en": "No",
+		"fr": "Non"
+	},
+	{
+		"key": "fr-FR",
+		"en": "French",
+		"fr": "Français"
+	},
+	{
+		"key": "hidden",
+		"en": "Hidden",
+		"fr": "Masqué"
+	},
+	{
+		"key": "true",
+		"en": "Yes",
+		"fr": "Oui"
+	},
+	{
+		"key": "visible",
+		"en": "Visible",
+		"fr": "Visible"
+	}
+]

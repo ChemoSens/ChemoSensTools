@@ -1,0 +1,973 @@
+﻿@font-face {
+    font-family: Genome-Thin;
+    src: url(../fonts/ufonts.com_century-gothic.ttf);
+}
+
+html, body {
+    position: fixed;
+    overflow-y: hidden;
+    height: 100%;
+}
+
+body {
+    background: url("../images/bg.jpg");
+    background-position: center;
+    background-size: cover;
+    background-attachment: fixed;
+    font-family: Genome-Thin;
+    font-size: 16px;
+    color: #26567c;
+    margin: 0;
+    padding: 0;
+}
+
+    
+#currentView {
+    padding-top: 60px;
+    width: 100vw;
+}
+
+.navbar {
+    margin-bottom: 0;
+    padding-right: 20px;
+}
+
+
+.dropdown-menu {
+    /*list-style: none;
+    list-style-type:none;*/
+    font-size: 16px;
+}
+
+    .dropdown-menu li {
+        line-height: 6px;
+        list-style-type: none !important;
+        color: transparent;
+    }
+
+
+.dropdown-submenu {
+    position: relative;
+}
+
+    .dropdown-submenu > .dropdown-menu {
+        top: 0;
+        left: 100%;
+        margin-top: -6px;
+        margin-left: -1px;
+        -webkit-border-radius: 0 6px 6px 6px;
+        -moz-border-radius: 0 6px 6px;
+        border-radius: 0 6px 6px 6px;
+    }
+
+    .dropdown-submenu:hover > .dropdown-menu {
+        display: block;
+    }
+
+    .dropdown-submenu > a:after {
+        display: block;
+        content: " ";
+        float: right;
+        width: 0;
+        height: 0;
+        border-color: transparent;
+        border-style: solid;
+        border-width: 5px 0 5px 5px;
+        border-left-color: #ccc;
+        margin-top: 5px;
+        margin-right: -10px;
+    }
+
+    .dropdown-submenu:hover > a:after {
+        /*border-left-color: #fff;*/
+    }
+
+    .dropdown-submenu.pull-left {
+        /*float: none;*/
+    }
+
+        .dropdown-submenu.pull-left > .dropdown-menu {
+            left: -130%;
+            /*margin-left: 10px;
+            -webkit-border-radius: 6px 0 6px 6px;
+            -moz-border-radius: 6px 0 6px 6px;
+            border-radius: 6px 0 6px 6px;*/
+        }
+
+
+.boldButton {
+    background: white url('../images/bold.svg') no-repeat center;
+}
+
+.italicButton {
+    background: white url('../images/italic.svg') no-repeat center;
+}
+
+.fontSizeButton {
+    background: white url('../images/fontsize.svg') no-repeat center;
+}
+
+.fontNameButton {
+    background: white url('../images/fontname.svg') no-repeat center;
+}
+
+.backgroundButton {
+    background: white url('../images/background.svg') no-repeat center;
+}
+
+.foregroundButton {
+    background: white url('../images/highlighter.svg') no-repeat center;
+}
+
+.underlineButton {
+    background: white url('../images/underline.svg') no-repeat center;
+}
+
+.rotateLeftButton {
+    background: white url('../images/rotateleft.svg') no-repeat center;
+}
+
+.rotateRightButton {
+    background: white url('../images/rotateright.svg') no-repeat center;
+}
+
+.alignLeftButton {
+    background: white url('../images/align-to-left.svg') no-repeat center;
+}
+
+.alignRightButton {
+    background: white url('../images/align-to-right.svg') no-repeat center;
+}
+
+.alignCenterButton {
+    background: white url('../images/center-text-alignment.svg') no-repeat center;
+}
+
+.alignJustifyButton {
+    background: white url('../images/align-justify.svg') no-repeat center;
+}
+
+.indentButton {
+    background: white url('../images/leftindent.svg') no-repeat center;
+}
+
+.outdentButton {
+    background: white url('../images/rightindent.svg') no-repeat center;
+}
+
+.insertButton {
+    background: white url('../images/edit.svg') no-repeat center;
+}
+
+.background60 {
+    background-size: 65% !important;
+}
+
+.superscriptButton {
+    background: white url('../images/superscript.svg') no-repeat center;
+}
+
+.subscriptButton {
+    background: white url('../images/subscript.svg') no-repeat center;
+}
+
+.strikethroughButton {
+    background: white url('../images/strikethrough.svg') no-repeat center;
+}
+
+.alignControlGridButton {
+    background: white url('../images/magnetism.svg') no-repeat center;
+}
+
+.alignOnGridButton {
+    background: white url('../images/alignGrid.svg') no-repeat center;
+}
+
+.verticalAlignTopButton {
+    background: white url('../images/verticaltop.svg') no-repeat center;
+}
+
+.verticalAlignBottomButton {
+    background: white url('../images/verticalbottom.svg') no-repeat center;
+}
+
+.verticalAlignCenterButton {
+    background: white url('../images/verticalcenter.svg') no-repeat center;
+}
+
+.minus {
+    background: white url('../images/down-chevron.svg') no-repeat center;
+}
+
+.plus {
+    background: white url('../images/up-chevron.svg') no-repeat center;
+}
+
+
+.addControlDiv {
+    width: 80px;
+    margin-right: 5px;
+    margin-bottom: 20px;
+    text-align: center;
+    display: inline-block;
+    vertical-align: top;
+}
+
+.addControlLabel {
+    width: 80px;
+    text-align: center;
+    display: block;
+    font-size: 10px;
+}
+
+.addControlButton {
+    height: 32px;
+    width: 80px;
+    border: 0;
+    display: block;
+    text-align: center;
+}
+
+    .addControlButton:hover {
+        border: 1px solid gold;
+    }
+
+
+.addButton {
+    background: white url('../images/button.svg') no-repeat center;
+}
+
+.addTextArea {
+   background: white url('../images/text-input.svg') no-repeat center;
+ }
+
+.addInteractiveWheel{
+   background: white url('../images/pie-chart.svg') no-repeat center;
+ }
+
+.addSpeechToText {
+    background: white url('../images/microphone.svg') no-repeat center;
+}
+
+.addRectangle {
+    background: white url('../images/square.svg') no-repeat center;
+}
+
+.addCATA {
+    background: white url('../images/cata.svg') no-repeat center;
+}
+
+.addSliders {
+    background: white url('../images/sliders.svg') no-repeat center;
+}
+
+.addProgressBar {
+    background: white url('../images/progress-bar.svg') no-repeat center;
+}
+
+.addTimer {
+    background: white url('../images/sandclock.svg') no-repeat center;
+}
+
+.addChronometer {
+    background: white url('../images/clock.svg') no-repeat center;
+}
+
+.addSubjectForm {
+    background: white url('../images/user-card.svg') no-repeat center;
+}
+
+.addRanking {
+    background: white url('../images/ranking.svg') no-repeat center;
+}
+
+.addPicture {
+    background: white url('../images/picture-file.svg') no-repeat center;
+}
+
+.addVideo {
+    background: white url('../images/movie-file.svg') no-repeat center;
+}
+
+.addRecorder {
+    background: white url('../images/movie.svg') no-repeat center;
+}
+
+.addCheckboxQuestion {
+    background: white url('../images/checkboxquestion.svg') no-repeat center;
+}
+
+.addComboboxQuestion {
+    background: white url('../images/select.svg') no-repeat center;
+}
+
+.addFreeTextQuestion {
+    background: white url('../images/input.svg') no-repeat center;
+}
+
+.addSampleCodeChecker {
+    background: white url('../images/check-button.svg') no-repeat center;
+}
+
+.addAnchor {
+    background: white url('../images/anchor.svg') no-repeat center;
+}
+
+.addNapping {
+    background: white url('../images/napping.svg') no-repeat center;
+}
+
+.addFeedback {
+    background: white url('../images/bar-chart.svg') no-repeat center;
+}
+
+.addTDS {
+    background: white url('../images/square-menu-1.svg') no-repeat center;
+}
+
+.addTriangleTest {
+    background: white url('../images/triangletest.svg') no-repeat center;
+}
+
+.addSorting {
+    background: white url('../images/list.svg') no-repeat center;
+}
+
+.addDiscreteScales {
+    background: white url('../images/discretescale.svg') no-repeat center;
+}
+
+.addQuestionTable {
+    background: white url('../images/questiontable.svg') no-repeat center;
+}
+
+.addFreeListOfTerms {
+    background: white url('../images/edit.svg') no-repeat center;
+}
+
+.addControlFromClipboard {
+    background: white url('../images/paste.svg') no-repeat center;
+}
+
+.addDiscrimination {
+    background: white url('../images/edit.svg') no-repeat center;
+}
+
+.screenInfo {
+    position: absolute;
+    bottom: 1px;
+    left: 3px;
+    cursor:pointer;
+}
+
+.screenButton {
+    height: 24px;
+    width: 24px;
+    float: right;
+    margin-left: 2px;
+    border: 0;
+}
+
+.repeatedScreen {
+    background: transparent url('../images/repeatedscreen.svg') no-repeat center;
+}
+
+.singleScreen {
+    /*background:  transparent url('../images/singlescreen.svg') no-repeat center;*/
+    background:  transparent;
+}
+
+.conditionalScreen {
+    background:  transparent url('../images/eye.svg') no-repeat center;
+}
+
+.timedScreen {
+    background:  transparent url('../images/sandclock.svg') no-repeat center;
+}
+
+.fa {
+    width: 20px;
+}
+
+#simulationWindow {
+    overflow: hidden !important;
+    margin-top: 5px;
+}
+
+    #simulationWindow .modal-content {
+        max-height: 100vh !important;
+    }
+
+    #simulationWindow .modal-body {
+        max-height: 100vh !important;
+    }
+
+
+#simulationBody {
+    background-color: #f8fdff;
+    background: url("../images/bg.jpg");
+    background-position: center;
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+.spinner input {
+    text-align: right;
+}
+
+.input-group-btn-vertical {
+    position: relative;
+    white-space: nowrap;
+    width: 2%;
+    vertical-align: middle;
+    display: table-cell;
+}
+
+    .input-group-btn-vertical > .btn {
+        display: block;
+        float: none;
+        width: 100%;
+        max-width: 100%;
+        padding: 8px;
+        margin-left: -1px;
+        position: relative;
+        border-radius: 0;
+    }
+
+        .input-group-btn-vertical > .btn:first-child {
+            border-top-right-radius: 4px;
+        }
+
+        .input-group-btn-vertical > .btn:last-child {
+            margin-top: -2px;
+            border-bottom-right-radius: 4px;
+        }
+
+    .input-group-btn-vertical i {
+        position: absolute;
+        top: 0;
+        left: 4px;
+    }
+
+/*.actionButton {
+    display: inline-block;
+    margin-bottom: 5px;
+    margin-right: 20px;
+}
+
+    .actionButton li:hover {
+        background: #ede4a1;
+    }*/
+
+
+
+.collapsedItemSeparator {
+    padding-bottom: 5px;
+    border-bottom: 1px solid #e4dfdf;
+}
+
+.actionButtonItem:disabled {
+    color: #e4dfdf !important;
+}
+
+#navbarmenu {
+    font-size: 20px;
+}
+
+.separator {
+    line-height: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    border: 0;
+}
+
+.screenCondition {
+    color: black;
+    font-size: 14px;
+}
+
+.localDBDirectory {
+    display: inline-block;
+    vertical-align: top;
+    margin-right: 10px;
+    margin-bottom: 20px;
+    width: 100px;
+    text-align: center;
+}
+
+.localDBDirectoryButton {
+    height: 64px;
+    width: 64px;
+    background: white url('../images/sharpicons_search-folder.svg') no-repeat center;
+    margin: 0;
+    border: 0;
+}
+
+.localDBNewDirectoryButton {
+    height: 64px;
+    width: 64px;
+    background: white url('../images/sharpicons_add-folder.svg') no-repeat center;
+    margin: 0;
+    border: 0;
+}
+
+.localDBBackDirectoryButton {
+    height: 64px;
+    width: 64px;
+    background: white url('../images/sharpicons_move-folder-2.svg') no-repeat center;
+    margin: 0;
+    border: 0;
+}
+
+.localDBSessionButton {
+    height: 64px;
+    width: 64px;
+    background: white url('../images/sharpicons_blank-file.svg') no-repeat center;
+    border: 0;
+    cursor:pointer;
+}
+
+.localDBDirectory div {
+    width: 100px;
+    text-align: center;
+    font-size: 12px;
+}
+
+.localDBDirectoryActions {
+    width: 100px;
+    height: 24px;
+    border: 0;
+    background: white url('../images/more.svg') no-repeat center;
+    display: block;
+    margin: 0;
+}
+
+.localDBBreadcrumb {
+    border: 0;
+    background: transparent;
+    display: inline;
+    font-style:italic;
+}
+
+.localDBBreadcrumb:hover {
+    text-decoration:underline;
+}
+
+.controlsDiv {
+    display: inline;
+    vertical-align: top;
+}
+
+.optionsDiv {
+    display: block;
+}
+
+.fas {
+    width: 24px;
+}
+
+/*Vue Analysis*/
+
+.analysisGroup {
+    font-size: 22px;
+}
+
+.analysisRFunction > * {
+    font-size: 18px !important;
+    font-weight: bold;
+}
+
+.analysisRFunction.checkboxDiv {
+    display: block;
+}
+
+.selectWithLabel {
+    margin-bottom:15px;
+}
+
+/*.selectWithLabel > div {
+    margin-left:10px;
+    width:200px;    
+}
+
+.selectWithLabel > select {
+    width:400px;
+}
+
+.multiselect-native-select > select {
+    width:400px;
+}
+
+.selectWithLabel > * {
+    float:left;
+}
+
+.selectWithLabel:after {
+    content: '';
+    display: block;
+    clear: both;
+    margin-bottom:5px;
+}*/
+
+.analysisTemplateButton {
+    margin: 5px;
+    background: white;
+    border: 1px solid black;
+}
+
+.analysisDataFilter {
+    margin-top: 10px;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+    .analysisDataFilter:before {
+        content: '- ';
+    }
+
+/*td[data-value=""] {
+    background:#f57474 !important;
+}*/
+
+.multiselect.dropdown-toggle {
+    text-align: left;
+}
+
+.redborder {
+    border-color: red;
+}
+
+/*.analysisOptionsSelectWithLabel > div {
+    margin-left:10px;
+    width:300px;    
+}
+
+.analysisOptionsSelectWithLabel > select {
+    width:200px;
+}
+
+.analysisOptionsSelectWithLabel > * {
+    float:left;
+}
+
+.analysisOptionsSelectWithLabel:after {
+    content: '';
+    display: block;
+    clear: both;
+    margin-bottom:5px;
+}*/
+
+.analysisOptionLabel {
+    float: left;
+    font-style: italic;
+    width: 400px;
+    margin-left: 30px;
+    margin-bottom: 10px;
+}
+
+    .analysisOptionLabel:before {
+        font-family: FontAwesome;
+        content: "\f101 \00a0 ";
+    }
+
+.analysisParameterLabel {
+    float: left;
+    width: 400px;
+    margin-left: 30px;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+    .analysisParameterLabel:before {
+        content: "+ \00a0 ";
+    }
+
+    .analysisParameterLabel.opened:before {
+        content: "- \00a0 ";
+    }
+
+.analysisSelect {
+    float: left;
+    width: 300px;
+}
+
+.templateCard {
+    width: 300px;
+    height: 150px;
+    border: 1px solid gray;
+    background: white;
+    padding: 5px;
+    position: relative;
+    float: left;
+    margin-right:5px;
+    cursor:pointer;
+}
+
+.templateCardDeleteButton {
+    position: absolute;
+    bottom: 0px;
+    right: 0px;
+    background: transparent;
+    border: 0;
+}
+
+.inlineInput {
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.bottomMenuButton {
+    margin:5px !important;
+    border-radius:0;    
+    width:350px;
+    border:1px solid black;
+}
+
+
+
+.actionButtonItem {
+    border: 0;
+    background: transparent;
+    font-size: 14px;
+    color: black;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    padding-left:5px;
+    height:20px;
+    width: 348px;
+    text-align: left;
+}
+
+button.actionButtonItem:hover {
+    background:lightblue;
+}
+
+.actionButtonDivider {
+    height: 5px;
+    margin: 0;
+}
+
+.itemLabelsButton {
+    float:left;
+    margin:10px;
+    cursor:pointer;
+}
+
+.selectItemLabelsButton  {
+    width:100px;    
+    height:25px;
+    border-radius:0;
+    color:black;
+    margin-bottom:10px;
+    border:1px solid lightgray;
+}
+
+.mailOptionButtonInsert {
+    /*background:transparent;
+    border:0;*/
+}
+
+
+.mailOptionButtonInsert:before {
+    background:transparent;
+    font-family: FontAwesome;
+    content: "\f044 ";
+    color:black;
+    font-size:1.5em;
+}
+
+.mailOption {
+    color:white;
+    cursor:pointer;
+    background:transparent;
+    border:0;
+    display:block;
+    font-size:14px;
+}
+
+.mailOption:hover {
+    color:white;
+    cursor:pointer;text-decoration:underline;
+}
+
+.buttonWithIcon {
+     background:transparent;
+     border:0;
+}
+
+.buttonHeart:before {
+    font-family: FontAwesome;
+    content: "\f004 ";
+    font-size:1.5em;
+}
+
+.selectScreenTemplate select{
+    display:inline;
+    margin:5px;
+    width:400px;
+    height:32px;
+}
+
+.selectScreenTemplate div{
+    display:inline;
+    margin:5px;
+    width:40px;
+    height:32px;
+}
+
+.selectScreenOptions {
+    display:inline;
+    margin:5px;
+    width:400px;
+    height:32px;
+}
+
+.selectScreenOptions input {
+    display:inline;
+}
+
+.screenType {
+    font-size:1.3em;
+    font-weight:bold;
+}
+
+.marginTop30 {
+    margin-top:30px;
+}
+
+#contentSessionWizard5 label {
+    font-size:0.8em;
+}
+
+.btn-color {
+    z-index:10000000;
+}
+
+.text-bold {
+    font-weight:bold;
+}
+
+.addControlButton:disabled {
+    opacity:0.2;
+    cursor:not-allowed;
+}
+
+
+
+.navbar-right > li > a {
+    padding-right:15px;
+    padding-left:0;
+}
+
+.expDesignButton {
+    display:inline;
+    margin-right:10px;
+    font-weight:bold;
+    border:1px solid lightgray;
+    border-bottom:0;
+    color:gray;
+}
+
+.expDesignButton:hover {
+    background:#e4dfdf;
+}
+
+.expDesignButton.selected {
+    background:white;
+}
+
+.localDBLabel {
+    height:38px;
+    max-height:38px;
+    overflow:hidden;
+    cursor:pointer;
+}
+
+.localDBLabelButton {
+    height:24px;
+    width:24px;
+    line-height:24px;
+    background:transparent;
+    border:1px solid gray;    
+    padding:0;
+    margin:0;    
+    margin-right:1px;
+}
+
+.localDBLabelButton  i {
+    height:24px;
+    line-height:24px;
+    width:24px;
+    padding:0;
+    margin:0;
+    color:black;
+    font-size:16px;
+}
+
+.miniatureOptions {
+    position:absolute;
+    bottom:10px;
+    left:10px;
+}
+
+.modal-body {
+    max-height:80vh !important;
+
+}
+
+.noMaxHeight {
+    max-height:3000px !important;
+}
+
+.btnResetPasswords {
+    background:transparent;
+    border:0;
+    text-align:center;
+    margin-top:30px;
+}
+
+.disabledScreen:after {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.1);
+    font-family: 'FontAwesome';
+    content: "\f023";
+    font-size:100px;
+    text-align:center;
+    color:white;
+    text-shadow:2px 2px 2px #333;
+}
+
+.reportHeader {
+    background:lightblue;
+    padding:5px;
+    margin-bottom:10px;
+}
+
+.transparentDisabled:disabled {
+    background:white;
+}
+
+
+font[size='1'] {
+    font-size: 0.5em !important;    
+}
+font[size='2'] {
+    font-size: 0.75em !important;
+}
+font[size='3'] {
+    font-size: 1em !important;
+}
+font[size='4'] {
+    font-size: 1.25em !important;
+}
+font[size='5'] {
+    font-size: 1.5em !important;
+}
+font[size='6'] {
+    font-size: 2em !important;
+}

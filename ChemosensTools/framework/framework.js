@@ -6,6 +6,8 @@ var __extends = (this && this.__extends) || (function () {
         return extendStatics(d, b);
     };
     return function (d, b) {
+        if (typeof b !== "function" && b !== null)
+            throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
         extendStatics(d, b);
         function __() { this.constructor = d; }
         d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
@@ -492,7 +494,7 @@ var Framework;
             //    document.write("<p>Please click on your browser's Home button.< /p>");
             //}
             var ua = navigator.userAgent;
-            var browser = /Edge\/\d+/.test(ua) ? 'ed' : /MSIE 9/.test(ua) ? 'ie9' : /MSIE 10/.test(ua) ? 'ie10' : /MSIE 11/.test(ua) ? 'ie11' : /MSIE\s\d/.test(ua) ? 'ie?' : /rv\:11/.test(ua) ? 'ie11' : /Firefox\W\d/.test(ua) ? 'ff' : /Chrom(e|ium)\W\d|CriOS\W\d/.test(ua) ? 'gc' : /\bSafari\W\d/.test(ua) ? 'sa' : /\bOpera\W\d/.test(ua) ? 'op' : /\bOPR\W\d/i.test(ua) ? 'op' : typeof MSPointerEvent !== 'undefined' ? 'ie?' : '';
+            var browser = /Edge\/\d+/.test(ua) ? 'ed' : /MSIE 9/.test(ua) ? 'ie9' : /MSIE 10/.test(ua) ? 'ie10' : /MSIE 11/.test(ua) ? 'ie11' : /MSIE\s\d/.test(ua) ? 'ie?' : /rv\:11/.test(ua) ? 'ie11' : /Firefox\W\d/.test(ua) ? 'ff' : /Chrom(e|ium)\W\d|CriOS\W\d/.test(ua) ? 'gc' : /\bSafari\W\d/.test(ua) ? 'sa' : /\bOpera\W\d/.test(ua) ? 'op' : /\bOPR\W\d/i.test(ua) ? 'op' : typeof PointerEvent !== 'undefined' ? 'ie?' : '';
             var os = /Windows NT 10/.test(ua) ? "win10" : /Windows NT 6\.0/.test(ua) ? "winvista" : /Windows NT 6\.1/.test(ua) ? "win7" : /Windows NT 6\.\d/.test(ua) ? "win8" : /Windows NT 5\.1/.test(ua) ? "winxp" : /Windows NT [1-5]\./.test(ua) ? "winnt" : /Mac/.test(ua) ? "mac" : /Linux/.test(ua) ? "linux" : /X11/.test(ua) ? "nix" : "";
             var touch = 'ontouchstart' in document.documentElement;
             var mobile = /IEMobile|Windows Phone|Lumia/i.test(ua) ? 'w' : /iPhone|iP[oa]d/.test(ua) ? 'i' : /Android/.test(ua) ? 'a' : /BlackBerry|PlayBook|BB10/.test(ua) ? 'b' : /Mobile Safari/.test(ua) ? 's' : /webOS|Mobile|Tablet|Opera Mini|\bCrMo\/|Opera Mobi/i.test(ua) ? 1 : 0;
@@ -946,11 +948,11 @@ var Framework;
         Modal_1.Alert = Alert;
         var Modal = /** @class */ (function () {
             function Modal(canClose, css, grayBackground, backdrop) {
-                var _this = this;
                 if (canClose === void 0) { canClose = true; }
                 if (css === void 0) { css = []; }
                 if (grayBackground === void 0) { grayBackground = true; }
                 if (backdrop === void 0) { backdrop = false; }
+                var _this = this;
                 this.backdrop = false;
                 this.OnClose = undefined;
                 this.IsVisible = false;
@@ -4648,7 +4650,8 @@ var Framework;
                 if (errorMessage === void 0) { errorMessage = "NotEmpty"; }
                 var res = new CustomValidator();
                 var f = function (text) {
-                    return IsNotEmpty(text, errorMessage);
+                    //return IsNotEmpty(text, errorMessage);
+                    return "";
                 };
                 res.Function = f;
                 res.ErrorMessage = errorMessage;
@@ -4811,7 +4814,7 @@ var Framework;
                 if (customFormats === void 0) { customFormats = undefined; }
                 var format = "XLSX";
                 var content = document.createElement("div");
-                var formats = ["XLSX", "CSV",];
+                var formats = ["XLSX", "CSV", /*, "PDF"*/];
                 var customF = [];
                 if (customFormats) {
                     customFormats.forEach(function (x) {
@@ -6841,7 +6844,7 @@ var Framework;
                 if (customFormats === void 0) { customFormats = undefined; }
                 var format = "XLSX";
                 var content = document.createElement("div");
-                var formats = ["XLSX", "CSV",];
+                var formats = ["XLSX", "CSV", /*, "PDF"*/];
                 var customF = [];
                 if (customFormats) {
                     customFormats.forEach(function (x) {
@@ -8213,7 +8216,7 @@ var Framework;
                 var fileReader = new FileReader();
                 fileReader.onload = function (e) {
                     var binaries = fileReader.result;
-                    onLoad(binaries);
+                    onLoad(binaries, file.name);
                 };
                 fileReader.readAsDataURL(file);
                 document.body.removeChild(input);
@@ -13487,9 +13490,9 @@ var Framework;
             var r = (+colors[0]).toString(16);
             var g = (+colors[1]).toString(16);
             var b = (+colors[2]).toString(16);
-            r = ("0" + r).slice(-2);
-            g = ("0" + g).slice(-2);
-            b = ("0" + b).slice(-2);
+            r = "0".concat(r).slice(-2);
+            g = "0".concat(g).slice(-2);
+            b = "0".concat(b).slice(-2);
             return "#" + r + g + b;
         };
         Editor.prototype.onAction = function (e, ed) {

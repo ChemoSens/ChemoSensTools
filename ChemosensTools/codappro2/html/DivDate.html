@@ -1,0 +1,61 @@
+﻿<div id="divDate" class="container">
+    <div class="row">
+        <div class="col">
+
+            <span tabindex="0" id="prevent-outside-tab"></span>
+
+            <div class="input-group">
+                <h5 id="h5Date"><strong>Veuillez saisir la date de l'approvisionnement</strong></h5>
+                <input tabindex="0" type="date" class="form-control" placeholder="Date (format JJ/MM/YYYY)" id="inputDate" style="width:75%;padding-left:10px">
+            </div>
+
+
+            <div class="input-group mt-5">
+                <h5 id="h5Lieu"><strong>Veuillez saisir le lieu d'approvisionnement</strong></h5>
+                <input tabindex="0" type="text" class="form-control" autocomplete="off" placeholder="Lieu d'achat" id="inputLieu" list="selectLieu" style="display:inline!important;width:75%">
+                <button tabindex="-1" id="btnLieuChecked" class="btn btn-primary" style="display:inline!important;"></button>
+                <datalist tabindex="0" id="selectLieu"></datalist>
+            </div>
+
+            <div class="input-group mt-5" id="divTicketMenu">
+                <h5 id="h5Ticket"><strong>Ce ticket correspond-t'il à un colis alimentaire ou à un menu de restaurant où les prix individuels des aliments ne sont pas séparables ?</strong></h5>
+                <div class="form-check form-check-inline">
+                    <input tabindex="0" class="form-check-input" type="radio" value="O" name="inputTicketMenu" id="inputTicketMenuO">
+                    <label id="labelO" class="form-check-label" for="inputTicketMenuO" style="font-weight:normal">Oui</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input tabindex="0" class="form-check-input" type="radio" value="N" name="inputTicketMenu" id="inputTicketMenuN">
+                    <label id="labelN" class="form-check-label" for="inputTicketMenuN" style="font-weight:normal">Non</label>
+                </div>
+                <div class="input-group mt-5" id="divTicketPrix">
+                    <h5 id="h5TicketPrix"><strong>Veuillez saisir le prix total TTC du menu/colis, en euros</strong></h5>
+                    <input tabindex="0" type="text" class="form-control" placeholder="Prix TTC (€)" id="inputPrix">
+                </div>
+            </div>
+
+            <div class="input-group mt-5" id="divChequeAlimentaire">
+                <h5 id="h5MontantChequeAlimentaire"><strong>Veuillez saisir le montant total de chèques alimentaires utilisés lors du passage en caisse</strong></h5>
+                <input tabindex="0" type="text" class="form-control" placeholder="Montant du chèque TTC (€)" id="inputChequeAlimentaire">
+            </div>
+
+            <div class="form-group text-center mt-5">
+                <button tabindex="0" id="btnPhoto" class="btn btn-primary btn-lg" style="width:100%" type="submit">Prendre une photo</button>
+            </div>
+
+            <div class="form-group text-center mt-5">
+                <button tabindex="0" id="btnUpload" class="btn btn-primary btn-lg" style="width:100%" type="submit">Téléverser une photo</button>
+            </div>
+
+            <div class="form-group text-center mt-5">
+                <button tabindex="0" id="btnContinuer" class="btn btn-primary btn-lg" style="width:100%" type="submit">Continuer</button>
+            </div>
+
+            <div class="form-group text-center mt-5">
+                <button tabindex="0" id="btnVoirFactures" class="btn btn-primary btn-lg hidden" style="width:100%" type="submit">Voir les factures saisies</button>
+            </div>
+
+            <span tabindex="0" id="lastSpan"></span>
+
+        </div>
+    </div>
+</div>

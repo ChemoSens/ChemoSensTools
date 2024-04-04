@@ -1,0 +1,397 @@
+﻿[
+	{
+		"key": "AutoSynchronize",
+		"en": "Synchronization",
+		"fr": "Synchronisation"
+	},
+	{
+		"key": "Browse",
+		"en": "Browse...",
+		"fr": "Parcourir..."
+	},
+	{
+		"key": "BrowserCompatibility",
+		"en": "Your browser is compatible.",
+		"fr": "Votre navigateur est compatible."
+	},
+	{
+		"key": "BrowserCompatibilityIssue",
+		"en": "Your browser presents some compatibility issues.",
+		"fr": "Votre navigateur présente des problèmes de compatibilité."
+	},
+	{
+		"key": "BrowserNotCompatible",
+		"en": "Your browser is not compatible with this application.",
+		"fr": "Votre navigateur n'est compatible avec cette application."
+	},
+	{
+		"key": "BrowserNotCompatibleDetail",
+		"en": "You should use the latest version of Chrome or Firefox.",
+		"fr": "Nous vous recommandons d'utiliser la dernière version de Chrome ou Firefox."
+	},
+	{
+		"key": "BrowserReadFileSystemNotEnabled",
+		"en": "Your browser does not allow local files to be read.",
+		"fr": "Votre navigateur n'autorise pas la lecture de fichiers locaux."
+	},
+	{
+		"key": "ChangeLog",
+		"en": "Change log",
+		"fr": "Historique des mises à jour"
+	},
+	{
+		"key": "ClickToSeeChangeLog",
+		"en": "Click to see change log.",
+		"fr": "Cliquez pour voir l'historique des versions."
+	},
+	{
+		"key": "CompletedSession",
+		"en": "Completed session.",
+		"fr": "Séance terminée."
+	},
+	{
+		"key": "ConfirmLockUI",
+		"en": "Do you want to lock some functionalities of UI? If yes please enter a password:",
+		"fr": "Voulez-vous bloquer certaines fonctionnalités de l'interface ? Si oui veuillez entrer un mot de passe :"
+	},
+	{
+		"key": "ConfirmRemoval",
+		"en": "Do you want to delete selected sessions?",
+		"fr": "Voulez-vous supprimer les séances sélectionnées ?"
+	},
+	{
+		"key": "ConfirmReset",
+		"en": "Do you want to reset selected sessions?",
+		"fr": "Voulez-vous réinitialiser les séances sélectionnées ?"
+	},
+	{
+		"key": "DownloadSessions",
+		"en": "Download sessions",
+		"fr": "Télécharger"
+	},
+	{
+		"key": "FullScreen",
+		"en": "Full screen",
+		"fr": "Plein écran"
+	},
+	{
+		"key": "GoToMainMenu",
+		"en": "Menu principal",
+		"fr": "Main menu"
+	},
+	{
+		"key": "Help",
+		"en": "Help",
+		"fr": "Aide"
+	},
+	{
+		"key": "Info",
+		"en": "Info",
+		"fr": "Info"
+	},
+	{
+		"key": "Install",
+		"en": "Install",
+		"fr": "Installation"
+	},
+	{
+		"key": "InstallInstructions",
+		"en": "Add a bookmark to this page.",
+		"fr": "Ajouter ce site à vos favoris."
+	},
+	{
+		"key": "InternetAccess",
+		"en": "Internet connexion",
+		"fr": "Accès internet"
+	},
+	{
+		"key": "InternetAccessDisable",
+		"en": "You are offline (no internet connexion).",
+		"fr": "Vous êtes hors ligne (pas d'accès internet)."
+	},
+	{
+		"key": "InternetAccessEnable",
+		"en": "You are on-line (connected to internet).",
+		"fr": "Vous êtes en ligne (connecté à Internet)."
+	},
+	{
+		"key": "InvalidFile",
+		"en": "Non valid file.",
+		"fr": "Fichier non valide."
+	},
+	{
+		"key": "InvalidInput",
+		"en": "Invalid input.",
+		"fr": "Saisie non valide."
+	},
+	{
+		"key": "Language",
+		"en": "Language",
+		"fr": "Langue"
+	},
+	{
+		"key": "LastAccess",
+		"en": "Last update",
+		"fr": "Dernière MAJ"
+	},
+	{
+		"key": "LastDownload",
+		"en": "Last synchronization",
+		"fr": "Dernière synchronisation"
+	},
+	{
+		"key": "LoadingFile",
+		"en": "Loading file...",
+		"fr": "Chargement du fichier en cours..."
+	},
+	{
+		"key": "LocalProgressFound",
+		"en": "Progrès local trouvé",
+		"fr": "Local progress found"
+	},
+	{
+		"key": "LocalProgressFoundDetail",
+		"en": "A record matching this session exists. Do you want to continue this session?",
+		"fr": "Un enregistrement correspond à cette séance existe. Voulez-vous reprendre la séance où elle s'était arrêtée ?"
+	},
+	{
+		"key": "LocalSessions",
+		"en": "Local sessions",
+		"fr": "Séances locales"
+	},
+	{
+		"key": "LocalSessionsSynchronized",
+		"en": "Local sessions synchronized.",
+		"fr": "Séances locales synchronisées."
+	},
+	{
+		"key": "LocalStorage",
+		"en": "Local storage",
+		"fr": "Stockage local"
+	},
+	{
+		"key": "LocalStorageAlmostFull",
+		"en": "Local storage almost full.",
+		"fr": "Stockage local bientôt rempli."
+	},
+	{
+		"key": "LocalStorageDisable",
+		"en": "Local storage disable.",
+		"fr": "Le stockage local est désactivé."
+	},
+	{
+		"key": "LocalStorageEnable",
+		"en": "Local storage enable.",
+		"fr": "Le stockage local est activé."
+	},
+	{
+		"key": "LocalStorageNotAvailable",
+		"en": "Local storage not available on your browser.",
+		"fr": "Le stockage local n'est pas autorisé par votre navigateur."
+	},
+	{
+		"key": "Lock",
+		"en": "Lock",
+		"fr": "Verrouillage"
+	},
+	{
+		"key": "LockUI",
+		"en": "Lock UI",
+		"fr": "Verrouillage de l'interface"
+	},
+	{
+		"key": "MainMenu",
+		"en": "Main menu",
+		"fr": "Menu principal"
+	},
+	{
+		"key": "MIN_TIME_BETWEEN_CONNEXIONS",
+		"en": "Minimum time between connections not elapsed.",
+		"fr": "Le temps minimal entre deux connexions n'a pas été respecté."
+	},
+	{
+		"key": "NewTicket",
+		"en": "Nouveau ticket",
+		"fr": "New ticket"
+	},
+	{
+		"key": "NewTicketContent",
+		"en": "Message to be sent to the Panel Leader:",
+		"fr": "Message à envoyer au Panel Leader : "
+	},
+	{
+		"key": "NewVersionAvailable",
+		"en": "A new version is available. Click on OK to restart.",
+		"fr": "Une nouvelle version est disponible. Cliquez sur OK pour relancer l'application."
+	},
+	{
+		"key": "NewVersionDetected",
+		"en": "New version detected",
+		"fr": "Nouvelle version détectée"
+	},
+	{
+		"key": "NoMatchingServerCodeFound",
+		"en": "No matching server code found.",
+		"fr": "Pas de code serveur correspondant."
+	},
+	{
+		"key": "Password",
+		"en": "Password",
+		"fr": "Mot de passe"
+	},
+	{
+		"key": "PleaseEnterServerCodeAndPassword",
+		"en": "Please enter server code and password of the session:",
+		"fr": "Veuillez saisir le code serveur et le mot de passe de la séance : "
+	},
+	{
+		"key": "PleaseEnterSessionURL",
+		"en": "Please enter the URL of the session: ",
+		"fr": "Veuillez saisir l'URL de la séance : "
+	},
+	{
+		"key": "PleaseFillInTheForm",
+		"en": "Please fill in the form: ",
+		"fr": "Veuillez remplir le formulaire : "
+	},
+	{
+		"key": "PleaseSelectLocalFileOnYourDevice",
+		"en": "Please select a file on local drive: ",
+		"fr": "Veuillez choisir un fichier sur le disque local : "
+	},
+	{
+		"key": "Progress",
+		"en": "Progress",
+		"fr": "Avancement"
+	},
+	{
+		"key": "ReportAProblem",
+		"en": "Report a problem",
+		"fr": "Reporter un problème"
+	},
+	{
+		"key": "Reset",
+		"en": "Reset",
+		"fr": "Réinitialiser"
+	},
+	{
+		"key": "SaveAsZip",
+		"en": "Save as ZIP file",
+		"fr": "Enregistrer (ZIP)"
+	},
+	{
+		"key": "SaveProgress",
+		"en": "Enregistrer l'avancement",
+		"fr": "Save progress"
+	},
+	{
+		"key": "SelectSubjectInTheDropDownList",
+		"en": "You can select your subject code in the dropdown list.",
+		"fr": "Vous pouvez choisir votre code juge dans la liste déroulante."
+	},
+	{
+		"key": "ServerCode",
+		"en": "Session code",
+		"fr": "Code séance"
+	},
+	{
+		"key": "ServerCodeRequired",
+		"en": "Server code required.",
+		"fr": "Code serveur requis."
+	},
+	{
+		"key": "Settings",
+		"en": "Settings",
+		"fr": "Réglages"
+	},
+	{
+		"key": "Show",
+		"en": "Show",
+		"fr": "Affichage"
+	},
+	{
+		"key": "Size",
+		"en": "Size",
+		"fr": "Espace disque"
+	},
+	{
+		"key": "StartFromLocalFile",
+		"en": "From local file",
+		"fr": "Depuis un fichier local"
+	},
+	{
+		"key": "StartFromServerCode",
+		"en": "From code",
+		"fr": "Depuis un code"
+	},
+	{
+		"key": "StartFromUrl",
+		"en": "From URL",
+		"fr": "Depuis une URL"
+	},
+	{
+		"key": "StartSession",
+		"en": "Start a session",
+		"fr": "Lancer une séance"
+	},
+	{
+		"key": "SubjectCode",
+		"en": "Subject code",
+		"fr": "Code juge"
+	},
+	{
+		"key": "SubjectCodeRequired",
+		"en": "Subject code required.",
+		"fr": "Code juge requis."
+	},
+	{
+		"key": "Synchronize",
+		"en": "Synchronize",
+		"fr": "Synchroniser"
+	},
+	{
+		"key": "TimeSensForPanelist",
+		"en": "TimeSens for panelist",
+		"fr": "TimeSens pour panéliste"
+	},
+	{
+		"key": "UnableToDownloadListOfSubjects",
+		"en": "Unable to download list of subjects.",
+		"fr": "Impossible de télécharger la liste des sujets."
+	},
+	{
+		"key": "UnableToDownloadSubjectSession",
+		"en": "Unable to download session.",
+		"fr": "Impossible de télécharger la séance."
+	},
+	{
+		"key": "UnableToSaveToLocalStorage",
+		"en": "Local storage save failed.",
+		"fr": "La sauvegarde locale a échoué."
+	},
+	{
+		"key": "Unlock",
+		"en": "Unlock",
+		"fr": "Déverrouillage"
+	},
+	{
+		"key": "UnlockUI",
+		"en": "Please enter password to unlock UI:",
+		"fr": "Veuillez saisir le mot de passe pour débloquer l'interface:"
+	},
+	{
+		"key": "Upload",
+		"en": "Upload",
+		"fr": "Envoyer"
+	},
+	{
+		"key": "VirtualKeyboard",
+		"en": "Virtual keyboard",
+		"fr": "Clavier virtuel"
+	},
+	{
+		"key": "WrongPassword",
+		"en": "Wrong password",
+		"fr": "Mot de passe incorrect"
+	}
+]
