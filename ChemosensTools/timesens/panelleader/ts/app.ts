@@ -4262,9 +4262,10 @@
                 if (this.selectedDesign.Type == "Product") {
 
                     let col = new Framework.Form.TableColumn();
-                    col.Name = "Image";
-                    col.Title = Framework.LocalizationManager.Get("Image");
-                    col.Type = "image";
+                    //col.Name = "Image";
+                    col.Name = "ImageURL";
+                    col.Title = Framework.LocalizationManager.Get("Image URL");
+                    //col.Type = "image";
                     col.Filterable = false;
                     col.Sortable = false;
                     //col.Width = "90px";
@@ -4579,6 +4580,14 @@
                 //col5.Width = "160px";
                 col6.MinWidth = 160;
                 this.TableSubject.ListColumns.push(col6);
+
+                let col7 = new Framework.Form.TableColumn();
+                col7.Name = "URL";
+                col7.Title = Framework.LocalizationManager.Get("URL");
+                //col5.Width = "160px";
+                col7.MinWidth = 160;
+                this.TableSubject.ListColumns.push(col7);
+                
 
                 //let col6 = new Framework.Form.TableColumn();
                 //col6.Name = "Gender";

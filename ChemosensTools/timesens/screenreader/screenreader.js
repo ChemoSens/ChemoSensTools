@@ -658,11 +658,15 @@ var ScreenReader;
                         });
                     }
                 }
-                if (control instanceof Controls.CustomImage && control._Source == "Product") {
+                if (control._Type == "CustomImage" && control._Source == "ProductURL") {
                     var currentDesign = _subjectSessionReader.Session.ListExperimentalDesigns.filter(function (x) { return x.Id == _subjectSessionReader.CurrentScreen.Screen.ExperimentalDesignId; })[0];
-                    var binaries = currentDesign.ListItems.filter(function (x) { return x.Code == _subjectSessionReader.CurrentScreen.ProductCode; })[0].Image;
-                    if (binaries) {
-                        control.SetBinaries(binaries);
+                    //let binaries = currentDesign.ListItems.filter((x) => { return x.Code == _subjectSessionReader.CurrentScreen.ProductCode })[0].Image;
+                    //if (binaries) {
+                    //    (<Controls.CustomImage>control).SetBinaries(binaries);
+                    //}
+                    var url = currentDesign.ListItems.filter(function (x) { return x.Code == _subjectSessionReader.CurrentScreen.ProductCode; })[0].ImageURL;
+                    if (url) {
+                        control.SetURL(url);
                     }
                 }
                 if (control._Type == "CustomChronometer") {
@@ -727,6 +731,12 @@ var ScreenReader;
                                 case "GoToUrlAndGoToNextPage":
                                     // Propage l'événement OnNavigate  
                                     _subjectSessionReader.goToNextScreen_ButtonClick(_customButton, "nothing", function () { _subjectSessionReader.onNavigation(_customButton._URL); });
+                                    break;
+                                case "GoToSubjectUrlAndGoToNextPage":
+                                    // Propage l'événement OnNavigate  
+                                    _subjectSessionReader.goToNextScreen_ButtonClick(_customButton, "nothing", function () {
+                                        _subjectSessionReader.onNavigation(_subjectSessionReader.Session.Subject.URL);
+                                    });
                                     break;
                                 case "StartChronometer":
                                     _subjectSessionReader.start_ButtonClick(_customButton);
@@ -4241,7 +4251,7 @@ var ScreenReader;
             };
             CustomButton.prototype.getActionList = function () {
                 var list = ["GoToPreviousPage", "GoToNextPage", /*"CloseApplication"*/ , "GoToLoginScreen", "GoToScreen", "GoToUrl", "GoToUrlAndGoToNextPage",
-                    "TDS", "SaveEvent", "SaveEventThenGoToNextPage", "StartSameSession", "HideControl", "ShowControl"];
+                    "TDS", "SaveEvent", "SaveEventThenGoToNextPage", "StartSameSession", "HideControl", "ShowControl", "GoToSubjectUrlAndGoToNextPage"];
                 if (this.screen.Controls.filter(function (x) { return x instanceof ScreenReader.Controls.DataControl; }).length > 0) {
                     list.push("StartChronometer");
                     list.push("StopChronometer");
@@ -11098,7 +11108,10 @@ var ScreenReader;
             CustomImage.prototype.SetBinaries = function (binaries) {
                 this._Binaries = binaries;
             };
-            CustomImage.SourceEnum = ["None", "LocalImage", "ExternalImage" /*, "Product"*/];
+            CustomImage.prototype.SetURL = function (url) {
+                this._URL = url;
+            };
+            CustomImage.SourceEnum = ["None", "LocalImage", "ExternalImage", "ProductURL"];
             return CustomImage;
         }(BaseControl));
         Controls.CustomImage = CustomImage;
@@ -11594,7 +11607,7 @@ var ScreenReader;
                 this.ValidationMessage = "";
                 this.IsValid = true;
                 for (var i = 0; i < this.ListData.length; i++) {
-                    if (this.ListData[i].Description.length < 5) {
+                    if (this.ListData[i].Description == undefined || this.ListData[i].Description.length < 5) {
                         self.IsValid = false;
                         self.ValidationMessage += "Longueur minimale de 5 caractères pour (groupe" + this.ListData[i].Group + ")";
                     }
@@ -11654,7 +11667,7 @@ var ScreenReader;
                     var input = Framework.Form.InputText.Create("", function (newVal, sender) {
                         var group = sender.CustomAttributes.Get("group");
                         var data = self.ListData.filter(function (x) { return x.Group == group; });
-                        data[0].Description = newVal;
+                        data.forEach(function (x) { return x.Description = newVal; });
                         self.validate();
                     }, Framework.Form.Validator.MinLength(4), true);
                     input.CustomAttributes.Add("group", x.Group);

@@ -745,11 +745,15 @@
 
                 }
 
-                if (control instanceof Controls.CustomImage && (<Controls.CustomImage>control)._Source == "Product") {
+                if (control._Type == "CustomImage" && (<Controls.CustomImage>control)._Source == "ProductURL") {
                     let currentDesign = _subjectSessionReader.Session.ListExperimentalDesigns.filter((x) => { return x.Id == _subjectSessionReader.CurrentScreen.Screen.ExperimentalDesignId })[0];
-                    let binaries = currentDesign.ListItems.filter((x) => { return x.Code == _subjectSessionReader.CurrentScreen.ProductCode })[0].Image;
-                    if (binaries) {
-                        (<Controls.CustomImage>control).SetBinaries(binaries);
+                    //let binaries = currentDesign.ListItems.filter((x) => { return x.Code == _subjectSessionReader.CurrentScreen.ProductCode })[0].Image;
+                    //if (binaries) {
+                    //    (<Controls.CustomImage>control).SetBinaries(binaries);
+                    //}
+                    let url = currentDesign.ListItems.filter((x) => { return x.Code == _subjectSessionReader.CurrentScreen.ProductCode })[0].ImageURL;
+                    if (url) {
+                        (<Controls.CustomImage>control).SetURL(url);
                     }
                 }
 
@@ -823,9 +827,13 @@
                                     break;
                                 case "GoToUrlAndGoToNextPage":
                                     // Propage l'événement OnNavigate  
-
                                     _subjectSessionReader.goToNextScreen_ButtonClick(_customButton, "nothing", () => { _subjectSessionReader.onNavigation(_customButton._URL); });
-
+                                    break;
+                                case "GoToSubjectUrlAndGoToNextPage":
+                                    // Propage l'événement OnNavigate  
+                                    _subjectSessionReader.goToNextScreen_ButtonClick(_customButton, "nothing", () => {
+                                        _subjectSessionReader.onNavigation(_subjectSessionReader.Session.Subject.URL);
+                                    });
                                     break;
                                 case "StartChronometer":
                                     _subjectSessionReader.start_ButtonClick(_customButton);
@@ -5024,7 +5032,7 @@
 
             private getActionList() {
                 let list: string[] = ["GoToPreviousPage", "GoToNextPage",/*"CloseApplication"*/, "GoToLoginScreen", "GoToScreen", "GoToUrl", "GoToUrlAndGoToNextPage",
-                    "TDS", "SaveEvent", "SaveEventThenGoToNextPage", "StartSameSession", "HideControl", "ShowControl"];
+                    "TDS", "SaveEvent", "SaveEventThenGoToNextPage", "StartSameSession", "HideControl", "ShowControl","GoToSubjectUrlAndGoToNextPage"];
 
                 if (this.screen.Controls.filter((x) => { return x instanceof ScreenReader.Controls.DataControl }).length > 0) {
                     list.push("StartChronometer");
@@ -13057,7 +13065,7 @@
             private image: HTMLImageElement;
             public _Source: string = "None";
 
-            public static SourceEnum: string[] = ["None", "LocalImage", "ExternalImage"/*, "Product"*/];
+            public static SourceEnum: string[] = ["None", "LocalImage", "ExternalImage", "ProductURL"];
 
             public GetEditableProperties(mode: string = "edition"): Framework.Form.PropertyEditor[] {
 
@@ -13203,6 +13211,10 @@
 
             public SetBinaries(binaries: string) {
                 this._Binaries = binaries;
+            }
+
+            public SetURL(url: string) {
+                this._URL = url;
             }
 
         }

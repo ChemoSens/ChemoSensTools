@@ -680,6 +680,7 @@
         public ProfessionalActivity: string = "";
         public FamilialStatus: string = "";
         public Notes: string = "";
+        public URL: string = "";
 
         // Supprimer
         public static GetDataTableParameters(listSubjects: Models.Subject[], additionalFields: PanelLeaderModels.DBField[], onChange: (subject: Models.Subject, propertyName: string, oldValue: string, newValue: string) => void): Framework.Form.DataTableParameters {
@@ -696,7 +697,8 @@
                 { data: "Address", title: Framework.LocalizationManager.Get("Address") }, //OK
                 //TODO{ data: "BirthDate", title: Localization.Get("BirthDate") },
                 { data: "Gender", title: Framework.LocalizationManager.Get("Gender") },
-                { data: "Notes", title: Framework.LocalizationManager.Get("Notes") } //OK
+                { data: "Notes", title: Framework.LocalizationManager.Get("Notes") }, //OK
+                { data: "URL", title: Framework.LocalizationManager.Get("URL") } //OK
             ];
 
             PanelLeaderModels.DBField.ExtendDataTableColumnsWithDBFields(additionalFields, subjectsColumns);
@@ -2029,7 +2031,8 @@
         public DefaultRank: number;
         public LongName: string;
         public Color: string;
-        public Image: string = "";
+        /*public Image: string = "";*/
+        public ImageURL: string = "";
         public Description: string = "";
         public Notes: string = "";
 
