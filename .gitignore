@@ -353,6 +353,7 @@ ChemosensTools/consodrive/publi/
 ChemosensTools/crocnoteurs/data/
 ChemosensTools/crocnoteurs/doc/
 ChemosensTools/crocnoteurs/fcLexicon/data/
+ChemosensTools/consotextplorer/data/
 ChemosensTools/Framework/doc/
 ChemosensTools/inca3Classifier/
 ChemosensTools/invoiceAnalyzer/data/
@@ -365,6 +366,7 @@ ChemosensTools/recette/
 ChemosensTools/sensas/data/
 ChemosensTools/taxonomy/
 ChemosensTools/timesens/data/
+ChemosensTools/timesens/directories/
 ChemosensTools/debug.log
 ChemosensTools/*.dll
 ChemosensTools/*.config
