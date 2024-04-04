@@ -6,6 +6,8 @@ var __extends = (this && this.__extends) || (function () {
         return extendStatics(d, b);
     };
     return function (d, b) {
+        if (typeof b !== "function" && b !== null)
+            throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
         extendStatics(d, b);
         function __() { this.constructor = d; }
         d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
@@ -48,8 +50,14 @@ var AnalysesApp = /** @class */ (function (_super) {
     AnalysesApp.prototype.start = function (fullScreen) {
         if (fullScreen === void 0) { fullScreen = false; }
         _super.prototype.start.call(this, fullScreen);
-        //let self = this;
-        this.showModalLogin();
+        if (window.location.href.indexOf("tds_analyses") > -1) {
+            this.showModalLogin();
+        }
+        else {
+            this.login = "test";
+            this.password = "test";
+            this.showMain("Main", "");
+        }
     };
     AnalysesApp.prototype.showModalLogin = function () {
         var self = this;
@@ -76,7 +84,7 @@ var AnalysesApp = /** @class */ (function (_super) {
                         self.login = inputLoginId.Value;
                         self.password = inputLoginPassword.Value;
                         mw.Close();
-                        self.showMain();
+                        self.showMain("tds_analyses", "tds_analyses");
                     }
                     else {
                         divLoginError.SetHtml(res.ErrorMessage);
@@ -87,28 +95,29 @@ var AnalysesApp = /** @class */ (function (_super) {
             mw.AddButton(btnLogin);
         });
     };
-    AnalysesApp.prototype.showMain = function () {
+    AnalysesApp.prototype.showMain = function (location, app) {
         var self = this;
-        this.show("html/Main.html", function () {
-            var btnAnalysesTDS = Framework.Form.Button.Register("btnAnalysesTDS", function () { return true; }, function () {
-                Framework.FileHelper.BrowseBinaries("xlsx", function (binaries) {
-                    self.CallWCF('RAnalyze', { login: self.login, password: self.password, analysis: "tds", data: binaries }, function () {
-                        Framework.Progress.Show(Framework.LocalizationManager.Get("Computation..."));
-                    }, function (res) {
-                        Framework.Progress.Hide();
-                        if (res.Status == 'success') {
-                            var result = JSON.parse(res.Result);
-                            var URL_1 = result.URL;
-                            Framework.Browser.OpenNew(URL_1);
-                            //let log = result.Log;
-                            //Framework.Modal.Alert("Log", log, () => {
-                            //    Framework.FileHelper.SaveBase64As(result.PPTasString, "report.pptx");
-                            //})
-                        }
-                        else {
-                            Framework.Modal.Alert("Erreur", res.ErrorMessage);
-                        }
-                    });
+        this.show("html/" + location + ".html", function () {
+            self.run(app);
+        });
+    };
+    AnalysesApp.prototype.run = function (app) {
+        var self = this;
+        var btnAnalysesTDS = Framework.Form.Button.Register("btnAnalysesTDS", function () { return true; }, function () {
+            Framework.FileHelper.BrowseBinaries("xlsx", function (binaries, filename) {
+                //self.CallWCF('RAnalyze', { login: self.login, password: self.password, analysis: filename.replace(".xlsx", ""), data: binaries,app:app }, () => {
+                self.CallWCF('RAnalyze', { login: self.login, password: self.password, analysis: "tds_renata", data: binaries, app: app }, function () {
+                    Framework.Progress.Show(Framework.LocalizationManager.Get("Computation..."));
+                }, function (res) {
+                    Framework.Progress.Hide();
+                    if (res.Status == 'success') {
+                        var result = JSON.parse(res.Result);
+                        var URL_1 = result.URL;
+                        Framework.Browser.OpenNew(URL_1);
+                    }
+                    else {
+                        Framework.Modal.Alert("Erreur", res.ErrorMessage);
+                    }
                 });
             });
         });

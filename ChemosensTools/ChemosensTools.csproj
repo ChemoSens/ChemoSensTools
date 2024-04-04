@@ -1,4 +1,5 @@
 ﻿<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\Microsoft.TypeScript.MSBuild.5.3.3\build\Microsoft.TypeScript.MSBuild.props" Condition="Exists('..\packages\Microsoft.TypeScript.MSBuild.5.3.3\build\Microsoft.TypeScript.MSBuild.props')" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props')" />
   <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
@@ -46,50 +47,80 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="BouncyCastle.Crypto, Version=1.8.6.0, Culture=neutral, PublicKeyToken=0e99375e54769942, processorArchitecture=MSIL">
-      <HintPath>..\packages\Portable.BouncyCastle.1.8.6\lib\net40\BouncyCastle.Crypto.dll</HintPath>
+    <Reference Include="BouncyCastle.Crypto, Version=1.9.0.0, Culture=neutral, PublicKeyToken=0e99375e54769942, processorArchitecture=MSIL">
+      <HintPath>..\packages\Portable.BouncyCastle.1.9.0\lib\net40\BouncyCastle.Crypto.dll</HintPath>
     </Reference>
-    <Reference Include="DocumentFormat.OpenXml, Version=2.11.3.0, Culture=neutral, PublicKeyToken=8fb06cb64d019a17, processorArchitecture=MSIL">
-      <HintPath>..\packages\DocumentFormat.OpenXml.2.11.3\lib\net46\DocumentFormat.OpenXml.dll</HintPath>
+    <Reference Include="BouncyCastle.Cryptography, Version=2.0.0.0, Culture=neutral, PublicKeyToken=072edcf4a5328938, processorArchitecture=MSIL">
+      <HintPath>..\packages\BouncyCastle.Cryptography.2.3.0\lib\net461\BouncyCastle.Cryptography.dll</HintPath>
     </Reference>
-    <Reference Include="EPPlus, Version=5.4.1.0, Culture=neutral, PublicKeyToken=ea159fdaa78159a1, processorArchitecture=MSIL">
-      <HintPath>..\packages\EPPlus.5.4.1\lib\net45\EPPlus.dll</HintPath>
+    <Reference Include="DocumentFormat.OpenXml, Version=3.0.1.0, Culture=neutral, PublicKeyToken=8fb06cb64d019a17, processorArchitecture=MSIL">
+      <HintPath>..\packages\DocumentFormat.OpenXml.3.0.1\lib\net46\DocumentFormat.OpenXml.dll</HintPath>
     </Reference>
-    <Reference Include="ICSharpCode.SharpZipLib, Version=1.2.0.246, Culture=neutral, PublicKeyToken=1b03e6acf1164f73, processorArchitecture=MSIL">
-      <HintPath>..\packages\SharpZipLib.1.2.0\lib\net45\ICSharpCode.SharpZipLib.dll</HintPath>
+    <Reference Include="DocumentFormat.OpenXml.Framework, Version=3.0.1.0, Culture=neutral, PublicKeyToken=8fb06cb64d019a17, processorArchitecture=MSIL">
+      <HintPath>..\packages\DocumentFormat.OpenXml.Framework.3.0.1\lib\net46\DocumentFormat.OpenXml.Framework.dll</HintPath>
     </Reference>
-    <Reference Include="itextsharp, Version=5.5.13.2, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
-      <HintPath>..\packages\iTextSharp.5.5.13.2\lib\itextsharp.dll</HintPath>
+    <Reference Include="Enums.NET, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7ea1c1650d506225, processorArchitecture=MSIL">
+      <HintPath>..\packages\Enums.NET.4.0.1\lib\net45\Enums.NET.dll</HintPath>
+    </Reference>
+    <Reference Include="EPPlus, Version=7.0.9.0, Culture=neutral, PublicKeyToken=ea159fdaa78159a1, processorArchitecture=MSIL">
+      <HintPath>..\packages\EPPlus.7.0.9\lib\net462\EPPlus.dll</HintPath>
+    </Reference>
+    <Reference Include="EPPlus.Interfaces, Version=6.1.1.0, Culture=neutral, PublicKeyToken=a694d7f3b0907a61, processorArchitecture=MSIL">
+      <HintPath>..\packages\EPPlus.Interfaces.6.1.1\lib\net462\EPPlus.Interfaces.dll</HintPath>
+    </Reference>
+    <Reference Include="EPPlus.System.Drawing, Version=6.1.1.0, Culture=neutral, PublicKeyToken=2308d35469c9bac0, processorArchitecture=MSIL">
+      <HintPath>..\packages\EPPlus.System.Drawing.6.1.1\lib\net462\EPPlus.System.Drawing.dll</HintPath>
+    </Reference>
+    <Reference Include="ICSharpCode.SharpZipLib, Version=1.4.2.13, Culture=neutral, PublicKeyToken=1b03e6acf1164f73, processorArchitecture=MSIL">
+      <HintPath>..\packages\SharpZipLib.1.4.2\lib\netstandard2.0\ICSharpCode.SharpZipLib.dll</HintPath>
+    </Reference>
+    <Reference Include="itextsharp, Version=5.5.13.3, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
+      <HintPath>..\packages\iTextSharp.5.5.13.3\lib\itextsharp.dll</HintPath>
     </Reference>
     <Reference Include="LpSolveDotNet, Version=4.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\LpSolveDotNet.4.0.0\lib\net471\LpSolveDotNet.dll</HintPath>
+    </Reference>
+    <Reference Include="MathNet.Numerics, Version=4.15.0.0, Culture=neutral, PublicKeyToken=cd8b63ad3d691a37, processorArchitecture=MSIL">
+      <HintPath>..\packages\MathNet.Numerics.Signed.4.15.0\lib\net461\MathNet.Numerics.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=3.6.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
-    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    <Reference Include="Microsoft.IO.RecyclableMemoryStream, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.IO.RecyclableMemoryStream.3.0.0\lib\netstandard2.0\Microsoft.IO.RecyclableMemoryStream.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.13.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="NHunspell, Version=1.2.5554.16953, Culture=neutral, PublicKeyToken=1ac793ea843b4366, processorArchitecture=MSIL">
       <HintPath>..\packages\NHunspell.1.2.5554.16953\lib\net\NHunspell.dll</HintPath>
     </Reference>
-    <Reference Include="NPOI, Version=2.5.1.0, Culture=neutral, PublicKeyToken=0df73ec7942b34e1, processorArchitecture=MSIL">
-      <HintPath>..\packages\NPOI.2.5.1\lib\net45\NPOI.dll</HintPath>
+    <Reference Include="NPOI.Core, Version=2.6.2.0, Culture=neutral, PublicKeyToken=0df73ec7942b34e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\NPOI.2.6.2\lib\net472\NPOI.Core.dll</HintPath>
     </Reference>
-    <Reference Include="NPOI.OOXML, Version=2.5.1.0, Culture=neutral, PublicKeyToken=0df73ec7942b34e1, processorArchitecture=MSIL">
-      <HintPath>..\packages\NPOI.2.5.1\lib\net45\NPOI.OOXML.dll</HintPath>
+    <Reference Include="NPOI.OOXML, Version=2.6.2.0, Culture=neutral, PublicKeyToken=0df73ec7942b34e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\NPOI.2.6.2\lib\net472\NPOI.OOXML.dll</HintPath>
     </Reference>
-    <Reference Include="NPOI.OpenXml4Net, Version=2.5.1.0, Culture=neutral, PublicKeyToken=0df73ec7942b34e1, processorArchitecture=MSIL">
-      <HintPath>..\packages\NPOI.2.5.1\lib\net45\NPOI.OpenXml4Net.dll</HintPath>
+    <Reference Include="NPOI.OpenXml4Net, Version=2.6.2.0, Culture=neutral, PublicKeyToken=0df73ec7942b34e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\NPOI.2.6.2\lib\net472\NPOI.OpenXml4Net.dll</HintPath>
     </Reference>
-    <Reference Include="NPOI.OpenXmlFormats, Version=2.5.1.0, Culture=neutral, PublicKeyToken=0df73ec7942b34e1, processorArchitecture=MSIL">
-      <HintPath>..\packages\NPOI.2.5.1\lib\net45\NPOI.OpenXmlFormats.dll</HintPath>
+    <Reference Include="NPOI.OpenXmlFormats, Version=2.6.2.0, Culture=neutral, PublicKeyToken=0df73ec7942b34e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\NPOI.2.6.2\lib\net472\NPOI.OpenXmlFormats.dll</HintPath>
     </Reference>
     <Reference Include="PresentationCore" />
+    <Reference Include="SixLabors.Fonts, Version=1.0.0.0, Culture=neutral, PublicKeyToken=d998eea7b14cab13, processorArchitecture=MSIL">
+      <HintPath>..\packages\SixLabors.Fonts.1.0.0\lib\netstandard2.0\SixLabors.Fonts.dll</HintPath>
+    </Reference>
+    <Reference Include="SixLabors.ImageSharp, Version=2.0.0.0, Culture=neutral, PublicKeyToken=d998eea7b14cab13, processorArchitecture=MSIL">
+      <HintPath>..\packages\SixLabors.ImageSharp.2.1.4\lib\net472\SixLabors.ImageSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Buffers.4.5.1\lib\net461\System.Buffers.dll</HintPath>
+    </Reference>
     <Reference Include="System.ComponentModel.Annotations, Version=4.2.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\packages\System.ComponentModel.Annotations.4.7.0\lib\net461\System.ComponentModel.Annotations.dll</HintPath>
+      <HintPath>..\packages\System.ComponentModel.Annotations.5.0.0\lib\net461\System.ComponentModel.Annotations.dll</HintPath>
     </Reference>
     <Reference Include="System.ComponentModel.Composition" />
     <Reference Include="System.IO, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
@@ -102,24 +133,37 @@
       <Private>True</Private>
       <Private>True</Private>
     </Reference>
-    <Reference Include="System.IO.Packaging, Version=4.0.5.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\packages\System.IO.Packaging.4.7.0\lib\net46\System.IO.Packaging.dll</HintPath>
+    <Reference Include="System.IO.Packaging, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.IO.Packaging.8.0.0\lib\net462\System.IO.Packaging.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Memory, Version=4.0.1.2, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Memory.4.5.5\lib\net461\System.Memory.dll</HintPath>
     </Reference>
     <Reference Include="System.Net.Http, Version=4.1.1.3, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Net.Http.4.3.4\lib\net46\System.Net.Http.dll</HintPath>
       <Private>True</Private>
       <Private>True</Private>
     </Reference>
-    <Reference Include="System.Runtime, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\packages\System.Runtime.4.3.0\lib\net462\System.Runtime.dll</HintPath>
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Numerics.Vectors, Version=4.1.4.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Numerics.Vectors.4.5.0\lib\net46\System.Numerics.Vectors.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime, Version=4.1.1.1, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.4.3.1\lib\net462\System.Runtime.dll</HintPath>
       <Private>True</Private>
       <Private>True</Private>
     </Reference>
     <Reference Include="System.Runtime.Caching" />
+    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.5.0.0\lib\net45\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    </Reference>
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
+    <Reference Include="System.Security.AccessControl, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Security.AccessControl.6.0.0\lib\net461\System.Security.AccessControl.dll</HintPath>
+    </Reference>
     <Reference Include="System.Security.Cryptography.Algorithms, Version=4.2.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\packages\System.Security.Cryptography.Algorithms.4.3.0\lib\net463\System.Security.Cryptography.Algorithms.dll</HintPath>
+      <HintPath>..\packages\System.Security.Cryptography.Algorithms.4.3.1\lib\net463\System.Security.Cryptography.Algorithms.dll</HintPath>
       <Private>True</Private>
       <Private>True</Private>
     </Reference>
@@ -133,15 +177,27 @@
       <Private>True</Private>
       <Private>True</Private>
     </Reference>
-    <Reference Include="System.Security.Cryptography.X509Certificates, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\packages\System.Security.Cryptography.X509Certificates.4.3.0\lib\net461\System.Security.Cryptography.X509Certificates.dll</HintPath>
+    <Reference Include="System.Security.Cryptography.X509Certificates, Version=4.1.1.2, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Security.Cryptography.X509Certificates.4.3.2\lib\net461\System.Security.Cryptography.X509Certificates.dll</HintPath>
       <Private>True</Private>
       <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Security.Cryptography.Xml, Version=6.0.0.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Security.Cryptography.Xml.6.0.1\lib\net461\System.Security.Cryptography.Xml.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Security.Principal.Windows, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Security.Principal.Windows.5.0.0\lib\net461\System.Security.Principal.Windows.dll</HintPath>
     </Reference>
     <Reference Include="System.ServiceModel" />
     <Reference Include="System.ServiceModel.Activation" />
     <Reference Include="System.ServiceModel.Web" />
+    <Reference Include="System.Text.Encoding.CodePages, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Text.Encoding.CodePages.5.0.0\lib\net461\System.Text.Encoding.CodePages.dll</HintPath>
+    </Reference>
     <Reference Include="System.Threading.Tasks" />
+    <Reference Include="System.Threading.Tasks.Extensions, Version=4.2.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Threading.Tasks.Extensions.4.5.2\lib\netstandard2.0\System.Threading.Tasks.Extensions.dll</HintPath>
+    </Reference>
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -170,10 +226,12 @@
     <Content Include="admin\ts\app.js" />
     <Content Include="admin\ts\index.js" />
     <Content Include="analyses\data\scripts\style.css" />
+    <Content Include="analyses\html\tds_analyses.html" />
     <Content Include="analyses\html\Output.html" />
     <Content Include="analyses\html\Main.html" />
     <Content Include="analyses\html\ModalLogin.html" />
     <Content Include="analyses\img\tds.png" />
+    <Content Include="analyses\img\time-variability-plot.png" />
     <Content Include="analyses\index.html" />
     <Content Include="analyses\ts\app.js" />
     <Content Include="analyses\ts\index.js" />
@@ -184,6 +242,20 @@
     <Content Include="ciqualClassifier\index.html" />
     <Content Include="ciqualClassifier\ts\app.js" />
     <Content Include="ciqualClassifier\ts\index.js" />
+    <Content Include="codappro2\html\DivDate.html" />
+    <Content Include="codappro2\html\DivDesignation.html" />
+    <Content Include="codappro2\html\DivDetail.html" />
+    <Content Include="codappro2\html\DivEnregistre.html" />
+    <Content Include="codappro2\html\DivFactures.html" />
+    <Content Include="codappro2\html\DivLogin.html" />
+    <Content Include="codappro2\html\DivLoginAdmin.html" />
+    <Content Include="codappro2\img\icon.png" />
+    <Content Include="codappro2\img\logo_codappro.png" />
+    <Content Include="codappro2\index.html" />
+    <Content Include="codappro2\service-worker.js" />
+    <Content Include="codappro2\ts\app.js" />
+    <Content Include="codappro2\ts\index.js" />
+    <Content Include="codappro2\ts\models.js" />
     <Content Include="codappro\html\DivDetail.html" />
     <Content Include="codappro\html\DivFactures.html" />
     <Content Include="codappro\html\DivEnregistre.html" />
@@ -337,12 +409,12 @@
     <Content Include="crocnoteurs\ts\models.js" />
     <Content Include="crocnoteurs\index.html" />
     <Content Include="favicon.ico" />
-    <Content Include="fcLexicon\html\Main.html" />
-    <Content Include="fcLexicon\html\ModalLogin.html" />
-    <Content Include="fcLexicon\img\wordcloud.jpg" />
-    <Content Include="fcLexicon\index.html" />
-    <Content Include="fcLexicon\ts\app.js" />
-    <Content Include="fcLexicon\ts\index.js" />
+    <Content Include="consotextplorer\html\Main.html" />
+    <Content Include="consotextplorer\html\ModalLogin.html" />
+    <Content Include="consotextplorer\img\wordcloud.jpg" />
+    <Content Include="consotextplorer\index.html" />
+    <Content Include="consotextplorer\ts\app.js" />
+    <Content Include="consotextplorer\ts\index.js" />
     <Content Include="Framework\css\addtohomescreen.css" />
     <Content Include="Framework\css\bootstrap-colorpalette.css" />
     <Content Include="Framework\css\bootstrap-multiselect.css" />
@@ -882,26 +954,35 @@
     <Content Include="Framework\test\frameworktest.js" />
     <Content Include="Framework\ts\BingSpeech.js" />
     <Content Include="Framework\ts\models.js" />
-    <Resource Include="fcLexicon\cs\fr.aff" />
-    <Resource Include="fcLexicon\cs\fr.dic" />
+    <Resource Include="consotextplorer\cs\fr.aff" />
+    <Resource Include="consotextplorer\cs\fr.dic" />
     <Content Include="ciqualClassifier\img\logo.xcf" />
     <Content Include="crocnoteurs\Raleway-Regular.ttf" />
     <Content Include="crocnoteurs\manifest.json" />
     <Content Include="codappro\manifest.json" />
     <Content Include="crocnoteurs\data\comment_faire.pdf" />
     <Content Include="analyses\data\scripts\profile.r" />
-    <Content Include="analyses\data\templates\template_profile.xlsx" />
+    <Content Include="analyses\data\templates\profile.xlsx" />
     <Content Include="crocnoteurs\data\produits.pdf" />
     <Content Include="crocnoteurs\data\Consentement.pdf" />
     <Content Include="crocnoteurs\data\Information.pdf" />
     <Content Include="codappro\data\test.json" />
     <Content Include="analyses\data\scripts\consotextplorer.r" />
+    <Content Include="analyses\data\templates\tds.xlsx" />
+    <Content Include="analyses\data\scripts\tds.r" />
+    <Content Include="analyses\data\templates\time_variability_plot.xlsx" />
+    <Content Include="analyses\data\scripts\time_variability_plot.r" />
+    <Content Include="codappro2\manifest.json" />
+    <Content Include="codappro2\ts\app.js.map" />
+    <Content Include="codappro2\ts\models.js.map" />
+    <Content Include="codappro2\ts\index.js.map" />
     <None Include="Hunspellx64.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="Hunspellx86.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <Content Include="GitHub_Logo.png" />
     <Content Include="inca3Classifier\html\Main.html" />
     <Content Include="inca3Classifier\html\ModalLogin.html" />
     <Content Include="inca3Classifier\img\inca3.png" />
@@ -1027,6 +1108,7 @@
     <Content Include="raisonsAchat\ts\index.js" />
     <Content Include="raisonsAchat\ts\models.js" />
     <Content Include="recette\index.html" />
+    <Content Include="recherche_data_gouv.png" />
     <Content Include="sensas\html\divAchat.html" />
     <Content Include="sensas\html\divCATA.html" />
     <Content Include="sensas\html\divConsentement.html" />
@@ -1064,6 +1146,7 @@
     <Content Include="sensas\ts\models.js" />
     <Content Include="taxonomy\img\wheel.png" />
     <Content Include="taxonomy\index.html" />
+    <Content Include="tds_analyses\index.html" />
     <Content Include="timesens\img\background.jpg" />
     <Content Include="timesens\img\logo.png" />
     <Content Include="timesens\img\R.jpg" />
@@ -1299,11 +1382,12 @@
   <ItemGroup>
     <Compile Include="analyses\cs\ranalysis.cs" />
     <Compile Include="ciqualClassifier\cs\ciqualClassifier.cs" />
+    <Compile Include="codappro2\cs\codappro.cs" />
     <Compile Include="codappro\cs\codachats.cs" />
     <Compile Include="consodrive\cs\consodrive.cs" />
     <Compile Include="crocnoteurs\cs\datasens.cs" />
     <Compile Include="crocnoteurs\cs\questionnaire.cs" />
-    <Compile Include="fcLexicon\cs\fcLexicon.cs" />
+    <Compile Include="consotextplorer\cs\fcLexicon.cs" />
     <Compile Include="Framework\cs\Account.cs" />
     <Compile Include="cs\helpers.cs" />
     <Compile Include="Framework\cs\EncryptionHelper.cs" />
@@ -1394,8 +1478,8 @@
     <Content Include="Framework\test\frameworktest.js.map" />
     <Content Include="Framework\ts\BingSpeech.js.map" />
     <Content Include="consodrive\pdf\consentement.pdf" />
-    <Content Include="analyses\data\scripts\tds.r" />
-    <Content Include="analyses\data\templates\template_tds.xlsx" />
+    <Content Include="analyses\data\scripts\tds_renata.r" />
+    <Content Include="analyses\data\templates\tds_renata.xlsx" />
     <None Include="packages.config" />
     <Content Include="timesens\screenreader\models.js.map" />
     <Content Include="timesens\screenreader\ReadJSONWorker.js.map" />
@@ -1452,6 +1536,7 @@
     <Content Include="packages\MAMCAP.zip" />
     <None Include="Properties\PublishProfiles\Default Settings.pubxml" />
     <Content Include="timesens\panelleader\help\help.pdf" />
+    <Content Include="tsconfig.json" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -1469,6 +1554,9 @@
     <TypeScriptCompile Include="analyses\ts\index.ts" />
     <TypeScriptCompile Include="ciqualClassifier\ts\app.ts" />
     <TypeScriptCompile Include="ciqualClassifier\ts\index.ts" />
+    <TypeScriptCompile Include="codappro2\ts\app.ts" />
+    <TypeScriptCompile Include="codappro2\ts\index.ts" />
+    <TypeScriptCompile Include="codappro2\ts\models.ts" />
     <TypeScriptCompile Include="codappro\ts\app.ts" />
     <TypeScriptCompile Include="codappro\ts\index.ts" />
     <TypeScriptCompile Include="codappro\ts\models.ts" />
@@ -1482,9 +1570,9 @@
     <TypeScriptCompile Include="crocnoteurs\ts\index.ts" />
     <TypeScriptCompile Include="crocnoteurs\ts\inscription.ts" />
     <TypeScriptCompile Include="crocnoteurs\ts\models.ts" />
-    <TypeScriptCompile Include="fcLexicon\ts\app.ts" />
-    <TypeScriptCompile Include="fcLexicon\ts\index.ts" />
-    <TypeScriptCompile Include="fcLexicon\ts\models.ts" />
+    <TypeScriptCompile Include="consotextplorer\ts\app.ts" />
+    <TypeScriptCompile Include="consotextplorer\ts\index.ts" />
+    <TypeScriptCompile Include="consotextplorer\ts\models.ts" />
     <TypeScriptCompile Include="Framework\ts\models.ts" />
     <TypeScriptCompile Include="Framework\framework.ts" />
     <TypeScriptCompile Include="Framework\test\frameworktest.ts" />
@@ -1509,7 +1597,14 @@
     <TypeScriptCompile Include="Scripts\typings\jszip\jszip.d.ts" />
     <TypeScriptCompile Include="Scripts\typings\localForage\localForage.d.ts" />
     <TypeScriptCompile Include="Scripts\typings\modernizr\modernizr.d.ts" />
+    <TypeScriptCompile Include="Scripts\typings\node\node-0.10.d.ts" />
+    <TypeScriptCompile Include="Scripts\typings\node\node-0.11.d.ts" />
+    <TypeScriptCompile Include="Scripts\typings\node\node-0.12.d.ts" />
+    <TypeScriptCompile Include="Scripts\typings\node\node-0.8.8.d.ts" />
+    <TypeScriptCompile Include="Scripts\typings\node\node-4.d.ts" />
+    <TypeScriptCompile Include="Scripts\typings\node\node.d.ts" />
     <TypeScriptCompile Include="Scripts\typings\offline-js\offline-js.d.ts" />
+    <TypeScriptCompile Include="Scripts\typings\qunit\qunit-1.16.d.ts" />
     <TypeScriptCompile Include="Scripts\typings\qunit\qunit.d.ts" />
     <TypeScriptCompile Include="sensas\ts\app.ts" />
     <TypeScriptCompile Include="sensas\ts\index.ts" />
@@ -1530,6 +1625,7 @@
   <ItemGroup>
     <Folder Include="admin\cs\" />
     <Folder Include="admin\data\accounts\" />
+    <Folder Include="codappro2\data\nov23\" />
     <Folder Include="consodrive\data\" />
     <Folder Include="invoiceAnalyzer\data\invoices\" />
     <Folder Include="invoiceAnalyzer\data\pdf\" />
@@ -1568,7 +1664,10 @@
       <ErrorText>Ce projet fait référence à des packages NuGet qui sont manquants sur cet ordinateur. Utilisez l'option de restauration des packages NuGet pour les télécharger. Pour plus d'informations, consultez http://go.microsoft.com/fwlink/?LinkID=322105. Le fichier manquant est : {0}.</ErrorText>
     </PropertyGroup>
     <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.TypeScript.MSBuild.5.3.3\build\Microsoft.TypeScript.MSBuild.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.TypeScript.MSBuild.5.3.3\build\Microsoft.TypeScript.MSBuild.props'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.TypeScript.MSBuild.5.3.3\build\Microsoft.TypeScript.MSBuild.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.TypeScript.MSBuild.5.3.3\build\Microsoft.TypeScript.MSBuild.targets'))" />
   </Target>
+  <Import Project="..\packages\Microsoft.TypeScript.MSBuild.5.3.3\build\Microsoft.TypeScript.MSBuild.targets" Condition="Exists('..\packages\Microsoft.TypeScript.MSBuild.5.3.3\build\Microsoft.TypeScript.MSBuild.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

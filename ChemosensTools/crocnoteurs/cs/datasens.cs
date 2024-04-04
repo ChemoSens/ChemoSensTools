@@ -820,7 +820,8 @@ namespace ChemosensTools.DataSens
 
         public static int TeleverserBonAchatCrocnoteurs(string indemnisationsDirPath, string binaries, string encryptKey)
         {
-            byte[] bytes = Org.BouncyCastle.Utilities.Encoders.Base64.Decode(binaries.Replace("data:application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;base64,", ""));
+            //byte[] bytes = Org.BouncyCastle.Utilities.Encoders.Base64.Decode(binaries.Replace("data:application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;base64,", ""));
+            byte[] bytes = Convert.FromBase64String(binaries.Replace("data:application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;base64,", ""));
             ExcelPackage.LicenseContext = LicenseContext.NonCommercial;
             MemoryStream stream = new MemoryStream(bytes);
             ExcelPackage xlPackage = new ExcelPackage(stream);

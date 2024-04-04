@@ -1,0 +1,67 @@
+﻿<div id="analysisViewContainer" >
+
+    <!-- Nav tabs -->
+    <ul class="nav nav-tabs nav-justified" role="tablist">
+        <li class="active" style="list-style-type:none !important"><a id="tabAnalysisTemplateSelection" href="#analysisTemplateSelection" role="tab" data-toggle="tab"><i class="fas fa-table" style="width:30px"></i> 1. <span data-localize="AnalysisTemplate"></span></a></li>
+        <li style="list-style-type:none !important"><a id="tabAnalysisDataSelection" href="#analysisDataSelection" role="tab" data-toggle="tab"><i class="fas fa-database" style="width:30px"></i> 2. <span data-localize="DataSelection"></span></a></li>
+        <!--<li style="list-style-type:none !important"><a id="tabAnalysisDataCheck" href="#analysisDataCheck" role="tab" data-toggle="tab"><i class="fas fa-check-square" style="width:30px"></i> 3. <span data-localize="DataCheck"></span></a></li>-->
+        <li style="list-style-type:none !important"><a id="tabAnalysisFunctionSelection" href="#analysisFunctionSelection" role="tab" data-toggle="tab"><i class="fas fa-chart-bar" style="width:30px"></i> 3. <span data-localize="FunctionSelection"></span></a></li>
+        <!--<li style="list-style-type:none !important"><a id="tabAnalysisOptions" href="#analysisOptions" role="tab" data-toggle="tab"><i class="fas fa-cogs" style="width:30px"></i> 5. <span data-localize="Options"></span></a></li>-->
+    </ul>
+
+    <!-- Tab panes -->
+    <div class="tab-content" style="margin-top:20px;">
+        <div class="tab-pane active" id="analysisTemplateSelection" style="height:100%">
+            <div>
+                <p style="font-weight:bold" data-localize="SelectAnalysisTemplate"></p>
+                <h3><span data-localize="TimeSensTemplates"></span></h3>
+                <div id="divTimeSensTemplates"></div>
+                <div style="clear:both"></div>
+                <h3><span data-localize="MyTemplates"></span></h3>
+                <div id="divMyTemplates"></div>
+                <div style="clear:both"></div>
+            </div>
+        </div>
+        <div class="tab-pane" id="analysisDataSelection">
+            <p style="font-weight:bold" data-localize="SelectDataSubset"></p>
+            <div id="divDataSelection">
+            </div>
+
+            <p style="font-weight:bold; margin-top:20px;" data-localize="DataCheck"></p>
+            <div id="analysisDataCheck">
+                <p id="pAnalysisTotalData"></p>
+                <p id="pAnalysisMissingData" style="color:red"></p>
+                <p id="pAnalysisMissingDataWarning" style="color:red"></p>
+                <div id="divAnalysisMissingDataStrategy" style="color:red">
+                </div>
+                <div id="divPivot" style=" margin-top:20px;"></div>
+            </div>
+
+        </div>
+        <!--<div class="tab-pane" id="analysisDataCheck">
+            <p id="pAnalysisTotalData"></p>
+            <p id="pAnalysisMissingData" style="color:red"></p>
+            <p id="pAnalysisMissingDataWarning" style="color:red"></p>
+            <div id="divAnalysisMissingDataStrategy" style="color:red">
+            </div>
+            <div id="divPivot"></div>
+            <div class="text-right navbar-fixed-bottom actionButton">
+                <button type="button" class="btn btn-primary btn-lg" id="btnGoToFunctionSelection"><span data-localize="Next"></span></button>
+            </div>
+        </div>-->
+        <div class="tab-pane" id="analysisFunctionSelection">
+            <div id="divFunctionSelection"></div>
+        </div>
+
+        <div class="text-center navbar-fixed-bottom inlineBlock" style="padding-bottom:5px;">
+            <button type="button" data-localize-tooltip="StartAnalysis" class="btnCircle" id="btnStartAnalysis"><i class="fab fa-r-project"></i></button>
+        </div>
+
+        <!--<div class="tab-pane" id="analysisOptions">
+            <p style="font-weight:bold" data-localize="SelectOptions"></p>
+            <div id="divAnalysisOptions"></div>
+        </div>-->
+
+    </div>
+
+</div>

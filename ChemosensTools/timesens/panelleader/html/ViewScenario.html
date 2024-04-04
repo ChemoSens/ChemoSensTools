@@ -1,0 +1,78 @@
+﻿<div id="scenarioViewContainer">
+    <table>
+        <tr>
+            <td style="vertical-align:top;border:1px solid gray;white-space:nowrap;background:rgba(10, 10, 10, 0.4)">
+                <div id="listScreensContainer"></div>
+            </td>
+            <td>&nbsp;</td>
+            <td style="width:99%;background:rgba(10, 10, 10, 0.4);border:1px solid gray ;">
+                <div id="activeScreenWrapper" style="overflow-x:scroll;overflow-y:scroll;position:relative">
+                    <div id="activeScreenContainer" style="vertical-align:top;white-space:nowrap; "></div>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="3" style="padding-top:5px;text-align:center;">
+                <div style="text-align:center;width:950px;margin:auto">
+
+                    <!--<div id="textEditToolbar" style="        height: 40px;
+    text-align: center;
+    vertical-align: top;
+    background: white;
+    opacity: 1;
+    background-image: url(images/toolbar.png)">
+                </div>-->
+
+                    <div id="textEditToolbar" style="height: 40px; text-align: center; vertical-align: top; ">
+                                               
+                    </div>
+
+                </div>
+                <div id="controlEditToolbar" style="margin-top:3px">
+                    <button id="btnInsertScreen" data-localize-tooltip="InsertScreen" class="btnCircle"><i class="fas fa-plus-square"></i></button>
+                    <button id="btnDeleteScreen" data-localize-tooltip="Delete" class="btnCircle"><i class="fas fa-trash-alt"></i></button>
+                    <button id="btnCopyScreen" data-localize-tooltip="Copy" class="btnCircle"><i class="fas fa-copy"></i></button>
+                    <button id="btnPasteScreen" data-localize-tooltip="InsertScreenFromClipboard" class="btnCircle"><i class="fas fa-paste"></i></button>
+                    <!--<button id="btnInsertRepeatedScreen" data-localize-tooltip="InsertRepeatedScreen" class="btnCircle"><i class="fas fa-clone"></i></button>
+
+                    <button id="btnInsertScreenFromAnotherSession" data-localize-tooltip="InsertScreenFromAnotherSession" class="btnCircle"><i class="fas fa-database"></i></button>-->
+                    <button id="btnMoveUpScreen" data-localize-tooltip="MoveUpScreen" class="btnCircle"><i class="fas fa-arrow-up"></i></button>
+                    <button id="btnMoveDownScreen" data-localize-tooltip="MoveDownScreen" class="btnCircle"><i class="fas fa-arrow-down"></i></button>
+
+
+                    <button id="btnSetScreenStyle" data-localize-tooltip="SetScreenStyle" class="btnCircle"><i class="fas fa-palette"></i></button>
+                    <!--<button id="btnSaveScreenAsPicture" data-localize-tooltip="SaveScreenAsPicture" class="btnCircle"><i class="far fa-image"></i></button>-->
+                    <button id="btnEditScreenProperties" data-localize-tooltip="EditScreenProperties" class="btnCircle"><i class="fas fa-cogs"></i></button>
+                    <button id="btnSimulateSession" data-localize-tooltip="SimulateSession" style="margin-right:40px" class="btnCircle"><i class="fas fa-play"></i></button>
+
+                    <button id="btnZoomIn" data-localize-tooltip="ZoomIn" class="btnCircle"><i class="fas fa-search-plus"></i></button>
+                    <button id="btnZoomOut" data-localize-tooltip="ZoomOut" class="btnCircle"><i class="fas fa-search-minus"></i></button>
+                    <button id="btnToggleGrid" data-localize-tooltip="ToggleGridVisibility" class="btnCircle"><i class="fas fa-th"></i></button>
+                    <button id="btnSelectNextControl" data-localize-tooltip="SelectNextControl" class="btnCircle"><i class="fas fa-step-forward"></i></button>
+                    <button id="btnAddControl" data-localize-tooltip="AddControl" class="btnCircle"><i class="fas fa-plus-square"></i></button>
+
+                    <button id="btnDeleteControl" data-localize-tooltip="DeleteControl" class="btnCircle"><i class="fas fa-trash-alt"></i></button>
+                    <button id="btnCutControl" data-localize-tooltip="CutControl" class="btnCircle"><i class="fas fa-cut"></i></button>
+                    <button id="btnCopyControl" data-localize-tooltip="CopyControl" class="btnCircle"><i class="fas fa-copy"></i></button>
+                    <button id="btnPasteControl" data-localize-tooltip="PasteControl" class="btnCircle"><i class="fas fa-paste"></i></button>
+                    
+                    <button id="btnEditControl" data-localize-tooltip="EditControlProperties" class="btnCircle"><i class="fas fa-cogs"></i></button>
+
+                    <button id="btnPositionControl" data-localize-tooltip="PositionControl" class="btnCircle"><i class="fas fa-map-marker-alt"></i></button>
+                </div>
+            </td>
+        </tr>
+    </table>
+
+
+
+    <!--<div class="modal fade" tabindex="-1" role="dialog" id="simulationWindow">
+        <div class="modal-dialog modal-lg" role="document" style="width: 98%; margin: 0;  padding: 0;">
+            <div class="modal-content">
+                <div class="modal-body" id="simulationBody">
+                    <div id="simulationDiv"></div>
+                </div>
+            </div>
+        </div>
+    </div>-->
+</div>

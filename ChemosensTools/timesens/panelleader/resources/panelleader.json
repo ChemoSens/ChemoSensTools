@@ -1,0 +1,4203 @@
+﻿[
+	{
+		"key": "AUTHENTIFICATION_FAILED",
+		"en": "Authentification failed.",
+		"fr": "Erreur d'identification."
+	},
+	{
+		"key": "About",
+		"en": "About",
+		"fr": "A propos"
+	},
+	{
+		"key": "Actions",
+		"en": "History",
+		"fr": "Historique"
+	},
+	{
+		"key": "Add",
+		"en": "Add",
+		"fr": "Ajouter"
+	},
+	{
+		"key": "AddAnchor",
+		"en": "Add an anchor",
+		"fr": "Ajouter une ancre"
+	},
+	{
+		"key": "AddAttribute",
+		"en": "Add descriptors",
+		"fr": "Ajout"
+	},
+	{
+		"key": "AddButton",
+		"en": "Add a button",
+		"fr": "Ajouter un bouton"
+	},
+	{
+		"key": "AddButtonTooltip",
+		"en": "Add an button",
+		"fr": "Ajouter un bouton"
+	},
+	{
+		"key": "AddCATA",
+		"en": "Add a list of checkboxes",
+		"fr": "Ajouter une liste de cases à cocher"
+	},
+	{
+		"key": "AddCheckboxQuestion",
+		"en": "Add a multiple choices question (checkboxes)",
+		"fr": "Ajouter une question à choix multiples (cases à cocher)"
+	},
+	{
+		"key": "AddChronometer",
+		"en": "Add a chronometer",
+		"fr": "Ajouter un chronomètre"
+	},
+	{
+		"key": "AddColumns",
+		"en": "Merge",
+		"fr": "Merger"
+	},
+	{
+		"key": "AddComboboxQuestion",
+		"en": "Add a single choice question (drop-down list)",
+		"fr": "Ajouter une question à choix unique (liste déroulante)"
+	},
+	{
+		"key": "AddControl",
+		"en": "Add control",
+		"fr": "Ajouter un contrôle"
+	},
+	{
+		"key": "AddData",
+		"en": "Add",
+		"fr": "Ajout"
+	},
+	{
+		"key": "AddDiscreteScales",
+		"en": "Add a list of discrete scales",
+		"fr": "Ajouter une liste d'échelles discrètes"
+	},
+	{
+		"key": "AddExperimentalDesign",
+		"en": "Add an experimental design",
+		"fr": "Ajout"
+	},
+	{
+		"key": "AddFreeListOfTerms",
+		"en": "Add an attribute generator",
+		"fr": "Ajouter un générateur de descripteurs"
+	},
+	{
+		"key": "AddFreeTextQuestion",
+		"en": "Add a free text question",
+		"fr": "Ajouter une question à texte libre"
+	},
+	{
+		"key": "AddFromDelimitedTextFile",
+		"en": "Add from file (XLS, CSV, TXT)",
+		"fr": "Ajouter depuis un fichier (XLS, CSV, TXT)"
+	},
+	{
+		"key": "AddFromLocalDB",
+		"en": "Add from database",
+		"fr": "Ajouter depuis la base de données"
+	},
+	{
+		"key": "AddFromXMLFile",
+		"en": "Add from another TimeSens file",
+		"fr": "Ajouter depuis un autre fichier TimeSens"
+	},
+	{
+		"key": "AddGroupDescription",
+		"en": "Add a group description (requires a free sorting task)",
+		"fr": "Ajouter une description des groupes (requiert un test de tri libre)"
+	},
+	{
+		"key": "AddNapping",
+		"en": "Add a napping test",
+		"fr": "Ajouter un test de napping"
+	},
+	{
+		"key": "AddNewAttribute",
+		"en": "Create new descriptors",
+		"fr": "Créer de nouveaux descripteurs"
+	},
+	{
+		"key": "AddNewAttributeExperimentalDesign",
+		"en": "Create a new attribute experimental design",
+		"fr": "Créer un nouveau plan de prés. 'descripteurs'"
+	},
+	{
+		"key": "AddNewData",
+		"en": "Insert new data rows",
+		"fr": "Insérer des lignes de données"
+	},
+	{
+		"key": "AddNewItem",
+		"en": "Create new {0}s",
+		"fr": "Créer de nouveaux {0}s"
+	},
+	{
+		"key": "AddNewPanelist",
+		"en": "Create new panelists",
+		"fr": "Créer de nouveaux panélistes"
+	},
+	{
+		"key": "AddNewProduct",
+		"en": "Create new products",
+		"fr": "Créer de nouveaux produits"
+	},
+	{
+		"key": "AddNewProductExperimentalDesign",
+		"en": "Create a new product experimental design",
+		"fr": "Créer un nouveau plan de prés. 'produits'"
+	},
+	{
+		"key": "AddPanelist",
+		"en": "Add panelists",
+		"fr": "Ajout"
+	},
+	{
+		"key": "AddPicture",
+		"en": "Add a picture",
+		"fr": "Ajouter une image"
+	},
+	{
+		"key": "AddProduct",
+		"en": "Add products",
+		"fr": "Ajout"
+	},
+	{
+		"key": "AddProgressBar",
+		"en": "Add a progress bar",
+		"fr": "Ajouter une barre d'avancement"
+	},
+	{
+		"key": "AddQuestionTable",
+		"en": "Add a table of questions",
+		"fr": "Ajouter un tableau de questions"
+	},
+	{
+		"key": "AddRanking",
+		"en": "Add a ranking test",
+		"fr": "Ajouter un test de classement"
+	},
+	{
+		"key": "AddRecorder",
+		"en": "Add a recorder",
+		"fr": "Ajouter un enregistreur"
+	},
+	{
+		"key": "AddRectangle",
+		"en": "Add a rectangle shape",
+		"fr": "Ajouter une forme rectangulaire"
+	},
+	{
+		"key": "AddSliders",
+		"en": "Add a list of continuous scales",
+		"fr": "Ajouter une liste d'échelles continues"
+	},
+	{
+		"key": "AddSorting",
+		"en": "Add a free sorting test",
+		"fr": "Ajouter un test de tri libre"
+	},
+	{
+		"key": "AddSubjectForm",
+		"en": "Add a panelist form",
+		"fr": "Ajouter un formulaire panéliste"
+	},
+	{
+		"key": "AddSubjectSummary",
+		"en": "Add a panelist summary",
+		"fr": "Ajouter un retour panéliste"
+	},
+	{
+		"key": "AddTextArea",
+		"en": "Add a textarea",
+		"fr": "Ajouter une zone de texte"
+	},
+	{
+		"key": "AddTimer",
+		"en": "Add a timer",
+		"fr": "Ajouter un minuteur"
+	},
+	{
+		"key": "AddTriangleTest",
+		"en": "Add a triangle test",
+		"fr": "Ajouter un test triangulaire"
+	},
+	{
+		"key": "AddVideo",
+		"en": "Add a media player",
+		"fr": "Ajouter un lecteur multimédia"
+	},
+	{
+		"key": "AdditionalVariables",
+		"en": "Additional variables: {0}",
+		"fr": "Variables supplémentaires : {0}"
+	},
+	{
+		"key": "Address",
+		"en": "Address",
+		"fr": "Adresse"
+	},
+	{
+		"key": "Analysis",
+		"en": "Analysis",
+		"fr": "Analyse"
+	},
+	{
+		"key": "AnalysisImputedDataCount",
+		"en": "Imputed data rows: {0} ({1}%)",
+		"fr": "Ligne(s) de données imputées: {0} ({1}%)"
+	},
+	{
+		"key": "AnalysisMissingDataCount",
+		"en": "Missing data rows: {0} ({1}%)",
+		"fr": "Ligne(s) de données manquantes: {0} ({1}%)"
+	},
+	{
+		"key": "AnalysisMissingDataStrategy",
+		"en": "To continue, select an action:",
+		"fr": "Pour continuer, choisissez une action :"
+	},
+	{
+		"key": "AnalysisMissingDataTooMuch",
+		"en": "There is too much missing data to run statistical analyses.",
+		"fr": "Il y a trop de données manquantes pour exécuter des analyses statistiques."
+	},
+	{
+		"key": "AnalysisMissingDataWarning",
+		"en": "Warning: missing data can lead to inaccurate estimations (ANOVA) or error in multivariates analyses (CVA).",
+		"fr": "Attention : des données manquantes peuvent fausser les estimations de certaines analyses (ANOVA) ou empêcher certaines analyses de fonctionner (CVA)."
+	},
+	{
+		"key": "AnalysisTemplate",
+		"en": "Analysis template selection",
+		"fr": "Choix du modèle d'analyse"
+	},
+	{
+		"key": "AnalysisTotalDataCount",
+		"en": "Data rows: {0}/{1}",
+		"fr": "Lignes de données : {0}/{1}"
+	},
+	{
+		"key": "AnalyzeEmotionsInVideos",
+		"en": "Analyze emotions in videos",
+		"fr": "Analyser les émotions dans les vidéos"
+	},
+	{
+		"key": "AnchorID",
+		"en": "Anchor: {0}",
+		"fr": "Ancre : {0}"
+	},
+	{
+		"key": "Apply",
+		"en": "Apply changes",
+		"fr": "Appliquer les changements"
+	},
+	{
+		"key": "ApplyFilter",
+		"en": "Apply filter",
+		"fr": "Appliquer le filtre"
+	},
+	{
+		"key": "AreYouSureYouWantToExitTimeSens",
+		"en": "Are you sure you want to exit TimeSens?",
+		"fr": "Etes-vous sûr(e) de vouloir quitter TimeSens ?"
+	},
+	{
+		"key": "AreYouSureYouWantToRemoveTheSelection",
+		"en": "Are you sure you want to remove the selection",
+		"fr": "Etes-vous sûr(e) de vouloir supprimer la sélection ?"
+	},
+	{
+		"key": "AreYouSureYouWantToRemoveTheTab",
+		"en": "Are you sure you want to remove the tab and its data",
+		"fr": "Etes-vous sûr(e) de vouloir supprimer l'onglet et les données associées ?"
+	},
+	{
+		"key": "AreYouSureYouWantToRemoveThisElement",
+		"en": "Are you sure you want to remove this element",
+		"fr": "Etes-vous sûr(e) de vouloir supprimer cet élément ?"
+	},
+	{
+		"key": "AtRank",
+		"en": "At rank ",
+		"fr": "Au rang "
+	},
+	{
+		"key": "Attribute",
+		"en": "Attribute",
+		"fr": "Descripteur"
+	},
+	{
+		"key": "AttributeCode",
+		"en": "Attribute code",
+		"fr": "Code descripteur"
+	},
+	{
+		"key": "AttributeLabels",
+		"en": "Attribute labels",
+		"fr": "Etiquettes des descripteurs"
+	},
+	{
+		"key": "AttributeRank",
+		"en": "Attribute's rank",
+		"fr": "Rang du descripteur"
+	},
+	{
+		"key": "AttributeRanks",
+		"en": "Attributes' ranks",
+		"fr": "Rangs des descripteurs"
+	},
+	{
+		"key": "Attributes",
+		"en": "Attributes",
+		"fr": "Descripteurs"
+	},
+	{
+		"key": "Attributes:",
+		"en": "Descriptors ({0}): {1}",
+		"fr": "Descripteurs ({0}) : {1}"
+	},
+	{
+		"key": "AttributesExperimentalDesign",
+		"en": "Attributes experimental design",
+		"fr": "Plan de présentation des descripteurs"
+	},
+	{
+		"key": "AutoSave",
+		"en": "Auto save",
+		"fr": "Enregistrement automatique"
+	},
+	{
+		"key": "AvailableTokens",
+		"en": "Available tokens: {0}",
+		"fr": "Jetons disponibles : {0}"
+	},
+	{
+		"key": "AverageScores",
+		"en": "Average scores",
+		"fr": "Moyenner les scores"
+	},
+	{
+		"key": "BarcodeReader",
+		"en": "Barcode reader",
+		"fr": "Lecteur de code barre"
+	},
+	{
+		"key": "BirthDate",
+		"en": "Birth date",
+		"fr": "Date de naissance"
+	},
+	{
+		"key": "Browse",
+		"en": "Browse",
+		"fr": "Parcourir"
+	},
+	{
+		"key": "BrowseLocalDB",
+		"en": "Browse local database",
+		"fr": "Parcourir la base de données"
+	},
+	{
+		"key": "BugReport",
+		"en": "Bug report",
+		"fr": "Signaler une erreur"
+	},
+	{
+		"key": "ButtonBorderBackground",
+		"en": "Button's background: {0}",
+		"fr": "Couleur d'arrière plan du bouton : {0}"
+	},
+	{
+		"key": "ButtonBorderForeground",
+		"en": "Button's border color: {0}",
+		"fr": "Couleur de la bordure du bouton : {0}"
+	},
+	{
+		"key": "ButtonBorderThickness",
+		"en": "Button's border thickness: {0}",
+		"fr": "Epaisseur de la bordure du bouton : {0}"
+	},
+	{
+		"key": "ButtonURL",
+		"en": "URL: {0}",
+		"fr": "URL : {0}"
+	},
+	{
+		"key": "CATAScreen",
+		"en": "CATA screen",
+		"fr": "Ecran CATA"
+	},
+	{
+		"key": "Cancel",
+		"en": "Cancel",
+		"fr": "Annuler"
+	},
+	{
+		"key": "CancelFilter",
+		"en": "Cancel filtre",
+		"fr": "Annuler le filtre"
+	},
+	{
+		"key": "CannotUpdateSubjectSessions",
+		"en": "Following panelists' sessions cannot be updated, they are already started: {0}",
+		"fr": "Les séances des panélistes suivants ne peuvent pas être mises à jour, elles ont déjà démarré : {0}"
+	},
+	{
+		"key": "Canonical",
+		"en": "Canonical display",
+		"fr": "Affichage canonique"
+	},
+	{
+		"key": "ChangeHoverBackground",
+		"en": "Change background on mouse over: {0}",
+		"fr": "Changer le fond au passage de la souris : {0}"
+	},
+	{
+		"key": "ChangeHoverBackground",
+		"en": "Change background on mouse over: {0}",
+		"fr": "Changer le fond au passage de la souris : {0}"
+	},
+	{
+		"key": "ChangeSimulationSettingsTooltip",
+		"en": "Change simulation settings",
+		"fr": "Changer les paramètres de simulation"
+	},
+	{
+		"key": "Characteristics",
+		"en": "Characteristics",
+		"fr": "Caractéristiques"
+	},
+	{
+		"key": "CheckConditionsToDisplayScreen",
+		"en": "Check conditions to display screen:",
+		"fr": "Cocher les conditions à vérifier pour afficher l'écran :"
+	},
+	{
+		"key": "CheckingLicense",
+		"en": "Checking license...",
+		"fr": "Vérification de la licence..."
+	},
+	{
+		"key": "ChooseDataTypeToImport",
+		"en": "Choose data type to import",
+		"fr": "Choisir le type de données à importer"
+	},
+	{
+		"key": "Chronometer",
+		"en": "Chronometer",
+		"fr": "Chronomètre"
+	},
+	{
+		"key": "City",
+		"en": "City",
+		"fr": "Ville"
+	},
+	{
+		"key": "ClearHistory",
+		"en": "Clear history",
+		"fr": "Effacer l'historique"
+	},
+	{
+		"key": "ClickOnSessionIconToOpenIt",
+		"en": "Click on session icon to open it.",
+		"fr": "Cliquer sur l'icône d'une des séances pour l'ouvrir."
+	},
+	{
+		"key": "ClickToAdd",
+		"en": "Click to add/remove {0}s",
+		"fr": "Cliquer pour ajouter/supprimer des {0}s"
+	},
+	{
+		"key": "ClickToLogOut",
+		"en": "You are logged in as {0}. Click to log out.",
+		"fr": "Vous êtes connecté(e) en tant que {0}. Cliquez pour vous déconnecter."
+	},
+	{
+		"key": "Close",
+		"en": "Close",
+		"fr": "Fermer"
+	},
+	{
+		"key": "CloseSimulationTooltip",
+		"en": "Stop simulation",
+		"fr": "Arrêter la simution"
+	},
+	{
+		"key": "Code",
+		"en": "Code",
+		"fr": "Code"
+	},
+	{
+		"key": "CodeAttribute",
+		"en": "Attribute code",
+		"fr": "Code descripteur"
+	},
+	{
+		"key": "Codes",
+		"en": "Codes",
+		"fr": "Codes"
+	},
+	{
+		"key": "Color",
+		"en": "Color",
+		"fr": "Couleur"
+	},
+	{
+		"key": "ColorAnalysis",
+		"en": "Color (analyses)",
+		"fr": "Couleur (analyses)"
+	},
+	{
+		"key": "Column",
+		"en": "Column",
+		"fr": "Colonne"
+	},
+	{
+		"key": "ComboboxQuestion",
+		"en": "Single choice question (combobox)",
+		"fr": "Question à choix unique (liste déroulante)"
+	},
+	{
+		"key": "CommonScreenOptions",
+		"en": "Screens' style",
+		"fr": "Style des écrans"
+	},
+	{
+		"key": "Complete",
+		"en": "Complete",
+		"fr": "Terminer"
+	},
+	{
+		"key": "CompleteAndBalanceDataset",
+		"en": "Complete and balanced dataset",
+		"fr": "Jeu de données complet et équilibré"
+	},
+	{
+		"key": "ConditionalScreen",
+		"en": "Conditional screen",
+		"fr": "Ecran conditionnel"
+	},
+	{
+		"key": "ConditionalVisibility",
+		"en": "Conditional visibility",
+		"fr": "Visibilité conditionnelle"
+	},
+	{
+		"key": "Confirm",
+		"en": "Confirm",
+		"fr": "Confirmer"
+	},
+	{
+		"key": "ConfirmationRequired",
+		"en": "Confirmation required",
+		"fr": "Confirmation requise"
+	},
+	{
+		"key": "ConfirmControlRemoval",
+		"en": "Please confirm control removal",
+		"fr": "Confirmez-vous la suppression du contrôle ?"
+	},
+	{
+		"key": "ConnectionStatus",
+		"en": "Internet connection status",
+		"fr": "Statut de la connection internet"
+	},
+	{
+		"key": "ContinuousScaleScreen",
+		"en": "Continuous scale screen",
+		"fr": "Ecran avec échelle continue"
+	},
+	{
+		"key": "Content",
+		"en": "Content",
+		"fr": "Contenu"
+	},
+	{
+		"key": "Control",
+		"en": "Control",
+		"fr": "Contrôle"
+	},
+	{
+		"key": "ControlBorderThickness",
+		"en": "Thickness: {0}",
+		"fr": "Epaisseur : {0}"
+	},
+	{
+		"key": "ControlCoordinates",
+		"en": "Coordinates (left, top): {0}, {1}",
+		"fr": "Coordonnées (gauche, haut) : {0}, {1}"
+	},
+	{
+		"key": "ControlGroup",
+		"en": "Group(s): {0}",
+		"fr": "Groupe(s) : {0}"
+	},
+	{
+		"key": "ControlHeight",
+		"en": "Height: {0}",
+		"fr": "Hauteur : {0}"
+	},
+	{
+		"key": "ControlLeft",
+		"en": "Left: {0}",
+		"fr": "Gauche : {0}"
+	},
+	{
+		"key": "ControlName",
+		"en": "Control ID",
+		"fr": "ID du contrôle"
+	},
+	{
+		"key": "ControlTiming",
+		"en": "Timing: {0}",
+		"fr": "Minutage : {0}"
+	},
+	{
+		"key": "ControlTop",
+		"en": "Top: {0}",
+		"fr": "Haut : {0}"
+	},
+	{
+		"key": "ControlType",
+		"en": "Control \"{0}\"",
+		"fr": "Contrôle \"{0}\""
+	},
+	{
+		"key": "ControlWidth",
+		"en": "Width: {0}",
+		"fr": "Largeur : {0}"
+	},
+	{
+		"key": "ControlZIndex",
+		"en": "Z-Index: {0}",
+		"fr": "Z-Index : {0}"
+	},
+	{
+		"key": "Copy",
+		"en": "Copy",
+		"fr": "Copier"
+	},
+	{
+		"key": "CopyControl",
+		"en": "Copy control",
+		"fr": "Copier le contrôle"
+	},
+	{
+		"key": "CopyInANewTab",
+		"en": "Copy in a new tab",
+		"fr": "Copier dans un nouvel onglet"
+	},
+	{
+		"key": "CopyInClipboard",
+		"en": "Copy in clipboard",
+		"fr": "Copier dans le presse-papier"
+	},
+	{
+		"key": "CopyOf",
+		"en": "(copy)",
+		"fr": "(copie)"
+	},
+	{
+		"key": "CopyOf ",
+		"en": "Copy of",
+		"fr": "Copie de "
+	},
+	{
+		"key": "CopySelectionToAnotherTab",
+		"en": "Copy selection to another tab",
+		"fr": "Copier la sélection vers un autre onglet"
+	},
+	{
+		"key": "Country",
+		"en": "Country",
+		"fr": "Pays"
+	},
+	{
+		"key": "CreateJudgeAuto",
+		"en": "Create a new panelist (no experimental design)",
+		"fr": "Création d'un nouveau panéliste (non associé à un plan de présentation)"
+	},
+	{
+		"key": "CreateNewDirectory",
+		"en": "Create a new directory",
+		"fr": "Créer un nouveau répertoire"
+	},
+	{
+		"key": "CurrentDate",
+		"en": "Current date",
+		"fr": "Date du jour"
+	},
+	{
+		"key": "CurrentDirectory",
+		"en": "Current directory: ",
+		"fr": "Dossier sélectionné : "
+	},
+	{
+		"key": "CurrentFileInfo",
+		"en": "Show session log",
+		"fr": "Afficher le journal de la séance"
+	},
+	{
+		"key": "CurrentUser",
+		"en": "Current user",
+		"fr": "Utilisateur connecté"
+	},
+	{
+		"key": "CustomButton",
+		"en": "Button",
+		"fr": "Bouton"
+	},
+	{
+		"key": "CustomSound",
+		"en": "Custom sound",
+		"fr": "Son personnalisé"
+	},
+	{
+		"key": "Cut",
+		"en": "Cut",
+		"fr": "Couper"
+	},
+	{
+		"key": "CutControl",
+		"en": "Cut control",
+		"fr": "Couper le contrôle"
+	},
+	{
+		"key": "Data",
+		"en": "Data",
+		"fr": "Données"
+	},
+	{
+		"key": "DataBasePath",
+		"en": "Database path",
+		"fr": "Chemin dans la base de données"
+	},
+	{
+		"key": "DataBaseSynchronization",
+		"en": "Database synchronization with TimeSens server",
+		"fr": "Synchronisation de la base de données avec le serveur TimeSens"
+	},
+	{
+		"key": "DataCheck",
+		"en": "Data check",
+		"fr": "Vérification des données"
+	},
+	{
+		"key": "DataDiagnosis",
+		"en": "Diagnosis",
+		"fr": "Diagnostic"
+	},
+	{
+		"key": "DataImport",
+		"en": "Data import",
+		"fr": "Import de données"
+	},
+	{
+		"key": "DataMeasurementScreen",
+		"en": "Data measurement screen",
+		"fr": "Ecran de mesure"
+	},
+	{
+		"key": "DataSelection",
+		"en": "Data selection",
+		"fr": "Sélection des données"
+	},
+	{
+		"key": "DataSummary",
+		"en": "Data summary",
+		"fr": "Résumé des données"
+	},
+	{
+		"key": "DataTypeName",
+		"en": "Data type",
+		"fr": "Type de données"
+	},
+	{
+		"key": "Database",
+		"en": "Database",
+		"fr": "Base de données"
+	},
+	{
+		"key": "DateFormat",
+		"en": "yyyy-mm-dd",
+		"fr": "dd/mm/yyyy"
+	},
+	{
+		"key": "DefaultMail",
+		"en": "Dear {0},<br/><br/>You have been invited to participate in a session.<br/>Click on <strong><a href='{1}'>this link</a></strong> to open the session in your browser.<br/><br/>If it does not work, copy and paste the following URL in your browser, then fill in the session information:<br/>URL: <strong>{2}</strong>\nServer code: <strong>{3}</strong><br/>Subject code: <strong>{4}</strong><br/>Password: <strong>{5}</strong><br/><br/>Thank you for your participation!",
+		"fr": "Cher(e) {0},<br/><br/>Vous avez été invité(e) à participer à une séance.<br/>Cliquez sur <strong><a href='{1}'>ce lien</a></strong> pour ouvrir la séance dans votre navigateur.<br/><br/>Si le lien ne fonctionne pas, copiez puis collez l'URL indiquée ci-dessous dans la barre d'adresse de votre navigateur, puis remplissez les informations du formulaire :<br/>URL : <strong>{2}</strong><br/>Code serveur : <strong>{3}</strong><br/>Code sujet: <strong>{4}</strong><br/>Mot de passe: <strong>{5}</strong><br/><br/>Merci pour votre participation !"
+	},
+	{
+		"key": "DefaultTemplate",
+		"en": "Default template",
+		"fr": "Modèle par défaut"
+	},
+	{
+		"key": "DefaultValue",
+		"en": "Default value",
+		"fr": "Valeur par défaut"
+	},
+	{
+		"key": "Delete",
+		"en": "Delete",
+		"fr": "Supprimer"
+	},
+	{
+		"key": "DeleteAttributes",
+		"en": "Delete descriptors",
+		"fr": "Supprimer les descripteurs"
+	},
+	{
+		"key": "DeleteControl",
+		"en": "Delete control",
+		"fr": "Supprimer le contrôle"
+	},
+	{
+		"key": "DeleteData",
+		"en": "Delete data",
+		"fr": "Supprimer les données"
+	},
+	{
+		"key": "DeleteDesign",
+		"en": "Delete design",
+		"fr": "Supprimer le plan de présentation"
+	},
+	{
+		"key": "DeleteItems",
+		"en": "Remove selection",
+		"fr": "Supprimer la sélection"
+	},
+	{
+		"key": "DeleteFromCurrentTabAfterCopy",
+		"en": "Delete from current tab after copy",
+		"fr": "Supprimer de cet onglet après la copie"
+	},
+	{
+		"key": "DeleteMail",
+		"en": "Reset default mail content",
+		"fr": "Réinitialiser le contenu du mail par défaut"
+	},
+	{
+		"key": "DeleteProducts",
+		"en": "Delete products",
+		"fr": "Supprimer les produits"
+	},
+	{
+		"key": "DeleteSelection",
+		"en": "Delete selection",
+		"fr": "Suppression (sélection)"
+	},
+	{
+		"key": "DeleteSubjects",
+		"en": "Delete panelists",
+		"fr": "Supprimer les panélistes"
+	},
+	{
+		"key": "DeleteTab",
+		"en": "Delete tab",
+		"fr": "Supprimer l'onglet"
+	},
+	{
+		"key": "DeleteUpload",
+		"en": "Delete upload",
+		"fr": "Supprimer le déploiement"
+	},
+	{
+		"key": "DeletingSessionOnServer",
+		"en": "Deleting session on server...",
+		"fr": "Suppression de la séance sur le serveur..."
+	},
+	{
+		"key": "Deployment",
+		"en": "Deployment",
+		"fr": "Déploiement"
+	},
+	{
+		"key": "Description",
+		"en": "Description",
+		"fr": "Description"
+	},
+	{
+		"key": "DescriptionRequired",
+		"en": "Description required",
+		"fr": "Description requise"
+	},
+	{
+		"key": "Design",
+		"en": "Design (container)",
+		"fr": "Mise en forme (conteneur)"
+	},
+	{
+		"key": "DesignCannotBeRemoved",
+		"en": "Experimental design cannot be removed",
+		"fr": "Le plan de présentation ne peut pas être supprimé"
+	},
+	{
+		"key": "DesignIsAttached",
+		"en": "Current design is attached to '{0} {1}'.",
+		"fr": "Le plan de présentation est attaché à '{0} {1}'."
+	},
+	{
+		"key": "DirectoryAndAllSessionsWillBeDeleted",
+		"en": "This directory and all its content will be deleted, are you sure?",
+		"fr": "Ce répertoire et tout ce qu'il contient va être supprimé, êtes-vous sûr?"
+	},
+	{
+		"key": "DirectoryNameAlreadyExists",
+		"en": "A directory with the same name already exists.",
+		"fr": "Un répertoire avec le même nom existe."
+	},
+	{
+		"key": "DirectoryRenaming",
+		"en": "Directory renaming",
+		"fr": "Renommage de répertoire"
+	},
+	{
+		"key": "DiscreteScaleScreen",
+		"en": "Discrete scale screen",
+		"fr": "Ecran avec échelle discrète"
+	},
+	{
+		"key": "DiscriminationControl",
+		"en": "Discrimination test",
+		"fr": "Test de descrimination"
+	},
+	{
+		"key": "Display",
+		"en": "Display",
+		"fr": "Affichage"
+	},
+	{
+		"key": "DisplayDuringRecord",
+		"en": "Display during record",
+		"fr": "Affichage pendant l'enregistrement"
+	},
+	{
+		"key": "DisplayName",
+		"en": "Displayed name on mail sending",
+		"fr": "Nom affiché lors de l'envoi de mail"
+	},
+	{
+		"key": "DisplayedName",
+		"en": "Displayed name",
+		"fr": "Nom affiché"
+	},
+	{
+		"key": "DoNotDisplayThisWarningAgain",
+		"en": "Do not display this warning again.",
+		"fr": "Ne plus afficher cet avertissement."
+	},
+	{
+		"key": "DoYouConfirmScreenRemoval",
+		"en": "Do you confirm screen removal?",
+		"fr": "Confirmez-vous voiloir supprimer cet écran ?"
+	},
+	{
+		"key": "DoYouWantToSaveChanges",
+		"en": "Do you want to save changes before to continue?",
+		"fr": "Voulez-vous enregistrer les changements avant de continuer ?"
+	},
+	{
+		"key": "DownloadDataConfirmation",
+		"en": "Download {0} data ({1} panelist(s))",
+		"fr": "Télécharger {0} données ({1} panéliste(s))"
+	},
+	{
+		"key": "DownloadData",
+		"en": "Downloading data...",
+		"fr": "Téléchargement des données en cours..."
+	},
+	{
+		"key": "DownloadVideosConfirmation",
+		"en": "Download {0} files ({1} Mo)",
+		"fr": "Télécharger {0} fichiers ({1} Mo)"
+	},
+	{
+		"key": "DownloadVideos",
+		"en": "Downloading videos...",
+		"fr": "Téléchargement des vidéos en cours..."
+	},
+	{
+		"key": "DownloadingDataRequiresTokens",
+		"en": "Downloading data requires tokens.",
+		"fr": "Télécharger des données requière des jetons."
+	},
+	{
+		"key": "DownloadingProgress",
+		"en": "Downloading progress from server: {0}",
+		"fr": "Téléchargement de l'avancement depuis le serveur: {0}"
+	},
+	{
+		"key": "Duration",
+		"en": "Duration",
+		"fr": "Durée"
+	},
+	{
+		"key": "Edit",
+		"en": "Edit",
+		"fr": "Editer"
+	},
+	{
+		"key": "EditAttributesRanks",
+		"en": "Edit descriptors' ranks",
+		"fr": "Modifier les rangs des descripteurs"
+	},
+	{
+		"key": "EditControlProperties",
+		"en": "Edit control properties",
+		"fr": "Afficher les propriétés du contrôle"
+	},
+	{
+		"key": "EditFirstMailContent",
+		"en": "Edit first mail content",
+		"fr": "Editer le contenu du premier mail"
+	},
+	{
+		"key": "EditNotification",
+		"en": "Edit notification content",
+		"fr": "Editer le contenu de la notification"
+	},
+	{
+		"key": "EditProductsRanks",
+		"en": "Edit products' ranks",
+		"fr": "Modifier les rangs des produits"
+	},
+	{
+		"key": "EditRecallMailContent",
+		"en": "Edit reminder mail content",
+		"fr": "Editer le contenu du mail de rappel"
+	},
+	{
+		"key": "EditScreenProperties",
+		"en": "Edit screen properties",
+		"fr": "Afficher les propriétés de l'écran"
+	},
+	{
+		"key": "EducationLevel",
+		"en": "Education level",
+		"fr": "Niveau d'éducation"
+	},
+	{
+		"key": "EmptyScreen",
+		"en": "Empty screen",
+		"fr": "Ecran vide"
+	},
+	{
+		"key": "XlsxSession",
+		"en": "From XLSX file",
+		"fr": "Depuis un fichier XLSX"
+	},
+	{
+		"key": "EnableLocalMode",
+		"en": "Local mode enabled",
+		"fr": "Mode local autorisé"
+	},
+	{
+		"key": "EncryptedURL",
+		"en": "Hyperlink to the session",
+		"fr": "Lien hypertexte vers la séance"
+	},
+	{
+		"key": "EndAction",
+		"en": "Action on exit",
+		"fr": "Action de fin"
+	},
+	{
+		"key": "EnterColor",
+		"en": "Enter Hexadecimal RGB color (#------)",
+		"fr": "Entrer une couleur RGB Hexadécimale (#------)"
+	},
+	{
+		"key": "EnterNewName",
+		"en": "Please enter new name.",
+		"fr": "Veuillez saisir un nouveau nom."
+	},
+	{
+		"key": "EnterText",
+		"en": "[Enter text]",
+		"fr": "[Saisir votre texte]"
+	},
+	{
+		"key": "Error",
+		"en": "Error",
+		"fr": "Erreur"
+	},
+	{
+		"key": "ErrorWhileDownloadingProgress",
+		"en": "Error while downloading progress.",
+		"fr": "Erreur lors du téléchargement de l'avancement."
+	},
+	{
+		"key": "Events",
+		"en": "Events",
+		"fr": "Evénements"
+	},
+	{
+		"key": "ExistingAttributeCodesReplaced",
+		"en": "Existing attributes codes have been replaced: {0}",
+		"fr": "Les codes des descripteurs suivants ont été remplacés : {0}"
+	},
+	{
+		"key": "ExistingCodesReplaced",
+		"en": "Existing codes have been replaced: {0}",
+		"fr": "Les codes suivants ont été remplacés : {0}"
+	},
+	{
+		"key": "ExistingProductCodesReplaced",
+		"en": "Existing product codes have been replaced: {0}",
+		"fr": "Les codes produits suivants ont été remplacés : {0}"
+	},
+	{
+		"key": "ExistingSubjectCodesReplaced",
+		"en": "Existing subject codes have been replaced: {0}",
+		"fr": "Les codes juges suivants ont été remplacés : {0}"
+	},
+	{
+		"key": "ExistingSession",
+		"en": "Open a session",
+		"fr": "Ouvrir une séance"
+	},
+	{
+		"key": "ExitScreen",
+		"en": "End screen",
+		"fr": "Ecran de fin"
+	},
+	{
+		"key": "ExitTimeSens",
+		"en": "Exit TimeSens",
+		"fr": "Quitter TimeSens"
+	},
+	{
+		"key": "ExperimentalDesign",
+		"en": "Experimental design",
+		"fr": "Plan de présentation"
+	},
+	{
+		"key": "ExperimentalDesignChoice",
+		"en": "Experimental design choice",
+		"fr": "Choix du plan de présentation"
+	},
+	{
+		"key": "ExperimentalDesignImport",
+		"en": "Experimental design import",
+		"fr": "Import d'un plan de présentation"
+	},
+	{
+		"key": "ExperimentalDesignItemLabel",
+		"en": "Current experimental design's item label",
+		"fr": "Libellé de l'item du plan de présentation"
+	},
+	{
+		"key": "ExperimentalDesignItems",
+		"en": "Items",
+		"fr": "Eléments"
+	},
+	{
+		"key": "ExperimentalDesignName",
+		"en": "Experimental design: {0}",
+		"fr": "Plan de présentation : {0}"
+	},
+	{
+		"key": "ExperimentalDesignName1",
+		"en": "Experimental design",
+		"fr": "Plan de présentation"
+	},
+	{
+		"key": "ExperimentalDesignOfType",
+		"en": "{0} experimental design {1}",
+		"fr": "Plan de présentation {0} {1}"
+	},
+	{
+		"key": "ExperimentalDesignOrder",
+		"en": "Order",
+		"fr": "Ordre"
+	},
+	{
+		"key": "ExperimentalDesignSettings",
+		"en": "Experimental design settings",
+		"fr": "Paramètres du plan d'expérience"
+	},
+	{
+		"key": "ExperimentalDesignType",
+		"en": "Type",
+		"fr": "Type"
+	},
+	{
+		"key": "ExperimentalDesigns",
+		"en": "Experimental designs",
+		"fr": "Plans de présentation"
+	},
+	{
+		"key": "ExpirationDate",
+		"en": "Expiration date",
+		"fr": "Date d'expiration"
+	},
+	{
+		"key": "Export",
+		"en": "Export",
+		"fr": "Exporter"
+	},
+	{
+		"key": "EXPIRED_LICENSE",
+		"en": "Expired license.",
+		"fr": "License expirée."
+	},
+	{
+		"key": "ExportAsXML",
+		"en": "Archive on local disk (.TS2)",
+		"fr": "Archiver sur le disque dur (.TS2)"
+	},
+	{
+		"key": "ExportAsZipForOfflineMode",
+		"en": "Export ZIP file",
+		"fr": "Exporter le fichier ZIP"
+	},
+	{
+		"key": "ExportAttributes",
+		"en": "Export descriptors",
+		"fr": "Exporter des descripteurs"
+	},
+	{
+		"key": "ExportData",
+		"en": "Export data",
+		"fr": "Exporter les données"
+	},
+	{
+		"key": "ExportItems",
+		"en": "Export items",
+		"fr": "Exporter les éléments"
+	},
+	{
+		"key": "ExportProducts",
+		"en": "Export products",
+		"fr": "Exporter des produits"
+	},
+	{
+		"key": "ExportSubjects",
+		"en": "Export panelists",
+		"fr": "Exporter des panélistes"
+	},
+	{
+		"key": "ExportTable",
+		"en": "Export table",
+		"fr": "Exporter le tableau"
+	},
+	{
+		"key": "ExportToCSV",
+		"en": "Export to CSV",
+		"fr": "Exporter au format CSV"
+	},
+	{
+		"key": "ExportToPDF",
+		"en": "Export to PDF",
+		"fr": "Exporter au format PDF"
+	},
+	{
+		"key": "ExportToXLS",
+		"en": "Export to XLS",
+		"fr": "Exporter au format XLS"
+	},
+	{
+		"key": "Extended",
+		"en": "Extended display",
+		"fr": "Affichage étendu"
+	},
+	{
+		"key": "ExtendedHedonic",
+		"en": "Hedonic test (extended format)",
+		"fr": "Test hédonique (format étendu)"
+	},
+	{
+		"key": "ExtendedProfile",
+		"en": "Profile (extended format)",
+		"fr": "Profil (format étendu)"
+	},
+	{
+		"key": "ExternalDocument",
+		"en": "External document (html page, pdf, image)",
+		"fr": "Document externe (page html, pdf, image)"
+	},
+	{
+		"key": "False",
+		"en": "False",
+		"fr": "Non"
+	},
+	{
+		"key": "FamilialStatus",
+		"en": "FamilialStatus",
+		"fr": "Statut familial"
+	},
+	{
+		"key": "FeelingAnalysis",
+		"en": "Feeling analysis",
+		"fr": "Analyse des sentiments"
+	},
+	{
+		"key": "Female",
+		"en": "Female",
+		"fr": "Femme"
+	},
+	{
+		"key": "Fields",
+		"en": "DB Fields",
+		"fr": "Champs de la BDD"
+	},
+	{
+		"key": "FileAlreadyExists",
+		"en": "File name has to be unique.",
+		"fr": "Le nom de la séance doit être unique."
+	},
+	{
+		"key": "FileDescription",
+		"en": "Session's description",
+		"fr": "Description de la séance"
+	},
+	{
+		"key": "FileName",
+		"en": "Session's name",
+		"fr": "Nom du fichier"
+	},
+	{
+		"key": "FirstName",
+		"en": "First name",
+		"fr": "Prénom"
+	},
+	{
+		"key": "Fixed",
+		"en": "Fixed",
+		"fr": "Fixe"
+	},
+	{
+		"key": "FlashProfile",
+		"en": "Flash profile",
+		"fr": "Profil flash"
+	},
+	{
+		"key": "FontColor",
+		"en": "Font color",
+		"fr": "Couleur de la police"
+	},
+	{
+		"key": "FontFamily",
+		"en": "Font family",
+		"fr": "Police de caractère"
+	},
+	{
+		"key": "FontFamily1",
+		"en": "Font family",
+		"fr": "Police de caractère"
+	},
+	{
+		"key": "FontSize",
+		"en": "Font size",
+		"fr": "Taille du texte"
+	},
+	{
+		"key": "ForcedBreakScreen",
+		"en": "Forced break screen",
+		"fr": "Ecran de pause"
+	},
+	{
+		"key": "ForSelectedPanelists",
+		"en": "For selected panelist(s)",
+		"fr": "Pour le(s) panéliste(s) sélectionnés"
+	},
+	{
+		"key": "FreeTextQuestion",
+		"en": "Free text question",
+		"fr": "Question à texte libre"
+	},
+	{
+		"key": "FromAnotherSession",
+		"en": "From another session",
+		"fr": "Depuis une autre séance"
+	},
+	{
+		"key": "FromClipboard",
+		"en": "From clipboard",
+		"fr": "Depuis le presse-papier"
+	},
+	{
+		"key": "FromDataFile",
+		"en": "From data file (CSV, TXT, XLS)",
+		"fr": "Depuis un fichier de données (CSV, TXT, XLS)"
+	},
+	{
+		"key": "FromDelimitedTextFile",
+		"en": "From delimited text file",
+		"fr": "Depuis un fichier texte délimité"
+	},
+	{
+		"key": "FromTemplate",
+		"en": "From template",
+		"fr": "Depuis un modèle de séance"
+	},
+	{
+		"key": "FromWizard",
+		"en": "From wizard",
+		"fr": "Depuis l'assistant de création de séance"
+	},
+	{
+		"key": "FromXMLTextFile",
+		"en": "From archive file (.TS2)",
+		"fr": "Depuis une archive (.TS2)"
+	},
+	{
+		"key": "FunctionSelection",
+		"en": "Parameter definition",
+		"fr": "Définition des paramètres"
+	},
+	{
+		"key": "Gender",
+		"en": "Gender",
+		"fr": "Genre"
+	},
+	{
+		"key": "GenerateNewLabels",
+		"en": "Generate new labels",
+		"fr": "Générer de nouveaux codes"
+	},
+	{
+		"key": "GeneratePasswords",
+		"en": "Generate passwords",
+		"fr": "Mots de passe"
+	},
+	{
+		"key": "GenerateSubjectsPasswords",
+		"en": "Generate panelists' passwords",
+		"fr": "Générer des mots de passe pour les panélistes"
+	},
+	{
+		"key": "GetProgressInfoTooltip",
+		"en": "Information",
+		"fr": "Information"
+	},
+	{
+		"key": "GoBack",
+		"en": "Go back",
+		"fr": "Revenir au répertoire précédent"
+	},
+	{
+		"key": "GoToFirstScreenTooltip",
+		"en": "Go to first screen",
+		"fr": "Aller au premier écran"
+	},
+	{
+		"key": "GoToLastScreenTooltip",
+		"en": "Go to last screen",
+		"fr": "Aller au dernier écran"
+	},
+	{
+		"key": "GoToNextScreenOptions",
+		"en": "Next screen switch options",
+		"fr": "Passage à l'écran suivant"
+	},
+	{
+		"key": "GoToNextScreenTooltip",
+		"en": "Go to next screen",
+		"fr": "Aller à l'écran suivant"
+	},
+	{
+		"key": "GoToPreviousScreenTooltip",
+		"en": "Go to previous screen",
+		"fr": "Aller à l'écran précédent"
+	},
+	{
+		"key": "GridPrecision",
+		"en": "Design grid precision",
+		"fr": "Précision de la grille"
+	},
+	{
+		"key": "GridVisibility",
+		"en": "Design grid visibility",
+		"fr": "Affichage de la grille"
+	},
+	{
+		"key": "Group",
+		"en": "Group",
+		"fr": "Groupe"
+	},
+	{
+		"key": "GroupDescriptionControl",
+		"en": "Group description (after sorting)",
+		"fr": "Description des groupes (après tri libre)"
+	},
+	{
+		"key": "GroupOfControlID",
+		"en": "Group(s): {0}",
+		"fr": "Groupe(s) : {0}"
+	},
+	{
+		"key": "Hedonic",
+		"en": "Hedonic test",
+		"fr": "Test hédonique"
+	},
+	{
+		"key": "Help",
+		"en": "Help",
+		"fr": "Aide"
+	},
+	{
+		"key": "History",
+		"en": "History",
+		"fr": "Historique"
+	},
+	{
+		"key": "HomogeneousStyle",
+		"en": "Apply the style to buttons: {0}",
+		"fr": "Tous les boutons ont le même style : {0}"
+	},
+	{
+		"key": "Id",
+		"en": "ID",
+		"fr": "Identifiant"
+	},
+	{
+		"key": "IgnoreThisWarning",
+		"en": "Ignore this warning",
+		"fr": "Ignorer cet avertissement"
+	},
+	{
+		"key": "ImageSource",
+		"en": "Source: {0}",
+		"fr": "Source : {0}"
+	},
+	{
+		"key": "ImportAttributes",
+		"en": "Import descriptors",
+		"fr": "Importer des descripteurs"
+	},
+	{
+		"key": "ImportAttributesOrDesign",
+		"en": "Do you want to import attributes in current design or import a new design?",
+		"fr": "Voulez vous importer des descripteurs dans le plan de présentation actuel ou importer un nouveau plan de présentation ?"
+	},
+	{
+		"key": "ImportData",
+		"en": "Import data",
+		"fr": "Importer des données"
+	},
+	{
+		"key": "ImportDesign",
+		"en": "Import design",
+		"fr": "Importer un plan de présentation"
+	},
+	{
+		"key": "ImportExport",
+		"en": "Import/Export",
+		"fr": "Importer/Exporter"
+	},
+	{
+		"key": "ImportItems",
+		"en": "Import items",
+		"fr": "Importer des éléments"
+	},
+	{
+		"key": "ImportItemsOrDesign",
+		"en": "Do you want to import {0}s in current design or import a new design?",
+		"fr": "Voulez vous importer des {0}s dans le plan de présentation actuel ou importer un nouveau plan de présentation ?"
+	},
+	{
+		"key": "ImportProducts",
+		"en": "Import products",
+		"fr": "Importer des produits"
+	},
+	{
+		"key": "ImportProductsOrDesign",
+		"en": "Do you want to import products in current design or import a new design?",
+		"fr": "Voulez vous importer des produits dans le plan de présentation actuel ou importer un nouveau plan de présentation ?"
+	},
+	{
+		"key": "ImportSubjects",
+		"en": "Import panelists",
+		"fr": "Importer des panélistes"
+	},
+	{
+		"key": "ImportZipFromOfflineMode",
+		"en": "Import ZIP file",
+		"fr": "Importer le fichier ZIP"
+	},
+	{
+		"key": "ImportingData",
+		"en": "Importing data...",
+		"fr": "Importation en cours..."
+	},
+	{
+		"key": "ImputeMissingData",
+		"en": "Impute missing data",
+		"fr": "Imputer les données manquantes"
+	},
+	{
+		"key": "IncludeDigits",
+		"en": "Digits",
+		"fr": "Chiffres"
+	},
+	{
+		"key": "IncludeLowercase",
+		"en": "Lowercases",
+		"fr": "Minuscules"
+	},
+	{
+		"key": "IncludeUppercase",
+		"en": "Uppercases",
+		"fr": "Majuscules"
+	},
+	{
+		"key": "INCORRECT_LOGIN",
+		"en": "Invalid ID.",
+		"fr": "Identifiant non valide."
+	},
+	{
+		"key": "INCORRECT_PASSWORD",
+		"en": "Invalid password.",
+		"fr": "Mot de passe non valide."
+	},
+	{
+		"key": "InProgress",
+		"en": "in progress...",
+		"fr": "en cours..."
+	},
+	{
+		"key": "Insert",
+		"en": "Insert",
+		"fr": "Insérer"
+	},
+	{
+		"key": "InsertAttributes",
+		"en": "Insert descriptors",
+		"fr": "Ajouter des descripteurs"
+	},
+	{
+		"key": "InsertData",
+		"en": "Insert data",
+		"fr": "Ajouter des données"
+	},
+	{
+		"key": "InsertItems",
+		"en": "Insert items",
+		"fr": "Ajouter des éléments"
+	},
+	{
+		"key": "InsertProducts",
+		"en": "Insert products",
+		"fr": "Ajouter des produits"
+	},
+	{
+		"key": "InsertRepeatedScreen",
+		"en": "Repeated screen according to experimental design",
+		"fr": "Ecran répété en fonction d'un plan de présentation"
+	},
+	{
+		"key": "InsertScreen",
+		"en": "Insert a screen",
+		"fr": "Insérer un écran"
+	},
+	{
+		"key": "InsertScreenFromClipboard",
+		"en": "Paste screen",
+		"fr": "Coller l'écran"
+	},
+	{
+		"key": "InsertSingleScreen",
+		"en": "Non repeated screen",
+		"fr": "Ecran non répété"
+	},
+	{
+		"key": "InsertSpecialText",
+		"en": "Insert special text",
+		"fr": "Insérer un texte spécial"
+	},
+	{
+		"key": "InsertSubjects",
+		"en": "Insert panelists",
+		"fr": "Ajouter des panélistes"
+	},
+	{
+		"key": "Intake",
+		"en": "Intake",
+		"fr": "Prise"
+	},
+	{
+		"key": "Intakes",
+		"en": "Intakes",
+		"fr": "Prises"
+	},
+	{
+		"key": "Intakes:",
+		"en": "Intakes ({0}): {1}",
+		"fr": "Prises ({0}) : {1}"
+	},
+	{
+		"key": "IsVocal",
+		"en": "Vocal synthesis",
+		"fr": "Synthèse vocale"
+	},
+	{
+		"key": "Issues",
+		"en": "Tickets",
+		"fr": "Tickets"
+	},
+	{
+		"key": "ItemLabelParameters",
+		"en": "Labels parameters",
+		"fr": "Paramètres des codes"
+	},
+	{
+		"key": "ItemLabels",
+		"en": "Labels",
+		"fr": "Etiquettes"
+	},
+	{
+		"key": "KeepRanksBetweenReplicates",
+		"en": "Keep ranks between replicates",
+		"fr": "Conserver les mêmes rangs à chaque répétition"
+	},
+	{
+		"key": "Key",
+		"en": "Key",
+		"fr": "Clé"
+	},
+	{
+		"key": "Labels",
+		"en": "Labels",
+		"fr": "Etiquettes"
+	},
+	{
+		"key": "Language",
+		"en": "Language",
+		"fr": "Langue"
+	},
+	{
+		"key": "LastAccess",
+		"en": "Last access",
+		"fr": "Dernière connexion"
+	},
+	{
+		"key": "LastName",
+		"en": "Last name",
+		"fr": "Nom"
+	},
+	{
+		"key": "LastSave",
+		"en": "Last save",
+		"fr": "Dernier enregistrement"
+	},
+	{
+		"key": "LastSynchronization",
+		"en": "Last synchronisation",
+		"fr": "Dernière synchronisation"
+	},
+	{
+		"key": "LatinSquare",
+		"en": "Latin square",
+		"fr": "Carré latin"
+	},
+	{
+		"key": "Layout",
+		"en": "Layout",
+		"fr": "Affichage"
+	},
+	{
+		"key": "Left",
+		"en": "Left",
+		"fr": "Gauche"
+	},
+	{
+		"key": "LeftCoord",
+		"en": "Left: {0}",
+		"fr": "Gauche : {0}"
+	},
+	{
+		"key": "Length",
+		"en": "Length",
+		"fr": "Longueur"
+	},
+	{
+		"key": "LICENSE_NOT_VALIDATED",
+		"en": "License not validated.",
+		"fr": "Licence non validée."
+	},
+	{
+		"key": "LicenseNotValidOnThisComputer",
+		"en": "The current license is already used by another computer. The license user should visit <a href='https://www.timesens.com/v2'>TimeSens website</a> to detach his subscription (autentification required).",
+		"fr": "La licence est déjà utilisée sur un autre ordinateur. L'utilisateur de la licence peut la libérer en visitant le <a href='https://www.timesens.com/v2'>site web TimeSens.</a> (identification requise)"
+	},
+	{
+		"key": "List",
+		"en": "List",
+		"fr": "Liste"
+	},
+	{
+		"key": "LoadingFile",
+		"en": "Loading session file...",
+		"fr": "Chargement du fichier séance..."
+	},
+	{
+		"key": "LocalDirectories",
+		"en": "Local directories",
+		"fr": "Répertoires locaux"
+	},
+	{
+		"key": "LocalDirectory",
+		"en": "Local directory",
+		"fr": "Répertoire local"
+	},
+	{
+		"key": "LocalFile",
+		"en": "Local file: {0} Mo",
+		"fr": "Fichier local : {0} Mo"
+	},
+	{
+		"key": "LocalFileMostRecent",
+		"en": "Local file most recent",
+		"fr": "Fichier local plus récent"
+	},
+	{
+		"key": "LocalSessions",
+		"en": "Local sessions database",
+		"fr": "Base de données des séances locales"
+	},
+	{
+		"key": "Lock",
+		"en": "Session is locked",
+		"fr": "La séance est verrouillée"
+	},
+	{
+		"key": "Login",
+		"en": "Login",
+		"fr": "Authentification"
+	},
+	{
+		"key": "LongName",
+		"en": "Long name",
+		"fr": "Nom long"
+	},
+	{
+		"key": "Mail",
+		"en": "Mail",
+		"fr": "Mail"
+	},
+	{
+		"key": "MailContent",
+		"en": "Body",
+		"fr": "Corps"
+	},
+	{
+		"key": "MailDisplayName",
+		"en": "Display name",
+		"fr": "Nom affiché"
+	},
+	{
+		"key": "MailReturnAddress",
+		"en": "Return mail address",
+		"fr": "Adresse mail de retour"
+	},
+	{
+		"key": "MailSentWith",
+		"en": "Mail sent with {0}: {1}",
+		"fr": "Mail envoyé avec {0} : {1}"
+	},
+	{
+		"key": "MailStatus",
+		"en": "Mail status",
+		"fr": "Statut du mail"
+	},
+	{
+		"key": "MailSubject",
+		"en": "Mail subject",
+		"fr": "Objet du mail"
+	},
+	{
+		"key": "MailTemplate",
+		"en": "Mail template",
+		"fr": "Modèle de mail"
+	},
+	{
+		"key": "Male",
+		"en": "Male",
+		"fr": "Homme"
+	},
+	{
+		"key": "ManageCustomOptions",
+		"en": "Edit custom fields",
+		"fr": "Editer les champs personnalisés"
+	},
+	{
+		"key": "Margin",
+		"en": "Margin",
+		"fr": "Marge"
+	},
+	{
+		"key": "MaxNumberOfItems",
+		"en": "Maximum number of attributes",
+		"fr": "Nombre de descripteurs maximum"
+	},
+	{
+		"key": "MaxTime",
+		"en": "Delay before disabling data controls",
+		"fr": "Délai avant la désactivation des contrôles"
+	},
+	{
+		"key": "MeasurementScreen",
+		"en": "Measurement screen",
+		"fr": "Ecran de mesure"
+	},
+	{
+		"key": "Memo",
+		"en": "Memo",
+		"fr": "Memo"
+	},
+	{
+		"key": "MemorizeAnalysis",
+		"en": "Save analysis parameters",
+		"fr": "Sauvegarder les paramètres"
+	},
+	{
+		"key": "MinLength1",
+		"en": "Minimum length",
+		"fr": "Longueur minimale"
+	},
+	{
+		"key": "MinNumberOfItems",
+		"en": "Minimum number of attributes",
+		"fr": "Nombre de descripteurs minimum"
+	},
+	{
+		"key": "MinTimeBetweenConnections",
+		"en": "Min time between connections (hours)",
+		"fr": "Temps minimal entre 2 connexions (heures)"
+	},
+	{
+		"key": "MissingOnClient",
+		"en": "Local file missing",
+		"fr": "Fichier local manquant"
+	},
+	{
+		"key": "MissingOnServer",
+		"en": "Server file missing",
+		"fr": "Fichier distant manquant"
+	},
+	{
+		"key": "ModalDisplay",
+		"en": "Modal display",
+		"fr": "Affichage modal"
+	},
+	{
+		"key": "Modality1",
+		"en": "Modality 1",
+		"fr": "Modalité 1"
+	},
+	{
+		"key": "Modality2",
+		"en": "Modality 2",
+		"fr": "Modalité 2"
+	},
+	{
+		"key": "ModifySelection",
+		"en": "Modify selection",
+		"fr": "Modifier la sélection"
+	},
+	{
+		"key": "ModifyTab",
+		"en": "Modify tab data",
+		"fr": "Modifier les données de l'onglet"
+	},
+	{
+		"key": "Monitoring",
+		"en": "Monitoring",
+		"fr": "Suivi"
+	},
+	{
+		"key": "More",
+		"en": "More actions",
+		"fr": "Plus d'actions"
+	},
+	{
+		"key": "Move",
+		"en": "Move",
+		"fr": "Déplacer"
+	},
+	{
+		"key": "MoveCode",
+		"en": "Move ",
+		"fr": "Déplacer "
+	},
+	{
+		"key": "MoveDownScreen",
+		"en": "Move down screen",
+		"fr": "Décaler l'écran vers le bas"
+	},
+	{
+		"key": "MoveUpScreen",
+		"en": "Move up screen",
+		"fr": "Décaler l'écran vers le haut"
+	},
+	{
+		"key": "MultipleAnswersQuestion",
+		"en": "Multiple answers question",
+		"fr": "Question à choix multiples"
+	},
+	{
+		"key": "MyTemplates",
+		"en": "My templates",
+		"fr": "Mes modèles"
+	},
+	{
+		"key": "Name",
+		"en": "Name",
+		"fr": "Nom"
+	},
+	{
+		"key": "NappingScreen",
+		"en": "Napping screen",
+		"fr": "Ecran avec nappe"
+	},
+	{
+		"key": "NbAttributes",
+		"en": "Number of descriptors",
+		"fr": "Nombre de descripteurs"
+	},
+	{
+		"key": "NbIntakes",
+		"en": "Number of intakes",
+		"fr": "Nombre de prises"
+	},
+	{
+		"key": "NbIntakes1",
+		"en": "Number of intakes",
+		"fr": "Nombre de prises"
+	},
+	{
+		"key": "NbProducts",
+		"en": "Number of products",
+		"fr": "Nombre de produits"
+	},
+	{
+		"key": "NbReplicates",
+		"en": "Number of replicates",
+		"fr": "Nombre de répétitions"
+	},
+	{
+		"key": "NbReplicates1",
+		"en": "Replicates",
+		"fr": "Répétitions"
+	},
+	{
+		"key": "NbSessions",
+		"en": "Sessions: {0}",
+		"fr": "Sessions : {0}"
+	},
+	{
+		"key": "NbSubjects",
+		"en": "Number of panelists",
+		"fr": "Nombre de panélistes"
+	},
+	{
+		"key": "NeverShowPanelistCodesOnClient",
+		"en": "Never show panelists' codes",
+		"fr": "Ne jamais afficher les codes"
+	},
+	{
+		"key": "NewDesign",
+		"en": "New design",
+		"fr": "Nouveau plan de présentation"
+	},
+	{
+		"key": "NewDirectory",
+		"en": "New directory",
+		"fr": "Nouveau répertoire"
+	},
+	{
+		"key": "NewDirectoryName",
+		"en": "New directory name",
+		"fr": "Nouveau nom de répertoire"
+	},
+	{
+		"key": "NewExperimentalDesignOfType",
+		"en": "New '{0}' experimental design",
+		"fr": "Nouveau plan de présentation '{0}'"
+	},
+	{
+		"key": "NewLabels",
+		"en": "New labels",
+		"fr": "Nouvelles étiquettes"
+	},
+	{
+		"key": "NewSession",
+		"en": "Create a new session",
+		"fr": "Créer une nouvelle séance"
+	},
+	{
+		"key": "NewSessionAvailable",
+		"en": "New session available",
+		"fr": "Nouvelle séance disponible"
+	},
+	{
+		"key": "NewTab",
+		"en": "New tab",
+		"fr": "Nouvel onglet"
+	},
+	{
+		"key": "NextPage",
+		"en": "Next page",
+		"fr": "Page suivante"
+	},
+	{
+		"key": "NoCheck",
+		"en": "No check",
+		"fr": "Pas de vérification"
+	},
+	{
+		"key": "NoConsecutiveItems",
+		"en": "Prevent successive presentations of the same product",
+		"fr": "Eviter de présenter deux fois consécutivement le même produit"
+	},
+	{
+		"key": "NoCustomTemplate",
+		"en": "No custom template available.",
+		"fr": "Aucun modèle personnalisé disponible."
+	},
+	{
+		"key": "NoDesign",
+		"en": "No design",
+		"fr": "Pas de plan de présentation"
+	},
+	{
+		"key": "NoExitScreen",
+		"en": "No end screen",
+		"fr": "Pas d'écran de fin"
+	},
+	{
+		"key": "NoNetwork",
+		"en": "No Internet connexion",
+		"fr": "PAs de connection Internet"
+	},
+	{
+		"key": "NoOverallInstructionScreen",
+		"en": "No overall instructions screen",
+		"fr": "Pas d'écran d'instructions générales"
+	},
+	{
+		"key": "NoRepeatedInstructionScreen",
+		"en": "No repeated instructions screen",
+		"fr": "Pas d'écran d'instructions répétées"
+	},
+	{
+		"key": "NoWelcomeScreen",
+		"en": "No welcome screen",
+		"fr": "Pas d'écran d'accueil"
+	},
+	{
+		"key": "NotANumber",
+		"en": "Please enter a valid number.",
+		"fr": "Saisie non valide."
+	},
+	{
+		"key": "NotAuthorized",
+		"en": "Not authorized",
+		"fr": "Non autorisée"
+	},
+	{
+		"key": "NotEnoughTokens",
+		"en": "You do not have enough tokens to download the data.",
+		"fr": "Vous n'avez pas assez de jetons pour télécharger les données"
+	},
+	{
+		"key": "NoForcedBreakScreen",
+		"en": "No forced break screen",
+		"fr": "Pas d'écran de pause"
+	},
+	{
+		"key": "NoSubjectSummaryScreen",
+		"en": "No subject summary screen",
+		"fr": "Pas d'écran avec retour sujet"
+	},
+	{
+		"key": "NotSent",
+		"en": "Mail non sent.",
+		"fr": "Mail non envoyé."
+	},
+	{
+		"key": "NotSynchronized",
+		"en": "Not synchronized",
+		"fr": "Non synchronisée"
+	},
+	{
+		"key": "NotUploaded",
+		"en": "Not uploaded",
+		"fr": "non déployée"
+	},
+	{
+		"key": "Notes",
+		"en": "Notes",
+		"fr": "Notes"
+	},
+	{
+		"key": "Notification",
+		"en": "Notification",
+		"fr": "Notification"
+	},
+	{
+		"key": "OfflineMode",
+		"en": "Offline mode",
+		"fr": "Mode déconnecté"
+	},
+	{
+		"key": "OneClickOnly",
+		"en": "Disable after click",
+		"fr": "Désactiver après le clic"
+	},
+	{
+		"key": "Open",
+		"en": "Open",
+		"fr": "Ouvrir"
+	},
+	{
+		"key": "OpenSessionFromLocalDB",
+		"en": "Open session from local DB",
+		"fr": "Ouverture de séance depuis la BDD locale"
+	},
+	{
+		"key": "Options",
+		"en": "Options",
+		"fr": "Options"
+	},
+	{
+		"key": "Order",
+		"en": "Order",
+		"fr": "Ordre"
+	},
+	{
+		"key": "OrganizeSheets",
+		"en": "Organize sheets",
+		"fr": "Organiser les onglets"
+	},
+	{
+		"key": "Outputs",
+		"en": "Outputs",
+		"fr": "Sorties"
+	},
+	{
+		"key": "OverallInstructionScreen",
+		"en": "Overall instructions screen",
+		"fr": "Ecran d'instructions générales"
+	},
+	{
+		"key": "Overview",
+		"en": "Overview",
+		"fr": "Aperçu"
+	},
+	{
+		"key": "Pair",
+		"en": "Two different products (pair)",
+		"fr": "Deux produits différents (paire)"
+	},
+	{
+		"key": "PairedTest",
+		"en": "Paired test",
+		"fr": "Test par paire"
+	},
+	{
+		"key": "PanelistCheckBrowserMode",
+		"en": "Check browser mode",
+		"fr": "Vérification du navigateur du panéliste"
+	},
+	{
+		"key": "PanelistCodeAnonymousMode",
+		"en": "Anonymous login",
+		"fr": "Connection anonyme"
+	},
+	{
+		"key": "PanelistCodeDisplayMode",
+		"en": "Panelists' codes display in TimeSens for panelists' dropdown list",
+		"fr": "Affichage des codes panélistes dans la liste déroulante de TimeSens pour panélistes"
+	},
+	{
+		"key": "Panelists",
+		"en": "Panelists",
+		"fr": "Panélistes"
+	},
+	{
+		"key": "Password",
+		"en": "Password",
+		"fr": "Mot de passe"
+	},
+	{
+		"key": "PasswordForOfflineMode",
+		"en": "Password for downloading sessions in local mode",
+		"fr": "Mot de passe pour télécharger les séances en mode local"
+	},
+	{
+		"key": "PasswordParameters",
+		"en": "Password parameters",
+		"fr": "Paramètres des mots de passe"
+	},
+	{
+		"key": "Passwords",
+		"en": "Passwords",
+		"fr": "Mots de passe"
+	},
+	{
+		"key": "PasteControl",
+		"en": "Paste control",
+		"fr": "Coller le contrôle"
+	},
+	{
+		"key": "Phone",
+		"en": "Phone",
+		"fr": "Téléphone"
+	},
+	{
+		"key": "PhotoRecorder",
+		"en": "Photo recorder (camera)",
+		"fr": "Enregistreur photo (appareil photo)"
+	},
+	{
+		"key": "PlayAfter",
+		"en": "Play after (seconds)",
+		"fr": "Délai avant lecture (secondes)"
+	},
+	{
+		"key": "PlayerStartMode",
+		"en": "Start mode",
+		"fr": "Mode de démarrage"
+	},
+	{
+		"key": "PlaySoundOnClick",
+		"en": "Play sound on click",
+		"fr": "Son"
+	},
+	{
+		"key": "PlaySoundWhenDisplayed",
+		"en": "Play sound when displayed",
+		"fr": "Son à l'affichage"
+	},
+	{
+		"key": "PleaseConfirmDataDownload",
+		"en": "Please confirm data download.",
+		"fr": "Veuillez confirmer le téléchargement des données."
+	},
+	{
+		"key": "PleaseEnterAValidDirectoryName",
+		"en": "Enter a valid directory name.",
+		"fr": "Entrer un nom de répertoire valide."
+	},
+	{
+		"key": "PleaseEnterAValidFileName",
+		"en": "Enter a valid file name.",
+		"fr": "Entrer un nom de fichier valide."
+	},
+	{
+		"key": "PleaseEnterBugDescription",
+		"en": "Please enter bug description:",
+		"fr": "Veuillez saisir la description de l'erreur ci-dessous :"
+	},
+	{
+		"key": "PleaseEnterNewName",
+		"en": "Please enter a new name:",
+		"fr": "Veuillez saisir un nouveau nom :"
+	},
+	{
+		"key": "PositionControl",
+		"en": "Position",
+		"fr": "Position"
+	},
+	{
+		"key": "PresentationMode",
+		"en": "Presentation mode",
+		"fr": "Mode de présentation"
+	},
+	{
+		"key": "Print",
+		"en": "Print",
+		"fr": "Imprimer"
+	},
+	{
+		"key": "PrintMemo",
+		"en": "Save as memo (XLS)",
+		"fr": "Exporter un mémo (XLS)"
+	},
+	{
+		"key": "PrintSession",
+		"en": "Print session",
+		"fr": "Imprimer la séance"
+	},
+	{
+		"key": "Product",
+		"en": "Product",
+		"fr": "Produit"
+	},
+	{
+		"key": "ProductCode",
+		"en": "Product code",
+		"fr": "Code produit"
+	},
+	{
+		"key": "ProductDesignImport",
+		"en": "Product design import",
+		"fr": "Import d'un plan de présentation de produits"
+	},
+	{
+		"key": "ProductImport",
+		"en": "Product import",
+		"fr": "Import de produits"
+	},
+	{
+		"key": "ProductLabelParameters",
+		"en": "Labels parameters",
+		"fr": "Paramètres des étiquettes"
+	},
+	{
+		"key": "ProductLabels",
+		"en": "Product labels",
+		"fr": "Etiquettes des produits"
+	},
+	{
+		"key": "ProductRank",
+		"en": "Product's rank",
+		"fr": "Rang du produit"
+	},
+	{
+		"key": "ProductRanks",
+		"en": "Products' ranks",
+		"fr": "Rangs des produit"
+	},
+	{
+		"key": "Products",
+		"en": "Products",
+		"fr": "Produits"
+	},
+	{
+		"key": "Products:",
+		"en": "Products ({0}): {1}",
+		"fr": "Produits ({0}) : {1}"
+	},
+	{
+		"key": "ProductsExperimentalDesign",
+		"en": "Products experimental design",
+		"fr": "Plan de présentation des produits"
+	},
+	{
+		"key": "ProfessionalActivity",
+		"en": "Professional activity",
+		"fr": "Activité professionnelle"
+	},
+	{
+		"key": "Progress",
+		"en": "Progress",
+		"fr": "Avancement"
+	},
+	{
+		"key": "ProgressBar",
+		"en": "Progress indicator",
+		"fr": "Indicateur d'avancement"
+	},
+	{
+		"key": "ProgressBarPosition",
+		"en": "Progress bar position",
+		"fr": "Position de l'indicateur d'avancement"
+	},
+	{
+		"key": "ProgressBarType",
+		"en": "Type: {0}",
+		"fr": "Type : {0}"
+	},
+	{
+		"key": "Protocol",
+		"en": "Protocol",
+		"fr": "Protocole"
+	},
+	{
+		"key": "Question",
+		"en": "Question",
+		"fr": "Question"
+	},
+	{
+		"key": "Random",
+		"en": "Random",
+		"fr": "Aléatoire"
+	},
+	{
+		"key": "RandomLabelOptions",
+		"en": "Random labels options",
+		"fr": "Options des étiquettes aléatoires"
+	},
+	{
+		"key": "Rank",
+		"en": "Rank",
+		"fr": "Rang"
+	},
+	{
+		"key": "Ranking",
+		"en": "Ranking",
+		"fr": "Classement"
+	},
+	{
+		"key": "RankNumber",
+		"en": "Rank {0}",
+		"fr": "Rang {0}"
+	},
+	{
+		"key": "RankingScreen",
+		"en": "Ranking screen",
+		"fr": "Ecran avec classement"
+	},
+	{
+		"key": "ReadChangeLog",
+		"en": "Read change log",
+		"fr": "Voir le journal des modifications"
+	},
+	{
+		"key": "RecentSessions",
+		"en": "Recent sessions",
+		"fr": "Séances récentes"
+	},
+	{
+		"key": "RecordType",
+		"en": "Record type",
+		"fr": "Type d'enregistrement"
+	},
+	{
+		"key": "RecorderOnStopAction",
+		"en": "Recorder action on stop",
+		"fr": "Action à l'arrêt de l'enregistrement"
+	},
+	{
+		"key": "RecorderStartMode",
+		"en": "Recorder start mode",
+		"fr": "Mode de déclenchement de l'enregistrement"
+	},
+	{
+		"key": "RecorderStopMode",
+		"en": "Recorder stop mode",
+		"fr": "Mode d'arrêt de l'enregistrement"
+	},
+	{
+		"key": "Redo",
+		"en": "Redo",
+		"fr": "Réitérer la dernière action"
+	},
+	{
+		"key": "Refresh",
+		"en": "Download progress",
+		"fr": "Téléchargement de l'avancement"
+	},
+	{
+		"key": "Remove",
+		"en": "Remove",
+		"fr": "Supprimer"
+	},
+	{
+		"key": "RemoveAssociatedData",
+		"en": "Remove data associated with this server code?",
+		"fr": "Suppression de données avec ce code serveur ?"
+	},
+	{
+		"key": "RemoveData",
+		"en": "Remove data",
+		"fr": "Suppression de données"
+	},
+	{
+		"key": "RemoveItemData",
+		"en": "Remove associated data?",
+		"fr": "Supprimer les données associées?"
+	},
+	{
+		"key": "RemoveProductData",
+		"en": "Remove data associated to removed products?",
+		"fr": "Supprimer les données associées aux produits ?"
+	},
+	{
+		"key": "RemoveSelection",
+		"en": "Remove selection",
+		"fr": "Supprimer la sélection"
+	},
+	{
+		"key": "RemoveStyle",
+		"en": "Remove style",
+		"fr": "Supprimer la mise en forme"
+	},
+	{
+		"key": "RemoveSubjectData",
+		"en": "Remove data associated to removed subjects?",
+		"fr": "Supprimer les données associées aux sujets ?"
+	},
+	{
+		"key": "Rename",
+		"en": "Rename",
+		"fr": "Renommer"
+	},
+	{
+		"key": "RenameTab",
+		"en": "Rename tab",
+		"fr": "Renommer l'onglet"
+	},
+	{
+		"key": "RepeatedInstructionScreen",
+		"en": "Repeated instructions screen",
+		"fr": "Ecran d'instructions répétées"
+	},
+	{
+		"key": "RepeatedScreen",
+		"en": "Repeated screen according to experimental design {0}",
+		"fr": "Ecran répété selon le plan de présentation {0}"
+	},
+	{
+		"key": "ReplacementValue",
+		"en": "Replacement value",
+		"fr": "Valeur de remplacement"
+	},
+	{
+		"key": "Replicate",
+		"en": "Replicate",
+		"fr": "Répétition"
+	},
+	{
+		"key": "ReplicateNumber",
+		"en": "Replicate {0}",
+		"fr": "Répétition {0}"
+	},
+	{
+		"key": "Replicates",
+		"en": "Replicates",
+		"fr": "Répétitions"
+	},
+	{
+		"key": "Replicates:",
+		"en": "Replicates ({0}): {1}",
+		"fr": "Répétitions ({0}) : {1}"
+	},
+	{
+		"key": "RequiredTokens",
+		"en": "Required tokens: {0}",
+		"fr": "Jetons requis : {0}"
+	},
+	{
+		"key": "ResetDesign",
+		"en": "Reset experimental design",
+		"fr": "Réinitialiser le plan de présentation"
+	},
+	{
+		"key": "ResetMinTimeBetween2Connections",
+		"en": "Reset min. time between 2 connections",
+		"fr": "Réinitialiser le temps minimal entre 2 connexions"
+	},
+	{
+		"key": "ResetingMinTimeBetween2Connections",
+		"en": "Reseting min. time between 2 connections: {0}",
+		"fr": "Réinitialisation du temps minimal entre 2 connexions : {0}"
+	},
+	{
+		"key": "ResetPasswords",
+		"en": "Reset passwords",
+		"fr": "Réinitialiser les mots de passe"
+	},
+	{
+		"key": "ResetProgress",
+		"en": "Reset progress",
+		"fr": "Réinitialiser l'avancement"
+	},
+	{
+		"key": "ResetingProgress",
+		"en": "Reseting progress: {0}",
+		"fr": "Réinitialisation de l'avancement : {0}"
+	},
+	{
+		"key": "Resolution",
+		"en": "Resolution",
+		"fr": "Résolution"
+	},
+	{
+		"key": "ResolutionRatio",
+		"en": "Ratio: {0}",
+		"fr": "Ratio : {0}"
+	},
+	{
+		"key": "ReturnMailAddress",
+		"en": "Return mail address",
+		"fr": "Adresse mail de retour"
+	},
+	{
+		"key": "RunningRScriptOnServer",
+		"en": "Running R script on server: {0}",
+		"fr": "Exécution du script R sur le serveur : {0}"
+	},
+	{
+		"key": "RootDirectory",
+		"en": "Root directory",
+		"fr": "Répertoire racine"
+	},
+	{
+		"key": "SampleCodeChecker",
+		"en": "Sample code check",
+		"fr": "Vérification de code d'échantillon"
+	},
+	{
+		"key": "Samples",
+		"en": "Samples",
+		"fr": "Echantillons"
+	},
+	{
+		"key": "Save",
+		"en": "Save",
+		"fr": "Enregistrer"
+	},
+	{
+		"key": "SaveAllScreensAsHTML",
+		"en": "Save all screens as HTML file",
+		"fr": "Enregistrer tous les écrans (HTML)"
+	},
+	{
+		"key": "SaveAsAnalysisTemplate",
+		"en": "Save as analysis template",
+		"fr": "Enregistrer comme modèle d'analyse"
+	},
+	{
+		"key": "SaveAsCopy",
+		"en": "Save as copy",
+		"fr": "Enregistrer une copie"
+	},
+	{
+		"key": "SaveAsDefault",
+		"en": "Save as default",
+		"fr": "Enregistrer comme modèle par défaut"
+	},
+	{
+		"key": "SaveAsMailTemplate",
+		"en": "Save as mail template",
+		"fr": "Enregistrer comme modèle de mail"
+	},
+	{
+		"key": "SaveAsModel",
+		"en": "Save as model",
+		"fr": "Enregistrer comme modèle"
+	},
+	{
+		"key": "SaveAsPicture",
+		"en": "Save as picture",
+		"fr": "Enregistrer en tant qu'image"
+	},
+	{
+		"key": "SaveAsTemplate",
+		"en": "Save as template",
+		"fr": "Enregistrer comme modèle de séance"
+	},
+	{
+		"key": "SaveAsUndeployedCopy",
+		"en": "Save as undeployed copy",
+		"fr": "Enregistrer une copie non déployée"
+	},
+	{
+		"key": "SaveCurrentSession",
+		"en": "Save current session",
+		"fr": "Enregistrer la séance"
+	},
+	{
+		"key": "SaveInLocalDB",
+		"en": "Save",
+		"fr": "Enregistrer"
+	},
+	{
+		"key": "SaveProgressTooltip",
+		"en": "Save current panelist's progress",
+		"fr": "Enregistrer l'avancement du panéliste"
+	},
+	{
+		"key": "SaveScreenAsPicture",
+		"en": "Save screen as picture",
+		"fr": "Enregistrer l'écran en tant qu'image"
+	},
+	{
+		"key": "SaveScreenshot",
+		"en": "Display session for printing",
+		"fr": "Afficher la séance en mode impression"
+	},
+	{
+		"key": "SaveSessionAs",
+		"en": "Save current session as...",
+		"fr": "Enregistrer la séance sous..."
+	},
+	{
+		"key": "SaveSessionFileTooltip",
+		"en": "Save current panelist's session",
+		"fr": "Enregistrer la séance du panéliste"
+	},
+	{
+		"key": "SavingLicense",
+		"en": "Saving license: {0}",
+		"fr": "Enregistrement de la license: {0}"
+	},
+	{
+		"key": "SavingSession",
+		"en": "Saving session: {0}",
+		"fr": "Enregistrement : {0}"
+	},
+	{
+		"key": "Scale",
+		"en": "Scale",
+		"fr": "Echelle"
+	},
+	{
+		"key": "Scenario",
+		"en": "Scenario",
+		"fr": "Scenario"
+	},
+	{
+		"key": "Score",
+		"en": "Score",
+		"fr": "Score"
+	},
+	{
+		"key": "Screen",
+		"en": "Screen",
+		"fr": "Ecran"
+	},
+	{
+		"key": "ScreenBackground",
+		"en": "Screen background",
+		"fr": "Couleur d'arrière plan de l'écran"
+	},
+	{
+		"key": "ScreenContent",
+		"en": "Content of main textarea",
+		"fr": "Contenu de la zone de texte principale"
+	},
+	{
+		"key": "ScreenDesign",
+		"en": "Screen design",
+		"fr": "Mise en forme"
+	},
+	{
+		"key": "ScreenId",
+		"en": "Screen {0}",
+		"fr": "Ecran {0}"
+	},
+	{
+		"key": "ScreenList",
+		"en": "Screen list",
+		"fr": "Liste d'écrans"
+	},
+	{
+		"key": "ScreenSelection",
+		"en": "Screens to be shown",
+		"fr": "Ecrans à afficher"
+	},
+	{
+		"key": "ScreenStyle",
+		"en": "Screens' style",
+		"fr": "Style des écrans"
+	},
+	{
+		"key": "ScreenTitle",
+		"en": "Content of title textarea",
+		"fr": "Contenu de la zone de texte de titre"
+	},
+	{
+		"key": "ScreenWithTitleAndContent",
+		"en": "Screen with title and content",
+		"fr": "Ecran avec titre et zone de texte"
+	},
+	{
+		"key": "Screens",
+		"en": "Screens",
+		"fr": "Ecrans"
+	},
+	{
+		"key": "Search",
+		"en": "Search",
+		"fr": "Recherche"
+	},
+	{
+		"key": "SearchReplace",
+		"en": "Search and replace",
+		"fr": "Rechercher / remplacer"
+	},
+	{
+		"key": "SearchValue",
+		"en": "Value to be searched",
+		"fr": "Valeur à remplacer"
+	},
+	{
+		"key": "Select",
+		"en": "[Click to select]",
+		"fr": "[Cliquer pour choisir]"
+	},
+	{
+		"key": "SelectADirectory",
+		"en": "Select a directory:",
+		"fr": "Sélectionner un répertoire : "
+	},
+	{
+		"key": "SelectAll",
+		"en": "Select all",
+		"fr": "Sélectionner tout"
+	},
+	{
+		"key": "SelectAnalysisTemplate",
+		"en": "Analysis template selection",
+		"fr": "Choix du modèle d'analyse"
+	},
+	{
+		"key": "SelectAnExperimentalDesign",
+		"en": "Select an experimental design",
+		"fr": "Choisir un plan de présentation"
+	},
+	{
+		"key": "SelectAttributes",
+		"en": "Select attributes and their presentation order:",
+		"fr": "Choisir les descripteurs et leur ordre de présentation:"
+	},
+	{
+		"key": "SelectDataSubset",
+		"en": "Select a subset of data (optional):",
+		"fr": "Choisir un sous-ensemble de données (optionnel) : "
+	},
+	{
+		"key": "SelectExperimentalDesign",
+		"en": "Select an experimental design",
+		"fr": "Choisir un plan d'expérience"
+	},
+	{
+		"key": "SelectNextControl",
+		"en": "Select next control",
+		"fr": "Sélectionner le contrôle suivant"
+	},
+	{
+		"key": "SelectOptions",
+		"en": "Select options:",
+		"fr": "Choisir les options : "
+	},
+	{
+		"key": "SelectPanelists",
+		"en": "Select panelists:",
+		"fr": "Choisir les panélistes :"
+	},
+	{
+		"key": "SelectProducts",
+		"en": "Select products and their presentation order:",
+		"fr": "Choisir les produits et leur ordre de présentation:"
+	},
+	{
+		"key": "SelectProtocol",
+		"en": "2/3 - Protocol definition",
+		"fr": "2/3 - Définition du protocole"
+	},
+	{
+		"key": "SelectScreens",
+		"en": "3/3 - Screens selection & overview",
+		"fr": "3/3 - Sélection des écrans et aperçu"
+	},
+	{
+		"key": "SelectTemplate",
+		"en": "1/3 - Session template selection",
+		"fr": "1/3 - Choix du modèle de séance"
+	},
+	{
+		"key": "SelectUploadOptions",
+		"en": "Select upload options:",
+		"fr": "Choisir les options de déploiement : "
+	},
+	{
+		"key": "SelectedControl",
+		"en": "Current control",
+		"fr": "Contrôle sélectionné"
+	},
+	{
+		"key": "SelectedScreen",
+		"en": "Current screen",
+		"fr": "Ecran sélectionné"
+	},
+	{
+		"key": "SelectedScreenOptions",
+		"en": "Current screen options",
+		"fr": "Options de l'écran sélectionné"
+	},
+	{
+		"key": "Selection",
+		"en": "Selection",
+		"fr": "Sélection"
+	},
+	{
+		"key": "SendM",
+		"en": "Send",
+		"fr": "Envoyer"
+	},
+	{
+		"key": "SendMail",
+		"en": "Send mail",
+		"fr": "Envoyer un mail"
+	},
+	{
+		"key": "SendingMail",
+		"en": "Sending mail: {0}",
+		"fr": "Envoi de mail : {0}"
+	},
+	{
+		"key": "SendMailToSelectedPanelists",
+		"en": "Send mail to selected panelists",
+		"fr": "Envoyer un mail aux panélistes sélectionnés"
+	},
+	{
+		"key": "SendNotification",
+		"en": "Send push notification",
+		"fr": "Envoyer une notification push"
+	},
+	{
+		"key": "SendingMail",
+		"en": "Sending mail...",
+		"fr": "Envoi de mail..."
+	},
+	{
+		"key": "ServerCode",
+		"en": "Server code",
+		"fr": "Code serveur"
+	},
+	{
+		"key": "ServerFileMostRecent",
+		"en": "Server file most recent",
+		"fr": "Fichier distant plus récent"
+	},
+	{
+		"key": "Session",
+		"en": "Session",
+		"fr": "Séance"
+	},
+	{
+		"key": "SessionDeleted",
+		"en": "Deleted on ‎{0} by {1}.",
+		"fr": "Supprimée le ‎{0} par {1}."
+	},
+	{
+		"key": "SessionHasChangedClickToSave",
+		"en": "Session has changed. Click to save.",
+		"fr": "La séance a été modifiée. Cliquer pour sauvegarder."
+	},
+	{
+		"key": "SessionHasUnsavedChanged",
+		"en": "Session has unsaved changed",
+		"fr": "La séance a été modifiée sans être enregistrée."
+	},
+	{
+		"key": "SessionHasUnsavedChanges",
+		"en": "Session has unsaved changes.",
+		"fr": "La séance a été modifiée sans être enregistrée."
+	},
+	{
+		"key": "SessionIsLocked",
+		"en": "Session is locked. Click to unlock.",
+		"fr": "La séance est verrouillée. Cliquer pour déverrouiller."
+	},
+	{
+		"key": "SessionIsUnlocked",
+		"en": "Session is unlocked. Click to lock.",
+		"fr": "La séance est déverrouillée. Cliquer pour verrouiller."
+	},
+	{
+		"key": "SessionLog",
+		"en": "Session log",
+		"fr": "Journal de séance"
+	},
+	{
+		"key": "SessionRenaming",
+		"en": "Session renaming",
+		"fr": "Renommage de séance"
+	},
+	{
+		"key": "SessionSaved",
+		"en": "Session saved",
+		"fr": "Séance enregistrée"
+	},
+	{
+		"key": "SessionTemplate",
+		"en": "Session template",
+		"fr": "Modèle de séance"
+	},
+	{
+		"key": "SessionTemplate_GoToLoginScreen",
+		"en": "Go to home screen",
+		"fr": "Revenir à l'écran d'accueil"
+	},
+	{
+		"key": "SessionTemplate_GoToNextPage",
+		"en": "NEXT",
+		"fr": "SUIVANT"
+	},
+	{
+		"key": "SessionTemplate_GoToURL",
+		"en": "Go to URL",
+		"fr": "Renvoyer vers une URL"
+	},
+	{
+		"key": "SessionTemplate_SessionOver",
+		"en": "Session is over. Thank you for your participation.",
+		"fr": "La séance est terminée. Merci pour votre participation."
+	},
+	{
+		"key": "SessionTemplate_WelcomeScreen",
+		"en": "Welcome to this session.",
+		"fr": "Bienvenue à cette séance."
+	},
+	{
+		"key": "SessionUpdateRequired",
+		"en": "Update required to validate changes on server",
+		"fr": "Mise à jour requise pour valider les changements sur le serveur"
+	},
+	{
+		"key": "SessionUploadError",
+		"en": "Session upload failed",
+		"fr": "Erreur lors du déploiement de la séance"
+	},
+	{
+		"key": "SessionUploadSuccess",
+		"en": "Session successfully uploaded",
+		"fr": "Séance déployée"
+	},
+	{
+		"key": "SessionWizard",
+		"en": "Wizard",
+		"fr": "Assistant création de séance"
+	},
+	{
+		"key": "Sessions",
+		"en": "Sessions",
+		"fr": "Séances"
+	},
+	{
+		"key": "Sessions:",
+		"en": "Sessions ({0}): {1}",
+		"fr": "Séances ({0}) : {1}"
+	},
+	{
+		"key": "SetScreenStyle",
+		"en": "Set screens' styles",
+		"fr": "Définir le style des écrans"
+	},
+	{
+		"key": "Settings",
+		"en": "Settings",
+		"fr": "Configuration"
+	},
+	{
+		"key": "ShortName",
+		"en": "Short name",
+		"fr": "Nom court"
+	},
+	{
+		"key": "ShowNotFinishedPanelistCodesOnClient",
+		"en": "Show codes of panelists who have not completed their sessions",
+		"fr": "Afficher les codes des panélistes qui n'ont pas terminé leurs séances"
+	},
+	{
+		"key": "ShowNotStartedPanelistCodesOnClient",
+		"en": "Show codes of panelists who have not started their sessions",
+		"fr": "Afficher les codes des panélistes qui n'ont pas commencé leurs séances"
+	},
+	{
+		"key": "ShowOptions",
+		"en": "Show options",
+		"fr": "Afficher les options"
+	},
+	{
+		"key": "ShowPivot",
+		"en": "Show pivot",
+		"fr": "Afficher sous forme de tableau croisé dynamique"
+	},
+	{
+		"key": "ShuffleReplicates",
+		"en": "Shuffle replicates",
+		"fr": "Mélanger les répétitions"
+	},
+	{
+		"key": "SimulateSession",
+		"en": "Simulation",
+		"fr": "Simulation"
+	},
+	{
+		"key": "Single",
+		"en": "One product at a time",
+		"fr": "Un produit à la fois"
+	},
+	{
+		"key": "SingleAnswerQuestion",
+		"en": "Single answer question",
+		"fr": "Question à choix unique"
+	},
+	{
+		"key": "SingleScreen",
+		"en": "Single screen",
+		"fr": "Ecran simple"
+	},
+	{
+		"key": "Size",
+		"en": "Size",
+		"fr": "Taille sur le disque"
+	},
+	{
+		"key": "Sorting",
+		"en": "Sorting",
+		"fr": "Tri libre"
+	},
+	{
+		"key": "SortingScreen",
+		"en": "Sorting screen",
+		"fr": "Ecran avec tri libre"
+	},
+	{
+		"key": "SpeechRecognition",
+		"en": "Speech recognition",
+		"fr": "Reconnaissance vocale"
+	},
+	{
+		"key": "SpeechToText",
+		"en": "Speech recognition",
+		"fr": "Reconnaissance vocale"
+	},
+	{
+		"key": "SplitInPeriods",
+		"en": "Split time in periods",
+		"fr": "Découper le temps en périodes"
+	},
+	{
+		"key": "StandardizedTime",
+		"en": "Standardized time",
+		"fr": "Temps standardisé"
+	},
+	{
+		"key": "StartAnalysis",
+		"en": "Analyze data",
+		"fr": "Analyser les données"
+	},
+	{
+		"key": "StartSessionAsPanelLeader",
+		"en": "Start session as panel leader",
+		"fr": "Démarrer la séance en tant que panel leader"
+	},
+	{
+		"key": "StartSessionAsPanelist",
+		"en": "Start session as panelist",
+		"fr": "Démarrer la séance en tant que panéliste"
+	},
+	{
+		"key": "Strict",
+		"en": "Strict: impossible to continue when at least one control is not compatible",
+		"fr": "Strict : impossible de continuer si un des contrôles n'est pas compatible"
+	},
+	{
+		"key": "Subject",
+		"en": "Panelist",
+		"fr": "Panéliste"
+	},
+	{
+		"key": "SubjectCode",
+		"en": "Subject's code",
+		"fr": "Code du panéliste"
+	},
+	{
+		"key": "SubjectFirstName",
+		"en": "Panelist's first name",
+		"fr": "Prénom du panéliste"
+	},
+	{
+		"key": "SubjectImport",
+		"en": "Subjects import",
+		"fr": "Import de panélistes"
+	},
+	{
+		"key": "SubjectLabels",
+		"en": "Subject labels",
+		"fr": "Etiquettes des panélistes"
+	},
+	{
+		"key": "SubjectLastName",
+		"en": "Panelist's last name",
+		"fr": "Nom du panéliste"
+	},
+	{
+		"key": "SubjectNote",
+		"en": "Panelist's note",
+		"fr": "Note associée au panéliste"
+	},
+	{
+		"key": "SubjectPassword",
+		"en": "Panelist's password",
+		"fr": "Mot de passe du panéliste"
+	},
+	{
+		"key": "Subjects",
+		"en": "Panelists",
+		"fr": "Panélistes"
+	},
+	{
+		"key": "Subjects:",
+		"en": "Panelists ({0}): {1}",
+		"fr": "Panélistes ({0}) : {1}"
+	},
+	{
+		"key": "SubjectsAddedCheckDesign",
+		"en": "Subject list has been updated. Please check experimental designs.",
+		"fr": "La liste des panélistes a été modifiée. Veuillez vérifier les plans de présentations."
+	},
+	{
+		"key": "SubjectsDB",
+		"en": "Panelists Database",
+		"fr": "Base de données des panélistes"
+	},
+	{
+		"key": "SubjectsProgress",
+		"en": "Panelists' progress",
+		"fr": "Avancement des panélistes"
+	},
+	{
+		"key": "SubjectSummaryScreen",
+		"en": "Subject summary screen",
+		"fr": "Ecran avec retour sujet"
+	},
+	{
+		"key": "success",
+		"en": "success",
+		"fr": "succès"
+	},
+	{
+		"key": "SynchronizationStatus",
+		"en": "Synchronization status",
+		"fr": "Statut de la synchronisation"
+	},
+	{
+		"key": "TCATAByColumn",
+		"en": "TCATA ('Fizz time columns' format)",
+		"fr": "TCATA (format 'Fizz', temps en colonnes)"
+	},
+	{
+		"key": "TCATAByDuration",
+		"en": "TCATA ('Compusens' format)",
+		"fr": "TCATA (format 'Compusens')"
+	},
+	{
+		"key": "TCATAScreen",
+		"en": "TCATA screen",
+		"fr": "Ecran TCATA"
+	},
+	{
+		"key": "TDSScreen",
+		"en": "TDS screen",
+		"fr": "Ecran DTS"
+	},
+	{
+		"key": "TDSByColumn",
+		"en": "TDS ('Fizz time columns' format)",
+		"fr": "DTS (format 'Fizz', temps en colonnes)"
+	},
+	{
+		"key": "TDSByDuration",
+		"en": "TDS ('Compusens' format)",
+		"fr": "DTS (format 'Compusens')"
+	},
+	{
+		"key": "TDSTutorial",
+		"en": "TDS training",
+		"fr": "Entrainement DTS"
+	},
+	{
+		"key": "Tab",
+		"en": "Tab",
+		"fr": "Onglet"
+	},
+	{
+		"key": "TemplatExitScreenContent",
+		"en": "You completed the session.Thank you for your participation. Click on \"Exit\".",
+		"fr": "La séance est terminé. Merci pour votre participation. Vous pouvez cliquer sur \"Terminer\"."
+	},
+	{
+		"key": "TemplateAlternatedTDL",
+		"en": "Alternated TDL",
+		"fr": "TDL alterné"
+	},
+	{
+		"key": "TemplateAlternatedTDLDescription",
+		"en": "Alternated Temporal Drivers of Liking (TDS then liking) over intakes",
+		"fr": "Temporal Drivers of Liking alterné (DTS puis liking) multi-prises"
+	},
+	{
+		"key": "TemplateAlternatedTDLInstructionScreenContent",
+		"en": "[Enter text]",
+		"fr": "[Saisir votre texte]"
+	},
+	{
+		"key": "TemplateAlternatedTDLInstructionScreenTitle",
+		"en": "[Enter text]",
+		"fr": "[Saisir votre texte]"
+	},
+	{
+		"key": "TemplateAlternatedTDS",
+		"en": "Alternated TDS",
+		"fr": "TDS alterné"
+	},
+	{
+		"key": "TemplateAlternatedTDSDescription",
+		"en": "Alternated TDS (modality 1 then modality 2).",
+		"fr": "DTS alterné (modalité 1 puis modalité 2)."
+	},
+	{
+		"key": "TemplateAlternatedTDSInstructionScreenContent",
+		"en": "[Enter text]",
+		"fr": "[Saisir votre texte]"
+	},
+	{
+		"key": "TemplateAlternatedTDSInstructionScreenTitle",
+		"en": "[Enter text]",
+		"fr": "[Saisir votre texte]"
+	},
+	{
+		"key": "TemplateCATA",
+		"en": "CATA",
+		"fr": "CATA"
+	},
+	{
+		"key": "TemplateCATADescription",
+		"en": "Check All That Apply (CATA)",
+		"fr": "Check All That Apply (CATA)"
+	},
+	{
+		"key": "TemplateCATAInstructionScreenContent",
+		"en": "[Enter text]",
+		"fr": "[Saisir votre texte]"
+	},
+	{
+		"key": "TemplateCATAInstructionScreenTitle",
+		"en": "[Enter text]",
+		"fr": "[Saisir votre texte]"
+	},
+	{
+		"key": "TemplateComparativeProfile",
+		"en": "Comparative profile",
+		"fr": "Profil comparatif"
+	},
+	{
+		"key": "TemplateComparativeProfileDescription",
+		"en": "Several products are presented simultaneously to the panellist.",
+		"fr": "Plusieurs produits sont présentés simultanément au sujet et le retour sur un produit est possible."
+	},
+	{
+		"key": "TemplateComparativeProfileInstructionScreenContent",
+		"en": "[Enter text]",
+		"fr": "[Saisir votre texte]"
+	},
+	{
+		"key": "TemplateComparativeProfileInstructionScreenTitle",
+		"en": "[Enter text]",
+		"fr": "[Saisir votre texte]"
+	},
+	{
+		"key": "TemplateDataMeasurementScreenContent",
+		"en": "[Enter text]",
+		"fr": "[Saisir votre texte]"
+	},
+	{
+		"key": "TemplateDataMeasurementScreenTitle",
+		"en": "[Enter text]",
+		"fr": "[Saisir votre texte]"
+	},
+	{
+		"key": "TemplateDualTDS",
+		"en": "Dual TDS",
+		"fr": "Dual DTS"
+	},
+	{
+		"key": "TemplateDualTDSDescription",
+		"en": "TDS with 2 modalities.",
+		"fr": "DTS à 2 modalités."
+	},
+	{
+		"key": "TemplateDualTDSInstructionScreenContent",
+		"en": "[Enter text]",
+		"fr": "[Saisir votre texte]"
+	},
+	{
+		"key": "TemplateDualTDSInstructionScreenTitle",
+		"en": "[Enter text]",
+		"fr": "[Saisir votre texte]"
+	},
+	{
+		"key": "TemplateDynamicLiking",
+		"en": "Dynamic liking",
+		"fr": "Liking dynamique"
+	},
+	{
+		"key": "TemplateDynamicLikingDescription",
+		"en": "Dynamic liking measure evolution of liking over continuous time.",
+		"fr": "Le liking dynamique mesure l'évolution du liking au fil du temps, de manière continue."
+	},
+	{
+		"key": "TemplateDynamicLikingInstructionScreenTitle",
+		"en": "[Enter text]",
+		"fr": "[Saisir votre texte]"
+	},
+	{
+		"key": "TemplateDynamicLikingInstructionScreenContent",
+		"en": "[Enter text]",
+		"fr": "[Saisir votre texte]"
+	},
+	{
+		"key": "TemplateDynamicProfile",
+		"en": "Dynamic profile",
+		"fr": "Profil dynamique"
+	},
+	{
+		"key": "TemplateDynamicProfileDescription",
+		"en": "Dynamic profile measure evolution of attribute intensities over continuous time.",
+		"fr": "Le profil dynamique mesure l'évolution de l'intensité des attributs au fil du temps, de manière continue."
+	},
+	{
+		"key": "TemplateDynamicProfileInstructionScreenTitle",
+		"en": "[Enter text]",
+		"fr": "[Saisir votre texte]"
+	},
+	{
+		"key": "TemplateDynamicProfileInstructionScreenContent",
+		"en": "[Enter text]",
+		"fr": "[Saisir votre texte]"
+	},
+	{
+		"key": "TemplateEmptySession",
+		"en": "Empty session",
+		"fr": "Séance vide"
+	},
+	{
+		"key": "TemplateEmptySessionDescription",
+		"en": "Empty session.",
+		"fr": "Séance vide."
+	},
+	{
+		"key": "TemplateEmptySessionScreenContent",
+		"en": "[Enter text]",
+		"fr": "[Saisir votre texte]"
+	},
+	{
+		"key": "TemplateEmptySessionScreenTitle",
+		"en": "[Enter text]",
+		"fr": "[Saisir votre texte]"
+	},
+	{
+		"key": "TemplateExitScreenContent",
+		"en": "Session is completed. You can click on 'Exit'.",
+		"fr": "La séance est terminée. Vous pouvez cliquer sur 'Terminer'"
+	},
+	{
+		"key": "TemplateExitScreenTitle",
+		"en": "Session completed",
+		"fr": "Séance terminée"
+	},
+	{
+		"key": "TemplateForcedBreakScreenContent",
+		"en": "Please take a break.",
+		"fr": "Veuillez patienter quelques instants."
+	},
+	{
+		"key": "TemplateForcedBreakScreenTitle",
+		"en": "Break",
+		"fr": "Pause"
+	},
+	{
+		"key": "TemplateHedonicTest",
+		"en": "Hedonic test",
+		"fr": "Test hédonique"
+	},
+	{
+		"key": "TemplateHedonicTestDescription",
+		"en": "A hedonic test is a test to measure consumer pleasure and/or satisfaction experienced at the sight or consumption/use of a product.",
+		"fr": "Un test hédonique est un test consommateur visant à mesurer le plaisir et/ou la satisfaction éprouvés à la vue ou à la consommation/usage d’un produit."
+	},
+	{
+		"key": "TemplateHedonicTestInstructionScreenContent",
+		"en": "[Enter text]",
+		"fr": "[Saisir votre texte]"
+	},
+	{
+		"key": "TemplateHedonicTestInstructionScreenTitle",
+		"en": "[Enter text]",
+		"fr": "[Saisir votre texte]"
+	},
+	{
+		"key": "TemplateMonadicProfile",
+		"en": "Monadic profile",
+		"fr": "Profil monadique"
+	},
+	{
+		"key": "TemplateMonadicProfileDescription",
+		"en": "Several products are scored by a panellist during the session, but the panellist can score only one product at a given time, with no possible return on a product already scored.",
+		"fr": "Plusieurs produits sont évalués par un sujet au cours de la même séance, mais le sujet reçoit à un moment donné un seul produit et aucun retour sur un produit déjà évalué n'est autorisé."
+	},
+	{
+		"key": "TemplateMonadicProfileInstructionScreenContent",
+		"en": "[Enter text]",
+		"fr": "[Saisir votre texte]"
+	},
+	{
+		"key": "TemplateMonadicProfileInstructionScreenTitle",
+		"en": "[Enter text]",
+		"fr": "[Saisir votre texte]"
+	},
+	{
+		"key": "TemplateName",
+		"en": "Template name",
+		"fr": "Nom du modèle"
+	},
+	{
+		"key": "TemplateNapping",
+		"en": "Napping",
+		"fr": "Napping"
+	},
+	{
+		"key": "TemplateNappingDescription",
+		"en": "Napping.",
+		"fr": "Napping."
+	},
+	{
+		"key": "TemplateNappingInstructionScreenContent",
+		"en": "[Enter text]",
+		"fr": "[Saisir votre texte]"
+	},
+	{
+		"key": "TemplateNappingInstructionScreenTitle",
+		"en": "[Enter text]",
+		"fr": "[Saisir votre texte]"
+	},
+	{
+		"key": "TemplateOverallIstructionsScreenContent",
+		"en": "Instructions",
+		"fr": "Instructions"
+	},
+	{
+		"key": "TemplateOverallIstructionsScreenTitle",
+		"en": "Instructions",
+		"fr": "Instructions"
+	},
+	{
+		"key": "TemplatePairedTest",
+		"en": "Paired test",
+		"fr": "Test par paire"
+	},
+	{
+		"key": "TemplatePairedTestDescription",
+		"en": "Paired test.",
+		"fr": "Test par paire."
+	},
+	{
+		"key": "TemplateRanking",
+		"en": "Ranking",
+		"fr": "Epreuve de classement"
+	},
+	{
+		"key": "TemplateRankingDescription",
+		"en": "Ranking.",
+		"fr": "Classement."
+	},
+	{
+		"key": "TemplateRankingInstructionScreenContent",
+		"en": "[Enter text]",
+		"fr": "[Saisir votre texte]"
+	},
+	{
+		"key": "TemplateRankingInstructionScreenTitle",
+		"en": "[Enter text]",
+		"fr": "[Saisir votre texte]"
+	},
+	{
+		"key": "TemplateSimultaneousTDL",
+		"en": "Simultaneous TDL",
+		"fr": "TDL simultané"
+	},
+	{
+		"key": "TemplateSimultaneousTDLDescription",
+		"en": "Simultaneous Temporal Drivers of Liking (TDS + liking) over intakes",
+		"fr": "Temporal Drivers of Liking simultané (DTS + liking) multi-prises"
+	},
+	{
+		"key": "TemplateSimultaneousTDLInstructionScreenContent",
+		"en": "[Enter text]",
+		"fr": "[Saisir votre texte]"
+	},
+	{
+		"key": "TemplateSimultaneousTDLInstructionScreenTitle",
+		"en": "[Enter text]",
+		"fr": "[Saisir votre texte]"
+	},
+	{
+		"key": "TemplateSorting",
+		"en": "Sorting",
+		"fr": "Tri libre"
+	},
+	{
+		"key": "TemplateSortingDescription",
+		"en": "Sorting.",
+		"fr": "Tri libre."
+	},
+	{
+		"key": "TemplateSortingInstructionScreenContent",
+		"en": "[Enter text]",
+		"fr": "[Saisir votre texte]"
+	},
+	{
+		"key": "TemplateSortingInstructionScreenTitle",
+		"en": "[Enter text]",
+		"fr": "[Saisir votre texte]"
+	},
+	{
+		"key": "TemplateSubjectSummaryScreenTitle",
+		"en": "[Enter text]",
+		"fr": "[Saisir votre texte]"
+	},
+	{
+		"key": "TemplateTCATA",
+		"en": "TCATA",
+		"fr": "TCATA"
+	},
+	{
+		"key": "TemplateTCATADescription",
+		"en": "Temporal Check All That Apply (TCATA)",
+		"fr": "Temporal Check All That Apply (TCATA)"
+	},
+	{
+		"key": "TemplateTCATAInstructionScreenContent",
+		"en": "[Enter text]",
+		"fr": "[Saisir votre texte]"
+	},
+	{
+		"key": "TemplateTCATAInstructionScreenTitle",
+		"en": "[Enter text]",
+		"fr": "[Saisir votre texte]"
+	},
+	{
+		"key": "TemplateTDS",
+		"en": "TDS",
+		"fr": "DTS"
+	},
+	{
+		"key": "TemplateXlsxSession",
+		"en": "Custom template",
+		"fr": "Modèle personnalisé"
+	},
+	{
+		"key": "TemplateXlsxSessionDescription",
+		"en": "Create a session from an existing session and an XLSX protocol file.",
+		"fr": "Crée une séance depuis une séance existante et un fichier protocole XLSX."
+	},
+	{
+		"key": "TemplateTDSDescription",
+		"en": "Temporal Dominance of Sensation (TDS) makes possible to collect temporal data during one single evaluation for several attributes. The method consists in presenting the entire set of attributes to the panellist on the computer screen. Along the tasting of one product, the panellist has to wonder what the dominant sensory perception is and to select and score the corresponding attribute. Each time the panellist thinks the dominant sensory perception has changed, either in intensity or in quality, he has to score the new perception.",
+		"fr": "Dominance Temporelle des Sensations."
+	},
+	{
+		"key": "TemplateTDSInstructionScreenContent",
+		"en": "[Enter text]",
+		"fr": "[Saisir votre texte]"
+	},
+	{
+		"key": "TemplateTDSInstructionScreenTitle",
+		"en": "[Enter text]",
+		"fr": "[Saisir votre texte]"
+	},
+	{
+		"key": "TemplateTetradTest",
+		"en": "Tetrad test",
+		"fr": "Test par tétrade"
+	},
+	{
+		"key": "TemplateTetradTestDescription",
+		"en": "Tetrad test.",
+		"fr": "Test par tétrade."
+	},
+	{
+		"key": "TemplateTI",
+		"en": "TI",
+		"fr": "TI"
+	},
+	{
+		"key": "TemplateTIDescription",
+		"en": "Time intensity.",
+		"fr": "Temps intensité."
+	},
+	{
+		"key": "TemplateTIInstructionScreenContent",
+		"en": "[Enter text]",
+		"fr": "[Saisir votre texte]"
+	},
+	{
+		"key": "TemplateTIInstructionScreenTitle",
+		"en": "[Enter text]",
+		"fr": "[Saisir votre texte]"
+	},
+	{
+		"key": "TemplateTriangleTest",
+		"en": "Triangle test",
+		"fr": "Test triangulaire"
+	},
+	{
+		"key": "TemplateTriangleTestDescription",
+		"en": "Triangle test.",
+		"fr": "Test triangulaire."
+	},
+	{
+		"key": "TemplateTwoOutOfFiveTest",
+		"en": "Two out of five test",
+		"fr": "Test 2 parmi 5"
+	},
+	{
+		"key": "TemplateTwoOutOfFiveTestDescription",
+		"en": "Two out of five test.",
+		"fr": "Test 2 parmi 5."
+	},
+	{
+		"key": "TemplateWelcomeScreenContent",
+		"en": "You are going to participate a session. Click on \"NEXT\" to continue.",
+		"fr": "Vous allez participer à  une séance. Cliquer sur \"Suivant\" pour continuer."
+	},
+
+	{
+		"key": "TemplateWelcomeScreenTitle",
+		"en": "Welcome to this session",
+		"fr": "Bienvenue à cette séance"
+	},
+	{
+		"key": "Tetrad",
+		"en": "Deux pairs of identical products (tetrad)",
+		"fr": "Deux paires de produits identiques (tétrade)"
+	},
+	{
+		"key": "TetradTest",
+		"en": "Tetrad test",
+		"fr": "Test par tétrade"
+	},
+	{
+		"key": "TextDisplayedDuringRecord",
+		"en": "Text displayed during recording",
+		"fr": "Texte affiché pendant l'enregistrement"
+	},
+	{
+		"key": "TextEditor",
+		"en": "Text editor",
+		"fr": "Editeur de texte"
+	},
+	{
+		"key": "TextStyle",
+		"en": "Text style",
+		"fr": "Style de texte"
+	},
+	{
+		"key": "Time",
+		"en": "Time",
+		"fr": "Temps"
+	},
+	{
+		"key": "TimeBeforeStoppingChronometer",
+		"en": "Time before going to next screen",
+		"fr": "Temps avant de passer à l'écran suivant"
+	},
+	{
+		"key": "TimeOptions",
+		"en": "Begin and end of measurement",
+		"fr": "Début et fin de la mesure"
+	},
+	{
+		"key": "TimeSensPanelLeaderVersion",
+		"en": "TimeSens for Panel Leader version",
+		"fr": "TimeSens pour Panel Leader version"
+	},
+	{
+		"key": "TimeSensTemplates",
+		"en": "TimeSens templates",
+		"fr": "Modèles TimeSens"
+	},
+	{
+		"key": "TimedScreen",
+		"en": "Timed screen",
+		"fr": "Ecran minuté"
+	},
+	{
+		"key": "Title",
+		"en": "Title",
+		"fr": "Titre"
+	},
+	{
+		"key": "ToggleDataView",
+		"en": "Toggle view mode",
+		"fr": "Changer de mode d'affichage"
+	},
+	{
+		"key": "ToggleFullScreen",
+		"en": "Toggle full screen",
+		"fr": "Basculer le mode plein écran"
+	},
+	{
+		"key": "ToggleGridVisibility",
+		"en": "Toggle grid visibility",
+		"fr": "Afficher/Masquer les repères"
+	},
+	{
+		"key": "ToolBarTitle",
+		"en": "{0} #{1}, L: {2}, T: {3}, H: {4}, W:{5}, Groups: {6}",
+		"fr": "{0} #{1}, G: {2}, H: {3}, h: {4}, l:{5}, Groupes: {6}"
+	},
+	{
+		"key": "Tooltip",
+		"en": "Tooltip",
+		"fr": "Infobulle"
+	},
+	{
+		"key": "TooMuchProductForAWilliamLatinSquare",
+		"en": "Too much products for a Williams latin square, order has been changed to random.",
+		"fr": "Trop de produits pour un carré de Williams, l'ordre a été changé en aléatoire."
+	},
+	{
+		"key": "Top",
+		"en": "Top",
+		"fr": "Haut"
+	},
+	{
+		"key": "TopCoord",
+		"en": "Top: {0}",
+		"fr": "Haut : {0}"
+	},
+	{
+		"key": "TransformData",
+		"en": "Transform data",
+		"fr": "Transformer les données"
+	},
+	{
+		"key": "TransformReplicatesInIntakes",
+		"en": "Transform 'replicate' in 'intake'",
+		"fr": "Transformer 'répétition' en 'prise'"
+	},
+	{
+		"key": "TransformScores",
+		"en": "Transform 'score'",
+		"fr": "Transformer 'score'"
+	},
+	{
+		"key": "TransformScoresInRanks",
+		"en": "Transform 'score' in 'rank'",
+		"fr": "Transformer 'score' en 'rang'"
+	},
+	{
+		"key": "TransformSessionsInReplicates",
+		"en": "Transform 'session' in 'replicates'",
+		"fr": "Transformer 'séance' en 'répétition'"
+	},
+	{
+		"key": "Triangle",
+		"en": "Deux identical products and a different one (triangle)",
+		"fr": "Deux produits identiques et un produit différent des deux autres (triangle)"
+	},
+	{
+		"key": "TriangleTest",
+		"en": "Triangle test",
+		"fr": "Test triangulaire"
+	},
+	{
+		"key": "Trigger",
+		"en": "Trigger word",
+		"fr": "Mot déclencheur"
+	},
+	{
+		"key": "True",
+		"en": "True",
+		"fr": "Oui"
+	},
+	{
+		"key": "TwoOutOfFive",
+		"en": "One group of 2 identical products vs. one group of 3 identical products (two-out-of-five)",
+		"fr": "Un groupe de 2 produits identiques et un groupe de 3 produits identiques (2 parmi 5)"
+	},
+	{
+		"key": "TwoOutOfFiveTest",
+		"en": "Test wo-out-of-five",
+		"fr": "Test 2 parmi 5"
+	},
+	{
+		"key": "Type",
+		"en": "Type",
+		"fr": "Type"
+	},
+	{
+		"key": "TypeOfTest",
+		"en": "Type of test",
+		"fr": "Type de test"
+	},
+	{
+		"key": "UPLOAD_FAILED",
+		"en": "Upload failed.",
+		"fr": "Erreur de déploiement."
+	},
+	{
+		"key": "URLAsText",
+		"en": "URL of the session",
+		"fr": "URL de la séance"
+	},
+	{
+		"key": "URLTSHomePage",
+		"en": "Hyperlink to TimeSens for Panelist's home page",
+		"fr": "Lien hypertexte vers la page d'accueil de TimeSens pour panéliste"
+	},
+	{
+		"key": "UnableToReadSessionFile",
+		"en": "Unable to read session file.",
+		"fr": "Impossible de lire le fichier séance."
+	},
+	{
+		"key": "UncompleteOrUnbalanceDataset",
+		"en": "Uncomplete or unbalanced dataset",
+		"fr": "Jeu de données incomplet ou déséquilibré"
+	},
+	{
+		"key": "Undo",
+		"en": "Undo",
+		"fr": "Annuler la dernière action"
+	},
+	{
+		"key": "Unlock",
+		"en": "Session is unlocked",
+		"fr": "La séance est déverrouillée"
+	},
+	{
+		"key": "UpdatingData",
+		"en": "Updating data...",
+		"fr": "Mise à jour des données..."
+	},
+	{
+		"key": "Update",
+		"en": "Update",
+		"fr": "Mise à jour"
+	},
+	{
+		"key": "UpdateDesign",
+		"en": "Update design parameters",
+		"fr": "Mettre à jour les paramètres du plan de présentation"
+	},
+	{
+		"key": "UpdateParameters",
+		"en": "Update parameters",
+		"fr": "Mettre à jour les paramètres"
+	},
+	{
+		"key": "UpdateProgress",
+		"en": "Update progress",
+		"fr": "Mise à jour de l'avancement"
+	},
+	{
+		"key": "UpdateSelection",
+		"en": "Modify selection",
+		"fr": "Modifier la sélection"
+	},
+	{
+		"key": "Upload",
+		"en": "Upload",
+		"fr": "Déploiement"
+	},
+	{
+		"key": "UploadDescriptionFormat",
+		"en": "Uploaded on {0} by {1} with server code {2}.",
+		"fr": "Déployée le {0} par {1} avec le code serveur {2}."
+	},
+	{
+		"key": "UploadOptions",
+		"en": "Upload options",
+		"fr": "Options de déploiement"
+	},
+	{
+		"key": "UploadUpdateDescriptionFormat",
+		"en": "Updated on {0} by {1}.",
+		"fr": "Mise à jour le {0} par {1}."
+	},
+	{
+		"key": "UploadingSession",
+		"en": "Uploading session on server: {0}",
+		"fr": "Déploiement de la session sur le serveur: {0}"
+	},
+	{
+		"key": "UseExperimentalDesign",
+		"en": "Use first panelist code available in experimental design",
+		"fr": "Connection avec le premier code panéliste disponible du plan de présentation"
+	},
+	{
+		"key": "VideoSource",
+		"en": "Source: {0}",
+		"fr": "Source : {0}"
+	},
+	{
+		"key": "VideoStartMode",
+		"en": "Play mode: {0}",
+		"fr": "Mode de déclenchement de la vidéo : {0}"
+	},
+	{
+		"key": "VideoURL",
+		"en": "URL: {0}",
+		"fr": "URL : {0}"
+	},
+	{
+		"key": "ViewLog",
+		"en": "View log",
+		"fr": "Afficher l'historique"
+	},
+	{
+		"key": "VocalEnabled",
+		"en": "Speech recognition enabled",
+		"fr": "Reconnaissance vocale activée"
+	},
+	{
+		"key": "Voice",
+		"en": "Voice",
+		"fr": "Voix"
+	},
+	{
+		"key": "WRONG_EXPIRATION_DATE",
+		"en": "Wrong expiration date.",
+		"fr": "Date d'expiration incorrecte."
+	},
+	{
+		"key": "WarningExpirationDateClose",
+		"en": "The current subscription will expire in {0} day(s).",
+		"fr": "Votre abonnement expire dans {0} jour(s)."
+	},
+	{
+		"key": "WarningTokenRemaining",
+		"en": "You only have {0} token(s) left.",
+		"fr": "Il vous reste seulement {0} jeton(s)."
+	},
+	{
+		"key": "WelcomeScreen",
+		"en": "Welcome screen",
+		"fr": "Ecran d'accueil"
+	},
+	{
+		"key": "WilliamsLatinSquare",
+		"en": "Williams latin square",
+		"fr": "Carré latin de Williams"
+	},
+	{
+		"key": "WrongExpirationDate",
+		"en": "Wrong expiration date.",
+		"fr": "Date d'expiration incorrecte."
+	},
+	{
+		"key": "ZIndex",
+		"en": "Z-Index",
+		"fr": "Z-Index"
+	},
+	{
+		"key": "ZoomIn",
+		"en": "Zoom in",
+		"fr": "Zoom avant"
+	},
+	{
+		"key": "ZoomOut",
+		"en": "Zoom out",
+		"fr": "Zoom arrière"
+	}
+]

@@ -1,0 +1,130 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1,  minimum-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <meta name="google" content="notranslate">
+    <title>TimeSens for Panel Leader</title>
+
+    <!--<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">-->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.9.0/css/all.css" crossorigin="anonymous">
+
+    <!--<script src="https://d3js.org/d3.v4.js"></script>-->
+    <!-- fichiers ts transpilés -->
+    <script src="../../framework/framework.js" type="text/javascript"></script>
+    <script src="ts/app.js" type="text/javascript"></script>
+    <script src="ts/index.js" type="text/javascript"></script>
+
+    <script src="../../framework/js/tinymce/tinymce.min.js"></script>
+
+    <style>
+        html.hidden {
+            visibility: visible !important;
+            display: block !important;
+        }
+    </style>
+
+    <script>
+        if (window.location.href.indexOf("localhost") < 0 && window.location.href.substr(0, 5) !== 'https') {
+            window.location.href = window.location.href.replace('http', 'https');
+        }
+    </script>
+
+</head>
+<body style="visibility:hidden" id="body">
+
+
+    <nav id="navBarMenu" class="navbar navbar-default navbar-fixed-top">
+        <div class="container-fluid">
+            <div class="collapse navbar-collapse" id="myNavbar">
+
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <button id="mainButton" type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="margin:8px;" disabled>
+                        <i style="font-size:18px;line-height:20px;color:gray" class="fas fa-th-large"></i>&nbsp; <span data-localize="Session" style="font-size:18px;line-height:20px;font-family:Genome-Thin;color:gray;"></span> <i class="fas fa-caret-down"></i><!--<span class="caret"></span>-->
+                    </button>
+                    <ul class="dropdown-menu" id="mainMenu">
+                        <li class="dropdown-submenu">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fas fa-file-alt"></i> <span data-localize="NewSession"></span></a>
+                            <ul class="dropdown-menu">
+                                <li><a id="anchorMenuNewSessionFromWizard"><i class="fa fa-magic"></i> <span data-localize="FromWizard"></span></a></li>
+                                <li><a id="anchorMenuNewSessionFromXML"><i class="fa fa-file-code-o"></i> <span data-localize="FromXMLTextFile"></span></a><input type="file" id="inputMenuNewFromXML" style="display:none" accept=".xml" /></li>                                
+                                <!--<li><a id="anchorMenuNewSessionFromDelimitedTextFile"><i class="fa fa-file-excel-o"></i> <span data-localize="FromDataFile"></span></a></li>-->
+                                <!--<li><a id="anchorMenuNewSessionFromFromTemplate"><i class="fa fa-heart-o" ></i> <span data-localize="FromTemplate"></span></a></li>-->
+                            </ul>
+                        </li>
+                        <li class="dropdown-submenu">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fas fa-file"></i> <span data-localize="ExistingSession"></span></a>
+                            <ul class="dropdown-menu">
+                                <li><a id="anchorMenuBrowseLocalDB"><i class="fa fa-folder-open-o"></i> <span data-localize="BrowseLocalDB"></span></a></li>
+                                <li class="dropdown-submenu">
+                                    <a><i class="fa fa-clock-o"></i> <span data-localize="RecentSessions">Recent files</span></a>
+                                    <ul class="dropdown-menu" id="ulRecentFiles"></ul>
+                                </li>                        
+                                <!--<li><a id="anchorMenuImportSessionV1"><i class="fa fa-folder-open-o"></i> <span data-localize="ImportSessionV1"></span></a></li>-->
+                            </ul>
+                        </li>
+                        <li class="dropdown-submenu">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" id="anchorMenuCurrentSession"><i class="fas fa-save"></i> <span data-localize="SaveCurrentSession"></span></a>
+                            <ul class="dropdown-menu">
+                                <li><a id="anchorMenuSaveSessionInLocalDB"><i class="fa fa-database"></i> <span data-localize="SaveInLocalDB"></span></a></li>
+                                 <li><a id="anchorMenuSaveSessionAsUndeployedCopy"><i class="fa fa-clone"></i> <span data-localize="SaveAsCopy"></span></a></li>
+                                <li><a id="anchorMenuExportSessionAsXML"><i class="fa fa-share-square"></i> <span data-localize="ExportAsXML"></span></a></li>
+                            </ul>
+                        </li>
+                        <!--<li role="separator" class="divider"></li>
+                        <li><a id="anchorMenuCurrentFile"><i class="fas fa-info" ></i> <span data-localize="CurrentFileInfo"></span></a></li>-->
+                     </ul>
+                </div>
+
+
+                <ul class="nav navbar-nav" id="navbarmenu">
+                    <li><a id="tabProtocol"><span data-localize="Protocol">Protocol</span></a></li>
+                    <li><a id="tabScenario"><span data-localize="Scenario">Scenario</span></a></li>
+                    <li><a id="tabDeployment"><span data-localize="Deployment">Deployment</span></a></li>
+                    <li><a id="tabMonitoring"><span data-localize="Monitoring">Monitoring</span></a></li>
+                    <li><a id="tabData"><span data-localize="Data">Data</span></a></li>
+                    <!--<li><a id="tabAnalysis"><span data-localize="Analysis">Analysis</span></a></li>-->
+                    <!--<li><a id="tabOutputs"><span data-localize="Outputs">Outputs</span></a></li>-->
+                </ul>
+                <ul class="nav navbar-nav navbar-right" style="margin-top:14px;">
+
+                    <li><button style="background:transparent;border:0;"><i id="iconMenuSpinnerRotating" class="fa fa-spinner fa-spin hidden"></i></button></li>
+
+                    <li><button style="margin-right:20px" id="anchorMenuWarning" class="btnCircle btn24"><i class="fas fa-info"></i></button></li>
+
+                    <li><button id="anchorMenuAbout" class="btnCircle btn24" ><i class="fas fa-info-circle"></i></button></li>
+                    <li><button id="anchorMenuSave" class="btnCircle btn24" data-localize-tooltip="SaveInLocalDB"><i id="iconMenuSave" class="fas fa-save"></i></button></li>
+                    <!--<li><button style="margin-right:20px" id="anchorMenuToggleLock" class="btnCircle btn24" data-localize-tooltip="SessionIsUnlocked"><i id="iconMenuToggleLock" class="fa fa-unlock"></i></button></li>-->                    
+
+                    <!--<li><button id="anchorMenuUndo" class="btnCircle btn24" data-localize-tooltip="Undo"><i id="iconMenuUndo" class="fas fa-undo"></i></button></li>
+                    <li><button style="margin-right:20px" id="anchorMenuRedo" class="btnCircle btn24" data-localize-tooltip="Redo"><i id="iconMenuRedo" class="fas fa-redo"></i></button></li>-->
+
+                    <li><button id="anchorMenuShowSettings" class="btnCircle btn24" data-localize-tooltip="Settings"><i class="fas fa-cogs"></i></button></li>
+                    <li><button id="anchorMenuFullScreen" class="btnCircle btn24" data-localize-tooltip="ToggleFullScreen"><i class="fas fa-expand-arrows-alt" ></i></button></li>
+                    <!--<li><button id="anchorMenuHelp" class="btnCircle btn24" data-localize-tooltip="Help"><i class="fas fa-question-circle" ></i></button></li>-->
+                    <!--<li><button id="anchorMenuDatabase" class="btnCircle btn24"><i class="fas fa-database" data-localize-tooltip="Database"></i></button></li>-->
+                    <!--<li><button style="margin-right:20px" id="anchorMenuBug" class="btnCircle btn24" data-localize-tooltip="BugReport"><i class="fas fa-exclamation-circle" ></i></button></li>-->
+
+                    <li><button id="anchorMenuLogout" class="btnCircle btn24"><i class="fas fa-sign-out-alt"></i></button></li>
+                    <!--<li><button id="anchorMenuExit" class="btnCircle btn24"><i class="fa fa-window-close" data-localize-tooltip="ExitTimeSens"></i></button></li>-->
+
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div id="currentView" class="container-fluid">
+    </div>
+
+</body>
+
+</html>
+

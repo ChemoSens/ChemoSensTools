@@ -129,7 +129,8 @@ namespace ChemosensTools.invoiceAnalyzer.cs
             {
                 fileContent = fileContent.Replace("data:application/pdf;base64,", "");
 
-                var pdfReader = new PdfReader(Base64.Decode(fileContent));
+                //var pdfReader = new PdfReader(Base64.Decode(fileContent));
+                var pdfReader = new PdfReader(Convert.FromBase64String(fileContent));
 
                 Invoice invoice = new Invoice();
 
@@ -439,7 +440,8 @@ namespace ChemosensTools.invoiceAnalyzer.cs
 
                     fileContent = fileContent.Replace("data:application/pdf;base64,", "");
 
-                    var pdfReader = new PdfReader(Base64.Decode(fileContent));
+                    //var pdfReader = new PdfReader(Base64.Decode(fileContent));
+                    var pdfReader = new PdfReader(Convert.FromBase64String(fileContent));
 
                     Invoice invoice = new Invoice();
 

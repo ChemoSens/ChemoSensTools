@@ -965,7 +965,8 @@ namespace ChemosensTools.ciqualClassifier.csModels
 
         public static byte[] ClassifyDesignationInXlsIn(string data, string modeRecherche)
         {
-            byte[] bytes = Org.BouncyCastle.Utilities.Encoders.Base64.Decode(data.Replace("data:application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;base64,", ""));
+            //byte[] bytes = Org.BouncyCastle.Utilities.Encoders.Base64.Decode(data.Replace("data:application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;base64,", ""));
+            byte[] bytes = Convert.FromBase64String(data.Replace("data:application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;base64,", ""));
             ExcelPackage.LicenseContext = LicenseContext.NonCommercial;
             Classifier classifier = new Classifier(designationPassageFilePath);
             MemoryStream stream = new MemoryStream(bytes);
@@ -1048,7 +1049,8 @@ namespace ChemosensTools.ciqualClassifier.csModels
 
         public static byte[] ClassifieurCIQUALExcel(string data)
         {
-            byte[] bytes = Org.BouncyCastle.Utilities.Encoders.Base64.Decode(data.Replace("data:application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;base64,", ""));
+            //byte[] bytes = Org.BouncyCastle.Utilities.Encoders.Base64.Decode(data.Replace("data:application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;base64,", ""));
+            byte[] bytes = Convert.FromBase64String(data.Replace("data:application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;base64,", ""));
             ExcelPackage.LicenseContext = LicenseContext.NonCommercial;
             Classifier classifier = new Classifier(designationPassageFilePath);
             MemoryStream stream = new MemoryStream(bytes);

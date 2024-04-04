@@ -13,7 +13,7 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     function verb(n) { return function (v) { return step([n, v]); }; }
     function step(op) {
         if (f) throw new TypeError("Generator is already executing.");
-        while (_) try {
+        while (g && (g = 0, op[0] && (_ = 0)), _) try {
             if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
             if (y = 0, t) op = [op[0] & 2, t.value];
             switch (op[0]) {
@@ -254,8 +254,8 @@ var BingSpeech;
             this._tools = new Tools(apiKey);
             this._tools.checkAuthToken();
             this._locale = locale;
-            navigator.getUserMedia = navigator.getUserMedia || navigator.mozGetUserMedia || navigator.webkitGetUserMedia || navigator.msGetUserMedia;
-            if (!navigator.getUserMedia) {
+            navigator.msGetUserMedia = navigator.msGetUserMedia || navigator.mozGetUserMedia || navigator.webkitGetUserMedia || navigator.msGetUserMedia;
+            if (!navigator.msGetUserMedia) {
                 throw "Sorry, your browser doesn't have microphone support.";
             }
         }
@@ -287,7 +287,7 @@ var BingSpeech;
         };
         RecognitionClient.prototype._continueListening = function () {
             var _this = this;
-            navigator.getUserMedia({ audio: true }, function (stream) {
+            navigator.msGetUserMedia({ audio: true }, function (stream) {
                 _this._startVoiceDetection(stream);
             }, function (e) {
                 console.log("No live audio input in this browser: " + e);
@@ -734,7 +734,7 @@ var BingSpeech;
                     gender = "'Male'";
                     supportedLocaleValue = "Microsoft Server Speech Text to Speech Voice (en-US, BenjaminRUS)";
             }
-            SSML += locale + "><voice xml:lang=" + locale + " xml:gender=" + gender + " name='" + supportedLocaleValue + "'>" + ("" + text.encodeHTML()) + "</voice></speak>";
+            SSML += locale + "><voice xml:lang=" + locale + " xml:gender=" + gender + " name='" + supportedLocaleValue + "'>" + "".concat(text.encodeHTML()) + "</voice></speak>";
             return SSML;
         };
         return TTSClient;
@@ -877,12 +877,12 @@ if (!String.prototype.encodeHTML) {
             voice_stop: function () { },
             voice_start: function () { },
             smoothingTimeConstant: 0.99,
-            energy_offset: 1e-8,
-            energy_threshold_ratio_pos: 2,
-            energy_threshold_ratio_neg: 0.5,
-            energy_integration: 1,
+            energy_offset: 1e-8, // The initial offset.
+            energy_threshold_ratio_pos: 2, // Signal must be twice the offset
+            energy_threshold_ratio_neg: 0.5, // Signal must be half the offset
+            energy_integration: 1, // Size of integration change compared to the signal per second.
             filter: [
-                { f: 200, v: 0 },
+                { f: 200, v: 0 }, // 0 -> 200 is 0
                 { f: 2000, v: 1 } // 200 -> 2k is 1
             ],
             source: null,

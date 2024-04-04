@@ -1,0 +1,293 @@
+﻿{
+  "Description": "Séance Profil monadique séquentiel",
+  "UploadedDate": "2017-03-22T09:36:11.2301091+01:00",
+  "Access": {
+    "SubjectCode": "S001",
+    "Password": "",
+    "ServerCode": "700405203",
+    "ListAuthorizedDates": [ ],
+    "MinTimeBetweenConnexions": 0,
+    "Anonymous": false,
+    "AnonymousForcedMail": false,
+    "LocalSession": false
+  },
+  "Progress": {
+    "ListData": [ ],
+    "CurrentState": {
+      "CurrentScreen": 0,
+      "CountScreen": 0,
+      "SubjectCode": "S001",
+      "ServerCode": "700405203",
+      "LastAction": 0
+    },
+    "ShowSubjectCodeOnClient": "NotFinished"
+  },
+  "ListExperimentalDesigns": [
+    {
+      "Id": 2,
+      "Name": "Plan de présentation des descripteurs (Profil monadique séquentiel)",
+      "Type": "Attribute",
+      "DefinedByPanelist": false,
+      "MaxReplicates": 100,
+      "ListItemLabels": [
+        {
+          "Code": "Acide",
+          "Replicate": 1,
+          "Label": "Acide",
+          "DefaultRank": 1,
+          "Warmup": false
+        },
+        {
+          "Code": "Sucre",
+          "Replicate": 1,
+          "Label": "Sucré",
+          "DefaultRank": 2,
+          "Warmup": false
+        }
+      ],
+      "ListExperimentalDesignRows": [
+        {
+          "$type": "TimeSense.Web.Models.AttributeExperimentalDesignRow, TimeSense.Web, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+          "AttributeCode": "Acide",
+          "AttributeLabel": "Acide",
+          "SubjectCode": "S001",
+          "Replicate": 1,
+          "UploadId": 1,
+          "Rank": 1
+        },
+        {
+          "$type": "TimeSense.Web.Models.AttributeExperimentalDesignRow, TimeSense.Web, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+          "AttributeCode": "Sucre",
+          "AttributeLabel": "Sucré",
+          "SubjectCode": "S001",
+          "Replicate": 1,
+          "UploadId": 1,
+          "Rank": 2
+        }
+      ],
+      "Seed": 232,
+      "HasReplicates": false,
+      "NbReplicates": 1,
+      "Order": "Fixed",
+      "ReplicateMode": "Successive",
+      "IsAttributeExperimentalDesign": true,
+      "IsProductExperimentalDesign": false,
+      "IsWithoutReplacement": true,
+      "IsWilliamsLatinSquare": true,
+      "KeepRanksBetweenReplicates": false,
+      "NoConsecutiveItems": false,
+      "NbItems": 2,
+      "Labels": "Acide, Sucré",
+      "IsCustomOrder": false,
+      "IsFixedOrder": true,
+      "IsRandomOrder": false,
+      "IsLatinSquareOrder": false,
+      "IsWilliamsLatinSquareOrder": false,
+      "CanHaveRandomLabels": false,
+      "IsSuccessiveReplicateMode": true,
+      "IsShuffleReplicateMode": false,
+      "IsSequentialReplicateMode": false,
+      "IsTriangleTest": false
+    },
+    {
+      "Id": 1,
+      "Name": "Plan de présentation des produits",
+      "Type": "Product",
+      "DefinedByPanelist": false,
+      "MaxReplicates": 100,
+      "ListItemLabels": [
+        {
+          "Code": "Produit_01",
+          "Replicate": 1,
+          "Label": "352",
+          "DefaultRank": 1,
+          "Warmup": false
+        },
+        {
+          "Code": "Produit_02",
+          "Replicate": 1,
+          "Label": "763",
+          "DefaultRank": 2,
+          "Warmup": false
+        },
+        {
+          "Code": "Produit_03",
+          "Replicate": 1,
+          "Label": "586",
+          "DefaultRank": 3,
+          "Warmup": false
+        },
+        {
+          "Code": "Produit_04",
+          "Replicate": 1,
+          "Label": "974",
+          "DefaultRank": 4,
+          "Warmup": false
+        },
+        {
+          "Code": "Produit_05",
+          "Replicate": 1,
+          "Label": "763",
+          "DefaultRank": 5,
+          "Warmup": false
+        },
+        {
+          "Code": "Produit_06",
+          "Replicate": 1,
+          "Label": "238",
+          "DefaultRank": 6,
+          "Warmup": false
+        }
+      ],
+      "ListExperimentalDesignRows": [
+        {
+          "$type": "TimeSense.Web.Models.ProductExperimentalDesignRow, TimeSense.Web, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+          "ProductCode": "Produit_01",
+          "ProductLabel": "352",
+          "SubjectCode": "S001",
+          "Replicate": 1,
+          "UploadId": 1,
+          "Rank": 3
+        },
+        {
+          "$type": "TimeSense.Web.Models.ProductExperimentalDesignRow, TimeSense.Web, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+          "ProductCode": "Produit_02",
+          "ProductLabel": "763",
+          "SubjectCode": "S001",
+          "Replicate": 1,
+          "UploadId": 1,
+          "Rank": 1
+        },
+        {
+          "$type": "TimeSense.Web.Models.ProductExperimentalDesignRow, TimeSense.Web, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+          "ProductCode": "Produit_03",
+          "ProductLabel": "586",
+          "SubjectCode": "S001",
+          "Replicate": 1,
+          "UploadId": 1,
+          "Rank": 6
+        },
+        {
+          "$type": "TimeSense.Web.Models.ProductExperimentalDesignRow, TimeSense.Web, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+          "ProductCode": "Produit_04",
+          "ProductLabel": "974",
+          "SubjectCode": "S001",
+          "Replicate": 1,
+          "UploadId": 1,
+          "Rank": 2
+        },
+        {
+          "$type": "TimeSense.Web.Models.ProductExperimentalDesignRow, TimeSense.Web, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+          "ProductCode": "Produit_05",
+          "ProductLabel": "763",
+          "SubjectCode": "S001",
+          "Replicate": 1,
+          "UploadId": 1,
+          "Rank": 5
+        },
+        {
+          "$type": "TimeSense.Web.Models.ProductExperimentalDesignRow, TimeSense.Web, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+          "ProductCode": "Produit_06",
+          "ProductLabel": "238",
+          "SubjectCode": "S001",
+          "Replicate": 1,
+          "UploadId": 1,
+          "Rank": 4
+        }
+      ],
+      "Seed": 232,
+      "HasReplicates": false,
+      "NbReplicates": 1,
+      "Order": "LatinSquare",
+      "ReplicateMode": "Successive",
+      "IsAttributeExperimentalDesign": false,
+      "IsProductExperimentalDesign": true,
+      "IsWithoutReplacement": true,
+      "IsWilliamsLatinSquare": true,
+      "KeepRanksBetweenReplicates": false,
+      "NoConsecutiveItems": false,
+      "NbItems": 6,
+      "Labels": "352, 763, 586, 974, 238",
+      "IsCustomOrder": false,
+      "IsFixedOrder": false,
+      "IsRandomOrder": false,
+      "IsLatinSquareOrder": true,
+      "IsWilliamsLatinSquareOrder": true,
+      "CanHaveRandomLabels": true,
+      "IsSuccessiveReplicateMode": true,
+      "IsShuffleReplicateMode": false,
+      "IsSequentialReplicateMode": false,
+      "IsTriangleTest": false
+    }
+  ],
+  "ListScreens": [
+    {
+      "Type": 3,
+      "Id": 1,
+      "ExperimentalDesignId": 0,
+      "ListConditions": {
+        "ProductRankConditions": [ ],
+        "ReplicateConditions": [ ],
+        "BlockConditions": [ ],
+        "ProductConditions": [ ],
+        "AttributeConditions": [ ],
+        "SubjectConditions": [ ]
+      },
+      "Resolution": "1:1",
+      "IsConditionnal": false,
+      "IsConditionnalAndRepeated": false,
+      "XamlContent": "<Canvas Height=\"800\" Width=\"800\" Background=\"#FFFFFFFF\" xmlns=\"http://schemas.microsoft.com/winfx/2006/xaml/presentation\">\r\n  <my:CustomButton xmlns:my=\"clr-namespace:TimeSense.Common.CustomControls;assembly=TimeSense.Common\" Name=\"50114822\" FontSize=\"23.94\" Height=\"50\" Width=\"150\" FontFamily=\"Calibri\" FontWeight=\"Bold\" FontStyle=\"Normal\" MinHeight=\"0\" MinWidth=\"0\" Tag=\"Next\" BorderThickness=\"1,1,1,1\" Opacity=\"1\" BorderBrush=\"#FF2A476A\" Action=\"GoToNextPage\" EventName=\"SIP\" HorizontalContentAlignment=\"Center\" VerticalContentAlignment=\"Center\" PlaySound=\"false\" OneClickOnly=\"false\" GoToAnchorID=\"0\" SMSDelay=\"0\" Background=\"#FF548ED5\" Canvas.ZIndex=\"1000\" xmlns=\"http://schemas.microsoft.com/winfx/2006/xaml/presentation\" Canvas.Left=\"550\" Canvas.Top=\"700\">\r\n    <my:CustomButton.Content>\r\n      <TextBox TextAlignment=\"Left\" Text=\"Suivant\" Foreground=\"#FF2A476A\" Background=\"#00FFFFFF\" />\r\n    </my:CustomButton.Content>\r\n  </my:CustomButton>\r\n  <my:TextArea xmlns:my=\"clr-namespace:TimeSense.Common.CustomControls;assembly=TimeSense.Common\" Name=\"48380222\" FontSize=\"23.94\" Height=\"600\" Width=\"600\" FontFamily=\"Calibri\" FontWeight=\"Normal\" FontStyle=\"Normal\" MinHeight=\"0\" MinWidth=\"0\" BorderThickness=\"0,0,0,0\" Opacity=\"1\" Background=\"#00FFFFFF\" Foreground=\"#FF548ED5\" BorderBrush=\"#FFD6D4D4\" HtmlContent=\"&lt;!DOCTYPE html PUBLIC &quot;-//W3C//DTD XHTML 1.0 Transitional//EN&quot; &quot;http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd&quot;&gt;&lt;html xmlns=&quot;http://www.w3.org/1999/xhtml&quot;&gt;&lt;head&gt;&lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=utf-8&quot; /&gt;&lt;title&gt;Untitled&lt;/title&gt;&lt;style type=&quot;text/css&quot;&gt;&#xD;&#xA;p { margin-top: 0px;margin-bottom: 0px;line-height: 1.15; } &#xD;&#xA;body { font-family: Calibri;font-style: Normal;font-weight: normal;font-size:23,94px; } &#xD;&#xA;.Normal { telerik-style-type: paragraph;telerik-style-name: Normal;border-collapse: collapse; } &#xD;&#xA;.TableNormal { telerik-style-type: table;telerik-style-name: TableNormal;border-collapse: collapse; } &#xD;&#xA;.NormalWeb { telerik-style-type: paragraph;telerik-style-name: NormalWeb;margin-top: 6.66px;margin-bottom: 6.66px;border-collapse: collapse; } &#xD;&#xA;.s_E0FBDC3B { telerik-style-type: local;font-family: Calibri;font-size:23,94px;color: #548ED5; } &lt;/style&gt;&lt;/head&gt;&lt;body&gt;&lt;p class=&quot;NormalWeb &quot;&gt;&lt;span class=&quot;s_E0FBDC3B&quot;&gt;Bienvenue &amp;agrave; cette s&amp;eacute;ance...&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;\" Events=\"[]\" IsModal=\"false\" StartWithChronometer=\"false\" PlaySound=\"false\" ScrollViewerVisible=\"true\" Canvas.ZIndex=\"1000\" xmlns=\"http://schemas.microsoft.com/winfx/2006/xaml/presentation\" Canvas.Left=\"100\" Canvas.Top=\"100\" />\r\n  <my:TextArea xmlns:my=\"clr-namespace:TimeSense.Common.CustomControls;assembly=TimeSense.Common\" Name=\"32768815\" FontSize=\"23.94\" Height=\"64.286\" Width=\"600\" FontFamily=\"Calibri\" FontWeight=\"Normal\" FontStyle=\"Normal\" MinHeight=\"0\" MinWidth=\"0\" BorderThickness=\"0,0,0,0\" Opacity=\"1\" Background=\"#00FFFFFF\" Foreground=\"#FF548ED5\" BorderBrush=\"#FFD6D4D4\" HtmlContent=\"&lt;!DOCTYPE html PUBLIC &quot;-//W3C//DTD XHTML 1.0 Transitional//EN&quot; &quot;http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd&quot;&gt;&lt;html xmlns=&quot;http://www.w3.org/1999/xhtml&quot;&gt;&lt;head&gt;&lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=utf-8&quot; /&gt;&lt;title&gt;Untitled&lt;/title&gt;&lt;style type=&quot;text/css&quot;&gt;&#xD;&#xA;p { margin-top: 0px;margin-bottom: 0px;line-height: 1.15; } &#xD;&#xA;body { font-family: Calibri;font-style: Normal;font-weight: normal;font-size:23,94px; } &#xD;&#xA;.Normal { telerik-style-type: paragraph;telerik-style-name: Normal;border-collapse: collapse; } &#xD;&#xA;.TableNormal { telerik-style-type: table;telerik-style-name: TableNormal;border-collapse: collapse; } &#xD;&#xA;.NormalWeb { telerik-style-type: paragraph;telerik-style-name: NormalWeb;margin-top: 6.66px;margin-bottom: 6.66px;border-collapse: collapse; } &#xD;&#xA;.s_E0FBDC3B { telerik-style-type: local;font-family: Calibri;font-size:23,94px;color: #548ED5; } &lt;/style&gt;&lt;/head&gt;&lt;body&gt;&lt;p class=&quot;NormalWeb &quot;&gt;&lt;span class=&quot;s_E0FBDC3B&quot;&gt;S&amp;eacute;ance...&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;\" Events=\"[]\" IsModal=\"false\" StartWithChronometer=\"false\" PlaySound=\"false\" ScrollViewerVisible=\"true\" Canvas.ZIndex=\"1000\" xmlns=\"http://schemas.microsoft.com/winfx/2006/xaml/presentation\" Canvas.Left=\"100\" Canvas.Top=\"20\" />\r\n</Canvas>"
+    },
+    {
+      "Type": 2,
+      "Id": 2,
+      "ExperimentalDesignId": 1,
+      "ListConditions": {
+        "ProductRankConditions": [ ],
+        "ReplicateConditions": [ ],
+        "BlockConditions": [ ],
+        "ProductConditions": [ ],
+        "AttributeConditions": [ ],
+        "SubjectConditions": [ ]
+      },
+      "Resolution": "1:1",
+      "IsConditionnal": false,
+      "IsConditionnalAndRepeated": false,
+      "XamlContent": "<Canvas Height=\"800\" Width=\"800\" Background=\"#FFFFFFFF\" xmlns=\"http://schemas.microsoft.com/winfx/2006/xaml/presentation\">\r\n  <my:TextArea xmlns:my=\"clr-namespace:TimeSense.Common.CustomControls;assembly=TimeSense.Common\" Name=\"52250442\" FontSize=\"23.94\" Height=\"64.286\" Width=\"600\" FontFamily=\"Calibri\" FontWeight=\"Normal\" FontStyle=\"Normal\" MinHeight=\"0\" MinWidth=\"0\" BorderThickness=\"0,0,0,0\" Opacity=\"1\" Background=\"#00FFFFFF\" Foreground=\"#FF548ED5\" HtmlContent=\"&lt;!DOCTYPE html PUBLIC &quot;-//W3C//DTD XHTML 1.0 Transitional//EN&quot; &quot;http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd&quot;&gt;&lt;html xmlns=&quot;http://www.w3.org/1999/xhtml&quot;&gt;&lt;head&gt;&lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=utf-8&quot; /&gt;&lt;title&gt;Untitled&lt;/title&gt;&lt;style type=&quot;text/css&quot;&gt;&#xD;&#xA;p { margin-top: 0px;margin-bottom: 0px;line-height: 1.15; } &#xD;&#xA;body { font-family: Calibri;font-style: Normal;font-weight: normal;font-size:23,94px; } &#xD;&#xA;.Normal { telerik-style-type: paragraph;telerik-style-name: Normal;border-collapse: collapse; } &#xD;&#xA;.TableNormal { telerik-style-type: table;telerik-style-name: TableNormal;border-collapse: collapse; } &#xD;&#xA;.NormalWeb { telerik-style-type: paragraph;telerik-style-name: NormalWeb;margin-top: 6.66px;margin-bottom: 6.66px;border-collapse: collapse; } &#xD;&#xA;.s_E0FBDC3B { telerik-style-type: local;font-family: Calibri;font-size:23,94px;color: #548ED5; } &lt;/style&gt;&lt;/head&gt;&lt;body&gt;&lt;p class=&quot;NormalWeb &quot;&gt;&lt;span class=&quot;s_E0FBDC3B&quot;&gt;/SpecialLabel/&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;\" Events=\"[]\" IsModal=\"false\" StartWithChronometer=\"false\" PlaySound=\"false\" ScrollViewerVisible=\"true\" Canvas.ZIndex=\"1000\" xmlns=\"http://schemas.microsoft.com/winfx/2006/xaml/presentation\" Canvas.Left=\"100\" Canvas.Top=\"20\" />\r\n  <my:SlidersControl xmlns:my=\"clr-namespace:TimeSense.Common.CustomControls;assembly=TimeSense.Common\" Name=\"491935\" FontSize=\"23.94\" Height=\"600\" Width=\"600\" FontFamily=\"Calibri\" FontWeight=\"Normal\" FontStyle=\"Normal\" MinHeight=\"0\" MinWidth=\"0\" BorderThickness=\"0,0,0,0\" Opacity=\"1\" Background=\"#FF548ED5\" Foreground=\"#FF548ED5\" BorderBrush=\"#FF548ED5\" DataType=\"DynamicProfile\" Replicate=\"0\" ExperimentalDesignId=\"2\" EvaluationMode=\"Product\" akaName=\"MonadicProfile\" Id=\"491935\" FirstItemRank=\"1\" LastItemRank=\"10\" MustAnswerAllAttributes=\"true\" ShowPreExistingScore=\"false\" KeepSelectedItemVisibility=\"Always\" SaveClickMode=\"AllClicks\" TickVisibility=\"Both\" SliderMargin=\"15\" MarginBetweenSliders=\"20\" Minimum=\"0\" Maximum=\"10\" IsLogarithmic=\"false\" Ticks=\"010\" SliderHeight=\"40\" Orientation=\"Horizontal\" SliderLabels=\"[{&quot;Item&quot;:&quot;*&quot;,&quot;Position&quot;:0.0,&quot;Placement&quot;:&quot;Top&quot;},{&quot;Item&quot;:&quot;*&quot;,&quot;Position&quot;:10.0,&quot;Placement&quot;:&quot;Top&quot;}]\" CursorColor=\"#FF548ED5\" LabelPosition=\"Left\" LabelWidth=\"150\" Canvas.ZIndex=\"1000\" xmlns=\"http://schemas.microsoft.com/winfx/2006/xaml/presentation\" Canvas.Left=\"100\" Canvas.Top=\"250\" />\r\n<my:CustomButton xmlns:my=\"clr-namespace:TimeSense.Common.CustomControls;assembly=TimeSense.Common\" Name=\"6295029\" FontSize=\"28\" Height=\"51.596\" Width=\"246.938\" FontFamily=\"Verdana\" FontWeight=\"Bold\" FontStyle=\"Normal\" MinHeight=\"0\" MinWidth=\"0\" Tag=\"Start\" BorderThickness=\"2,2,2,2\" Opacity=\"1\" BorderBrush=\"#FF00B050\" BackgroundMode=\"Transparent\" Action=\"StartChronometer\" EventName=\"SIP\" HorizontalContentAlignment=\"Center\" VerticalContentAlignment=\"Center\" PlaySound=\"false\" OneClickOnly=\"false\" GoToAnchorID=\"0\" SMSDelay=\"0\" Background=\"#FF92D050\" Canvas.ZIndex=\"1000\" xmlns=\"http://schemas.microsoft.com/winfx/2006/xaml/presentation\" Canvas.Left=\"405.966\" Canvas.Top=\"90.345\">\r\n    <my:CustomButton.Content>\r\n      <TextBox TextAlignment=\"Left\" Text=\"START\" Foreground=\"#FF00B050\" Background=\"#00FFFFFF\" />\r\n    </my:CustomButton.Content>\r\n  </my:CustomButton> <my:CustomButton xmlns:my=\"clr-namespace:TimeSense.Common.CustomControls;assembly=TimeSense.Common\" Name=\"8000607\" FontSize=\"28\" Height=\"54.605\" Width=\"247.784\" FontFamily=\"Verdana\" FontWeight=\"Bold\" FontStyle=\"Normal\" MinHeight=\"0\" MinWidth=\"0\" Tag=\"\" BorderThickness=\"2,2,2,2\" Opacity=\"1\" BorderBrush=\"#FFFF0000\" BackgroundMode=\"Transparent\" Action=\"StopChronometerAndGoToNextPage\" EventName=\"SIP\" HorizontalContentAlignment=\"Center\" VerticalContentAlignment=\"Center\" PlaySound=\"false\" OneClickOnly=\"false\" GoToAnchorID=\"0\" SMSDelay=\"0\" Background=\"#FFFF0000\" Canvas.ZIndex=\"1000\" xmlns=\"http://schemas.microsoft.com/winfx/2006/xaml/presentation\" Canvas.Left=\"406.91\" Canvas.Top=\"691.302\">\r\n    <my:CustomButton.Content>\r\n      <TextBox TextAlignment=\"Left\" Text=\"STOP\" Foreground=\"#FFFF0000\" Background=\"#00FFFFFF\" />\r\n    </my:CustomButton.Content>\r\n  </my:CustomButton></Canvas>"
+    },
+    {
+      "Type": 3,
+      "Id": 3,
+      "ExperimentalDesignId": 0,
+      "ListConditions": {
+        "ProductRankConditions": [ ],
+        "ReplicateConditions": [ ],
+        "BlockConditions": [ ],
+        "ProductConditions": [ ],
+        "AttributeConditions": [ ],
+        "SubjectConditions": [ ]
+      },
+      "Resolution": "1:1",
+      "IsConditionnal": false,
+      "IsConditionnalAndRepeated": false,
+      "XamlContent": "<Canvas Height=\"800\" Width=\"800\" Background=\"#FFFFFFFF\" xmlns=\"http://schemas.microsoft.com/winfx/2006/xaml/presentation\">\r\n  <my:TextArea xmlns:my=\"clr-namespace:TimeSense.Common.CustomControls;assembly=TimeSense.Common\" Name=\"66921528\" FontSize=\"23.94\" Height=\"600\" Width=\"600\" FontFamily=\"Calibri\" FontWeight=\"Normal\" FontStyle=\"Normal\" MinHeight=\"0\" MinWidth=\"0\" BorderThickness=\"0,0,0,0\" Opacity=\"1\" Background=\"#00FFFFFF\" Foreground=\"#FF548ED5\" HtmlContent=\"&lt;!DOCTYPE html PUBLIC &quot;-//W3C//DTD XHTML 1.0 Transitional//EN&quot; &quot;http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd&quot;&gt;&lt;html xmlns=&quot;http://www.w3.org/1999/xhtml&quot;&gt;&lt;head&gt;&lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=utf-8&quot; /&gt;&lt;title&gt;Untitled&lt;/title&gt;&lt;style type=&quot;text/css&quot;&gt;&#xD;&#xA;p { margin-top: 0px;margin-bottom: 0px;line-height: 1.15; } &#xD;&#xA;body { font-family: Calibri;font-style: Normal;font-weight: normal;font-size:23,94px; } &#xD;&#xA;.Normal { telerik-style-type: paragraph;telerik-style-name: Normal;border-collapse: collapse; } &#xD;&#xA;.TableNormal { telerik-style-type: table;telerik-style-name: TableNormal;border-collapse: collapse; } &#xD;&#xA;.NormalWeb { telerik-style-type: paragraph;telerik-style-name: NormalWeb;margin-top: 6.66px;margin-bottom: 6.66px;border-collapse: collapse; } &#xD;&#xA;.s_E0FBDC3B { telerik-style-type: local;font-family: Calibri;font-size:23,94px;color: #548ED5; } &lt;/style&gt;&lt;/head&gt;&lt;body&gt;&lt;p class=&quot;NormalWeb &quot;&gt;&lt;span class=&quot;s_E0FBDC3B&quot;&gt;Cette s&amp;eacute;ance est termin&amp;eacute;e. Merci pour votre participation.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;\" Events=\"[]\" IsModal=\"false\" StartWithChronometer=\"false\" PlaySound=\"false\" ScrollViewerVisible=\"true\" Canvas.ZIndex=\"1000\" xmlns=\"http://schemas.microsoft.com/winfx/2006/xaml/presentation\" Canvas.Left=\"100\" Canvas.Top=\"100\" />\r\n  <my:TextArea xmlns:my=\"clr-namespace:TimeSense.Common.CustomControls;assembly=TimeSense.Common\" Name=\"65422844\" FontSize=\"23.94\" Height=\"64.286\" Width=\"600\" FontFamily=\"Calibri\" FontWeight=\"Normal\" FontStyle=\"Normal\" MinHeight=\"0\" MinWidth=\"0\" BorderThickness=\"0,0,0,0\" Opacity=\"1\" Background=\"#00FFFFFF\" Foreground=\"#FF548ED5\" HtmlContent=\"&lt;!DOCTYPE html PUBLIC &quot;-//W3C//DTD XHTML 1.0 Transitional//EN&quot; &quot;http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd&quot;&gt;&lt;html xmlns=&quot;http://www.w3.org/1999/xhtml&quot;&gt;&lt;head&gt;&lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=utf-8&quot; /&gt;&lt;title&gt;Untitled&lt;/title&gt;&lt;style type=&quot;text/css&quot;&gt;&#xD;&#xA;p { margin-top: 0px;margin-bottom: 0px;line-height: 1.15; } &#xD;&#xA;body { font-family: Calibri;font-style: Normal;font-weight: normal;font-size:23,94px; } &#xD;&#xA;.Normal { telerik-style-type: paragraph;telerik-style-name: Normal;border-collapse: collapse; } &#xD;&#xA;.TableNormal { telerik-style-type: table;telerik-style-name: TableNormal;border-collapse: collapse; } &#xD;&#xA;.NormalWeb { telerik-style-type: paragraph;telerik-style-name: NormalWeb;margin-top: 6.66px;margin-bottom: 6.66px;border-collapse: collapse; } &#xD;&#xA;.s_E0FBDC3B { telerik-style-type: local;font-family: Calibri;font-size:23,94px;color: #548ED5; } &lt;/style&gt;&lt;/head&gt;&lt;body&gt;&lt;p class=&quot;NormalWeb &quot;&gt;&lt;span class=&quot;s_E0FBDC3B&quot;&gt;S&amp;eacute;ance termin&amp;eacute;e.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;\" Events=\"[]\" IsModal=\"false\" StartWithChronometer=\"false\" PlaySound=\"false\" ScrollViewerVisible=\"true\" Canvas.ZIndex=\"1000\" xmlns=\"http://schemas.microsoft.com/winfx/2006/xaml/presentation\" Canvas.Left=\"100\" Canvas.Top=\"20\" />\r\n  <my:CustomButton xmlns:my=\"clr-namespace:TimeSense.Common.CustomControls;assembly=TimeSense.Common\" Name=\"51934691\" FontSize=\"23.94\" Height=\"50\" Width=\"150\" FontFamily=\"Calibri\" FontWeight=\"Bold\" FontStyle=\"Normal\" MinHeight=\"0\" MinWidth=\"0\" Tag=\"\" BorderThickness=\"1,1,1,1\" Opacity=\"1\" BorderBrush=\"#FF2A476A\" Action=\"CloseApplication\" EventName=\"SIP\" HorizontalContentAlignment=\"Center\" VerticalContentAlignment=\"Center\" PlaySound=\"false\" OneClickOnly=\"false\" GoToAnchorID=\"0\" SMSDelay=\"0\" Background=\"#FF548ED5\" Canvas.ZIndex=\"1000\" xmlns=\"http://schemas.microsoft.com/winfx/2006/xaml/presentation\" Canvas.Left=\"550\" Canvas.Top=\"700\">\r\n    <my:CustomButton.Content>\r\n      <TextBox TextAlignment=\"Left\" Text=\"Quitter\" Foreground=\"#FF2A476A\" />\r\n    </my:CustomButton.Content>\r\n  </my:CustomButton>\r\n</Canvas>"
+    }
+  ],
+  "Subject": {
+    "Code": "S001",
+    "FirstName": "",
+    "LastName": "",
+    "Password": "",
+    "Country": "NR",
+    "Mail": "",
+    "Phone": "",
+    "City": "",
+    "Address": "",
+    "Gender": "NR",
+    "EducationLevel": "NR",
+    "ProfessionalActivity": "NR",
+    "FamilialStatus": "NR",
+    "Notes": ""
+  },
+  "UploadId": 1
+}

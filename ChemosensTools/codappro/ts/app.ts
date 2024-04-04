@@ -9,6 +9,7 @@
     private aliment: CodAchatsModels.Aliment;
     private menu: string = "";
 
+    private l: string = "";
     private sn: string = "";
     private ti: string = "";
     private login: string = "";
@@ -49,6 +50,7 @@
 
         this.sn = Framework.Browser.GetUrlParameter("sn"); // Code de l'étude
         this.ti = Framework.Browser.GetUrlParameter("v"); // Affichage spécifique valentin
+        this.l = Framework.Browser.GetUrlParameter("l"); // Affichage texte pour aliments
         let admin = Framework.Browser.GetUrlParameter("admin"); // Id admin
         this.login = Framework.Browser.GetUrlParameter("login"); // login
 
@@ -71,9 +73,9 @@
         self.aliment.Lieu = self.lieuTicket;
         self.aliment.Menu = self.menu;
         if (self.aliment.DateSaisie == undefined) {
-            self.aliment.DateSaisie = new Date(Date.now()).toLocaleDateString('en-CA');
+            self.aliment.DateSaisie = new Date(Date.now()).toISOString().split('T')[0];
         }
-        self.aliment.DateModif = new Date(Date.now()).toLocaleDateString('en-CA');
+        self.aliment.DateModif = new Date(Date.now()).toISOString().split('T')[0];
         self.questionnaire.Aliments.push(self.aliment);
         self.aliment = new CodAchatsModels.Aliment();
         self.aliment.Date = self.dateTicket;
@@ -217,7 +219,7 @@
                 login = Framework.LocalStorage.GetFromLocalStorage("codachats_id", true);
                 if (login == null || login == undefined) {
                     login = "";
-                }                
+                }
             }
 
             let inputLoginId = Framework.Form.InputText.Register("inputLoginId", login, Framework.Form.Validator.MinLength(5), () => {
@@ -312,12 +314,15 @@
 
                     const timeStamp = (new Date()).toISOString().replace(/[^0-9]/g, '').slice(0, -3)
 
-                    let fn = self.questionnaire.Code + "_" + timeStamp;                    
+                    let fn = self.questionnaire.Code + "_" + timeStamp;
                     self.CallWCF('TeleverseImageCodAppro', { base64string: base64, filename: fn }, () => { }, (res) => {
                         self.aliment.Image = fn;
-                        if (res.Status == "success") {
-                            mw.Close();
+                        if (res.ErrorMessage != "") {
+                            Framework.Modal.Alert("Succès", "La photo a été téléversée.", () => { mw.Close() });
+                        } else {
+                            Framework.Modal.Alert("Echec", "Une erreur a eu lieu pendant le téléchargement.", () => { mw.Close() });
                         }
+
                     });
                 });
 
@@ -331,6 +336,23 @@
 
             });
 
+            let btnUpload = Framework.Form.Button.Register("btnUpload", () => { return true; }, () => {
+
+                Framework.FileHelper.BrowseBinaries("", (binaries, filename) => {
+                    const timeStamp = (new Date()).toISOString().replace(/[^0-9]/g, '').slice(0, -3)
+
+                    let fn = self.questionnaire.Code + "_" + timeStamp;
+                    self.CallWCF('TeleverseImageCodAppro', { base64string: binaries, filename: fn }, () => { }, (res) => {
+                        self.aliment.Image = fn;
+                        if (res.ErrorMessage != "") {
+                            Framework.Modal.Alert("Succès", "La photo a été téléversée.");
+                        } else {
+                            Framework.Modal.Alert("Echec", "Une erreur a eu lieu pendant le téléchargement.");
+                        }
+                    });
+                });
+
+            });
 
             let divTicketMenu = Framework.Form.TextElement.Register("divTicketMenu");
             divTicketMenu.Hide();
@@ -427,223 +449,471 @@
             //    "Autre"
             //];
 
-            let lieux: string[] = ["ACTION",
-            "AHUY FRUITS - Ahuy ",
-                "AJ MARKET - Dijon (Rue d'York)",
-                "ALDI",
-                "ALDI - Chenôve",
-                "ALDI - Dijon (Avenue Raymond Poincaré)",
-                "ALDI - Fontaine-Lès-Dijon",
-                "ALDI - Quetigny ",
-                "ALIMENTATION D'EL KSIBA",
-                "AU PETIT MARCHE - Dijon (Rue Joseph Bellesoeur)",
-                "AUCHAN",
-                "AUCHAN DRIVE",
-                "Boucherie",
-                "BOUCHERIE CHENU DANIEL - Dijon",
-                "BOUCHERIE CINAR - Chenôve (Rue Jean Moulin)",
-                "BOUCHERIE CINAR - Quétigny ",
-                "BOUCHERIE DE LA MEDITERRANEE - Dijon (Rue Docteur Julie)",
-                "BOUCHERIE DE LA MEDITERRANEE - Quetigny ",
-                "BOUCHERIE LA COTE D'OR - Chenôve ",
-                "BOUCHERIE MARRAKECH - Dijon (Avenue Gustave Eiffel) ",
-                "BOUCHERIE SAINT SAUVEUR - Chevigny-saint-sauveur",
-                "BOUCHERIE-CHARCUTERIE GAUTHIER - Longvic ",
-                "Boulangerie",
-                "BOULANGERIE DE MARIE BLACHERE - Longvic",
-                "BOULANGERIE DE MARIE BLACHERE - Marsannay",
-                "BOULANGERIE DE MARIE BLACHERE - Quetigny",
-                "Cantine",
-                "CARREFOUR",
-                "CARREFOUR - Dijon ( Rue Charles Dumont)",
-                "CARREFOUR - Dijon (Route de Langres)",
-                "CARREFOUR - Dijon (Rue Colonel Charles Flamand)",
-                "CARREFOUR - Quetigny ",
-                "CARREFOUR - Talant",
-                "CARREFOUR CITY - Chevigny-saint-sauveur",
-                "CARREFOUR CITY - Dijon (Rue du Transvaal)",
-                "CARREFOUR CITY - Dijon (Rue Paul Cabet)",
-                "CARREFOUR CITY - Dijon (Rue Bannelier)",
-                "CARREFOUR CITY - Dijon (Rue Charles Dumont)",
-                "CARREFOUR DRIVE",
-                "CARREFOUR EXPRESS - Chenôve",
-                "CARREFOUR EXPRESS - Dijon (Avenue Jean Jaures)",
-                "CARREFOUR EXPRESS - Dijon (Boulevard Colonel Charles Flamand)",
-                "CARREFOUR EXPRESS - Dijon (Rue Angelique Ducoudray)",
-                "CARREFOUR EXPRESS - Dijon (Rue Chabot Charny)",
-                "CARREFOUR EXPRESS - Dijon (Rue de Longvic)",
-                "CARREFOUR EXPRESS - Dijon (Rue de Mirande)",
-                "CARREFOUR EXPRESS - Dijon (Rue Devosge)",
-                "CARREFOUR EXPRESS - Marsannay",
-                "CARREFOUR MARKET - Chevigny-saint-sauveur",
-                "CASINO",
-                "CASINO - Dijon (Avenue du Drapeau)",
-                "CASINO - Dijon (Boulevard Clemenceau)",
-                "CASINO - Dijon (Boulevard de Strasbourg)",
-                "CASINO - Dijon (Rue D'Auxonne)",
-                "CASINO - Dijon (Rue de Jouvence)",
-                "CASINO - Dijon (Rue Monge)",
-                "CASINO - Dijon (Rue Oderbet)",
-                "CASINO DRIVE",
-                "CASINO SHOP - Dijon (Avenue de Langres)",
-                "CASINO SHOP - Dijon (Rue Jean Jacques Rousseau)",
-                "CINEMA",
-                "COCCIMARKET",
-                "COCCIMARKET - Dijon (Rue Daubenton)",
-                "COCCIMARKET - Dijon (Avenue des Gresilles)",
-                "COLRUYT",
-                "CORA",
-                "CORA - Perrigny-Lès-Dijon",
-                "CORA DRIVE",
-                "COTE & FRAIS - Dijon (Rue Chabot Charny)",
-                "Croix rouge",
-                "CROUS",
-                "CUT MARKET - Dijon (Rue coupée de longvic)",
-                "DAY BY DAY MON EPICERIE EN VRAC - Dijon (Place Notre Dame)",
-                "DIJON FRUITS - Marsannay ",
-                "DIJON PRIMEURS - Dijon (Rue Quentin)",
-                "DISTRIBFOODS MARKET - Saint-Apollinaire",
-                "Distributeur",
-                "Don voisin/ami/famille",
-                "EPICAGE 21 (EPICERIE ET CUISINE ANTI-GASPILLAGE) - Fontaine-Lès-Dijon",
-                "EPICERIE DE NUIT - Dijon (Rue Monge)",
-                "EPICERIE DU LAC - Dijon (Avenue du Lac)",
-                "EPICERIE DU QUAI - Dijon (Quai Nicolas Rolin)",
-                "EPICERIE MONGE - Dijon (Rue Monge)",
-                "Epicerie sociale",
-                "EPICERIE VANNERIE - Dijon (Rue Vannerie)",
-                "EPIMUT - Quetigny ",
-                "EPI'SOURIRE - Dijon(Place Jeacques Prévert)",
-                "ESPRIT FRAICHEUR - Dijon (Avenue de l'Ouche) ",
-                "EXOTIQUE 21 PONA-BISO - Dijon (Fontaine D'Ouche)",
-                "Fast-food",
-                "Fins de marché ou poubelles",
-                "FRAIS D'ICI - Chenôve",
-                "FRANPRIX - Dijon (Rue du Bourg) ",
-                "FROMAGER",
-                "GEANT",
-                "GEANT - Chenôve",
-                "GEANT - Fontaine les Dijon",
-                "GRAND FRAIS",
-                "GRAND FRAIS - Ahuy",
-                "GRAND FRAIS - Longvic",
-                "GRAND FRAIS - Marsannay ",
-                "GRAND FRAIS - Quetigny ",
-                "INTERMARCHE",
-                "INTERMARCHE - Dijon (Avenue du Drapeau)",
-                "INTERMARCHE - Dijon (Avenue Jean Jaurès)",
-                "INTERMARCHE - Dijon (Rue Gaston Bachelard)",
-                "INTERMARCHE - Dijon Université",
-                "INTERMARCHE - Fontaine-Les-Dijon",
-                "INTERMARCHE - Longvic",
-                "Jardin",
-                "LA CORBEILLE AUX SAVEURS - Chevigny-saint-sauveur",
-                "LA FONTAINE AUX FRUITS - Fontaine-Les-Dijon",
-                "LA RESERVE BIO - Dijon (Avenue Jean Jaures)",
-                "LA VIE CLAIRE - Dijon (Rue Pasteur)",
-                "LE CŒUR DIJONNAIS - Dijon (Rue Clément Desormes) ",
-                "LE FRUITIER SAINT MARTIN - Fontaine-Lès-Dijon",
-                "LE GARCON BOUCHER - Chenove",
-                "LE GARCON BOUCHER - Dijon (Avenue du Drapeau)",
-                "LE MAG - Dijon (Avenue les Grésilles)",
-                "LE PETIT MARCHE - Dijon (Avenue du Lac)",
-                "LE PETIT MARCHE - Dijon (Boulevard des Martyrs de la Résistance)",
-                "LEADER PRICE",
-                "L'EAU VIVE - Quétigny ",
-                "LECLERC",
-                "LECLERC - Dijon (Rue de Cravovie)",
-                "LECLERC - Fontaine-Lès-Dijon",
-                "LECLERC - Marsannay",
-                "LECLERC DRIVE",
-                "LECLERC DRIVE - Cap Nord",
-                "LECLERC DRIVE - Longvic",
-                "LECLERC DRIVE - Quétigny",
-                "L'EPICERIE A CARO - Dijon (Avenue Victor Hugo)",
-                "LIDL",
-                "LIDL - Chevigny-Saint-Sauveur",
-                "LIDL - Ahuy",
-                "LIDL - Chenôve",
-                "LIDL - Daix",
-                "LIDL - Neuilly-Crimolois",
-                "LIDL - Saint-Apollinaire",
-                "LIDL-Dijon (Route de Gray)",
-                "LIDL-Dijon (Rue Marcel Sembat)",
-                "Livraison à domicile",
-                "Marché",
-                "Marché de Chenôve",
-                "Marché des Grésilles - Dijon",
-                "Marché des Halles - Dijon ",
-                "Marché du bonheur",
-                "Marché du canal - Dijon",
-                "MARCHE U - Dijon (Rue Albert et André Claudot)",
-                "MAXI MARCHE - Plombières-Lès-Dijon",
-                "MES BONNES COURSES - Marsannay",
-                "MINI MARKET - Dijon (Rue Berbisey)",
-                "MONOPRIX - Dijon (Rue Piron)",
-                "NETTO",
-                "NIGHT MARKET BERBISEY - Dijon (Rue Berbisey)",
-                "O'CAZ BY CASINO - Chenôve ",
-                "O'MARKET - Chenôve ",
-                "O'MARKET - Dijon (Avenue du lac)",
-                "OPEN MARKET - Dijon (Avenue Maréchal Foch)",
-                "PETIT CASINO",
-                "PETIT CASINO - Dijon (Boulevard de Strasbourg)",
-                "PETIT CASINO - Dijon (Rue Barbe)",
-                "PETIT CASINO - Dijon (Rue Montchapet)",
-                "PETIT CASINO - Dijon (Rue Odebert)",
-                "PICARD",
-                "PICARD - Chenôve",
-                "PICARD - Dijon (Rue Odebert)",
-                "PICARD - Fontaine-Lès-Dijon",
-                "PICARD - Quetigny",
-                "PLACE DU MARCHE - Chevigny-saint-sauveur",
-                "PROXI - Dijon (Rue de Mirande)",
-                "PROXI - Dijon (Rue Diderot)",
-                "PROXIMARCHE - Dijon (Rue Antoine Auguste Cournot)",
-                "PROXIMARCHE - Dijon (Rue du Faubourg Raines)",
-                "RAMIN MARKET - Dijon (Rue Monge)",
-                "Restaurant d'entreprise (sur place)",
-                "Restaurant/bar/café (sur place)",
-                "Restos du cœur",
-                "ROUSSEAU MARKET - Dijon (Rue Jean-Jacques Rousseau)",
-                "Secours catholique",
-                "Secours populaire",
-                "SHOP NIGHT - Dijon (Rue d'Auxonne)",
-                "SO.BIO - Perrigny-Les-Dijon",
-                "SOVIAL - Dijon (Avenue du Lac)",
-                "SPAR",
-                "SPAR - Dijon (Avenue Gustave Eiffel)",
-                "SPAR - Dijon (Rue de Talant)",
-                "SPAR - Dijon (Rue Jacques Cellerier)",
-                "SUPECO - Chenôve",
-                "SUPER U",
-                "SUPER U - Chenôve",
-                "SUPER U - Talant",                
-                "SUPER U DRIVE",
-                "SUPERETTE - Dijon (Rue de la Préfecture)",
-                "SUPERETTE BERBISEY - Dijon (Rue Berbisey)",
-                "SUPERETTE DE DIJON - Dijon (Avenue Jean Jeaures)",
-                "SUPERMARCHE CASINO - Quétigny",
-                "TERRES BIO - BIOCOOP - Ahuy",
-                "TOUPARGEL - Chevigny-saint-sauveur",
-                "U EXPRESS - Dijon (Rue Albert et André Claudot)",
-                "Vente à emporter",
-                "VIVAL",
-                "VIVAL - Dijon (Avenue gustave Eiffel)",
-                "VIVAL - Dijon (Rue Maurice Ravel)",
-                "VIVAL CASINO - Dijon (Avenue Eiffel)",
-                "VIVAL CASINO - Dijon (Rue Marceau)",
-                "Autre association",
-                "Autre don",
-                "Autre petit commerce",
-                "Autre supermarché",
-                "Autre supermarché bio",
-                "Autre"
-]
-            lieux.forEach(x => {
+            //let lieux: string[] = [
+            //    "ACTION",
+            //    "AHUY FRUITS - Ahuy ",
+            //    "AJ MARKET - Dijon (Rue d'York)",
+            //    "Alberti fruits",
+            //    "ALDI",
+            //    "ALDI - Chenôve",
+            //    "ALDI - Dijon (Avenue Raymond Poincaré)",
+            //    "ALDI - Fontaine-Lès-Dijon",
+            //    "ALDI - Quetigny ",
+            //    "ALIMENTATION D'EL KSIBA",
+            //    "AMAP",
+            //    "AU PETIT MARCHE - Dijon (Rue Joseph Bellesoeur)",
+            //    "AUCHAN",
+            //    "AUCHAN DRIVE",
+            //    "B&M",
+            //    "Boucherie",
+            //    "BOUCHERIE CHENU DANIEL - Dijon",
+            //    "BOUCHERIE CINAR - Chenôve (Rue Jean Moulin)",
+            //    "BOUCHERIE CINAR - Quétigny",
+            //    "BOUCHERIE DE LA MEDITERRANEE - Dijon (Rue Docteur Julie)",
+            //    "BOUCHERIE DE LA MEDITERRANEE - Quetigny ",
+            //    "BOUCHERIE LA COTE D'OR - Chenôve ",
+            //    "BOUCHERIE MARRAKECH - Dijon (Avenue Gustave Eiffel) ",
+            //    "BOUCHERIE SAINT SAUVEUR - Chevigny-saint-sauveur",
+            //    "BOUCHERIE-CHARCUTERIE GAUTHIER - Longvic",
+            //    "Boulangerie",
+            //    "BOULANGERIE DE MARIE BLACHERE - Longvic",
+            //    "BOULANGERIE DE MARIE BLACHERE - Marsannay",
+            //    "BOULANGERIE DE MARIE BLACHERE - Quetigny",
+            //    "Cantine",
+            //    "CARREFOUR",
+            //    "CARREFOUR - Dijon ( Rue Charles Dumont)",
+            //    "CARREFOUR - Dijon (Route de Langres)",
+            //    "CARREFOUR - Dijon (Rue Colonel Charles Flamand)",
+            //    "CARREFOUR - Quetigny ",
+            //    "CARREFOUR - Talant",
+            //    "CARREFOUR CITY - Chevigny-saint-sauveur",
+            //    "CARREFOUR CITY - Dijon (Rue du Transvaal)",
+            //    "CARREFOUR CITY - Dijon (Rue Paul Cabet)",
+            //    "CARREFOUR CITY - Dijon (Rue Bannelier)",
+            //    "CARREFOUR CITY - Dijon (Rue Charles Dumont)",
+            //    "CARREFOUR DRIVE",
+            //    "CARREFOUR EXPRESS - Chenôve",
+            //    "CARREFOUR EXPRESS - Dijon (Avenue Jean Jaures)",
+            //    "CARREFOUR EXPRESS - Dijon (Boulevard Colonel Charles Flamand)",
+            //    "CARREFOUR EXPRESS - Dijon (Rue Angelique Ducoudray)",
+            //    "CARREFOUR EXPRESS - Dijon (Rue Chabot Charny)",
+            //    "CARREFOUR EXPRESS - Dijon (Rue de Longvic)",
+            //    "CARREFOUR EXPRESS - Dijon (Rue de Mirande)",
+            //    "CARREFOUR EXPRESS - Dijon (Rue Devosge)",
+            //    "CARREFOUR EXPRESS - Marsannay",
+            //    "CARREFOUR MARKET - Chevigny-saint-sauveur",
+            //    "CASINO",
+            //    "CASINO - Dijon (Avenue du Drapeau)",
+            //    "CASINO - Dijon (Boulevard Clemenceau)",
+            //    "CASINO - Dijon (Boulevard de Strasbourg)",
+            //    "CASINO - Dijon (Rue D'Auxonne)",
+            //    "CASINO - Dijon (Rue de Jouvence)",
+            //    "CASINO - Dijon (Rue Monge)",
+            //    "CASINO - Dijon (Rue Oderbet)",
+            //    "CASINO DRIVE",
+            //    "CASINO SHOP - Dijon (Avenue de Langres)",
+            //    "CASINO SHOP - Dijon (Rue Jean Jacques Rousseau)",
+            //    "CINEMA",
+            //    "COCCIMARKET",
+            //    "COCCIMARKET - Dijon (Rue Daubenton)",
+            //    "COCCIMARKET - Dijon (Avenue des Gresilles)",
+            //    "COLRUYT",
+            //    "CORA",
+            //    "CORA - Perrigny-Lès-Dijon",
+            //    "CORA DRIVE",
+            //    "COTE & FRAIS - Dijon (Rue Chabot Charny)",
+            //    "Croix rouge",
+            //    "CROUS",
+            //    "Cueillette",
+            //    "CUT MARKET - Dijon (Rue coupée de longvic)",
+            //    "DAY BY DAY MON EPICERIE EN VRAC - Dijon (Place Notre Dame)",
+            //    "DIJON FRUITS - Marsannay ",
+            //    "DIJON PRIMEURS - Dijon (Rue Quentin)",
+            //    "DISTRIBFOODS MARKET - Saint-Apollinaire",
+            //    "Distributeur",
+            //    "Don voisin/ami/famille",
+            //    "EPICAGE 21 (EPICERIE ET CUISINE ANTI-GASPILLAGE) - Fontaine-Lès-Dijon",
+            //    "Epicerie Au Gramme Près",
+            //    "EPICERIE DE NUIT - Dijon (Rue Monge)",
+            //    "EPICERIE DU LAC - Dijon (Avenue du Lac)",
+            //    "EPICERIE DU QUAI - Dijon (Quai Nicolas Rolin)",
+            //    "EPICERIE MONGE - Dijon (Rue Monge)",
+            //    "Epicerie sociale",
+            //    "EPICERIE VANNERIE - Dijon (Rue Vannerie)",
+            //    "EPIMUT - Quetigny ",
+            //    "EPI'SOURIRE - Dijon(Place Jeacques Prévert)",
+            //    "ESPRIT FRAICHEUR - Dijon (Avenue de l'Ouche) ",
+            //    "EXOTIQUE 21 PONA-BISO - Dijon (Fontaine D'Ouche)",
+            //    "Fast-food",
+            //    "Fins de marché ou poubelles",
+            //    "FRAIS D'ICI - Chenôve",
+            //    "FRANPRIX - Dijon (Rue du Bourg) ",
+            //    "FROMAGER",
+            //    "GEANT",
+            //    "GEANT - Chenôve",
+            //    "GEANT - Fontaine les Dijon",
+            //    "GRAND FRAIS",
+            //    "GRAND FRAIS - Ahuy",
+            //    "GRAND FRAIS - Longvic",
+            //    "GRAND FRAIS - Marsannay ",
+            //    "GRAND FRAIS - Quetigny ",
+            //    "INTERMARCHE",
+            //    "INTERMARCHE - Dijon (Avenue du Drapeau)",
+            //    "INTERMARCHE - Dijon (Avenue Jean Jaurès)",
+            //    "INTERMARCHE - Dijon (Rue Gaston Bachelard)",
+            //    "INTERMARCHE - Dijon Université",
+            //    "INTERMARCHE - Fontaine-Les-Dijon",
+            //    "INTERMARCHE - Longvic",
+            //    "Jardin",
+            //    "LA CORBEILLE AUX SAVEURS - Chevigny-saint-sauveur",
+            //    "LA FONTAINE AUX FRUITS - Fontaine-Les-Dijon",
+            //    "LA RESERVE BIO - Dijon (Avenue Jean Jaures)",
+            //    "LA VIE CLAIRE - Dijon (Rue Pasteur)",
+            //    "LE CŒUR DIJONNAIS - Dijon (Rue Clément Desormes) ",
+            //    "LE FRUITIER SAINT MARTIN - Fontaine-Lès-Dijon",
+            //    "LE GARCON BOUCHER - Chenove",
+            //    "LE GARCON BOUCHER - Dijon (Avenue du Drapeau)",
+            //    "LE MAG - Dijon (Avenue les Grésilles)",
+            //    "LE PETIT MARCHE - Dijon (Avenue du Lac)",
+            //    "LE PETIT MARCHE - Dijon (Boulevard des Martyrs de la Résistance)",
+            //    "LEADER PRICE",
+            //    "L'EAU VIVE - Quétigny ",
+            //    "LECLERC",
+            //    "LECLERC - Dijon (Rue de Cravovie)",
+            //    "LECLERC - Fontaine-Lès-Dijon",
+            //    "LECLERC - Marsannay",
+            //    "LECLERC DRIVE",
+            //    "LECLERC DRIVE - Cap Nord",
+            //    "LECLERC DRIVE - Longvic",
+            //    "LECLERC DRIVE - Quétigny",
+            //    "L'EPICERIE A CARO - Dijon (Avenue Victor Hugo)",
+            //    "LES SALAISONS DIJONNAISES",
+            //    "LIDL",
+            //    "LIDL - Chevigny-Saint-Sauveur",
+            //    "LIDL - Ahuy",
+            //    "LIDL - Chenôve",
+            //    "LIDL - Daix",
+            //    "LIDL - Neuilly-Crimolois",
+            //    "LIDL - Saint-Apollinaire",
+            //    "LIDL-Dijon (Route de Gray)",
+            //    "LIDL-Dijon (Rue Marcel Sembat)",
+            //    "Livraison à domicile",
+            //    "Livraison à domicile de plats préparés",
+            //    "Magasin Anti-gaspillage",
+            //    "Magasin de producteur",
+            //    "Magasin de surgelés",
+            //    "Marché",
+            //    "Marché de Chenôve",
+            //    "Marché des Grésilles - Dijon",
+            //    "Marché des Halles - Dijon ",
+            //    "Marché du bonheur",
+            //    "Marché du canal - Dijon",
+            //    "MARCHE U - Dijon (Rue Albert et André Claudot)",
+            //    "MAXI MARCHE - Plombières-Lès-Dijon",
+            //    "MES BONNES COURSES - Marsannay",
+            //    "MINI MARKET - Dijon (Rue Berbisey)",
+            //    "MONOPRIX - Dijon (Rue Piron)",
+            //    "NETTO",
+            //    "NIGHT MARKET BERBISEY - Dijon (Rue Berbisey)",
+            //    "Noz",
+            //    "O'CAZ BY CASINO - Chenôve ",
+            //    "O'MARKET - Chenôve ",
+            //    "O'MARKET - Dijon (Avenue du lac)",
+            //    "OPEN MARKET - Dijon (Avenue Maréchal Foch)",
+            //    "PETIT CASINO",
+            //    "PETIT CASINO - Dijon (Boulevard de Strasbourg)",
+            //    "PETIT CASINO - Dijon (Rue Barbe)",
+            //    "PETIT CASINO - Dijon (Rue Montchapet)",
+            //    "PETIT CASINO - Dijon (Rue Odebert)",
+            //    "PICARD",
+            //    "PICARD - Chenôve",
+            //    "PICARD - Dijon (Rue Odebert)",
+            //    "PICARD - Fontaine-Lès-Dijon",
+            //    "PICARD - Quetigny",
+            //    "PLACE DU MARCHE - Chevigny-saint-sauveur",
+            //    "Primeur",
+            //    "PROXI - Dijon (Rue de Mirande)",
+            //    "PROXI - Dijon (Rue Diderot)",
+            //    "PROXIMARCHE - Dijon (Rue Antoine Auguste Cournot)",
+            //    "PROXIMARCHE - Dijon (Rue du Faubourg Raines)",
+            //    "RAMIN MARKET - Dijon (Rue Monge)",
+            //    "Restaurant d'entreprise (sur place)",
+            //    "Restaurant/bar/café (sur place)",
+            //    "Restos du cœur",
+            //    "ROUSSEAU MARKET - Dijon (Rue Jean-Jacques Rousseau)",
+            //    "Secours catholique",
+            //    "Secours populaire",
+            //    "SHOP NIGHT - Dijon (Rue d'Auxonne)",
+            //    "SO.BIO - Perrigny-Les-Dijon",
+            //    "SOVIAL - Dijon (Avenue du Lac)",
+            //    "SPAR",
+            //    "SPAR - Dijon (Avenue Gustave Eiffel)",
+            //    "SPAR - Dijon (Rue de Talant)",
+            //    "SPAR - Dijon (Rue Jacques Cellerier)",
+            //    "Stokomanie",
+            //    "SUPECO - Chenôve",
+            //    "SUPER U",
+            //    "SUPER U - Chenôve",
+            //    "SUPER U - Talant",                
+            //    "SUPER U DRIVE",
+            //    "SUPERETTE - Dijon (Rue de la Préfecture)",
+            //    "SUPERETTE BERBISEY - Dijon (Rue Berbisey)",
+            //    "SUPERETTE DE DIJON - Dijon (Avenue Jean Jeaures)",
+            //    "SUPERMARCHE CASINO - Quétigny",
+            //    "TERRES BIO - BIOCOOP - Ahuy",
+            //    "Too good to Go",
+            //    "TOUPARGEL - Chevigny-saint-sauveur",
+            //    "U EXPRESS - Dijon (Rue Albert et André Claudot)",
+            //    "Vente directe à la Ferme",
+            //    "Vente à emporter",
+            //    "VIVAL",
+            //    "VIVAL - Dijon (Avenue gustave Eiffel)",
+            //    "VIVAL - Dijon (Rue Maurice Ravel)",
+            //    "VIVAL CASINO - Dijon (Avenue Eiffel)",
+            //    "VIVAL CASINO - Dijon (Rue Marceau)",
+            //    "Autre association",
+            //    "Autre don",
+            //    "Autre petit commerce",
+            //    "Autre supermarché",
+            //    "Autre supermarché bio",
+            //    "Autre"
+            //]
+
+
+            let lieux2: Framework.KeyValuePair[] = [
+                new Framework.KeyValuePair("ACTION", "discount"),
+                new Framework.KeyValuePair("AHUY FRUITS - Ahuy ", ""),
+                new Framework.KeyValuePair("AJ MARKET - Dijon (Rue d'York)", ""),
+                new Framework.KeyValuePair("Alberti fruits", ""),
+                new Framework.KeyValuePair("ALDI", "discount"),
+                new Framework.KeyValuePair("ALDI - Chenôve", "discount"),
+                new Framework.KeyValuePair("ALDI - Dijon (Avenue Raymond Poincaré)", "discount"),
+                new Framework.KeyValuePair("ALDI - Fontaine-Lès-Dijon", "discount"),
+                new Framework.KeyValuePair("ALDI - Quetigny", "discount"),
+                new Framework.KeyValuePair("ALIMENTATION D'EL KSIBA", ""),
+                new Framework.KeyValuePair("AMAP", ""),
+                new Framework.KeyValuePair("AU PETIT MARCHE - Dijon (Rue Joseph Bellesoeur)", ""),
+                new Framework.KeyValuePair("AUCHAN", "supermarche"),
+                new Framework.KeyValuePair("AUCHAN DRIVE", "supermarche"),
+                new Framework.KeyValuePair("B&M", ""),
+                new Framework.KeyValuePair("Boucherie", ""),
+                new Framework.KeyValuePair("BOUCHERIE CHENU DANIEL - Dijon", ""),
+                new Framework.KeyValuePair("BOUCHERIE CINAR - Chenôve (Rue Jean Moulin)", ""),
+                new Framework.KeyValuePair("BOUCHERIE CINAR - Quétigny", ""),
+                new Framework.KeyValuePair("BOUCHERIE DE LA MEDITERRANEE - Dijon (Rue Docteur Julie)", ""),
+                new Framework.KeyValuePair("BOUCHERIE DE LA MEDITERRANEE - Quetigny ", ""),
+                new Framework.KeyValuePair("BOUCHERIE LA COTE D'OR - Chenôve ", ""),
+                new Framework.KeyValuePair("BOUCHERIE MARRAKECH - Dijon (Avenue Gustave Eiffel) ", ""),
+                new Framework.KeyValuePair("BOUCHERIE SAINT SAUVEUR - Chevigny-saint-sauveur", ""),
+                new Framework.KeyValuePair("BOUCHERIE-CHARCUTERIE GAUTHIER - Longvic", ""),
+                new Framework.KeyValuePair("Boulangerie", ""),
+                new Framework.KeyValuePair("BOULANGERIE DE MARIE BLACHERE - Longvic", ""),
+                new Framework.KeyValuePair("BOULANGERIE DE MARIE BLACHERE - Marsannay", ""),
+                new Framework.KeyValuePair("BOULANGERIE DE MARIE BLACHERE - Quetigny", ""),
+                new Framework.KeyValuePair("Cantine", ""),
+                new Framework.KeyValuePair("CARREFOUR", "supermarche"),
+                new Framework.KeyValuePair("CARREFOUR - Dijon ( Rue Charles Dumont)", "supermarche"),
+                new Framework.KeyValuePair("CARREFOUR - Dijon (Route de Langres)", "supermarche"),
+                new Framework.KeyValuePair("CARREFOUR - Dijon (Rue Colonel Charles Flamand)", "supermarche"),
+                new Framework.KeyValuePair("CARREFOUR - Quetigny ", "supermarche"),
+                new Framework.KeyValuePair("CARREFOUR - Talant", "supermarche"),
+                new Framework.KeyValuePair("CARREFOUR CITY - Chevigny-saint-sauveur", "supermarche"),
+                new Framework.KeyValuePair("CARREFOUR CITY - Dijon (Rue du Transvaal)", "supermarche"),
+                new Framework.KeyValuePair("CARREFOUR CITY - Dijon (Rue Paul Cabet)", "supermarche"),
+                new Framework.KeyValuePair("CARREFOUR CITY - Dijon (Rue Bannelier)", "supermarche"),
+                new Framework.KeyValuePair("CARREFOUR CITY - Dijon (Rue Charles Dumont)", "supermarche"),
+                new Framework.KeyValuePair("CARREFOUR DRIVE", "supermarche"),
+                new Framework.KeyValuePair("CARREFOUR EXPRESS - Chenôve", "supermarche"),
+                new Framework.KeyValuePair("CARREFOUR EXPRESS - Dijon (Avenue Jean Jaures)", "supermarche"),
+                new Framework.KeyValuePair("CARREFOUR EXPRESS - Dijon (Boulevard Colonel Charles Flamand)", "supermarche"),
+                new Framework.KeyValuePair("CARREFOUR EXPRESS - Dijon (Rue Angelique Ducoudray)", "supermarche"),
+                new Framework.KeyValuePair("CARREFOUR EXPRESS - Dijon (Rue Chabot Charny)", "supermarche"),
+                new Framework.KeyValuePair("CARREFOUR EXPRESS - Dijon (Rue de Longvic)", "supermarche"),
+                new Framework.KeyValuePair("CARREFOUR EXPRESS - Dijon (Rue de Mirande)", "supermarche"),
+                new Framework.KeyValuePair("CARREFOUR EXPRESS - Dijon (Rue Devosge)", "supermarche"),
+                new Framework.KeyValuePair("CARREFOUR EXPRESS - Marsannay", "supermarche"),
+                new Framework.KeyValuePair("CARREFOUR MARKET - Chevigny-saint-sauveur", "supermarche"),
+                new Framework.KeyValuePair("CASINO", "supermarche"),
+                new Framework.KeyValuePair("CASINO - Dijon (Avenue du Drapeau)", "supermarche"),
+                new Framework.KeyValuePair("CASINO - Dijon (Boulevard Clemenceau)", "supermarche"),
+                new Framework.KeyValuePair("CASINO - Dijon (Boulevard de Strasbourg)", "supermarche"),
+                new Framework.KeyValuePair("CASINO - Dijon (Rue D'Auxonne)", "supermarche"),
+                new Framework.KeyValuePair("CASINO - Dijon (Rue de Jouvence)", "supermarche"),
+                new Framework.KeyValuePair("CASINO - Dijon (Rue Monge)", "supermarche"),
+                new Framework.KeyValuePair("CASINO - Dijon (Rue Oderbet)", "supermarche"),
+                new Framework.KeyValuePair("CASINO DRIVE", "supermarche"),
+                new Framework.KeyValuePair("CASINO SHOP - Dijon (Avenue de Langres)", "supermarche"),
+                new Framework.KeyValuePair("CASINO SHOP - Dijon (Rue Jean Jacques Rousseau)", "supermarche"),
+                new Framework.KeyValuePair("CINEMA", ""),
+                new Framework.KeyValuePair("COCCIMARKET", "supermarche"),
+                new Framework.KeyValuePair("COCCIMARKET - Dijon (Rue Daubenton)", "supermarche"),
+                new Framework.KeyValuePair("COCCIMARKET - Dijon (Avenue des Gresilles)", "supermarche"),
+                new Framework.KeyValuePair("COLRUYT", "supermarche"),
+                new Framework.KeyValuePair("CORA", "supermarche"),
+                new Framework.KeyValuePair("CORA - Perrigny-Lès-Dijon", "supermarche"),
+                new Framework.KeyValuePair("CORA DRIVE", "supermarche"),
+                new Framework.KeyValuePair("COTE & FRAIS - Dijon (Rue Chabot Charny)", ""),
+                new Framework.KeyValuePair("Croix rouge", ""),
+                new Framework.KeyValuePair("CROUS", ""),
+                new Framework.KeyValuePair("Cueillette", ""),
+                new Framework.KeyValuePair("CUT MARKET - Dijon (Rue coupée de longvic)", ""),
+                new Framework.KeyValuePair("DAY BY DAY MON EPICERIE EN VRAC - Dijon (Place Notre Dame)", ""),
+                new Framework.KeyValuePair("DIJON FRUITS - Marsannay ", ""),
+                new Framework.KeyValuePair("DIJON PRIMEURS - Dijon (Rue Quentin)", ""),
+                new Framework.KeyValuePair("DISTRIBFOODS MARKET - Saint-Apollinaire", ""),
+                new Framework.KeyValuePair("Distributeur", ""),
+                new Framework.KeyValuePair("Don voisin/ami/famille", ""),
+                new Framework.KeyValuePair("EPICAGE 21 (EPICERIE ET CUISINE ANTI-GASPILLAGE) - Fontaine-Lès-Dijon", ""),
+                new Framework.KeyValuePair("Epicerie Au Gramme Près", ""),
+                new Framework.KeyValuePair("EPICERIE DE NUIT - Dijon (Rue Monge)", ""),
+                new Framework.KeyValuePair("EPICERIE DU LAC - Dijon (Avenue du Lac)", ""),
+                new Framework.KeyValuePair("EPICERIE DU QUAI - Dijon (Quai Nicolas Rolin)", ""),
+                new Framework.KeyValuePair("EPICERIE MONGE - Dijon (Rue Monge)", ""),
+                new Framework.KeyValuePair("Epicerie sociale", ""),
+                new Framework.KeyValuePair("EPICERIE VANNERIE - Dijon (Rue Vannerie)", ""),
+                new Framework.KeyValuePair("EPIMUT - Quetigny ", "epicerie sociale"),
+                new Framework.KeyValuePair("EPI'SOURIRE - Dijon(Place Jeacques Prévert)", ""),
+                new Framework.KeyValuePair("ESPRIT FRAICHEUR - Dijon (Avenue de l'Ouche) ", ""),
+                new Framework.KeyValuePair("EXOTIQUE 21 PONA-BISO - Dijon (Fontaine D'Ouche)", ""),
+                new Framework.KeyValuePair("Fast-food", ""),
+                new Framework.KeyValuePair("Fins de marché ou poubelles", ""),
+                new Framework.KeyValuePair("FRAIS D'ICI - Chenôve", ""),
+                new Framework.KeyValuePair("FRANPRIX - Dijon (Rue du Bourg) ", "supermarche"),
+                new Framework.KeyValuePair("FROMAGER", ""),
+                new Framework.KeyValuePair("GEANT", "supermarche"),
+                new Framework.KeyValuePair("GEANT - Chenôve", "supermarche"),
+                new Framework.KeyValuePair("GEANT - Fontaine les Dijon", "supermarche"),
+                new Framework.KeyValuePair("GRAND FRAIS", "supermarche"),
+                new Framework.KeyValuePair("GRAND FRAIS - Ahuy", "supermarche"),
+                new Framework.KeyValuePair("GRAND FRAIS - Longvic", "supermarche"),
+                new Framework.KeyValuePair("GRAND FRAIS - Marsannay ", "supermarche"),
+                new Framework.KeyValuePair("GRAND FRAIS - Quetigny ", "supermarche"),
+                new Framework.KeyValuePair("INTERMARCHE", "supermarche"),
+                new Framework.KeyValuePair("INTERMARCHE - Dijon (Avenue du Drapeau)", "supermarche"),
+                new Framework.KeyValuePair("INTERMARCHE - Dijon (Avenue Jean Jaurès)", "supermarche"),
+                new Framework.KeyValuePair("INTERMARCHE - Dijon (Rue Gaston Bachelard)", "supermarche"),
+                new Framework.KeyValuePair("INTERMARCHE - Dijon Université", "supermarche"),
+                new Framework.KeyValuePair("INTERMARCHE - Fontaine-Les-Dijon", "supermarche"),
+                new Framework.KeyValuePair("INTERMARCHE - Longvic", "supermarche"),
+                new Framework.KeyValuePair("Jardin", ""),
+                new Framework.KeyValuePair("LA CORBEILLE AUX SAVEURS - Chevigny-saint-sauveur", ""),
+                new Framework.KeyValuePair("LA FONTAINE AUX FRUITS - Fontaine-Les-Dijon", ""),
+                new Framework.KeyValuePair("LA RESERVE BIO - Dijon (Avenue Jean Jaures)", "bio"),
+                new Framework.KeyValuePair("LA VIE CLAIRE - Dijon (Rue Pasteur)", "bio"),
+                new Framework.KeyValuePair("LE CŒUR DIJONNAIS - Dijon (Rue Clément Desormes) ", ""),
+                new Framework.KeyValuePair("LE FRUITIER SAINT MARTIN - Fontaine-Lès-Dijon", ""),
+                new Framework.KeyValuePair("LE GARCON BOUCHER - Chenove", ""),
+                new Framework.KeyValuePair("LE GARCON BOUCHER - Dijon (Avenue du Drapeau)", ""),
+                new Framework.KeyValuePair("LE MAG - Dijon (Avenue les Grésilles)", ""),
+                new Framework.KeyValuePair("LE PETIT MARCHE - Dijon (Avenue du Lac)", ""),
+                new Framework.KeyValuePair("LE PETIT MARCHE - Dijon (Boulevard des Martyrs de la Résistance)", ""),
+                new Framework.KeyValuePair("LEADER PRICE", "discount"),
+                new Framework.KeyValuePair("L'EAU VIVE - Quétigny ", ""),
+                new Framework.KeyValuePair("LECLERC", "supermarche"),
+                new Framework.KeyValuePair("LECLERC - Dijon (Rue de Cravovie)", "supermarche"),
+                new Framework.KeyValuePair("LECLERC - Fontaine-Lès-Dijon", "supermarche"),
+                new Framework.KeyValuePair("LECLERC - Marsannay", "supermarche"),
+                new Framework.KeyValuePair("LECLERC DRIVE", "supermarche"),
+                new Framework.KeyValuePair("LECLERC DRIVE - Cap Nord", "supermarche"),
+                new Framework.KeyValuePair("LECLERC DRIVE - Longvic", "supermarche"),
+                new Framework.KeyValuePair("LECLERC DRIVE - Quétigny", "supermarche"),
+                new Framework.KeyValuePair("L'EPICERIE A CARO - Dijon (Avenue Victor Hugo)", ""),
+                new Framework.KeyValuePair("LES SALAISONS DIJONNAISES", ""),
+                new Framework.KeyValuePair("LIDL", "discount"),
+                new Framework.KeyValuePair("LIDL - Chevigny-Saint-Sauveur", "discount"),
+                new Framework.KeyValuePair("LIDL - Ahuy", "discount"),
+                new Framework.KeyValuePair("LIDL - Chenôve", "discount"),
+                new Framework.KeyValuePair("LIDL - Daix", "discount"),
+                new Framework.KeyValuePair("LIDL - Neuilly-Crimolois", "discount"),
+                new Framework.KeyValuePair("LIDL - Saint-Apollinaire", "discount"),
+                new Framework.KeyValuePair("LIDL-Dijon (Route de Gray)", "discount"),
+                new Framework.KeyValuePair("LIDL-Dijon (Rue Marcel Sembat)", "discount"),
+                new Framework.KeyValuePair("Livraison à domicile", ""),
+                new Framework.KeyValuePair("Livraison à domicile de plats préparés", ""),
+                new Framework.KeyValuePair("Magasin Anti-gaspillage", ""),
+                new Framework.KeyValuePair("Magasin de producteur", ""),
+                new Framework.KeyValuePair("Magasin de surgelés", ""),
+                new Framework.KeyValuePair("Marché", "marche"),
+                new Framework.KeyValuePair("Marché de Chenôve", "marche"),
+                new Framework.KeyValuePair("Marché des Grésilles - Dijon", "marche"),
+                new Framework.KeyValuePair("Marché des Halles - Dijon ", "marche"),
+                new Framework.KeyValuePair("Marché du bonheur", "marche"),
+                new Framework.KeyValuePair("Marché du canal - Dijon", "marche"),
+                new Framework.KeyValuePair("MARCHE U - Dijon (Rue Albert et André Claudot)", "supermarche"),
+                new Framework.KeyValuePair("MAXI MARCHE - Plombières-Lès-Dijon", ""),
+                new Framework.KeyValuePair("MES BONNES COURSES - Marsannay", ""),
+                new Framework.KeyValuePair("MINI MARKET - Dijon (Rue Berbisey)", ""),
+                new Framework.KeyValuePair("MONOPRIX - Dijon (Rue Piron)", "supermarche"),
+                new Framework.KeyValuePair("NETTO", ""),
+                new Framework.KeyValuePair("NIGHT MARKET BERBISEY - Dijon (Rue Berbisey)", ""),
+                new Framework.KeyValuePair("Noz", ""),
+                new Framework.KeyValuePair("O'CAZ BY CASINO - Chenôve ", "supermarche"),
+                new Framework.KeyValuePair("O'MARKET - Chenôve ", ""),
+                new Framework.KeyValuePair("O'MARKET - Dijon (Avenue du lac)", ""),
+                new Framework.KeyValuePair("OPEN MARKET - Dijon (Avenue Maréchal Foch)", ""),
+                new Framework.KeyValuePair("PETIT CASINO", "supermarche"),
+                new Framework.KeyValuePair("PETIT CASINO - Dijon (Boulevard de Strasbourg)", "supermarche"),
+                new Framework.KeyValuePair("PETIT CASINO - Dijon (Rue Barbe)", "supermarche"),
+                new Framework.KeyValuePair("PETIT CASINO - Dijon (Rue Montchapet)", "supermarche"),
+                new Framework.KeyValuePair("PETIT CASINO - Dijon (Rue Odebert)", "supermarche"),
+                new Framework.KeyValuePair("PICARD", "surgele"),
+                new Framework.KeyValuePair("PICARD - Chenôve", "surgele"),
+                new Framework.KeyValuePair("PICARD - Dijon (Rue Odebert)", "surgele"),
+                new Framework.KeyValuePair("PICARD - Fontaine-Lès-Dijon", "surgele"),
+                new Framework.KeyValuePair("PICARD - Quetigny", "surgele"),
+                new Framework.KeyValuePair("PLACE DU MARCHE - Chevigny-saint-sauveur", ""),
+                new Framework.KeyValuePair("Primeur", ""),
+                new Framework.KeyValuePair("PROXI - Dijon (Rue de Mirande)", "supermarche"),
+                new Framework.KeyValuePair("PROXI - Dijon (Rue Diderot)", "supermarche"),
+                new Framework.KeyValuePair("PROXIMARCHE - Dijon (Rue Antoine Auguste Cournot)", "supermarche"),
+                new Framework.KeyValuePair("PROXIMARCHE - Dijon (Rue du Faubourg Raines)", "supermarche"),
+                new Framework.KeyValuePair("RAMIN MARKET - Dijon (Rue Monge)", ""),
+                new Framework.KeyValuePair("Restaurant d'entreprise (sur place)", ""),
+                new Framework.KeyValuePair("Restaurant/bar/café (sur place)", ""),
+                new Framework.KeyValuePair("Restos du cœur", ""),
+                new Framework.KeyValuePair("ROUSSEAU MARKET - Dijon (Rue Jean-Jacques Rousseau)", ""),
+                new Framework.KeyValuePair("Secours catholique", ""),
+                new Framework.KeyValuePair("Secours populaire", ""),
+                new Framework.KeyValuePair("SHOP NIGHT - Dijon (Rue d'Auxonne)", ""),
+                new Framework.KeyValuePair("SO.BIO - Perrigny-Les-Dijon", ""),
+                new Framework.KeyValuePair("SOVIAL - Dijon (Avenue du Lac)", ""),
+                new Framework.KeyValuePair("SPAR", "supermarche"),
+                new Framework.KeyValuePair("SPAR - Dijon (Avenue Gustave Eiffel)", "supermarche"),
+                new Framework.KeyValuePair("SPAR - Dijon (Rue de Talant)", "supermarche"),
+                new Framework.KeyValuePair("SPAR - Dijon (Rue Jacques Cellerier)", "supermarche"),
+                new Framework.KeyValuePair("Stokomanie", ""),
+                new Framework.KeyValuePair("SUPECO - Chenôve", ""),
+                new Framework.KeyValuePair("SUPER U", "supermarche"),
+                new Framework.KeyValuePair("SUPER U - Chenôve", "supermarche"),
+                new Framework.KeyValuePair("SUPER U - Talant", "supermarche"),
+                new Framework.KeyValuePair("SUPER U DRIVE", "supermarche"),
+                new Framework.KeyValuePair("SUPERETTE - Dijon (Rue de la Préfecture)", ""),
+                new Framework.KeyValuePair("SUPERETTE BERBISEY - Dijon (Rue Berbisey)", ""),
+                new Framework.KeyValuePair("SUPERETTE DE DIJON - Dijon (Avenue Jean Jeaures)", ""),
+                new Framework.KeyValuePair("SUPERMARCHE CASINO - Quétigny", "supermarche"),
+                new Framework.KeyValuePair("TERRES BIO - BIOCOOP - Ahuy", ""),
+                new Framework.KeyValuePair("Too good to Go", ""),
+                new Framework.KeyValuePair("TOUPARGEL - Chevigny-saint-sauveur", ""),
+                new Framework.KeyValuePair("U EXPRESS - Dijon (Rue Albert et André Claudot)", "supermarche"),
+                new Framework.KeyValuePair("Vente directe à la Ferme", ""),
+                new Framework.KeyValuePair("Vente à emporter", ""),
+                new Framework.KeyValuePair("VIVAL", "supermarche"),
+                new Framework.KeyValuePair("VIVAL - Dijon (Avenue gustave Eiffel)", "supermarche"),
+                new Framework.KeyValuePair("VIVAL - Dijon (Rue Maurice Ravel)", "supermarche"),
+                new Framework.KeyValuePair("VIVAL CASINO - Dijon (Avenue Eiffel)", "supermarche"),
+                new Framework.KeyValuePair("VIVAL CASINO - Dijon (Rue Marceau)", "supermarche"),
+                new Framework.KeyValuePair("Autre association", ""),
+                new Framework.KeyValuePair("Autre don", ""),
+                new Framework.KeyValuePair("Autre petit commerce", ""),
+                new Framework.KeyValuePair("Autre supermarché", "supermarche"),
+                new Framework.KeyValuePair("Autre supermarché bio", "supermarche"),
+                new Framework.KeyValuePair("Autre", "")
+            ]
+
+            lieux2.forEach(x => {
 
                 let o: HTMLOptionElement = document.createElement("option");
-                o.value = x;
+                o.value = x.Key;
                 selectLieu.appendChild(o);
             });
 
@@ -654,18 +924,21 @@
                 btnLieuChecked.style.background = "red";
                 btnContinuer.CheckState();
 
-                for (var i = 0; i < lieux.length; i++) {
-                    if (lieux[i] === lieu) {
+                for (var i = 0; i < lieux2.length; i++) {
+                    if (lieux2[i].Key === lieu) {
                         self.lieuTicket = lieu;
                         btnLieuChecked.innerHTML = "<i class='fas fa-check-square'></i>";
                         btnLieuChecked.style.background = "green";
 
-                        //if (["Boulangerie", "Livraison à domicile", "Vente à emporter", "Restos du cœur", "Secours populaire", "Secours catholique", "Croix rouge", "CROUS", "Restaurant/bar/café (sur place)", "Fast-Food (sur place)", "Restaurant d'entreprise (sur place)", "Colis alimentaire en grande surface"].indexOf(lieu) > -1) {
-                        divTicketMenu.Show();
-                        //} else {
-                        //    self.menu = "";
-                        //    divTicketMenu.Hide();
-                        //}
+                        let typeCommerce = lieux2.filter(x => x.Key == lieu)[0].Value;
+
+
+                        if (["supermarche", "discount"].indexOf(typeCommerce) < 0) {
+                            divTicketMenu.Show();
+                        } else {
+                            self.menu = "";
+                            divTicketMenu.Hide();
+                        }
 
                         btnContinuer.CheckState();
                         break;
@@ -881,8 +1154,13 @@
                 prixmin = self.aliment.PrixMin;
             }
             let prixKg = self.aliment.Prix / diviseur;
-            if (prixKg > prixmax || prixKg < prixmin) {
-                divWarningPrix.SetHtml('<p style="color:red">Le prix au kilo (' + Math.round(prixKg * 100) / 100 + ') est en dehors des bornes habituellement constatées. Veuillez vérifier la quantité, la mesure ou le prix saisi.</p>')
+            if (prixKg > prixmax) {
+                divWarningPrix.SetHtml('<p style="color:red">Le prix au kilo (' + Math.round(prixKg * 100) / 100 + ') est supérieur aux prix généralement constatés. Veuillez vérifier la quantité, la mesure ou le prix saisi.</p>')
+                divWarningPrix.Show();
+            }
+
+            if (prixKg < prixmin) {
+                divWarningPrix.SetHtml('<p style="color:red">Le prix au kilo (' + Math.round(prixKg * 100) / 100 + ') est inférieur aux prix généralement constatés. Veuillez vérifier la quantité, la mesure ou le prix saisi.</p>')
                 divWarningPrix.Show();
             }
         }
@@ -1076,6 +1354,15 @@
                 btnTerminerEnregistrer.CheckState();
             });
 
+
+            let divTexteAliment = Framework.Form.TextElement.Register("divTexteAliment");
+            divTexteAliment.Hide();
+
+            if (self.l == "1") {
+                divTexteAliment.Show();
+            }
+
+
             let setBtnUnite = (x, btn: HTMLElement) => {
                 self.unite = x;
                 self.aliment.Unite = x;
@@ -1212,7 +1499,7 @@
             }, () => {
 
                 self.aliment.Labels = [];
-                self.aliment.DateModif = new Date(Date.now()).toLocaleDateString('en-CA');
+                self.aliment.DateModif = new Date(Date.now()).toISOString().split('T')[0];
                 if (inputBio.IsChecked) { self.aliment.Labels.push("Bio") };
                 if (inputAocAop.IsChecked) { self.aliment.Labels.push("AOC/AOP") };
                 if (inputLabelRouge.IsChecked) { self.aliment.Labels.push("Label rouge") };

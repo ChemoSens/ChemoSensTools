@@ -20,7 +20,7 @@
             </div>
 
             <div class="input-group mt-5" id="divTicketMenu">
-                <h5><strong>Ce ticket correspond-t'il à un colis alimentaire ou à un menu de restaurant où les aliments ne sont pas séparables ? </strong></h5>
+                <h5><strong>Ce ticket correspond-t'il à un colis alimentaire ou à un menu de restaurant où les prix individuels des aliments ne sont pas séparables ? </strong></h5>
                 <div class="form-check form-check-inline">
                     <input tabindex="0" class="form-check-input" type="radio" value="O" name="inputTicketMenu" id="inputTicketMenuO">
                     <label class="form-check-label" for="inputTicketMenuO" style="font-weight:normal">Oui</label>
@@ -33,11 +33,13 @@
                 <div class="input-group mt-5" id="divTicketPrix">
                     <h5><strong>Veuillez saisir le prix total TTC du menu/colis, en euros</strong></h5>
                     <input tabindex="0" type="text" class="form-control" placeholder="Prix TTC (€)" id="inputPrix">
-                    <!--<div class="form-check form-check-inline">
-                <input tabindex="0" class="form-check-input" type="checkbox" value="N" name="inputPasAchete" id="inputPasAchete">
-                <label class="form-check-label" for="inputPAsAchete" style="font-weight:normal">Pas payé</label>
-            </div>-->
                 </div>
+
+                <!--<div class="form-check form-check-inline">
+            <input tabindex="0" class="form-check-input" type="checkbox" value="N" name="inputPasAchete" id="inputPasAchete">
+            <label class="form-check-label" for="inputPAsAchete" style="font-weight:normal">Pas payé</label>
+        </div>-->
+
 
             </div>
 
@@ -45,14 +47,21 @@
             <div class="input-group mt-5" id="divChequeAlimentaire">
                 <h5><strong>Veuillez saisir le montant total de chèques alimentaires utilisés lors du passage en caisse</strong></h5>
                 <input tabindex="0" type="text" class="form-control" placeholder="Montant du chèque TTC (€)" id="inputChequeAlimentaire">
-                <!--<div class="form-check form-check-inline">
-            <input tabindex="0" class="form-check-input" type="checkbox" value="N" name="inputPasAchete" id="inputPasAchete">
-            <label class="form-check-label" for="inputPAsAchete" style="font-weight:normal">Pas payé</label>
-        </div>-->
             </div>
+
+
+            <!--<div class="form-check form-check-inline">
+        <input tabindex="0" class="form-check-input" type="checkbox" value="N" name="inputPasAchete" id="inputPasAchete">
+        <label class="form-check-label" for="inputPAsAchete" style="font-weight:normal">Pas payé</label>
+    </div>-->
+
 
             <div class="form-group text-center mt-5">
                 <button tabindex="0" id="btnPhoto" class="btn btn-primary btn-lg" style="width:100%" type="submit">Prendre une photo</button>
+            </div>
+
+            <div class="form-group text-center mt-5">
+                <button tabindex="0" id="btnUpload" class="btn btn-primary btn-lg" style="width:100%" type="submit">Téléverser une photo</button>
             </div>
 
             <div class="form-group text-center mt-5">

@@ -115,7 +115,8 @@ namespace ChemosensTools
         [OperationContract]
         public string CalculeSurFichierExcel(string fileContent)
         {
-            byte[] bytes = labelExtractor.csModels.LabelExtractor.CalculeSurFichierExcel(Base64.Decode(fileContent.Replace("data:application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;base64,", "")));
+            //byte[] bytes = labelExtractor.csModels.LabelExtractor.CalculeSurFichierExcel(Base64.Decode(fileContent.Replace("data:application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;base64,", "")));
+            byte[] bytes = labelExtractor.csModels.LabelExtractor.CalculeSurFichierExcel(Convert.FromBase64String(fileContent.Replace("data:application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;base64,", "")));
             return Convert.ToBase64String(bytes);
         }
 
@@ -669,10 +670,11 @@ namespace ChemosensTools
         }
 
         [OperationContract]
-        public string RAnalyze(string login, string password, string analysis, string data)
+        public string RAnalyze(string login, string password, string analysis, string data, string app)
         {
-            Account a = Account.Check(login, password, accountDir, hashKey, "", "admin");
-            byte[] bytes = Base64.Decode(data.Replace("data:application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;base64,", ""));
+            Account a = Account.Check(login, password, accountDir, hashKey, app, "");
+            //byte[] bytes = Base64.Decode(data.Replace("data:application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;base64,", ""));
+            byte[] bytes = Convert.FromBase64String(data.Replace("data:application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;base64,", ""));
             return RAnalysis.Run(login, analysis, bytes, a.AuthorizedApps);
         }
 
@@ -865,6 +867,56 @@ namespace ChemosensTools
             return "INSCRIPTION VALIDEE";
         }
 
+
+        ////// CodAppro
+
+        [OperationContract]
+        public string TranslateCodAppro(string sn)
+        {
+            return CodAppro.CodAppro.Translate(ConfigurationManager.AppSettings["CodApproDirPath"], sn, hashKey);
+        }
+
+        [OperationContract]
+        public string LoginCodAppro(string code, string sn)
+        {
+            return CodAppro.CodAppro.Login(ConfigurationManager.AppSettings["CodApproDirPath"], sn, code, hashKey);
+        }
+
+        [OperationContract]
+        public void TeleverseImageCodAppro2(string base64string, string sn, string filename)
+        {
+            string file = ConfigurationManager.AppSettings["CodApproDirPath"] + "\\" + sn + "\\pictures\\" + filename;
+            file += ".png";
+            DataSens.DataSens.TeleverseImageDataSens(System.Uri.UnescapeDataString(base64string), file);
+        }
+
+        [OperationContract]
+        public void SaveQuestionnaireCodAppro(string code, string sn, string jsonQuestionnaire)
+        {
+            CodAppro.CodAppro.SaveQuestionnaire(ConfigurationManager.AppSettings["CodApproDirPath"], sn, code, jsonQuestionnaire, hashKey);
+        }
+
+        [OperationContract]
+        public string DownloadDataCodAppro(string sn, string code)
+        {
+            return CodAppro.CodAppro.DownloadData(ConfigurationManager.AppSettings["CodApproDirPath"], sn , code, hashKey);
+        }
+
+        [OperationContract]
+        public void ImportQuestionnaireCodAppro(string data, string sn, string login, string password)
+        {
+            Account a = Account.Check(login, password, accountDir, hashKey, "CodAchats");
+            CodAppro.CodAppro.ImportQuestionnaire(data,  ConfigurationManager.AppSettings["CodApproDirPath"] + "\\" + sn + "\\questionnaires\\", hashKey);
+        }
+
+
+        [OperationContract]
+        public string DownloadQuestionnaireCodAppro(string login, string password, string dir)
+        {            
+            Account a = Account.Check(login, password, accountDir, hashKey, "CodAchats");
+            byte[] bytes = CodAppro.CodAppro.DownloadQuestionnaire(ConfigurationManager.AppSettings["CodApproDirPath"] + "\\" + dir + "\\questionnaires\\", hashKey);
+            return Convert.ToBase64String(bytes);
+        }
     }
 
 }
