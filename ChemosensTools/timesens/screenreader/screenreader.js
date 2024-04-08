@@ -12388,18 +12388,21 @@ var ScreenReader;
                 this.div = document.createElement("div");
                 this.div.innerHTML = label;
                 this.div.style.margin = "0";
-                this.div.style.marginBottom = "5px";
+                this.div.style.marginBottom = "2px";
                 this.div.style.zIndex = "1000";
                 this.div.style.width = width + "px";
                 this.div.style.height = height + "px";
+                this.div.style.lineHeight = height + "px";
                 this.div.style.position = "absolute";
                 this.div.style.border = '1px solid black';
                 this.div.style.background = color.Hex;
                 this.div.style.color = Framework.Color.InvertHexColor(color.Hex);
                 this.div.style.fontFamily = control._FontFamily;
-                this.div.style.fontSize = control._FontSize + "px";
+                /*this.div.style.fontSize = control._FontSize + "px";*/
+                this.div.style.fontSize = (height - 2) + "px";
                 this.div.style.fontWeight = control._FontWeight;
                 this.div.style.fontStyle = control._FontStyle;
+                this.div.style.verticalAlign = "middle";
                 this.div.style.textAlign = "center";
                 this.div.style.touchAction = "none";
                 this.div.classList.add("noselect");
@@ -12445,7 +12448,6 @@ var ScreenReader;
                 this.dropZoneDiv.style.userSelect = "none";
                 this.dropZoneDiv.style.zIndex = "1";
                 this.dropZoneDiv.style.height = (height - 20) + "px";
-                ;
                 this.dropZoneDiv.style.width = width + "px";
                 ;
                 this.dropZoneDiv.style.background = "lightgray";
@@ -12485,6 +12487,12 @@ var ScreenReader;
                 var top = Number(this.dropZoneDiv.style.top.replace('px', ''));
                 for (var i = 0; i < this.items.length; i++) {
                     this.items[i].Div.style.top = top + "px";
+                    if (top > Number(this.dropZoneDiv.style.height.replace('px', ''))) {
+                        this.items[i].Div.style.visibility = "hidden";
+                    }
+                    else {
+                        this.items[i].Div.style.visibility = "visible";
+                    }
                     top += Number(this.items[i].Div.style.height.replace('px', '')) + 2;
                 }
             };
@@ -12570,28 +12578,38 @@ var ScreenReader;
                 var left = 0;
                 var dropZonesDiv = [];
                 var draggableItemsDiv = [];
-                var maxBoxSize = Framework.Maths.Round((this._Width - (5 * this.Items.length + 1)) / (this.Items.length + 1), 0);
-                if (this._BoxSize > maxBoxSize) {
-                    this._BoxSize = maxBoxSize;
-                }
-                var baseDropZone = new DropZone("0", this._BoxSize, this._Height - this._BoxSize - 20, 0, 0, this.Items.length);
+                var boxWidth = Framework.Maths.Round((this._Width - (dropZones * 3)) / (dropZones + 1), 0) * ratio;
+                //let maxBoxSize = Framework.Maths.Round((this._Width - (5 * this.Items.length + 1)) / (this.Items.length + 1), 0);
+                //if (this._BoxSize > maxBoxSize) {
+                //    this._BoxSize = maxBoxSize;
+                //}
+                //let baseDropZone = new DropZone("0", this._BoxSize, this._Height * ratio - this._BoxSize * ratio - 20, 0, 0, this.Items.length);
+                //this.listDropZones.push(baseDropZone);
+                //dropZonesDiv.push(baseDropZone.DropZone);
+                //this.HtmlElement.appendChild(baseDropZone.Container);
+                //left += this._BoxSize + 5;
+                /*var colors: Framework.NamedColor[] = Framework.Color.DistinctPalette;*/
+                var boxHeight = (this._Height - this._BoxSize - 20) * ratio;
+                var itemHeight = this._BoxSize * ratio;
+                //while ((itemHeight * (this.Items.length + 1)) >= boxHeight) {
+                //    itemHeight = itemHeight - 2;
+                //}
+                //let baseDropZone = new DropZone("0", this._BoxSize, boxHeight * ratio, 0, 0, this.Items.length);
+                var baseDropZone = new DropZone("0", boxWidth, boxHeight, 0, 0, this.Items.length);
                 this.listDropZones.push(baseDropZone);
                 dropZonesDiv.push(baseDropZone.DropZone);
                 this.HtmlElement.appendChild(baseDropZone.Container);
-                left += this._BoxSize + 5;
-                var colors = Framework.Color.DistinctPalette;
-                var boxHeight = (this._Height - this._BoxSize - 20);
-                var itemHeight = this._BoxSize;
-                while ((itemHeight * (this.Items.length + 1)) >= boxHeight) {
-                    itemHeight = itemHeight - 2;
-                }
+                //left += this._BoxSize + 5;
+                left += boxWidth + 1;
                 for (var i = 0; i < dropZones; i++) {
-                    var dropZone = new DropZone((i + 1).toString(), this._BoxSize, boxHeight, left, 0, maxItemPerGroup);
+                    //let dropZone = new DropZone((i + 1).toString(), this._BoxSize, boxHeight*ratio, left, 0, maxItemPerGroup);
+                    var dropZone = new DropZone((i + 1).toString(), boxWidth, boxHeight, left, 0, maxItemPerGroup);
                     dropZone.Group = i + 1;
                     this.HtmlElement.appendChild(dropZone.Container);
                     this.listDropZones.push(dropZone);
                     dropZonesDiv.push(dropZone.DropZone);
-                    left += this._BoxSize + 5;
+                    //left += this._BoxSize + 5;
+                    left += boxWidth + 1;
                 }
                 for (var i = 0; i < this.Items.length; i++) {
                     // Données par défaut : groupe 0
@@ -12609,7 +12627,8 @@ var ScreenReader;
                     d.SubjectCode = this.SubjectCode;
                     d.Type = this._DataType;
                     this.ListData.push(d);
-                    var draggable = new DraggableItem(this.Items[i].Code, this.Items[i].Label, this._BoxSize, itemHeight, colors[i], self);
+                    //let draggable = new DraggableItem(this.Items[i].Code, this.Items[i].Label, this._BoxSize, itemHeight, Framework.Color.BasePalette[0], self);
+                    var draggable = new DraggableItem(this.Items[i].Code, this.Items[i].Label, boxWidth, itemHeight, Framework.Color.BasePalette[0], self);
                     draggable.DropZone = baseDropZone;
                     this.HtmlElement.appendChild(draggable.Div);
                     this.listDraggableItems.push(draggable);
@@ -12626,7 +12645,7 @@ var ScreenReader;
                             dz.MoveItem(de, function (item) {
                                 self.changeData(item);
                             });
-                        }, dropZonesDiv, this.Ratio);
+                        }, dropZonesDiv, self.Ratio);
                     }
                 }
                 this.validate();
