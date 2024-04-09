@@ -4650,7 +4650,8 @@ var Framework;
                 if (errorMessage === void 0) { errorMessage = "NotEmpty"; }
                 var res = new CustomValidator();
                 var f = function (text) {
-                    return IsNotEmpty(text, errorMessage);
+                    //return IsNotEmpty(text, errorMessage);
+                    return "";
                 };
                 res.Function = f;
                 res.ErrorMessage = errorMessage;

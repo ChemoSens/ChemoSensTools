@@ -5079,7 +5079,8 @@ module Framework {
                 let res = new CustomValidator();
 
                 let f = function (text: string): string {
-                    return IsNotEmpty(text, errorMessage);
+                    //return IsNotEmpty(text, errorMessage);
+                    return "";
                 }
 
                 res.Function = f;

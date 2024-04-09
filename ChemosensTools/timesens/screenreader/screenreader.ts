@@ -827,7 +827,9 @@
                                     break;
                                 case "GoToUrlAndGoToNextPage":
                                     // Propage l'événement OnNavigate  
+
                                     _subjectSessionReader.goToNextScreen_ButtonClick(_customButton, "nothing", () => { _subjectSessionReader.onNavigation(_customButton._URL); });
+
                                     break;
                                 case "GoToSubjectUrlAndGoToNextPage":
                                     // Propage l'événement OnNavigate  
@@ -13832,6 +13834,7 @@
                     }
                 }
             }
+            }
 
             public Render(editMode: boolean = false, ratio: number): void {
                 super.Render(editMode, ratio);
@@ -13874,6 +13877,9 @@
                 let td3 = document.createElement("td"); tr.appendChild(td3); td3.innerHTML = "Description";
 
 
+                if (editMode == false) {
+                    dtParameters.OnEditCell = (propertyName, data) => {
+                        if (propertyName == "Description") {
 
                 self.groupDescriptions.forEach((x) => {
 
@@ -13890,6 +13896,9 @@
                     input.CustomAttributes.Add("group", x.Group);
                     td3.appendChild(input.HtmlElement);
                 });
+                                pr.Editor.HtmlElement.classList.add("noDot");
+                                return pr;
+                            }
 
                 this.HtmlElement.appendChild(table);
 
@@ -14778,6 +14787,7 @@
                 this.containerDiv = document.createElement("div");
                 this.containerDiv.classList.add("noselect");
 
+
                 this.labelDiv = document.createElement("div");
                 this.labelDiv.style.width = width + "px";
                 this.labelDiv.style.position = "absolute";
@@ -14807,6 +14817,8 @@
                 this.dropZoneDiv.classList.add("noselect");
 
                 this.containerDiv.appendChild(this.dropZoneDiv);
+
+
 
                 this.Group = 0;
 
@@ -14999,6 +15011,8 @@
                     this.HtmlElement.appendChild(draggable.Div);
                     this.listDraggableItems.push(draggable);
                     draggableItemsDiv.push(draggable.Div);
+
+                    j++;
 
                     baseDropZone.AddItem(draggable);
 

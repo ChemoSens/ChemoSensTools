@@ -194,6 +194,7 @@
             self.notify('', 'nothing');
         }
 
+
         private onSessionChanged() {
             let self = this;
             self.menuViewModel.OnSessionChanged(this.session != undefined, this.session != undefined && this.session.Upload.Date != undefined, this.session != undefined && this.session.ListData != undefined && self.session.ListData.length > 0, this.session.Name)

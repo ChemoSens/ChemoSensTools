@@ -308,6 +308,9 @@
             self.ticket = new CodApproModels.Ticket();
             self.ticket.Code = self.questionnaire.Code + "_" + (new Date()).toISOString().replace(/[^0-9]/g, '').slice(0, -3);
             self.questionnaire.Tickets.push(self.ticket);
+        }
+
+        if (aliment == undefined) {      
 
             self.aliment = new CodApproModels.Aliment();
             self.aliment.TicketCode = self.ticket.Code;
@@ -390,6 +393,7 @@
                 btnContinuer.CheckState();
             });
             
+            //if (this.ti == "1") {
             if (self.config.ListOptions.indexOf("SaisieChequeAlimentaire")>-1) {            
                 divChequeAlimentaire.Show();
             }
@@ -756,6 +760,8 @@
                 }
             }
 
+            //TODO
+            //if (this.ti == "1") {
             if (self.config.ListOptions.indexOf("AffichageListeSimplifiee") > -1) {  
                 let divListeSimplifiee = Framework.Form.TextElement.Register("divListeSimplifiee");
                 divListeSimplifiee.Show();
@@ -799,6 +805,17 @@
 
             self.config.ListAliments.filter(x => {
                 let o: HTMLOptionElement = document.createElement("option");               
+                //let txt: string = x.DesignationModifiee.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+                //let arr = txt.split(" ");
+                //let arr2 = [];
+                //arr.forEach(x => {
+                //    if (x.length > 2) {
+                //        x = x.replace(/[^a-zA-Z]+/g, '') + "s"
+                //    }
+                //    arr2.push(x);
+                //})
+                //txt = arr2.join(" ");
+                //o.value = x.DesignationModifiee + "------------------------------------------------------------------------------------------------------------------------------------------------------------|| " + txt;
                 o.value = x.LibelleCustom;
                 selectAliment.appendChild(o);
             });
@@ -975,6 +992,8 @@
                     }
                 }, self.config.ListLabels[i].Value, self.config.ListLabels[i].Value, self.aliment.Labels.indexOf(self.config.ListLabels[i].Value) > -1);
                 input1.Value = self.config.ListLabels[i].Value;
+                //input1.HtmlElement.children[0].classList.add("form-check-input");
+                //input1.HtmlElement.children[1].classList.add("form-check-label");
                 (<HTMLInputElement>input1.HtmlElement.children[0]).style.width = "32px";
                 (<HTMLInputElement>input1.HtmlElement.children[1]).style.width = "130px";
                 td1.appendChild(input1.HtmlElement);
@@ -992,6 +1011,8 @@
                     input2.Value = self.config.ListLabels[i+1].Value;
                     td2.appendChild(input2.HtmlElement);
                     td2.style.padding = "4px";
+                    //input2.HtmlElement.children[0].classList.add("form-check-input");
+                    //input2.HtmlElement.children[1].classList.add("form-check-label");
                     (<HTMLInputElement>input2.HtmlElement.children[0]).style.width = "32px";
                     (<HTMLInputElement>input2.HtmlElement.children[1]).style.width = "200px";
                 }
@@ -1050,7 +1071,16 @@
             let btnNouvelAliment = Framework.Form.Button.Register("btnNouvelAliment", () => {
                 return ((self.aliment.LibelleCIQUAL && self.aliment.LibelleCIQUAL.length > 0) || self.aliment.Categorie1 != "" || self.aliment.Categorie2 != "" || (self.aliment.LibelleCustom && self.aliment.LibelleCustom.length > 3)) && (inputPoids.IsValid || inputPasPoids.IsChecked) && (inputPrix.IsValid || inputPasAchete.IsChecked || self.menu != "") /*&& self.aliment.Appreciation >= 0*/;
             }, () => {
+
+                self.aliment.Labels = [];
                 self.aliment.DateModif = new Date(Date.now()).toISOString().split('T')[0];
+                //if (inputBio.IsChecked) { self.aliment.Labels.push("Bio") };
+                //if (inputAocAop.IsChecked) { self.aliment.Labels.push("AOC/AOP") };
+                //if (inputLabelRouge.IsChecked) { self.aliment.Labels.push("Label rouge") };
+                //if (inputPecheDurable.IsChecked) { self.aliment.Labels.push("Pêche durable") };
+                //if (inputCommerceEquitable.IsChecked) { self.aliment.Labels.push("Commerce équitable") };
+                //if (inputAutre.IsChecked) { self.aliment.Labels.push("Autre") };
+
                 if (update == false) {
                     self.saveQuestionnaire(() => {
                         self.showEnregistrementConfirme(() => { self.showDivDesignation() })
@@ -1063,6 +1093,12 @@
             let btnNouveauTicket = Framework.Form.Button.Register("btnNouveauTicket", () => {
                 return ((self.aliment.LibelleCIQUAL && self.aliment.LibelleCIQUAL.length > 0) || self.aliment.Categorie1 != "" || self.aliment.Categorie2 != "" || (self.aliment.LibelleCustom && self.aliment.LibelleCustom.length > 3)) && (inputPoids.IsValid || inputPasPoids.IsChecked) && (inputPrix.IsValid || inputPasAchete.IsChecked || self.menu != "") /*&& self.aliment.Appreciation >= 0*/;
             }, () => {
+                //if (inputBio.IsChecked) { self.aliment.Labels.push("Bio") };
+                //if (inputAocAop.IsChecked) { self.aliment.Labels.push("AOC/AOP") };
+                //if (inputLabelRouge.IsChecked) { self.aliment.Labels.push("Label rouge") };
+                //if (inputPecheDurable.IsChecked) { self.aliment.Labels.push("Pêche durable") };
+                //if (inputCommerceEquitable.IsChecked) { self.aliment.Labels.push("Commerce équitable") };
+                //if (inputAutre.IsChecked) { self.aliment.Labels.push("Autre") };
                 self.saveQuestionnaire(() => {
                     self.showEnregistrementConfirme(() => {
                         self.ticket = undefined;

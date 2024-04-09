@@ -367,10 +367,13 @@ namespace ChemosensTools.CodAppro
 
         public static void ImportQuestionnaire(string data, string dataDirPath, string hashKey)
         {            
+
+            //byte[] bytes = Org.BouncyCastle.Utilities.Encoders.Base64.Decode(data.Replace("data:application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;base64,", ""));
             byte[] bytes = Convert.FromBase64String(data.Replace("data:application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;base64,", ""));
             ExcelPackage.LicenseContext = LicenseContext.NonCommercial;
             MemoryStream stream = new MemoryStream(bytes);
             ExcelPackage xlPackage = new ExcelPackage(stream);
+            //xlPackage.SaveAs(new FileInfo(ConfigurationManager.AppSettings["ReferentielFoodExPath"] + name + ".xlsx"));
          
             var myWorksheet = xlPackage.Workbook.Worksheets.ElementAt(0);
 
@@ -423,6 +426,8 @@ namespace ChemosensTools.CodAppro
             {
                 Questionnaire quest;
 
+                //CheckAccess(authorizedCodesFilePath, code);
+
                 string file = dataDirPath + code + ".json";
                 if (File.Exists(file))
                 {
@@ -441,6 +446,11 @@ namespace ChemosensTools.CodAppro
 
                 Serializer.Serialize(quest, file, hashKey);
 
+                //list.Select(x => x.attributes.Code as string).ToList();
+
+                //quest.Aliments
+
+                //var jsonString = Newtonsoft.Json.JsonConvert.SerializeObject(list);
             });
 
         }
@@ -560,6 +570,7 @@ namespace ChemosensTools.CodAppro
                                 }
                                 catch
                                 { }
+
                                 index++;
                             }
 
