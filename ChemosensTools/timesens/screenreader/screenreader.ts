@@ -13834,7 +13834,6 @@
                     }
                 }
             }
-            }
 
             public Render(editMode: boolean = false, ratio: number): void {
                 super.Render(editMode, ratio);
@@ -13877,10 +13876,6 @@
                 let td3 = document.createElement("td"); tr.appendChild(td3); td3.innerHTML = "Description";
 
 
-                if (editMode == false) {
-                    dtParameters.OnEditCell = (propertyName, data) => {
-                        if (propertyName == "Description") {
-
                 self.groupDescriptions.forEach((x) => {
 
                     let tr = document.createElement("tr"); table.appendChild(tr);
@@ -13896,10 +13891,7 @@
                     input.CustomAttributes.Add("group", x.Group);
                     td3.appendChild(input.HtmlElement);
                 });
-                                pr.Editor.HtmlElement.classList.add("noDot");
-                                return pr;
-                            }
-
+                            
                 this.HtmlElement.appendChild(table);
 
                 //let dtParameters = new Framework.Form.DataTableParameters();
@@ -15012,7 +15004,7 @@
                     this.listDraggableItems.push(draggable);
                     draggableItemsDiv.push(draggable.Div);
 
-                    j++;
+                    //j++;
 
                     baseDropZone.AddItem(draggable);
 

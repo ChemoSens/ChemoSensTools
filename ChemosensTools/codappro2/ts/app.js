@@ -855,12 +855,6 @@ var CodApproApp = /** @class */ (function (_super) {
             if (self.config.ListOptions.indexOf("HideLabels") > -1) {
                 divLabels.Hide();
             }
-            //let inputBio = Framework.Form.CheckBox.Register("inputBio", () => { return true }, () => { }, "");
-            //let inputAocAop = Framework.Form.CheckBox.Register("inputAocAop", () => { return true }, () => { }, "");
-            //let inputLabelRouge = Framework.Form.CheckBox.Register("inputLabelRouge", () => { return true }, () => { }, "");
-            //let inputPecheDurable = Framework.Form.CheckBox.Register("inputPecheDurable", () => { return true }, () => { }, "");
-            //let inputCommerceEquitable = Framework.Form.CheckBox.Register("inputCommerceEquitable", () => { return true }, () => { }, "");
-            //let inputAutre = Framework.Form.CheckBox.Register("inputAutre", () => { return true }, () => { }, "");
             var inputJamaisGoute = Framework.Form.CheckBox.Register("inputJamaisGoute", function () { return true; }, function () {
                 rating.Clear();
                 if (inputJamaisGoute.IsChecked) {
