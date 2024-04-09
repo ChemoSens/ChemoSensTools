@@ -249,7 +249,6 @@
     <Content Include="codappro2\html\DivFactures.html" />
     <Content Include="codappro2\html\DivLogin.html" />
     <Content Include="codappro2\html\DivLoginAdmin.html" />
-    <Content Include="codappro2\html\DivPrix.html" />
     <Content Include="codappro2\img\icon.png" />
     <Content Include="codappro2\img\logo_codappro.png" />
     <Content Include="codappro2\index.html" />

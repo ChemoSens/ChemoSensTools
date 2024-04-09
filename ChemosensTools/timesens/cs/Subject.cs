@@ -66,6 +66,8 @@ namespace TimeSens.webservices.models
         /// </summary>
         public string LastName { get; set; }
 
+        public string URL { get; set; }
+
         /// Gets or sets the name
         /// </summary>
         public string Password

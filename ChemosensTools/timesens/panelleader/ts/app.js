@@ -3379,9 +3379,10 @@ var PanelLeader;
                 //this.TableItems.ListColumns.push(col3);
                 if (this.selectedDesign.Type == "Product") {
                     var col = new Framework.Form.TableColumn();
-                    col.Name = "Image";
-                    col.Title = Framework.LocalizationManager.Get("Image");
-                    col.Type = "image";
+                    //col.Name = "Image";
+                    col.Name = "ImageURL";
+                    col.Title = Framework.LocalizationManager.Get("Image URL");
+                    //col.Type = "image";
                     col.Filterable = false;
                     col.Sortable = false;
                     //col.Width = "90px";
@@ -3605,6 +3606,12 @@ var PanelLeader;
                 //col5.Width = "160px";
                 col6.MinWidth = 160;
                 this.TableSubject.ListColumns.push(col6);
+                var col7 = new Framework.Form.TableColumn();
+                col7.Name = "URL";
+                col7.Title = Framework.LocalizationManager.Get("URL");
+                //col5.Width = "160px";
+                col7.MinWidth = 160;
+                this.TableSubject.ListColumns.push(col7);
                 //let col6 = new Framework.Form.TableColumn();
                 //col6.Name = "Gender";
                 //col6.Title = Framework.LocalizationManager.Get("Gender");
@@ -5171,6 +5178,7 @@ var PanelLeader;
                 _this.listScreensContainer.style.overflowY = "scroll"; //TODO : css
                 _this.listScreensContainer.style.overflowX = "hidden"; //TODO : css
                 _this.activeScreenContainer.style.height = _this.containerHeight - 70 + "px";
+                _this.activeScreenContainer.style.margin = 5 + "px";
                 _this.activeScreenWrapper.style.height = _this.containerHeight - 70 + "px";
                 _this.activeScreenWrapper.style.textAlign = "center"; //TODO : css
                 _this.activeScreenContainer.style.display = "inline-block"; //TODO : css
@@ -5910,15 +5918,15 @@ var PanelLeader;
                     setForm(control);
                 }, Framework.LocalizationManager.Get("SortingControl"), ["textButton"]);
                 controlsDiv.Append(btnAddControlSorting);
-                //let btnAddControlGroupDescription = Framework.Form.Button.Create(() => {
-                //    return self.CurrentScreen.ExperimentalDesignId == 0 && self.GetListSortingControlNames().length > 0;
-                //}, (e) => {
-                //    control = ScreenReader.Controls.GroupDescriptionControl.Create();
-                //    (<ScreenReader.Controls.GroupDescriptionControl>control).ListControlNames = self.GetListSortingControlNames();
-                //    (<ScreenReader.Controls.GroupDescriptionControl>control).ListExperimentalDesigns = PanelLeaderModels.Session.GetDefaultExperimentalDesign(self.listDesigns, 'Attribute');
-                //    setForm(control);
-                //}, Framework.LocalizationManager.Get("GroupDescriptionControl"), ["textButton"]);
-                //controlsDiv.Append(btnAddControlGroupDescription);
+                var btnAddControlGroupDescription = Framework.Form.Button.Create(function () {
+                    return self.CurrentScreen.ExperimentalDesignId == 0 && self.GetListSortingControlNames().length > 0;
+                }, function (e) {
+                    control = ScreenReader.Controls.GroupDescriptionControl.Create();
+                    control.ListControlNames = self.GetListSortingControlNames();
+                    control.ListExperimentalDesigns = PanelLeaderModels.Session.GetDefaultExperimentalDesign(self.listDesigns, 'Attribute');
+                    setForm(control);
+                }, Framework.LocalizationManager.Get("GroupDescriptionControl"), ["textButton"]);
+                controlsDiv.Append(btnAddControlGroupDescription);
                 //let btnAddControlNapping = Framework.Form.Button.Create(() => { return self.CurrentScreen.ExperimentalDesignId == 0 && self.listDesigns.filter((x) => { return x.Type == "Product" }).length > 0 }, (e) => {
                 //    control = ScreenReader.Controls.NappingControl.Create();
                 //    (<ScreenReader.Controls.DataControl>control).ListExperimentalDesigns = PanelLeaderModels.Session.GetDefaultExperimentalDesign(self.listDesigns, 'Product');

@@ -7,7 +7,7 @@ var CodApproModels;
             this.ListCategorie1 = [];
             this.ListCategorie2 = [];
             this.ListLieuxAchats = [];
-            this.ListTextes = [];
+            /*public ListTextes: Framework.KeyValuePair[] = [];*/
             this.ListLabels = [];
         }
         return Config;

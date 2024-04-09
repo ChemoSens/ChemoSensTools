@@ -658,11 +658,15 @@ var ScreenReader;
                         });
                     }
                 }
-                if (control instanceof Controls.CustomImage && control._Source == "Product") {
+                if (control._Type == "CustomImage" && control._Source == "ProductURL") {
                     var currentDesign = _subjectSessionReader.Session.ListExperimentalDesigns.filter(function (x) { return x.Id == _subjectSessionReader.CurrentScreen.Screen.ExperimentalDesignId; })[0];
-                    var binaries = currentDesign.ListItems.filter(function (x) { return x.Code == _subjectSessionReader.CurrentScreen.ProductCode; })[0].Image;
-                    if (binaries) {
-                        control.SetBinaries(binaries);
+                    //let binaries = currentDesign.ListItems.filter((x) => { return x.Code == _subjectSessionReader.CurrentScreen.ProductCode })[0].Image;
+                    //if (binaries) {
+                    //    (<Controls.CustomImage>control).SetBinaries(binaries);
+                    //}
+                    var url = currentDesign.ListItems.filter(function (x) { return x.Code == _subjectSessionReader.CurrentScreen.ProductCode; })[0].ImageURL;
+                    if (url) {
+                        control.SetURL(url);
                     }
                 }
                 if (control._Type == "CustomChronometer") {
@@ -727,6 +731,12 @@ var ScreenReader;
                                 case "GoToUrlAndGoToNextPage":
                                     // Propage l'événement OnNavigate  
                                     _subjectSessionReader.goToNextScreen_ButtonClick(_customButton, "nothing", function () { _subjectSessionReader.onNavigation(_customButton._URL); });
+                                    break;
+                                case "GoToSubjectUrlAndGoToNextPage":
+                                    // Propage l'événement OnNavigate  
+                                    _subjectSessionReader.goToNextScreen_ButtonClick(_customButton, "nothing", function () {
+                                        _subjectSessionReader.onNavigation(_subjectSessionReader.Session.Subject.URL);
+                                    });
                                     break;
                                 case "StartChronometer":
                                     _subjectSessionReader.start_ButtonClick(_customButton);
@@ -3781,6 +3791,7 @@ var ScreenReader;
                 _this._SelectedBackground = "gold"; // Couleur d'arrière plan quand le bouton est cliqué
                 _this._SelectedBorderBrush = "black"; // Couleur de la bordure quand le bouton est coché
                 _this._ChangeHoverBackground = true;
+                _this._Key = "";
                 _this._ConfirmationRequired = false;
                 _this.IsEditable = true;
                 _this.ListGroupOfControlFriendlyNames = undefined;
@@ -3885,6 +3896,13 @@ var ScreenReader;
                             _customButton.OnClick();
                         }
                     };
+                    if (_customButton._Key != "") {
+                        document.onkeypress = function (ev) {
+                            if (ev.key == _customButton._Key) {
+                                _customButton.Click();
+                            }
+                        };
+                    }
                     // Rendu en mode non éditable
                     var startEventType = 'mousedown';
                     var endEventType = 'mouseup';
@@ -4145,6 +4163,9 @@ var ScreenReader;
                         self.changeProperty("_EventName", x);
                     }
                 }, Framework.Form.Validator.MinLength(3), function () { return (self._Action == "TDS" || self._Action == "SaveEvent" || self._Action == "SaveEventThenGoToNextPage"); });
+                var formSetKey = Framework.Form.PropertyEditorWithTextInput.Render("Parameters", "Key", self._Key, function (x) {
+                    self.changeProperty("_Key", x);
+                }, Framework.Form.Validator.MinLength(1), function () { return true; });
                 var controlIds = self.ListGroupOfControlFriendlyNames;
                 if (controlIds == undefined) {
                     controlIds = [];
@@ -4173,6 +4194,7 @@ var ScreenReader;
                     properties.push(formSetSound);
                     properties.push(formSetSoundBinaries);
                     properties.push(formSetOneClickOnly);
+                    properties.push(formSetKey);
                 }
                 if (mode == "edition") {
                     var formSetTextDecoration = Framework.Form.PropertyEditorWithPopup.Render("Design", "TextStyle", Framework.LocalizationManager.Get("ClickToEdit"), ["Normal", "Bold", "Italic", "Bold and italic"], function (x) {
@@ -4229,7 +4251,6 @@ var ScreenReader;
             };
             CustomButton.prototype.getActionList = function () {
                 var list = ["GoToPreviousPage", "GoToNextPage", /*"CloseApplication"*/ , "GoToLoginScreen", "GoToScreen", "GoToUrl", "GoToUrlAndGoToNextPage",
-                    "TDS", "SaveEvent", "SaveEventThenGoToNextPage", "StartSameSession", "HideControl", "ShowControl"];
                 if (this.screen.Controls.filter(function (x) { return x instanceof ScreenReader.Controls.DataControl; }).length > 0) {
                     list.push("StartChronometer");
                     list.push("StopChronometer");
@@ -11086,7 +11107,6 @@ var ScreenReader;
             CustomImage.prototype.SetBinaries = function (binaries) {
                 this._Binaries = binaries;
             };
-            CustomImage.SourceEnum = ["None", "LocalImage", "ExternalImage" /*, "Product"*/];
             return CustomImage;
         }(BaseControl));
         Controls.CustomImage = CustomImage;
@@ -11505,7 +11525,6 @@ var ScreenReader;
             function GroupDescription() {
                 this.Group = "";
                 this.Products = "";
-                this.Description = [];
             }
             return GroupDescription;
         }());
@@ -11515,9 +11534,6 @@ var ScreenReader;
             //    super(control);
             function GroupDescriptionControl() {
                 var _this = _super.call(this) || this;
-                _this._CanAddDescription = true; // Possibilité d'ajouter une description
-                _this._MinNumberOfTerms = 0; // Nombre de descripteurs minimal
-                _this._MaxNumberOfTerms = 10; // Nombre de descripteurs maximal
                 _this.ListControlNames = [];
                 //if (control != null) {
                 //    this.setPropertyFromXaml(control, "CanAddDescription", "_CanAddDescription");
@@ -11562,18 +11578,6 @@ var ScreenReader;
                     });
                     properties.push(formSetControlId_1);
                     validateFormSetControlId_1();
-                    var formSetMinNumberOfTerms = Framework.Form.PropertyEditorWithNumericUpDown.Render("Parameters", "MinNumberOfTermsProperty", self._MinNumberOfTerms, 0, this.Items.length, function (x) {
-                        self.changeProperty("_MinNumberOfTerms", x);
-                    });
-                    properties.push(formSetMinNumberOfTerms);
-                    var formSetMaxNumberOfTerms = Framework.Form.PropertyEditorWithNumericUpDown.Render("Parameters", "MaxNumberOfTermsProperty", self._MaxNumberOfTerms, 0, this.Items.length, function (x) {
-                        self.changeProperty("_MaxNumberOfTerms", x);
-                    });
-                    properties.push(formSetMaxNumberOfTerms);
-                    var formSetCanAddDescription = Framework.Form.PropertyEditorWithToggle.Render("Parameters", "CanAddDescription", self._CanAddDescription, function (x) {
-                        self.changeProperty("_CanAddDescription", x);
-                    });
-                    properties.push(formSetCanAddDescription);
                 }
                 return properties;
             };
@@ -11581,15 +11585,12 @@ var ScreenReader;
                 var self = this;
                 this.ValidationMessage = "";
                 this.IsValid = true;
-                for (var i = 0; i < this.groupDescriptions.length; i++) {
-                    if (this.groupDescriptions[i].Description.length > self._MaxNumberOfTerms) {
                         self.IsValid = false;
-                        self.ValidationMessage += Framework.LocalizationManager.Format("MaxNumberOfTerms", [self._MaxNumberOfTerms.toString(), this.groupDescriptions[i].Group]) + '\r\n';
                     }
                     if (this.groupDescriptions[i].Description.length < self._MinNumberOfTerms) {
                         self.IsValid = false;
                         self.ValidationMessage += Framework.LocalizationManager.Format("MinNumberOfTerms", [self._MinNumberOfTerms.toString(), this.groupDescriptions[i].Group]) + '\r\n';
-                    }
+                }
                 }
             };
             GroupDescriptionControl.prototype.Render = function (editMode, ratio) {
@@ -11620,93 +11621,6 @@ var ScreenReader;
                     return Number(a.Group) - Number(b.Group);
                 };
                 self.groupDescriptions.sort(f);
-                var dtParameters = new Framework.Form.DataTableParameters();
-                dtParameters.ListData = self.groupDescriptions;
-                dtParameters.ListColumns = [
-                    {
-                        data: "Group", title: Framework.LocalizationManager.Get("Group"), render: function (data, type, row) {
-                            return data;
-                        }
-                    },
-                    {
-                        data: "Products", title: Framework.LocalizationManager.Get("Products"), render: function (data, type, row) {
-                            return data;
-                        }
-                    },
-                    {
-                        data: "Description", title: Framework.LocalizationManager.Get("Description"), render: function (data, type, row) {
-                            if (data.length == 0) {
-                                return Framework.LocalizationManager.Get("NoDescription");
-                            }
-                            return data.join(', ');
-                        }
-                    }
-                ];
-                dtParameters.Order = [[0, 'desc']];
-                dtParameters.Paging = false;
-                dtParameters.Filtering = false;
-                dtParameters.Ordering = false;
-                if (editMode == false) {
-                    dtParameters.OnEditCell = function (propertyName, data) {
-                        if (propertyName == "Description") {
-                            var div_1 = document.createElement("div");
-                            var getAttributeForm_1 = function (attribute) {
-                                var pr = Framework.Form.PropertyEditorWithToggle.Render("", attribute.Label, data["Description"].indexOf(attribute.Code) > -1, function (x) {
-                                    var arr = data["Description"];
-                                    if (arr.length > 0 && arr.indexOf(attribute.Code) > -1) {
-                                        self.RemoveDescription(data["Group"], attribute.Code);
-                                        ////Framework.Array.Remove(data["Description"], attribute.Code);
-                                    }
-                                    else {
-                                        //arr.push(attribute.Code);
-                                        self.AddDescription(data["Group"], attribute.Code);
-                                    }
-                                });
-                                pr.Editor.HtmlElement.classList.add("noDot");
-                                return pr;
-                            };
-                            var getDescriptionForm_1 = function () {
-                                var pr = Framework.Form.Button.Create(function () { return true; }, function () {
-                                    var input = Framework.Form.InputText.Create("", function () { }, Framework.Form.Validator.MinLength(3), false, ['tableInput']);
-                                    Framework.Modal.Confirm(Framework.LocalizationManager.Get("PleaseEnterNewDescriptor"), input.HtmlElement, function () {
-                                        if (input.ValidationMessage == "") {
-                                            div_1.removeChild(pr.HtmlElement);
-                                            var newAttribute = new Models.CodeLabel(input.Value, input.Value);
-                                            self.Attributes.push(newAttribute);
-                                            var arr = data["Description"];
-                                            arr.push(input.Value);
-                                            var pr1 = getAttributeForm_1(newAttribute);
-                                            div_1.appendChild(pr1.Editor.HtmlElement);
-                                            var pr2 = getDescriptionForm_1();
-                                            div_1.appendChild(pr2.HtmlElement);
-                                        }
-                                    });
-                                }, Framework.LocalizationManager.Get("Descriptor"), ['tableInput', 'btnEditableProperty', 'editableProperty']);
-                                return pr;
-                            };
-                            // Liste de cases à cocher
-                            self.Attributes.forEach(function (attribute) {
-                                var pr = getAttributeForm_1(attribute);
-                                div_1.appendChild(pr.Editor.HtmlElement);
-                            });
-                            if (self._CanAddDescription == true) {
-                                var pr = getDescriptionForm_1();
-                                div_1.appendChild(pr.HtmlElement);
-                            }
-                            return div_1;
-                        }
-                    };
-                }
-                dtParameters.TdHeight = 20;
-                var dtTable;
-                Framework.Form.DataTable.AppendToDiv(undefined, this._Height + "px", this.HtmlElement, dtParameters, function (dt) {
-                    dtTable = dt;
-                    dt.SetStyle('td', 'text-align', 'left');
-                    dt.SetStyle('td', 'font-weight', self._FontWeight);
-                    dt.SetStyle('td', 'font-style', self._FontStyle);
-                    dt.SetStyle('td', 'font-size', self._FontSize + "px");
-                    dt.SetStyle('td', 'color', self._Foreground);
-                    dt.SetStyle('td', 'font-family', self._FontFamily);
                 });
                 //for (var i = 0; i < this.groupDescriptions.length; i++) {
                 //    let group: string = this.groupDescriptions[i].Group;
@@ -11956,37 +11870,6 @@ var ScreenReader;
             //        a.style.color = "red";
             //    }
             //}
-            GroupDescriptionControl.prototype.AddDescription = function (group, attribute) {
-                var self = this;
-                var data = this.ListData.filter(function (x) { return x.Group == group; });
-                var groupDescription = self.groupDescriptions.filter(function (x) { return x.Group == group; })[0];
-                groupDescription.Description.push(attribute);
-                data.forEach(function (x) {
-                    var tab = Framework.Array.Unique((x.Description + "," + attribute).split(","));
-                    if (tab.indexOf('') >= 0) {
-                        tab.splice(tab.indexOf(''), 1);
-                    }
-                    x.Description = tab.join(",");
-                    self.onDataChanged(x);
-                });
-                self.validate();
-            };
-            GroupDescriptionControl.prototype.RemoveDescription = function (group, attribute) {
-                var self = this;
-                var data = this.ListData.filter(function (x) { return x.Group == group; });
-                var gd = self.groupDescriptions.filter(function (x) { return x.Group == group; })[0];
-                var index = gd.Description.indexOf(attribute);
-                gd.Description.splice(index, 1);
-                data.forEach(function (x) {
-                    var tab = Framework.Array.Unique(x.Description.replace(attribute, "").split(","));
-                    if (tab.indexOf('') >= 0) {
-                        tab.splice(tab.indexOf(''), 1);
-                    }
-                    x.Description = tab.join(",");
-                    self.onDataChanged(x);
-                });
-                self.validate();
-            };
             //public GetListAnchors(): HTMLAnchorElement[] {
             //    return this.listAnchors;
             //}
@@ -12333,18 +12216,18 @@ var ScreenReader;
                 this.div = document.createElement("div");
                 this.div.innerHTML = label;
                 this.div.style.margin = "0";
-                this.div.style.marginBottom = "5px";
                 this.div.style.zIndex = "1000";
                 this.div.style.width = width + "px";
                 this.div.style.height = height + "px";
+                this.div.style.lineHeight = height + "px";
                 this.div.style.position = "absolute";
                 this.div.style.border = '1px solid black';
                 this.div.style.background = color.Hex;
                 this.div.style.color = Framework.Color.InvertHexColor(color.Hex);
                 this.div.style.fontFamily = control._FontFamily;
-                this.div.style.fontSize = control._FontSize + "px";
                 this.div.style.fontWeight = control._FontWeight;
                 this.div.style.fontStyle = control._FontStyle;
+                this.div.style.verticalAlign = "middle";
                 this.div.style.textAlign = "center";
                 this.div.style.touchAction = "none";
                 this.div.classList.add("noselect");
@@ -12430,6 +12313,12 @@ var ScreenReader;
                 var top = Number(this.dropZoneDiv.style.top.replace('px', ''));
                 for (var i = 0; i < this.items.length; i++) {
                     this.items[i].Div.style.top = top + "px";
+                    if (top > Number(this.dropZoneDiv.style.height.replace('px', ''))) {
+                        this.items[i].Div.style.visibility = "hidden";
+                    }
+                    else {
+                        this.items[i].Div.style.visibility = "visible";
+                    }
                     top += Number(this.items[i].Div.style.height.replace('px', '')) + 2;
                 }
             };
@@ -12466,7 +12355,6 @@ var ScreenReader;
                 //TODO : récupérer valeur existante
                 //TODO : style du texte
                 //TODO : couleurs produits
-                _this._BoxSize = 100;
                 _this.listDraggableItems = [];
                 _this.listDropZones = [];
                 return _this;
@@ -12515,28 +12403,14 @@ var ScreenReader;
                 var left = 0;
                 var dropZonesDiv = [];
                 var draggableItemsDiv = [];
-                var maxBoxSize = Framework.Maths.Round((this._Width - (5 * this.Items.length + 1)) / (this.Items.length + 1), 0);
-                if (this._BoxSize > maxBoxSize) {
-                    this._BoxSize = maxBoxSize;
-                }
-                var baseDropZone = new DropZone("0", this._BoxSize, this._Height - this._BoxSize - 20, 0, 0, this.Items.length);
                 this.listDropZones.push(baseDropZone);
                 dropZonesDiv.push(baseDropZone.DropZone);
                 this.HtmlElement.appendChild(baseDropZone.Container);
-                left += this._BoxSize + 5;
-                var colors = Framework.Color.DistinctPalette;
-                var boxHeight = (this._Height - this._BoxSize - 20);
-                var itemHeight = this._BoxSize;
-                while ((itemHeight * (this.Items.length + 1)) >= boxHeight) {
-                    itemHeight = itemHeight - 2;
-                }
                 for (var i = 0; i < dropZones; i++) {
-                    var dropZone = new DropZone((i + 1).toString(), this._BoxSize, boxHeight, left, 0, maxItemPerGroup);
                     dropZone.Group = i + 1;
                     this.HtmlElement.appendChild(dropZone.Container);
                     this.listDropZones.push(dropZone);
                     dropZonesDiv.push(dropZone.DropZone);
-                    left += this._BoxSize + 5;
                 }
                 var j = 0;
                 for (var i = 0; i < this.Items.length; i++) {
@@ -12555,10 +12429,6 @@ var ScreenReader;
                     d.SubjectCode = this.SubjectCode;
                     d.Type = this._DataType;
                     this.ListData.push(d);
-                    if (i % 19 === 0) {
-                        j = 0;
-                    }
-                    var draggable = new DraggableItem(this.Items[i].Code, this.Items[i].Label, this._BoxSize, itemHeight, colors[j], self);
                     draggable.DropZone = baseDropZone;
                     this.HtmlElement.appendChild(draggable.Div);
                     this.listDraggableItems.push(draggable);
@@ -12576,7 +12446,6 @@ var ScreenReader;
                             dz.MoveItem(de, function (item) {
                                 self.changeData(item);
                             });
-                        }, dropZonesDiv, this.Ratio);
                     }
                 }
                 this.validate();
@@ -12625,7 +12494,6 @@ var ScreenReader;
                 if (mode == "edition" || mode == "creation" || mode == "wizard") {
                     var maxLength = this.Items.length;
                     if (maxLength == 0) {
-                        maxLength = 40;
                     }
                     var formSetMinNumberOfGroups = Framework.Form.PropertyEditorWithNumericUpDown.Render("Parameters", "MinNumberOfGroupsProperty", self._MinNumberOfGroups, 1, maxLength, function (x) {
                         self.changeProperty("_MinNumberOfGroups", x);

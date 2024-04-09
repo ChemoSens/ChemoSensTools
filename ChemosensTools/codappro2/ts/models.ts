@@ -7,7 +7,7 @@
         public ListCategorie1: Framework.KeyValuePair[] = [];
         public ListCategorie2: Framework.KeyValuePair[] = [];
         public ListLieuxAchats: Framework.KeyValuePair[] = [];
-        public ListTextes: Framework.KeyValuePair[] = [];
+        /*public ListTextes: Framework.KeyValuePair[] = [];*/
         public ListLabels: Framework.KeyValuePair[] = [];
     }
 

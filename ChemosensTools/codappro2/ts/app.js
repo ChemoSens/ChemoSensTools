@@ -23,6 +23,7 @@ var CodApproApp = /** @class */ (function (_super) {
         _this.menu = "";
         _this.sn = "";
         _this.login = "";
+        _this.listTextes = [];
         return _this;
     }
     CodApproApp.GetRequirements = function () {
@@ -53,18 +54,27 @@ var CodApproApp = /** @class */ (function (_super) {
     CodApproApp.prototype.start = function (fullScreen) {
         if (fullScreen === void 0) { fullScreen = false; }
         _super.prototype.start.call(this, fullScreen);
+        var self = this;
         this.sn = Framework.Browser.GetUrlParameter("sn"); // Code de l'étude
         var admin = Framework.Browser.GetUrlParameter("admin"); // Id admin
         this.login = Framework.Browser.GetUrlParameter("login"); // login
-        if (this.sn == "") {
-            this.showDivLogin();
-        }
-        if (admin != "") {
-            this.showDivLoginAdmin(admin);
-        }
-        else {
-            this.showDivLogin();
-        }
+        self.CallWCF('TranslateCodAppro', { sn: self.sn }, function () {
+            Framework.Progress.Show(Framework.LocalizationManager.Get("Connexion..."));
+        }, function (res) {
+            Framework.Progress.Hide();
+            if (res.Status == 'success') {
+                self.listTextes = JSON.parse(res.Result);
+            }
+            if (self.sn == "") {
+                self.showDivLogin();
+            }
+            if (admin != "") {
+                self.showDivLoginAdmin(admin);
+            }
+            else {
+                self.showDivLogin();
+            }
+        });
     };
     CodApproApp.prototype.saveQuestionnaire = function (f) {
         var self = this;
@@ -83,14 +93,14 @@ var CodApproApp = /** @class */ (function (_super) {
         self.aliment.Unite = "grammes";
         self.aliment.TicketCode = self.ticket.Code;
         self.CallWCF('SaveQuestionnaireCodAppro', { code: self.questionnaire.Code, sn: self.sn, jsonQuestionnaire: JSON.stringify(self.questionnaire) }, function () {
-            Framework.Progress.Show("Enregistrement...");
+            Framework.Progress.Show(self.getTranslation("txtEnregistrement"));
         }, function (res) {
             Framework.Progress.Hide();
             if (res.Status == 'success') {
                 f();
             }
             else {
-                Framework.Modal.Alert("Erreur", "Une erreur a eu lieu pendant l'enregistrement du fichier.", function () {
+                Framework.Modal.Alert(self.getTranslation("txtErreur"), self.getTranslation("txtErreurEnregistrement"), function () {
                     f();
                 });
             }
@@ -99,14 +109,14 @@ var CodApproApp = /** @class */ (function (_super) {
     CodApproApp.prototype.updateQuestionnaire = function (f) {
         var self = this;
         self.CallWCF('SaveQuestionnaireCodAppro', { code: self.questionnaire.Code, sn: self.sn, jsonQuestionnaire: JSON.stringify(self.questionnaire) }, function () {
-            Framework.Progress.Show("Enregistrement...");
+            Framework.Progress.Show(self.getTranslation("txtEnregistrement"));
         }, function (res) {
             Framework.Progress.Hide();
             if (res.Status == 'success') {
                 f();
             }
             else {
-                Framework.Modal.Alert("Erreur", "Une erreur a eu lieu pendant l'enregistrement du fichier.", function () {
+                Framework.Modal.Alert(self.getTranslation("txtErreur"), self.getTranslation("txtErreurEnregistrement"), function () {
                     f();
                 });
             }
@@ -118,14 +128,14 @@ var CodApproApp = /** @class */ (function (_super) {
             // Enter
             document.onkeypress = function (e) {
                 if (e.which == 10 || e.which == 13) {
-                    btnLogin.Click();
+                    btnTelecharger.Click();
                 }
             };
             var inputPassword = Framework.Form.InputText.Register("inputPassword", "", Framework.Form.Validator.MinLength(4), function () {
-                btnLogin.CheckState();
+                btnTelecharger.CheckState();
                 btnImporter.CheckState();
             }, true);
-            var btnLogin = Framework.Form.Button.Register("btnLogin", function () {
+            var btnTelecharger = Framework.Form.Button.Register("btnTelecharger", function () {
                 return inputPassword.IsValid;
             }, function () {
                 var obj = {
@@ -134,28 +144,32 @@ var CodApproApp = /** @class */ (function (_super) {
                     dir: self.sn
                 };
                 self.CallWCF('DownloadQuestionnaireCodAppro', obj, function () {
-                    Framework.Progress.Show(Framework.LocalizationManager.Get("Connexion..."));
+                    Framework.Progress.Show(self.getTranslation("txtConnexion"));
                 }, function (res) {
                     Framework.Progress.Hide();
                     if (res.Status == 'success') {
                         Framework.FileHelper.SaveBase64As(res.Result, "resultats_codappro.xlsx");
                     }
                     else {
-                        Framework.Modal.Alert("Erreur", res.ErrorMessage);
+                        Framework.Modal.Alert(self.getTranslation("txtErreur"), res.ErrorMessage);
                     }
                 });
+                self.translate("h2Administration");
+                self.translate("h3MotPasse");
+                self.translate("btnTelecharger", btnTelecharger);
+                self.translate("btnImporter", btnImporter);
             });
             var btnImporter = Framework.Form.Button.Register("btnImporter", function () { return inputPassword.IsValid; }, function () {
                 Framework.FileHelper.BrowseBinaries("xlsx", function (binaries) {
                     self.CallWCF('ImportQuestionnaireCodAppro', { data: binaries, sn: self.sn, login: admin, password: inputPassword.Value }, function () {
-                        Framework.Progress.Show("Import en cours");
+                        Framework.Progress.Show(self.getTranslation("txtChargement"));
                     }, function (res) {
                         Framework.Progress.Hide();
                         if (res.Status == "success") {
-                            Framework.Modal.Alert("Message", "Téléversement réussi");
+                            Framework.Modal.Alert(self.getTranslation("txtMessage"), self.getTranslation("txtTeleversementReussi"));
                         }
                         else {
-                            Framework.Modal.Alert("Message", "Erreur pendant le téléversement");
+                            Framework.Modal.Alert(self.getTranslation("txtMessage"), self.getTranslation("txtErreurTeleversement"));
                         }
                     });
                 });
@@ -164,7 +178,7 @@ var CodApproApp = /** @class */ (function (_super) {
     };
     CodApproApp.prototype.getTranslation = function (key) {
         var self = this;
-        var vals = self.config.ListTextes.filter(function (x) { return x.Key == key; });
+        var vals = self.listTextes.filter(function (x) { return x.Key == key; });
         if (vals.length > 0) {
             return (vals[0].Value);
         }
@@ -243,12 +257,15 @@ var CodApproApp = /** @class */ (function (_super) {
             if (self.login != "") {
                 btnLogin.Click();
             }
+            self.translate("h3Code");
+            self.translate("inputLoginId", inputLoginId);
+            self.translate("btnLogin", btnLogin);
         });
     };
     CodApproApp.prototype.showDivDate = function (aliment) {
         if (aliment === void 0) { aliment = undefined; }
         var self = this;
-        if (self.ticket == undefined) {
+        if (aliment == undefined) {
             self.ticket = new CodApproModels.Ticket();
             self.ticket.Code = self.questionnaire.Code + "_" + (new Date()).toISOString().replace(/[^0-9]/g, '').slice(0, -3);
             self.questionnaire.Tickets.push(self.ticket);
@@ -263,8 +280,7 @@ var CodApproApp = /** @class */ (function (_super) {
         }
         else {
             self.aliment = aliment;
-            self.ticket.Date = self.aliment.Date;
-            self.ticket.Lieu = self.aliment.Lieu;
+            self.ticket = self.questionnaire.Tickets.filter(function (x) { return x.Code == aliment.TicketCode; })[0];
         }
         this.show("html/DivDate.html", function () {
             var btnPhoto = Framework.Form.Button.Register("btnPhoto", function () { return true; }, function () {
@@ -281,10 +297,10 @@ var CodApproApp = /** @class */ (function (_super) {
                     self.CallWCF('TeleverseImageCodAppro2', { base64string: base64, sn: self.sn, filename: fn }, function () { }, function (res) {
                         if (res.ErrorMessage != "") {
                             self.ticket.Image = fn;
-                            Framework.Modal.Alert("Succès", "La photo a été téléversée.", function () { mw.Close(); });
+                            Framework.Modal.Alert(self.getTranslation("txtSucces"), self.getTranslation("txtPhotoTeleversee"), function () { mw.Close(); });
                         }
                         else {
-                            Framework.Modal.Alert("Echec", "Une erreur a eu lieu pendant le téléchargement.", function () { mw.Close(); });
+                            Framework.Modal.Alert(self.getTranslation("txtEchec"), self.getTranslation("txtErreurTeleversement"), function () { mw.Close(); });
                         }
                     });
                 });
@@ -301,10 +317,10 @@ var CodApproApp = /** @class */ (function (_super) {
                     self.CallWCF('TeleverseImageCodAppro2', { base64string: binaries, sn: self.sn, filename: fn }, function () { }, function (res) {
                         if (res.ErrorMessage != "") {
                             self.ticket.Image = fn;
-                            Framework.Modal.Alert("Succès", "La photo a été téléversée.");
+                            Framework.Modal.Alert(self.getTranslation("txtSucces"), self.getTranslation("txtPhotoTeleversee"));
                         }
                         else {
-                            Framework.Modal.Alert("Echec", "Une erreur a eu lieu pendant le téléchargement.");
+                            Framework.Modal.Alert(self.getTranslation("txtEchec"), self.getTranslation("txtErreurTeleversement"));
                         }
                     });
                 });
@@ -406,13 +422,15 @@ var CodApproApp = /** @class */ (function (_super) {
             self.translate("labelN");
         });
     };
-    CodApproApp.prototype.showDivDetail = function (aliments) {
+    CodApproApp.prototype.showDivDetail = function (ticketCode) {
         var self = this;
         this.show("html/DivDetail.html", function () {
             var divTableFactures = Framework.Form.TextElement.Register("divTableFactures");
-            var btnNouveauTicket = Framework.Form.Button.Register("btnFin", function () { return true; }, function () { self.showDivFactures(); });
+            var btnFin = Framework.Form.Button.Register("btnFin", function () { return true; }, function () { self.showDivFactures(); });
+            var aliments = self.questionnaire.Aliments.filter(function (z) { return z.TicketCode == ticketCode; });
             var btnSupprimerTicket = Framework.Form.Button.Register("btnSupprimerTicket", function () { return true; }, function () {
-                Framework.Modal.Confirm("Confirmation requise", "Etes-vous sûr(e) de vouloir supprimer le ticket ? Tous les aliments seront supprimés.", function () {
+                Framework.Modal.Confirm(self.getTranslation("txtConfirmation"), self.getTranslation("txtSuppressionTicket"), function () {
+                    Framework.Array.Remove(self.questionnaire.Tickets, self.questionnaire.Tickets.filter(function (x) { return x.Code == ticketCode; })[0]);
                     aliments.forEach(function (x) {
                         Framework.Array.Remove(self.questionnaire.Aliments, x);
                     });
@@ -428,7 +446,7 @@ var CodApproApp = /** @class */ (function (_super) {
             table.CanSelect = true;
             table.ShowFooter = true;
             table.RemoveFunction = function () {
-                Framework.Modal.Confirm("Confirmez vous la suppression ?", "", function () {
+                Framework.Modal.Confirm(self.getTranslation("txtConfirmationSuppression"), "", function () {
                     table.SelectedData.forEach(function (x) {
                         Framework.Array.Remove(self.questionnaire.Aliments, x);
                     });
@@ -437,32 +455,36 @@ var CodApproApp = /** @class */ (function (_super) {
                 });
             };
             table.ListColumns = [];
-            table.AddCol("Date", "Date", 100, "left");
-            table.AddCol("Lieu", "Lieu", 100, "left");
-            table.AddCol("LibelleCIQUAL", "Libellé", 300, "left");
-            table.AddCol("LibelleCustom", "Texte libre", 100, "left");
+            table.AddCol("Date", self.getTranslation("txtDate"), 100, "left");
+            table.AddCol("Lieu", self.getTranslation("txtLieu"), 100, "left");
+            table.AddCol("LibelleCIQUAL", self.getTranslation("txtLibelle"), 300, "left");
+            table.AddCol("LibelleCustom", self.getTranslation("txtTexte"), 100, "left");
             if (self.questionnaire.Code.charAt(0) == "b") {
-                table.AddCol("Categorie1", "Catégorie 1", 100, "left");
-                table.AddCol("Categorie2", "Catégorie 2", 100, "left");
+                table.AddCol("Categorie1", self.getTranslation("txtCategorie1"), 100, "left");
+                table.AddCol("Categorie2", self.getTranslation("txtCategorie2"), 100, "left");
             }
-            table.AddCol("Unite", "Unité", 75, "left");
-            table.AddCol("Nb", "Quantité", 75, "left");
-            table.AddCol("Prix", "Prix unitaire", 75, "left");
-            table.AddCol("PrixMenu", "Prix (menu)", 75, "left");
-            table.AddCol("MontantChequeAlimentaire", "Chèque alimentaire", 75, "left");
-            table.AddCol("Labels", "Labels", 75, "left");
+            table.AddCol("Unite", self.getTranslation("txtUnite"), 75, "left");
+            table.AddCol("Nb", self.getTranslation("txtQuantite"), 75, "left");
+            table.AddCol("Prix", self.getTranslation("txtPrixUnitaire"), 75, "left");
+            table.AddCol("PrixMenu", self.getTranslation("txtPrixMenu"), 75, "left");
+            table.AddCol("MontantChequeAlimentaire", self.getTranslation("txtChequeAlimentaire"), 75, "left");
+            table.AddCol("Labels", self.getTranslation("txtLabels"), 75, "left");
             table.AddCol("", "", 50, "left", undefined, undefined, function (x, y) {
                 return Framework.Form.Button.Create(function () { return true; }, function () {
                     self.showDivDate(y);
                 }, "Edit", ["btn", "btn-sm", "btn-primary"]).HtmlElement;
             });
             table.Render(divTableFactures.HtmlElement);
+            self.translate("h4EditionFacture");
+            self.translate("btnSupprimerTicket", btnSupprimerTicket);
+            self.translate("btnFin", btnFin);
         });
     };
     CodApproApp.prototype.showDivFactures = function () {
         var self = this;
         this.show("html/DivFactures.html", function () {
             var divTableFactures = Framework.Form.TextElement.Register("divTableFactures");
+            var table1 = new Framework.Form.Table();
             self.CallWCF('DownloadDataCodAppro', { sn: self.sn, code: self.questionnaire.Code }, function () {
                 Framework.Progress.Show(Framework.LocalizationManager.Get("Connexion..."));
             }, function (res) {
@@ -479,8 +501,11 @@ var CodApproApp = /** @class */ (function (_super) {
                     //        tickets.push(new CodApproModels.Ticket());
                     //    }
                     //});
-                    var table1 = new Framework.Form.Table();
-                    table1.CanSelect = false;
+                    table1 = new Framework.Form.Table();
+                    table1.CanSelect = true;
+                    table1.OnSelectionChanged = (function (sel) {
+                        btnCopieTicket.CheckState();
+                    });
                     table1.ShowFooter = false;
                     table1.ListData = tickets;
                     table1.Height = "80vh";
@@ -488,22 +513,65 @@ var CodApproApp = /** @class */ (function (_super) {
                     table1.CanSelect = true;
                     table1.ShowFooter = true;
                     table1.ListColumns = [];
-                    table1.AddCol("Date", "Date", 100, "left");
-                    table1.AddCol("Lieu", "Lieu", 200, "left");
-                    table1.AddCol("Image", "Photo", 200, "left");
+                    table1.AddCol("Date", self.getTranslation("txtDate"), 100, "left");
+                    table1.AddCol("Lieu", self.getTranslation("txtLieu"), 200, "left");
+                    table1.AddCol("Image", self.getTranslation("txtPhoto"), 200, "left");
                     table1.AddCol("", "", 50, "left", undefined, undefined, function (x, y) {
                         return Framework.Form.Button.Create(function () { return true; }, function () {
-                            //self.showDivDetail(self.questionnaire.Aliments.filter(z => z.Date == y.Date && z.Lieu == y.Lieu));
-                            self.showDivDetail(self.questionnaire.Aliments.filter(function (z) { return z.TicketCode == y.Code; }));
+                            //self.showDivDetail(self.questionnaire.Aliments.filter(z => z.TicketCode == y.Code));
+                            self.showDivDetail(y.Code);
                         }, "Edit", ["btn", "btn-sm", "btn-primary"]).HtmlElement;
                     });
                     table1.Render(divTableFactures.HtmlElement);
                 }
                 else {
-                    Framework.Modal.Alert("Erreur", res.ErrorMessage);
+                    Framework.Modal.Alert(self.getTranslation("txtErreur"), res.ErrorMessage);
                 }
             });
-            var btnNouveauTicket = Framework.Form.Button.Register("btnNouveauTicket", function () { return true; }, function () { self.showDivDate(); });
+            var btnNouveauTicket2 = Framework.Form.Button.Register("btnNouveauTicket2", function () { return true; }, function () { self.showDivDate(); });
+            var btnCopieTicket = Framework.Form.Button.Register("btnCopieTicket", function () { return table1.SelectedData.length == 1; }, function () {
+                //ICI TODO
+                self.ticket = new CodApproModels.Ticket();
+                self.ticket.Code = self.questionnaire.Code + "_" + (new Date()).toISOString().replace(/[^0-9]/g, '').slice(0, -3);
+                self.questionnaire.Tickets.push(self.ticket);
+                self.ticket.Lieu = table1.SelectedData[0].Lieu;
+                self.ticket.Image = "copie de " + self.ticket.Code;
+                var aliments = self.questionnaire.Aliments.filter(function (x) { return (x.TicketCode == table1.SelectedData[0].Code); });
+                aliments.forEach(function (y) {
+                    var al = new CodApproModels.Aliment();
+                    al.Appreciation = y.Appreciation;
+                    al.Categorie1 = y.Categorie1;
+                    al.Categorie2 = y.Categorie2;
+                    al.CodeCIQUAL = y.CodeCIQUAL;
+                    al.Date = self.ticket.Date;
+                    al.DateModif = self.ticket.Date;
+                    al.DateSaisie = self.ticket.Date;
+                    al.Labels = y.Labels;
+                    al.LibelleCIQUAL = y.LibelleCIQUAL;
+                    al.LibelleCustom = y.LibelleCustom;
+                    al.Lieu = y.Lieu;
+                    al.Menu = y.Menu;
+                    al.MontantChequeAlimentaire = y.MontantChequeAlimentaire;
+                    al.Nb = y.Nb;
+                    al.PoidsUnitaire = y.PoidsUnitaire;
+                    al.Prix = y.Prix;
+                    al.PrixMax = y.PrixMax;
+                    al.PrixMaxEpicerie = y.PrixMaxEpicerie;
+                    al.PrixMenu = y.PrixMenu;
+                    al.PrixMin = y.PrixMin;
+                    al.PrixMinEpicerie = y.PrixMinEpicerie;
+                    al.Unite = y.Unite;
+                    al.TicketCode = self.ticket.Code;
+                    self.questionnaire.Aliments.push(al);
+                });
+                self.saveQuestionnaire(function () {
+                    self.showDivFactures();
+                });
+                //self.showDivDate();
+            });
+            self.translate("h4Saisies");
+            self.translate("btnNouveauTicket2", btnNouveauTicket2);
+            self.translate("btnCopieTicket", btnCopieTicket);
         });
     };
     CodApproApp.prototype.testPrixKg = function () {
@@ -539,11 +607,11 @@ var CodApproApp = /** @class */ (function (_super) {
             }
             var prixKg = self.aliment.Prix / diviseur;
             if (prixKg > prixmax) {
-                divWarningPrix.SetHtml('<p style="color:red">Le prix au kilo (' + Math.round(prixKg * 100) / 100 + ') est supérieur aux prix généralement constatés. Veuillez vérifier la quantité, la mesure ou le prix saisi.</p>');
+                divWarningPrix.SetHtml('<p style="color:red">' + self.getTranslation("txtPrixKilo1") + '(' + Math.round(prixKg * 100) / 100 + ') ' + self.getTranslation("txtPrixKilo2") + '</p>');
                 divWarningPrix.Show();
             }
             if (prixKg < prixmin) {
-                divWarningPrix.SetHtml('<p style="color:red">Le prix au kilo (' + Math.round(prixKg * 100) / 100 + ') est inférieur aux prix généralement constatés. Veuillez vérifier la quantité, la mesure ou le prix saisi.</p>');
+                divWarningPrix.SetHtml('<p style="color:red">' + self.getTranslation("txtPrixKilo1") + '(' + Math.round(prixKg * 100) / 100 + ') ' + self.getTranslation("txtPrixKilo3") + '</p>');
                 divWarningPrix.Show();
             }
         }
@@ -559,7 +627,7 @@ var CodApproApp = /** @class */ (function (_super) {
             // Enter
             document.onkeypress = function (e) {
                 if (e.which == 10 || e.which == 13) {
-                    btnContinuer.Click();
+                    btnNouvelAliment.Click();
                 }
             };
             //TODO
@@ -580,7 +648,7 @@ var CodApproApp = /** @class */ (function (_super) {
                 self.aliment.Categorie1 = val;
                 self.aliment.Categorie2 = "";
                 selectFoodCategory2.HtmlElement.value = "";
-                btnContinuer.CheckState();
+                btnNouvelAliment.CheckState();
                 btnNouveauTicket.CheckState();
                 btnTerminerEnregistrer.CheckState();
             });
@@ -593,7 +661,7 @@ var CodApproApp = /** @class */ (function (_super) {
                 self.aliment.Categorie1 = "";
                 self.aliment.Categorie2 = val;
                 selectFoodCategory.HtmlElement.value = "";
-                btnContinuer.CheckState();
+                btnNouvelAliment.CheckState();
                 btnNouveauTicket.CheckState();
                 btnTerminerEnregistrer.CheckState();
             });
@@ -650,7 +718,7 @@ var CodApproApp = /** @class */ (function (_super) {
                     btnDesignationChecked.style.background = "red";
                 }
                 self.aliment.Categorie2 = "";
-                btnContinuer.CheckState();
+                btnNouvelAliment.CheckState();
                 btnNouveauTicket.CheckState();
             });
             var lib2 = "";
@@ -661,7 +729,7 @@ var CodApproApp = /** @class */ (function (_super) {
                 self.aliment.Categorie1 = "";
                 self.aliment.Categorie2 = "";
                 self.aliment.LibelleCustom = designation;
-                btnContinuer.CheckState();
+                btnNouvelAliment.CheckState();
                 btnNouveauTicket.CheckState();
                 btnTerminerEnregistrer.CheckState();
             });
@@ -714,7 +782,7 @@ var CodApproApp = /** @class */ (function (_super) {
             var inputPoids = Framework.Form.InputText.Register("inputPoids", nb, Framework.Form.Validator.NumberPos("Nombre attendu."), function (poids) {
                 self.aliment.Nb = Number(poids.replace(",", "."));
                 self.testPrixKg();
-                btnContinuer.CheckState();
+                btnNouvelAliment.CheckState();
                 btnNouveauTicket.CheckState();
                 btnTerminerEnregistrer.CheckState();
             });
@@ -733,7 +801,7 @@ var CodApproApp = /** @class */ (function (_super) {
                     inputPasAchete.Uncheck();
                 }
                 self.testPrixKg();
-                btnContinuer.CheckState();
+                btnNouvelAliment.CheckState();
                 btnNouveauTicket.CheckState();
                 btnTerminerEnregistrer.CheckState();
             });
@@ -741,7 +809,7 @@ var CodApproApp = /** @class */ (function (_super) {
             if (self.menu != "") {
                 divPrix.Hide();
             }
-            // ICI : création tableau labels
+            // Création tableau labels
             var tableLabels = document.getElementById("tableLabels");
             for (var i = 0; i < self.config.ListLabels.length; i = i + 2) {
                 var tr = document.createElement("tr");
@@ -756,12 +824,12 @@ var CodApproApp = /** @class */ (function (_super) {
                     else {
                         Framework.Array.Remove(self.aliment.Labels, cb.Value);
                     }
-                }, self.config.ListLabels[i].Value, self.config.ListLabels[i].Value, self.config.ListLabels.indexOf(self.config.ListLabels[i].Value) > -1);
+                }, self.config.ListLabels[i].Value, self.config.ListLabels[i].Value, self.aliment.Labels.indexOf(self.config.ListLabels[i].Value) > -1);
                 input1.Value = self.config.ListLabels[i].Value;
                 //input1.HtmlElement.children[0].classList.add("form-check-input");
                 //input1.HtmlElement.children[1].classList.add("form-check-label");
                 input1.HtmlElement.children[0].style.width = "32px";
-                input1.HtmlElement.children[1].style.width = "200px";
+                input1.HtmlElement.children[1].style.width = "130px";
                 td1.appendChild(input1.HtmlElement);
                 var td2 = document.createElement("td");
                 tr.appendChild(td2);
@@ -773,7 +841,7 @@ var CodApproApp = /** @class */ (function (_super) {
                         else {
                             Framework.Array.Remove(self.aliment.Labels, cb.Value);
                         }
-                    }, self.config.ListLabels[i + 1].Value, self.config.ListLabels[i + 1].Value, self.config.ListLabels.indexOf(self.config.ListLabels[i].Value) > -1);
+                    }, self.config.ListLabels[i + 1].Value, self.config.ListLabels[i + 1].Value, self.aliment.Labels.indexOf(self.config.ListLabels[i + 1].Value) > -1);
                     input2.Value = self.config.ListLabels[i + 1].Value;
                     td2.appendChild(input2.HtmlElement);
                     td2.style.padding = "4px";
@@ -782,6 +850,10 @@ var CodApproApp = /** @class */ (function (_super) {
                     input2.HtmlElement.children[0].style.width = "32px";
                     input2.HtmlElement.children[1].style.width = "200px";
                 }
+            }
+            var divLabels = Framework.Form.TextElement.Register("divLabels");
+            if (self.config.ListOptions.indexOf("HideLabels") > -1) {
+                divLabels.Hide();
             }
             //let inputBio = Framework.Form.CheckBox.Register("inputBio", () => { return true }, () => { }, "");
             //let inputAocAop = Framework.Form.CheckBox.Register("inputAocAop", () => { return true }, () => { }, "");
@@ -797,7 +869,7 @@ var CodApproApp = /** @class */ (function (_super) {
                 else {
                     self.aliment.Appreciation = -1;
                 }
-                btnContinuer.CheckState();
+                btnNouvelAliment.CheckState();
                 btnNouveauTicket.CheckState();
                 btnTerminerEnregistrer.CheckState();
             }, "");
@@ -806,7 +878,7 @@ var CodApproApp = /** @class */ (function (_super) {
                     inputPrix.Set("");
                     self.aliment.Prix = -1;
                 }
-                btnContinuer.CheckState();
+                btnNouvelAliment.CheckState();
                 btnNouveauTicket.CheckState();
                 btnTerminerEnregistrer.CheckState();
             }, "");
@@ -815,18 +887,22 @@ var CodApproApp = /** @class */ (function (_super) {
                     inputPoids.Set("");
                     self.aliment.PoidsUnitaire = -1;
                 }
-                btnContinuer.CheckState();
+                btnNouvelAliment.CheckState();
                 btnNouveauTicket.CheckState();
                 btnTerminerEnregistrer.CheckState();
             }, "");
             var rating = Framework.Rating.Render(document.getElementById("divLikingRank"), "", 1, 5, self.aliment.Appreciation, function (x) {
                 self.aliment.Appreciation = x;
                 inputJamaisGoute.Uncheck();
-                btnContinuer.CheckState();
+                btnNouvelAliment.CheckState();
                 btnNouveauTicket.CheckState();
                 btnTerminerEnregistrer.CheckState();
             });
-            var btnContinuer = Framework.Form.Button.Register("btnContinuer", function () {
+            var divLiking = Framework.Form.TextElement.Register("divLiking");
+            if (self.config.ListOptions.indexOf("HideLiking") > -1) {
+                divLiking.Hide();
+            }
+            var btnNouvelAliment = Framework.Form.Button.Register("btnNouvelAliment", function () {
                 return ((self.aliment.LibelleCIQUAL && self.aliment.LibelleCIQUAL.length > 0) || self.aliment.Categorie1 != "" || self.aliment.Categorie2 != "" || (self.aliment.LibelleCustom && self.aliment.LibelleCustom.length > 3)) && (inputPoids.IsValid || inputPasPoids.IsChecked) && (inputPrix.IsValid || inputPasAchete.IsChecked || self.menu != "") /*&& self.aliment.Appreciation >= 0*/;
             }, function () {
                 self.aliment.Labels = [];
@@ -866,7 +942,7 @@ var CodApproApp = /** @class */ (function (_super) {
                 return true;
             }, function () {
                 if ((self.aliment.LibelleCIQUAL && self.aliment.LibelleCIQUAL.length > 0) || self.aliment.Categorie1 || self.aliment.Categorie2 || self.aliment.LibelleCustom || inputPoids.IsValid || inputPasPoids.IsChecked || inputPrix.IsValid || inputPasAchete.IsChecked || self.menu != "") {
-                    Framework.Modal.Confirm("Confirmation requise", "Les changements ne seront pas enregistrés.<br/>Etes-vous sûr(e) de vouloir quitter cet écran ?<br/>Si non, cliquez sur le bouton 'Nouvel aliment' pour enregister les changements.", function () { self.showDivLogin(); });
+                    Framework.Modal.Confirm(self.getTranslation("txtConfirmation"), self.getTranslation("txtChangementsNonEnregistres"), function () { self.showDivLogin(); });
                 }
                 else {
                     self.showDivLogin();
@@ -879,15 +955,42 @@ var CodApproApp = /** @class */ (function (_super) {
                     self.showEnregistrementConfirme(function () { self.showDivLogin(); });
                 });
             });
+            self.translate("h5ChoixAliment");
+            self.translate("h5NomAliment");
+            self.translate("h5CategorieAliment");
+            self.translate("h5Quantite");
+            self.translate("h5Prix");
+            self.translate("h5Labels");
+            self.translate("h5Gout");
+            self.translate("inputDesignation", inputDesignation);
+            self.translate("inputDesignation2", inputDesignation2);
+            self.translate("inputPoids", inputPoids);
+            self.translate("labelConnaisPasPoids");
+            self.translate("btnGrammes", btnGrammes);
+            self.translate("btnKilos", btnKilos);
+            self.translate("btnLitres", btnLitres);
+            self.translate("btnCentilitres", btnCentilitres);
+            self.translate("btnUnites", btnUnites);
+            self.translate("inputPrix", inputPrix);
+            self.translate("labelConnaisPasPrix");
+            self.translate("labelJamaisGoute");
+            self.translate("pWarning");
+            self.translate("btnNouveauTicket", btnNouveauTicket);
+            self.translate("btnTerminerEnregistrer", btnTerminerEnregistrer);
+            self.translate("btnTerminer", btnTerminer);
+            self.translate("btnNouvelAliment", btnNouvelAliment);
             if (update == true) {
-                btnContinuer.SetInnerHTML("Modifier");
+                self.translate("txtModifier", btnNouvelAliment);
                 btnNouveauTicket.Hide();
                 btnTerminer.Hide();
+                btnTerminerEnregistrer.Hide();
             }
         });
     };
     CodApproApp.prototype.showEnregistrementConfirme = function (action) {
+        var self = this;
         this.show("html/DivEnregistre.html", function () {
+            self.translate("h4AlimentEnregistre");
             setTimeout(function () {
                 action();
             }, 1000);

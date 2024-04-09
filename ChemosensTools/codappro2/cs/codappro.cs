@@ -25,7 +25,7 @@ namespace ChemosensTools.CodAppro
         public List<KeyValuePair<string, string>> ListCategorie1 = new List<KeyValuePair<string, string>>();
         public List<KeyValuePair<string, string>> ListCategorie2 = new List<KeyValuePair<string, string>>();
         public List<KeyValuePair<string, string>> ListLieuxAchats = new List<KeyValuePair<string, string>>();
-        public List<KeyValuePair<string, string>> ListTextes = new List<KeyValuePair<string, string>>();
+        //public List<KeyValuePair<string, string>> ListTextes = new List<KeyValuePair<string, string>>();
         public List<KeyValuePair<string, string>> ListLabels = new List<KeyValuePair<string, string>>();
     }
 
@@ -124,6 +124,47 @@ namespace ChemosensTools.CodAppro
 
         }
 
+        public static string Translate(string xlDirPath, string sn,  string hashKey)
+        {
+            // Lecture des codes autorisés (fichier externe), authentification + renvoi du contenu json du code correspondant + des infos de configuration
+
+            string dir = xlDirPath + "//" + sn;
+            ExcelPackage.LicenseContext = LicenseContext.NonCommercial;
+
+
+            List<KeyValuePair<string,string>> liste = new List<KeyValuePair<string,string>>();
+
+            // Lecture de la configuration
+            using (ExcelPackage xlPackage = new ExcelPackage(new FileInfo(dir + "//config.xlsx")))
+            {
+                try
+                {
+                    // Lecture des clés pour l'internationalisation
+                    var myWorksheet = xlPackage.Workbook.Worksheets.ElementAt(2);
+                    var totalRows = myWorksheet.Dimension.End.Row;
+
+                    for (int rowNum = 2; rowNum <= totalRows; rowNum++)
+                    {
+                        try
+                        {
+                            string key = (myWorksheet.Cells[rowNum, EPPlusHelper.GetColumnByName(myWorksheet, "key")].Value ?? string.Empty).ToString();
+                            string val = (myWorksheet.Cells[rowNum, EPPlusHelper.GetColumnByName(myWorksheet, "value")].Value ?? string.Empty).ToString();
+                            liste.Add(new KeyValuePair<string, string>(key, val));
+                        }
+                        catch (Exception ex)
+                        {
+                            string s = ex.Message;
+                        }
+                    }
+
+                }
+                catch
+                {
+                }
+            }
+            return Serializer.SerializeToString(liste);
+        }
+
         public static string Login(string xlDirPath, string sn, string code, string hashKey)
         {
             // Lecture des codes autorisés (fichier externe), authentification + renvoi du contenu json du code correspondant + des infos de configuration
@@ -143,7 +184,7 @@ namespace ChemosensTools.CodAppro
             }
 
             Config config = new Config();
-
+            ExcelPackage.LicenseContext = LicenseContext.NonCommercial;
             // Lecture de la configuration
             using (ExcelPackage xlPackage = new ExcelPackage(new FileInfo(dir + "//config.xlsx")))
             {
@@ -165,21 +206,21 @@ namespace ChemosensTools.CodAppro
                     }
 
                     // Lecture des clés pour l'internationalisation
-                    myWorksheet = xlPackage.Workbook.Worksheets.ElementAt(2);
-                    totalRows = myWorksheet.Dimension.End.Row;
-                    for (int rowNum = 2; rowNum <= totalRows; rowNum++)
-                    {
-                        try
-                        {
-                            string key = (myWorksheet.Cells[rowNum, EPPlusHelper.GetColumnByName(myWorksheet, "key")].Value ?? string.Empty).ToString();
-                            string val = (myWorksheet.Cells[rowNum, EPPlusHelper.GetColumnByName(myWorksheet, "value")].Value ?? string.Empty).ToString();
-                            config.ListTextes.Add(new KeyValuePair<string, string>(key,val));
-                        }
-                        catch (Exception ex)
-                        {
-                            string s = ex.Message;
-                        }
-                    }
+                    //myWorksheet = xlPackage.Workbook.Worksheets.ElementAt(2);
+                    //totalRows = myWorksheet.Dimension.End.Row;
+                    //for (int rowNum = 2; rowNum <= totalRows; rowNum++)
+                    //{
+                    //    try
+                    //    {
+                    //        string key = (myWorksheet.Cells[rowNum, EPPlusHelper.GetColumnByName(myWorksheet, "key")].Value ?? string.Empty).ToString();
+                    //        string val = (myWorksheet.Cells[rowNum, EPPlusHelper.GetColumnByName(myWorksheet, "value")].Value ?? string.Empty).ToString();
+                    //        config.ListTextes.Add(new KeyValuePair<string, string>(key, val));
+                    //    }
+                    //    catch (Exception ex)
+                    //    {
+                    //        string s = ex.Message;
+                    //    }
+                    //}
 
                     // Lecture des lieux d'achats
                     myWorksheet = xlPackage.Workbook.Worksheets.ElementAt(3);
@@ -324,8 +365,8 @@ namespace ChemosensTools.CodAppro
             return Serializer.SerializeToString(config);
         }
 
-        public static void ImportQuestionnaire(string data, string authorizedCodesFilePath, string dataDirPath, string hashKey)
-        {
+        public static void ImportQuestionnaire(string data, string dataDirPath, string hashKey)
+        {            
 
             //byte[] bytes = Org.BouncyCastle.Utilities.Encoders.Base64.Decode(data.Replace("data:application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;base64,", ""));
             byte[] bytes = Convert.FromBase64String(data.Replace("data:application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;base64,", ""));
@@ -333,7 +374,7 @@ namespace ChemosensTools.CodAppro
             MemoryStream stream = new MemoryStream(bytes);
             ExcelPackage xlPackage = new ExcelPackage(stream);
             //xlPackage.SaveAs(new FileInfo(ConfigurationManager.AppSettings["ReferentielFoodExPath"] + name + ".xlsx"));
-
+         
             var myWorksheet = xlPackage.Workbook.Worksheets.ElementAt(0);
 
             var totalRows = myWorksheet.Dimension.End.Row;
@@ -344,6 +385,7 @@ namespace ChemosensTools.CodAppro
             {
 
                 Aliment o = new Aliment();
+                o.TicketCode = (myWorksheet.Cells[rowNum, EPPlusHelper.GetColumnByName(myWorksheet, "CodeTicket")].Value ?? string.Empty).ToString();
                 o.Code = (myWorksheet.Cells[rowNum, EPPlusHelper.GetColumnByName(myWorksheet, "Code")].Value ?? string.Empty).ToString();
                 o.Lieu = (myWorksheet.Cells[rowNum, EPPlusHelper.GetColumnByName(myWorksheet, "Lieu")].Value ?? string.Empty).ToString();
                 o.Date = (myWorksheet.Cells[rowNum, EPPlusHelper.GetColumnByName(myWorksheet, "Date")].Value ?? string.Empty).ToString();
@@ -438,7 +480,7 @@ namespace ChemosensTools.CodAppro
             return Serializer.SerializeToString(quest);
         }
 
-        public static byte[] DownloadQuestionnaireCodAppro(string questionnaireDirPath, string hashKey)
+        public static byte[] DownloadQuestionnaire(string questionnaireDirPath, string hashKey)
         {
             try
             {
@@ -452,26 +494,25 @@ namespace ChemosensTools.CodAppro
                     int index = 2;
 
                     sheet.Cells[1, 1].Value = "Code";
-                    sheet.Cells[1, 2].Value = "Lieu";
-                    sheet.Cells[1, 3].Value = "Date";
-                    sheet.Cells[1, 4].Value = "CodeCIQUAL";
-                    sheet.Cells[1, 5].Value = "LibelleCIQUAL";
-                    sheet.Cells[1, 6].Value = "Categorie1";
-                    sheet.Cells[1, 7].Value = "Categorie2";
-                    sheet.Cells[1, 8].Value = "Nb";
-                    sheet.Cells[1, 9].Value = "Unite";
-                    sheet.Cells[1, 10].Value = "Prix";
-                    sheet.Cells[1, 11].Value = "Appreciation";
-                    sheet.Cells[1, 12].Value = "Labels";
-                    sheet.Cells[1, 13].Value = "Menu";
-                    sheet.Cells[1, 14].Value = "PrixMenu";
-                    sheet.Cells[1, 15].Value = "LibelleCustom";
-                    sheet.Cells[1, 16].Value = "MontantChequeAlimentaire";
-                    sheet.Cells[1, 17].Value = "DateSaisie";
-                    sheet.Cells[1, 18].Value = "DateMAJ";
-                    sheet.Cells[1, 19].Value = "Photo";
-
-
+                    sheet.Cells[1, 2].Value = "TicketCode";
+                    sheet.Cells[1, 3].Value = "Lieu";
+                    sheet.Cells[1, 4].Value = "Date";
+                    sheet.Cells[1, 5].Value = "CodeCIQUAL";
+                    sheet.Cells[1, 6].Value = "LibelleCIQUAL";
+                    sheet.Cells[1, 7].Value = "Categorie1";
+                    sheet.Cells[1, 8].Value = "Categorie2";
+                    sheet.Cells[1, 9].Value = "Nb";
+                    sheet.Cells[1, 10].Value = "Unite";
+                    sheet.Cells[1, 11].Value = "Prix";
+                    sheet.Cells[1, 12].Value = "Appreciation";
+                    sheet.Cells[1, 13].Value = "Labels";
+                    sheet.Cells[1, 14].Value = "Menu";
+                    sheet.Cells[1, 15].Value = "PrixMenu";
+                    sheet.Cells[1, 16].Value = "LibelleCustom";
+                    sheet.Cells[1, 17].Value = "MontantChequeAlimentaire";
+                    sheet.Cells[1, 18].Value = "DateSaisie";
+                    sheet.Cells[1, 19].Value = "DateMAJ";
+                    sheet.Cells[1, 20].Value = "Photo";
 
                     foreach (string f in Directory.EnumerateFiles(questionnaireDirPath))
                     {
@@ -482,24 +523,22 @@ namespace ChemosensTools.CodAppro
                             foreach (Aliment al in quest.Aliments)
                             {
                                 sheet.Cells[index, 1].Value = quest.Code;
-                                sheet.Cells[index, 2].Value = al.Lieu;
-                                sheet.Cells[index, 3].Value = al.Date;
-                                //sheet.Cells[index, 4].Value = al.CodeCIQUAL;
-                                sheet.Cells[index, 5].Value = al.LibelleCIQUAL;
-                                sheet.Cells[index, 4].Value = al.Code;
-                                //sheet.Cells[index, 5].Value = al.LibelleCustom;
-                                sheet.Cells[index, 6].Value = al.Categorie1;
-                                sheet.Cells[index, 7].Value = al.Categorie2;
-                                sheet.Cells[index, 8].Value = al.Nb;
-                                sheet.Cells[index, 9].Value = al.Unite;
-                                sheet.Cells[index, 10].Value = al.Prix;
-                                sheet.Cells[index, 11].Value = al.Appreciation;
-                                sheet.Cells[index, 12].Value = String.Join(", ", al.Labels);
-
-                                sheet.Cells[index, 13].Value = al.Menu;
-                                sheet.Cells[index, 14].Value = al.PrixMenu;
-                                sheet.Cells[index, 15].Value = al.LibelleCustom;
-                                sheet.Cells[index, 16].Value = al.MontantChequeAlimentaire;
+                                sheet.Cells[index, 2].Value = al.TicketCode;
+                                sheet.Cells[index, 3].Value = al.Lieu;
+                                sheet.Cells[index, 4].Value = al.Date;
+                                sheet.Cells[index, 5].Value = al.CodeCIQUAL;
+                                sheet.Cells[index, 6].Value = al.LibelleCIQUAL;
+                                sheet.Cells[index, 7].Value = al.Categorie1;
+                                sheet.Cells[index, 8].Value = al.Categorie2;
+                                sheet.Cells[index, 9].Value = al.Nb;
+                                sheet.Cells[index, 10].Value = al.Unite;
+                                sheet.Cells[index, 11].Value = al.Prix;
+                                sheet.Cells[index, 12].Value = al.Appreciation;
+                                sheet.Cells[index, 13].Value = String.Join(", ", al.Labels);
+                                sheet.Cells[index, 14].Value = al.Menu;
+                                sheet.Cells[index, 15].Value = al.PrixMenu;
+                                sheet.Cells[index, 16].Value = al.LibelleCustom;
+                                sheet.Cells[index, 17].Value = al.MontantChequeAlimentaire;
 
                                 try
                                 {
@@ -511,7 +550,7 @@ namespace ChemosensTools.CodAppro
                                 }
                                 catch
                                 { }
-                                sheet.Cells[index, 17].Value = al.DateSaisie;
+                                sheet.Cells[index, 18].Value = al.DateSaisie;
 
                                 try
                                 {
@@ -523,21 +562,11 @@ namespace ChemosensTools.CodAppro
                                 }
                                 catch
                                 { }
-                                sheet.Cells[index, 18].Value = al.DateModif;
-
-
-                                sheet.Cells[index, 19].Value = 0;
-
-                                // Verif photo                                                                  
-                                string file = quest.Code + "_" + al.DateSaisie.Replace("-", "") + "*";
+                                sheet.Cells[index, 19].Value = al.DateModif;
 
                                 try
                                 {
-                                    string[] matches = Directory.GetFiles(ConfigurationManager.AppSettings["CodApproImgDirPath"], file);
-                                    if (matches.Count() > 0)
-                                    {
-                                        sheet.Cells[index, 19].Value = 1;
-                                    }
+                                    sheet.Cells[index, 20].Value = (from x in quest.Tickets where x.Code == al.TicketCode select x.Image).ElementAt(0);
                                 }
                                 catch
                                 { }

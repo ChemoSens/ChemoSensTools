@@ -10,6 +10,7 @@
     private menu: string = "";
     private sn: string = "";    
     private login: string = "";
+    private listTextes: Framework.KeyValuePair[] = [];
 
     private static GetRequirements(): Framework.ModuleRequirements {
         let requirements: Framework.ModuleRequirements = new Framework.ModuleRequirements();
@@ -45,19 +46,30 @@
     protected start(fullScreen: boolean = false) {
         super.start(fullScreen);
 
+        let self = this;
         this.sn = Framework.Browser.GetUrlParameter("sn"); // Code de l'étude
         let admin = Framework.Browser.GetUrlParameter("admin"); // Id admin
         this.login = Framework.Browser.GetUrlParameter("login"); // login
 
-        if (this.sn == "") {
-            this.showDivLogin();
-        }
+        self.CallWCF('TranslateCodAppro', { sn: self.sn }, () => {
+            Framework.Progress.Show(Framework.LocalizationManager.Get("Connexion..."));
+        }, (res) => {
+            Framework.Progress.Hide();
+            if (res.Status == 'success') {
+                self.listTextes = JSON.parse(res.Result);
+            }
+            if (self.sn == "") {
+                self.showDivLogin();
+            }
 
-        if (admin != "") {
-            this.showDivLoginAdmin(admin);
-        } else {
-            this.showDivLogin();
-        }
+            if (admin != "") {
+                self.showDivLoginAdmin(admin);
+            } else {
+                self.showDivLogin();
+            }
+        });
+
+        
 
     }
 
@@ -80,13 +92,13 @@
 
 
         self.CallWCF('SaveQuestionnaireCodAppro', { code: self.questionnaire.Code, sn: self.sn, jsonQuestionnaire: JSON.stringify(self.questionnaire) }, () => {
-            Framework.Progress.Show("Enregistrement...");
+            Framework.Progress.Show(self.getTranslation("txtEnregistrement"));
         }, (res) => {
             Framework.Progress.Hide();
             if (res.Status == 'success') {
                 f();                
             } else {
-                Framework.Modal.Alert("Erreur", "Une erreur a eu lieu pendant l'enregistrement du fichier.", () => {
+                Framework.Modal.Alert(self.getTranslation("txtErreur"), self.getTranslation("txtErreurEnregistrement"), () => {
                     f();                    
                 })
             }
@@ -99,14 +111,14 @@
         let self = this;
 
         self.CallWCF('SaveQuestionnaireCodAppro', { code: self.questionnaire.Code, sn: self.sn, jsonQuestionnaire: JSON.stringify(self.questionnaire) }, () => {
-            Framework.Progress.Show("Enregistrement...");
+            Framework.Progress.Show(self.getTranslation("txtEnregistrement"));
         }, (res) => {
 
             Framework.Progress.Hide();
             if (res.Status == 'success') {
                 f();
             } else {
-                Framework.Modal.Alert("Erreur", "Une erreur a eu lieu pendant l'enregistrement du fichier.", () => {
+                Framework.Modal.Alert(self.getTranslation("txtErreur"), self.getTranslation("txtErreurEnregistrement"), () => {
                     f();
                 })
             }
@@ -123,16 +135,16 @@
             // Enter
             document.onkeypress = (e) => {
                 if (e.which == 10 || e.which == 13) {
-                    btnLogin.Click();
+                    btnTelecharger.Click();
                 }
             }
 
             let inputPassword = Framework.Form.InputText.Register("inputPassword", "", Framework.Form.Validator.MinLength(4), () => {
-                btnLogin.CheckState();
+                btnTelecharger.CheckState();
                 btnImporter.CheckState();
             }, true);
 
-            let btnLogin = Framework.Form.Button.Register("btnLogin", () => {
+            let btnTelecharger = Framework.Form.Button.Register("btnTelecharger", () => {
                 return inputPassword.IsValid;
             }, () => {
 
@@ -143,32 +155,35 @@
                 }
 
                 self.CallWCF('DownloadQuestionnaireCodAppro', obj, () => {
-                    Framework.Progress.Show(Framework.LocalizationManager.Get("Connexion..."));
+                    Framework.Progress.Show(self.getTranslation("txtConnexion"));
                 }, (res) => {
 
                     Framework.Progress.Hide();
                     if (res.Status == 'success') {
                         Framework.FileHelper.SaveBase64As(res.Result, "resultats_codappro.xlsx");
                     } else {
-                        Framework.Modal.Alert("Erreur", res.ErrorMessage);
+                        Framework.Modal.Alert(self.getTranslation("txtErreur"), res.ErrorMessage);
                     }
 
                 });
 
-
+                self.translate("h2Administration");
+                self.translate("h3MotPasse");
+                self.translate("btnTelecharger", btnTelecharger);
+                self.translate("btnImporter", btnImporter);
             });
 
             let btnImporter = Framework.Form.Button.Register("btnImporter", () => { return inputPassword.IsValid; }, () => {
                 Framework.FileHelper.BrowseBinaries("xlsx", (binaries: string) => {
                     self.CallWCF('ImportQuestionnaireCodAppro', { data: binaries, sn: self.sn, login: admin, password: inputPassword.Value }, () => {
-                        Framework.Progress.Show("Import en cours");
+                        Framework.Progress.Show(self.getTranslation("txtChargement"));
                     }, (res) => {
                         Framework.Progress.Hide();
 
                         if (res.Status == "success") {     
-                            Framework.Modal.Alert("Message", "Téléversement réussi");
+                            Framework.Modal.Alert(self.getTranslation("txtMessage"), self.getTranslation("txtTeleversementReussi"));
                         } else {
-                            Framework.Modal.Alert("Message", "Erreur pendant le téléversement");
+                            Framework.Modal.Alert(self.getTranslation("txtMessage"), self.getTranslation("txtErreurTeleversement"));
                         }
                     });
                 });
@@ -182,7 +197,7 @@
 
     private getTranslation(key: string) {
         let self = this;
-        let vals: Framework.KeyValuePair[] = self.config.ListTextes.filter(x => x.Key == key);
+        let vals: Framework.KeyValuePair[] = self.listTextes.filter(x => x.Key == key);
         if (vals.length > 0) {
             return(vals[0].Value);
         }
@@ -276,6 +291,10 @@
                 btnLogin.Click();
             }
 
+            self.translate("h3Code");
+            self.translate("inputLoginId", inputLoginId);
+            self.translate("btnLogin", btnLogin);
+
         });
 
     }
@@ -283,15 +302,16 @@
     private showDivDate(aliment: CodApproModels.Aliment = undefined) {
 
         let self = this;
+        
+        if (aliment == undefined) {      
 
-        if (self.ticket == undefined) {
             self.ticket = new CodApproModels.Ticket();
             self.ticket.Code = self.questionnaire.Code + "_" + (new Date()).toISOString().replace(/[^0-9]/g, '').slice(0, -3);
             self.questionnaire.Tickets.push(self.ticket);
         }
 
         if (aliment == undefined) {      
-            
+
             self.aliment = new CodApproModels.Aliment();
             self.aliment.TicketCode = self.ticket.Code;
             self.aliment.Unite = "grammes";
@@ -300,8 +320,7 @@
             self.aliment.Menu = "";
         } else {
             self.aliment = aliment;
-            self.ticket.Date = self.aliment.Date;
-            self.ticket.Lieu = self.aliment.Lieu;
+            self.ticket = self.questionnaire.Tickets.filter(x => x.Code == aliment.TicketCode)[0];
         }
 
         this.show("html/DivDate.html", () => {
@@ -323,9 +342,9 @@
                     self.CallWCF('TeleverseImageCodAppro2', { base64string: base64, sn:self.sn, filename: fn }, () => { }, (res) => {                                                
                         if (res.ErrorMessage != "") {
                             self.ticket.Image = fn;
-                            Framework.Modal.Alert("Succès", "La photo a été téléversée.", () => { mw.Close() });
+                            Framework.Modal.Alert(self.getTranslation("txtSucces"), self.getTranslation("txtPhotoTeleversee"), () => { mw.Close() });
                         } else {
-                            Framework.Modal.Alert("Echec", "Une erreur a eu lieu pendant le téléchargement.", () => { mw.Close() });
+                            Framework.Modal.Alert(self.getTranslation("txtEchec"), self.getTranslation("txtErreurTeleversement"), () => { mw.Close() });
                         }
 
                     });
@@ -351,9 +370,9 @@
                     self.CallWCF('TeleverseImageCodAppro2', { base64string: binaries, sn: self.sn, filename: fn }, () => { }, (res) => {                        
                         if (res.ErrorMessage != "") {
                             self.ticket.Image = fn;
-                            Framework.Modal.Alert("Succès", "La photo a été téléversée.");
+                            Framework.Modal.Alert(self.getTranslation("txtSucces"), self.getTranslation("txtPhotoTeleversee"));
                         } else {
-                            Framework.Modal.Alert("Echec", "Une erreur a eu lieu pendant le téléchargement.");
+                            Framework.Modal.Alert(self.getTranslation("txtEchec"), self.getTranslation("txtErreurTeleversement"));
                         }
                     });
                 });
@@ -373,7 +392,7 @@
                 self.aliment.MontantChequeAlimentaire = Number(prix.replace(",", "."));
                 btnContinuer.CheckState();
             });
-
+            
             //if (this.ti == "1") {
             if (self.config.ListOptions.indexOf("SaisieChequeAlimentaire")>-1) {            
                 divChequeAlimentaire.Show();
@@ -486,16 +505,19 @@
         });
     }
 
-    private showDivDetail(aliments: CodApproModels.Aliment[]) {
+    private showDivDetail(ticketCode:string) {
         let self = this;
         this.show("html/DivDetail.html", () => {
 
             let divTableFactures = Framework.Form.TextElement.Register("divTableFactures");
-            let btnNouveauTicket = Framework.Form.Button.Register("btnFin", () => { return true; }, () => { self.showDivFactures(); })
+            let btnFin = Framework.Form.Button.Register("btnFin", () => { return true; }, () => { self.showDivFactures(); })
+
+            let aliments = self.questionnaire.Aliments.filter(z => z.TicketCode == ticketCode)
 
             let btnSupprimerTicket = Framework.Form.Button.Register("btnSupprimerTicket", () => { return true; }, () => {
 
-                Framework.Modal.Confirm("Confirmation requise", "Etes-vous sûr(e) de vouloir supprimer le ticket ? Tous les aliments seront supprimés.", () => {
+                Framework.Modal.Confirm(self.getTranslation("txtConfirmation"), self.getTranslation("txtSuppressionTicket"), () => {
+                    Framework.Array.Remove(self.questionnaire.Tickets, self.questionnaire.Tickets.filter(x=>x.Code== ticketCode)[0]);
                     aliments.forEach(x => {
                         Framework.Array.Remove(self.questionnaire.Aliments, x)
                     });
@@ -512,7 +534,7 @@
             table.CanSelect = true;
             table.ShowFooter = true;
             table.RemoveFunction = () => {
-                Framework.Modal.Confirm("Confirmez vous la suppression ?", "", () => {
+                Framework.Modal.Confirm(self.getTranslation("txtConfirmationSuppression"), "", () => {
 
                     table.SelectedData.forEach(x => {
                         Framework.Array.Remove(self.questionnaire.Aliments, x)
@@ -526,20 +548,20 @@
 
             table.ListColumns = [];
 
-            table.AddCol("Date", "Date", 100, "left");
-            table.AddCol("Lieu", "Lieu", 100, "left");
-            table.AddCol("LibelleCIQUAL", "Libellé", 300, "left");
-            table.AddCol("LibelleCustom", "Texte libre", 100, "left");
+            table.AddCol("Date", self.getTranslation("txtDate"), 100, "left");
+            table.AddCol("Lieu", self.getTranslation("txtLieu"), 100, "left");
+            table.AddCol("LibelleCIQUAL", self.getTranslation("txtLibelle"), 300, "left");
+            table.AddCol("LibelleCustom", self.getTranslation("txtTexte"), 100, "left");
             if (self.questionnaire.Code.charAt(0) == "b") {
-                table.AddCol("Categorie1", "Catégorie 1", 100, "left");
-                table.AddCol("Categorie2", "Catégorie 2", 100, "left");
+                table.AddCol("Categorie1", self.getTranslation("txtCategorie1"), 100, "left");
+                table.AddCol("Categorie2", self.getTranslation("txtCategorie2"), 100, "left");
             }
-            table.AddCol("Unite", "Unité", 75, "left");
-            table.AddCol("Nb", "Quantité", 75, "left");
-            table.AddCol("Prix", "Prix unitaire", 75, "left");
-            table.AddCol("PrixMenu", "Prix (menu)", 75, "left");
-            table.AddCol("MontantChequeAlimentaire", "Chèque alimentaire", 75, "left");
-            table.AddCol("Labels", "Labels", 75, "left");
+            table.AddCol("Unite", self.getTranslation("txtUnite"), 75, "left");
+            table.AddCol("Nb", self.getTranslation("txtQuantite"), 75, "left");
+            table.AddCol("Prix", self.getTranslation("txtPrixUnitaire"), 75, "left");
+            table.AddCol("PrixMenu", self.getTranslation("txtPrixMenu"), 75, "left");
+            table.AddCol("MontantChequeAlimentaire", self.getTranslation("txtChequeAlimentaire"), 75, "left");
+            table.AddCol("Labels", self.getTranslation("txtLabels"), 75, "left");
 
             table.AddCol("", "", 50, "left", undefined, undefined, (x, y) => {
                 return Framework.Form.Button.Create(() => { return true }, () => {
@@ -547,7 +569,14 @@
                 }, "Edit", ["btn", "btn-sm", "btn-primary"]).HtmlElement;
             })
             table.Render(divTableFactures.HtmlElement);
+
+            self.translate("h4EditionFacture");
+            self.translate("btnSupprimerTicket", btnSupprimerTicket);
+            self.translate("btnFin", btnFin);
         }
+
+        
+
         );
     }
 
@@ -558,6 +587,8 @@
         this.show("html/DivFactures.html", () => {
 
             let divTableFactures = Framework.Form.TextElement.Register("divTableFactures");
+
+            let table1: Framework.Form.Table<CodApproModels.Ticket> = new Framework.Form.Table<CodApproModels.Ticket>();
 
             self.CallWCF('DownloadDataCodAppro', { sn: self.sn, code: self.questionnaire.Code }, () => {
                 Framework.Progress.Show(Framework.LocalizationManager.Get("Connexion..."));
@@ -579,8 +610,11 @@
                     //    }
                     //});
 
-                    let table1: Framework.Form.Table<CodApproModels.Ticket> = new Framework.Form.Table<CodApproModels.Ticket>();
-                    table1.CanSelect = false;
+                    table1 = new Framework.Form.Table<CodApproModels.Ticket>();
+                    table1.CanSelect = true;
+                    table1.OnSelectionChanged = (sel => {
+                        btnCopieTicket.CheckState();
+                    });
                     table1.ShowFooter = false;
                     table1.ListData = tickets;
                     table1.Height = "80vh";
@@ -588,23 +622,73 @@
                     table1.CanSelect = true;
                     table1.ShowFooter = true;
                     table1.ListColumns = [];
-                    table1.AddCol("Date", "Date", 100, "left");
-                    table1.AddCol("Lieu", "Lieu", 200, "left");
-                    table1.AddCol("Image", "Photo", 200, "left");
+                    table1.AddCol("Date", self.getTranslation("txtDate"), 100, "left");
+                    table1.AddCol("Lieu", self.getTranslation("txtLieu"), 200, "left");
+                    table1.AddCol("Image", self.getTranslation("txtPhoto"), 200, "left");
                     table1.AddCol("", "", 50, "left", undefined, undefined, (x, y) => {
                         return Framework.Form.Button.Create(() => { return true }, () => {
-                            //self.showDivDetail(self.questionnaire.Aliments.filter(z => z.Date == y.Date && z.Lieu == y.Lieu));
-                            self.showDivDetail(self.questionnaire.Aliments.filter(z => z.TicketCode == y.Code));
+                            
+                            //self.showDivDetail(self.questionnaire.Aliments.filter(z => z.TicketCode == y.Code));
+                            self.showDivDetail(y.Code);
                         }, "Edit", ["btn", "btn-sm", "btn-primary"]).HtmlElement;
                     })
                     table1.Render(divTableFactures.HtmlElement);
 
                 } else {
-                    Framework.Modal.Alert("Erreur", res.ErrorMessage);
+                    Framework.Modal.Alert(self.getTranslation("txtErreur"), res.ErrorMessage);
                 }
+                
             });
 
-            let btnNouveauTicket = Framework.Form.Button.Register("btnNouveauTicket", () => { return true; }, () => { self.showDivDate(); })
+            let btnNouveauTicket2 = Framework.Form.Button.Register("btnNouveauTicket2", () => { return true; }, () => { self.showDivDate(); })
+            let btnCopieTicket = Framework.Form.Button.Register("btnCopieTicket", () => { return table1.SelectedData.length==1; }, () => {
+                //ICI TODO
+                self.ticket = new CodApproModels.Ticket();
+                self.ticket.Code = self.questionnaire.Code + "_" + (new Date()).toISOString().replace(/[^0-9]/g, '').slice(0, -3);
+                self.questionnaire.Tickets.push(self.ticket);
+                self.ticket.Lieu = table1.SelectedData[0].Lieu;
+                self.ticket.Image = "copie de " + self.ticket.Code;
+                
+                let aliments = self.questionnaire.Aliments.filter(x => { return (x.TicketCode == table1.SelectedData[0].Code); });
+                aliments.forEach(y => {
+                    let al: CodApproModels.Aliment = new CodApproModels.Aliment();
+                    al.Appreciation = y.Appreciation;
+                    al.Categorie1 = y.Categorie1;
+                    al.Categorie2 = y.Categorie2;
+                    al.CodeCIQUAL = y.CodeCIQUAL;
+                    al.Date = self.ticket.Date;
+                    al.DateModif = self.ticket.Date;
+                    al.DateSaisie = self.ticket.Date;
+                    al.Labels = y.Labels;
+                    al.LibelleCIQUAL = y.LibelleCIQUAL;
+                    al.LibelleCustom = y.LibelleCustom;
+                    al.Lieu = y.Lieu;
+                    al.Menu = y.Menu;
+                    al.MontantChequeAlimentaire = y.MontantChequeAlimentaire;
+                    al.Nb = y.Nb;
+                    al.PoidsUnitaire = y.PoidsUnitaire;
+                    al.Prix = y.Prix;
+                    al.PrixMax = y.PrixMax;
+                    al.PrixMaxEpicerie = y.PrixMaxEpicerie;
+                    al.PrixMenu = y.PrixMenu;
+                    al.PrixMin = y.PrixMin;
+                    al.PrixMinEpicerie = y.PrixMinEpicerie;
+                    al.Unite = y.Unite;
+                    al.TicketCode = self.ticket.Code;
+                    self.questionnaire.Aliments.push(al);
+                }
+                
+                );
+                self.saveQuestionnaire(() => {
+                    self.showDivFactures();
+                });
+                
+                //self.showDivDate();
+            })
+
+            self.translate("h4Saisies");
+            self.translate("btnNouveauTicket2", btnNouveauTicket2);
+            self.translate("btnCopieTicket", btnCopieTicket);
 
         });
 
@@ -647,12 +731,12 @@
             }
             let prixKg = self.aliment.Prix / diviseur;
             if (prixKg > prixmax) {
-                divWarningPrix.SetHtml('<p style="color:red">Le prix au kilo (' + Math.round(prixKg * 100) / 100 + ') est supérieur aux prix généralement constatés. Veuillez vérifier la quantité, la mesure ou le prix saisi.</p>')
+                divWarningPrix.SetHtml('<p style="color:red">' + self.getTranslation("txtPrixKilo1") + '(' + Math.round(prixKg * 100) / 100 + ') ' + self.getTranslation("txtPrixKilo2") + '</p>')
                 divWarningPrix.Show();
             }
 
             if (prixKg < prixmin) {
-                divWarningPrix.SetHtml('<p style="color:red">Le prix au kilo (' + Math.round(prixKg * 100) / 100 + ') est inférieur aux prix généralement constatés. Veuillez vérifier la quantité, la mesure ou le prix saisi.</p>')
+                divWarningPrix.SetHtml('<p style="color:red">' + self.getTranslation("txtPrixKilo1") + '(' + Math.round(prixKg * 100) / 100 + ') ' + self.getTranslation("txtPrixKilo3") + '</p>')
                 divWarningPrix.Show();
             }
         }
@@ -672,7 +756,7 @@
             // Enter
             document.onkeypress = (e) => {
                 if (e.which == 10 || e.which == 13) {
-                    btnContinuer.Click();
+                    btnNouvelAliment.Click();
                 }
             }
 
@@ -697,7 +781,7 @@
                 self.aliment.Categorie2 = "";
                 (<HTMLSelectElement>selectFoodCategory2.HtmlElement).value = "";
 
-                btnContinuer.CheckState();
+                btnNouvelAliment.CheckState();
                 btnNouveauTicket.CheckState();
                 btnTerminerEnregistrer.CheckState();
             });
@@ -712,7 +796,7 @@
                 self.aliment.Categorie2 = val;
                 (<HTMLSelectElement>selectFoodCategory.HtmlElement).value = "";
 
-                btnContinuer.CheckState();
+                btnNouvelAliment.CheckState();
                 btnNouveauTicket.CheckState();
                 btnTerminerEnregistrer.CheckState();
             });
@@ -720,7 +804,7 @@
             let selectAliment = <HTMLDataListElement>document.getElementById("selectAliment");
 
             self.config.ListAliments.filter(x => {
-                let o: HTMLOptionElement = document.createElement("option");
+                let o: HTMLOptionElement = document.createElement("option");               
                 //let txt: string = x.DesignationModifiee.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
                 //let arr = txt.split(" ");
                 //let arr2 = [];
@@ -778,7 +862,7 @@
 
                 self.aliment.Categorie2 = "";
 
-                btnContinuer.CheckState();
+                btnNouvelAliment.CheckState();
                 btnNouveauTicket.CheckState();
 
             });
@@ -793,7 +877,7 @@
                 self.aliment.Categorie1 = "";
                 self.aliment.Categorie2 = "";
                 self.aliment.LibelleCustom = designation;
-                btnContinuer.CheckState();
+                btnNouvelAliment.CheckState();
                 btnNouveauTicket.CheckState();
                 btnTerminerEnregistrer.CheckState();
             });
@@ -858,7 +942,7 @@
             let inputPoids = Framework.Form.InputText.Register("inputPoids", nb, Framework.Form.Validator.NumberPos("Nombre attendu."), (poids: string) => {
                 self.aliment.Nb = Number(poids.replace(",", "."));
                 self.testPrixKg();
-                btnContinuer.CheckState();
+                btnNouvelAliment.CheckState();
                 btnNouveauTicket.CheckState();
                 btnTerminerEnregistrer.CheckState();
             });
@@ -880,7 +964,7 @@
                     inputPasAchete.Uncheck();
                 }
                 self.testPrixKg();
-                btnContinuer.CheckState();
+                btnNouvelAliment.CheckState();
                 btnNouveauTicket.CheckState();
                 btnTerminerEnregistrer.CheckState();
             });
@@ -890,7 +974,7 @@
                 divPrix.Hide();
             }
 
-            // ICI : création tableau labels
+            // Création tableau labels
             let tableLabels: HTMLTableElement = <HTMLTableElement>document.getElementById("tableLabels");
             
             for (let i = 0; i < self.config.ListLabels.length; i=i+2) {                
@@ -906,22 +990,24 @@
                     else {
                         Framework.Array.Remove(self.aliment.Labels, cb.Value);
                     }
-                }, self.config.ListLabels[i].Value, self.config.ListLabels[i].Value, self.config.ListLabels.indexOf(self.config.ListLabels[i].Value) > -1);
+                }, self.config.ListLabels[i].Value, self.config.ListLabels[i].Value, self.aliment.Labels.indexOf(self.config.ListLabels[i].Value) > -1);
                 input1.Value = self.config.ListLabels[i].Value;
                 //input1.HtmlElement.children[0].classList.add("form-check-input");
                 //input1.HtmlElement.children[1].classList.add("form-check-label");
                 (<HTMLInputElement>input1.HtmlElement.children[0]).style.width = "32px";
-                (<HTMLInputElement>input1.HtmlElement.children[1]).style.width = "200px";
+                (<HTMLInputElement>input1.HtmlElement.children[1]).style.width = "130px";
                 td1.appendChild(input1.HtmlElement);
                 let td2: HTMLTableCellElement = document.createElement("td");
                 tr.appendChild(td2);                
                 if (i + 1 < self.config.ListLabels.length) {
                     let input2 = Framework.Form.CheckBox.Create(() => { return true; }, (ev, cb) => {
-                        if (cb.IsChecked) { self.aliment.Labels.push(cb.Value) }
+                        if (cb.IsChecked) {
+                            self.aliment.Labels.push(cb.Value)
+                        }
                         else {
                             Framework.Array.Remove(self.aliment.Labels, cb.Value);
                         }
-                    }, self.config.ListLabels[i + 1].Value, self.config.ListLabels[i + 1].Value, self.config.ListLabels.indexOf(self.config.ListLabels[i].Value) > -1);
+                    }, self.config.ListLabels[i + 1].Value, self.config.ListLabels[i + 1].Value, self.aliment.Labels.indexOf(self.config.ListLabels[i + 1].Value) > -1);
                     input2.Value = self.config.ListLabels[i+1].Value;
                     td2.appendChild(input2.HtmlElement);
                     td2.style.padding = "4px";
@@ -931,14 +1017,12 @@
                     (<HTMLInputElement>input2.HtmlElement.children[1]).style.width = "200px";
                 }
             }
-                   
-            //let inputBio = Framework.Form.CheckBox.Register("inputBio", () => { return true }, () => { }, "");
-            //let inputAocAop = Framework.Form.CheckBox.Register("inputAocAop", () => { return true }, () => { }, "");
-            //let inputLabelRouge = Framework.Form.CheckBox.Register("inputLabelRouge", () => { return true }, () => { }, "");
-            //let inputPecheDurable = Framework.Form.CheckBox.Register("inputPecheDurable", () => { return true }, () => { }, "");
-            //let inputCommerceEquitable = Framework.Form.CheckBox.Register("inputCommerceEquitable", () => { return true }, () => { }, "");
-            //let inputAutre = Framework.Form.CheckBox.Register("inputAutre", () => { return true }, () => { }, "");
 
+            let divLabels = Framework.Form.TextElement.Register("divLabels");
+            if (self.config.ListOptions.indexOf("HideLabels") > -1) {
+                divLabels.Hide();
+            }
+                   
             let inputJamaisGoute = Framework.Form.CheckBox.Register("inputJamaisGoute", () => { return true }, () => {
                 rating.Clear();
                 if (inputJamaisGoute.IsChecked) {
@@ -946,7 +1030,7 @@
                 } else {
                     self.aliment.Appreciation = -1;
                 }
-                btnContinuer.CheckState();
+                btnNouvelAliment.CheckState();
                 btnNouveauTicket.CheckState();
                 btnTerminerEnregistrer.CheckState();
             }, "");
@@ -956,7 +1040,7 @@
                     inputPrix.Set("");
                     self.aliment.Prix = -1;
                 }
-                btnContinuer.CheckState();
+                btnNouvelAliment.CheckState();
                 btnNouveauTicket.CheckState();
                 btnTerminerEnregistrer.CheckState();
             }, "");
@@ -966,7 +1050,7 @@
                     inputPoids.Set("");
                     self.aliment.PoidsUnitaire = -1;
                 }
-                btnContinuer.CheckState();
+                btnNouvelAliment.CheckState();
                 btnNouveauTicket.CheckState();
                 btnTerminerEnregistrer.CheckState();
             }, "");
@@ -974,12 +1058,17 @@
             let rating = Framework.Rating.Render(document.getElementById("divLikingRank"), "", 1, 5, self.aliment.Appreciation, (x) => {
                 self.aliment.Appreciation = x;
                 inputJamaisGoute.Uncheck();
-                btnContinuer.CheckState();
+                btnNouvelAliment.CheckState();
                 btnNouveauTicket.CheckState();
                 btnTerminerEnregistrer.CheckState();
             });
 
-            let btnContinuer = Framework.Form.Button.Register("btnContinuer", () => {
+            let divLiking = Framework.Form.TextElement.Register("divLiking");            
+            if (self.config.ListOptions.indexOf("HideLiking") > -1) {
+                divLiking.Hide();
+            }
+
+            let btnNouvelAliment = Framework.Form.Button.Register("btnNouvelAliment", () => {
                 return ((self.aliment.LibelleCIQUAL && self.aliment.LibelleCIQUAL.length > 0) || self.aliment.Categorie1 != "" || self.aliment.Categorie2 != "" || (self.aliment.LibelleCustom && self.aliment.LibelleCustom.length > 3)) && (inputPoids.IsValid || inputPasPoids.IsChecked) && (inputPrix.IsValid || inputPasAchete.IsChecked || self.menu != "") /*&& self.aliment.Appreciation >= 0*/;
             }, () => {
 
@@ -1025,7 +1114,7 @@
             }, () => {
 
                 if ((self.aliment.LibelleCIQUAL && self.aliment.LibelleCIQUAL.length > 0) || self.aliment.Categorie1 || self.aliment.Categorie2 || self.aliment.LibelleCustom || inputPoids.IsValid || inputPasPoids.IsChecked || inputPrix.IsValid || inputPasAchete.IsChecked || self.menu != "") {
-                    Framework.Modal.Confirm("Confirmation requise", "Les changements ne seront pas enregistrés.<br/>Etes-vous sûr(e) de vouloir quitter cet écran ?<br/>Si non, cliquez sur le bouton 'Nouvel aliment' pour enregister les changements.", () => { self.showDivLogin() });
+                    Framework.Modal.Confirm(self.getTranslation("txtConfirmation"), self.getTranslation("txtChangementsNonEnregistres"), () => { self.showDivLogin() });
                 } else {
                     self.showDivLogin();
                 }
@@ -1041,19 +1130,46 @@
                 });
 
             })
+            
+            self.translate("h5ChoixAliment");
+            self.translate("h5NomAliment");
+            self.translate("h5CategorieAliment");            
+            self.translate("h5Quantite");
+            self.translate("h5Prix");
+            self.translate("h5Labels");
+            self.translate("h5Gout");
+            self.translate("inputDesignation", inputDesignation);
+            self.translate("inputDesignation2", inputDesignation2);
+            self.translate("inputPoids", inputPoids);
+            self.translate("labelConnaisPasPoids");
+            self.translate("btnGrammes", btnGrammes);
+            self.translate("btnKilos", btnKilos);
+            self.translate("btnLitres", btnLitres);
+            self.translate("btnCentilitres", btnCentilitres);
+            self.translate("btnUnites", btnUnites);
+            self.translate("inputPrix", inputPrix);
+            self.translate("labelConnaisPasPrix");
+            self.translate("labelJamaisGoute");
+            self.translate("pWarning");
+            self.translate("btnNouveauTicket", btnNouveauTicket);
+            self.translate("btnTerminerEnregistrer", btnTerminerEnregistrer);
+            self.translate("btnTerminer", btnTerminer);
+            self.translate("btnNouvelAliment", btnNouvelAliment);
 
             if (update == true) {
-                btnContinuer.SetInnerHTML("Modifier");
+                self.translate("txtModifier", btnNouvelAliment);                
                 btnNouveauTicket.Hide();
                 btnTerminer.Hide();
+                btnTerminerEnregistrer.Hide();
             }
 
         });
     }
 
     private showEnregistrementConfirme(action: () => void) {
-
+        let self = this;
         this.show("html/DivEnregistre.html", () => {
+            self.translate("h4AlimentEnregistre");
             setTimeout(() => {
                 action();
             }, 1000);

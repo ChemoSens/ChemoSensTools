@@ -869,6 +869,13 @@ namespace ChemosensTools
 
 
         ////// CodAppro
+
+        [OperationContract]
+        public string TranslateCodAppro(string sn)
+        {
+            return CodAppro.CodAppro.Translate(ConfigurationManager.AppSettings["CodApproDirPath"], sn, hashKey);
+        }
+
         [OperationContract]
         public string LoginCodAppro(string code, string sn)
         {
@@ -895,6 +902,21 @@ namespace ChemosensTools
             return CodAppro.CodAppro.DownloadData(ConfigurationManager.AppSettings["CodApproDirPath"], sn , code, hashKey);
         }
 
+        [OperationContract]
+        public void ImportQuestionnaireCodAppro(string data, string sn, string login, string password)
+        {
+            Account a = Account.Check(login, password, accountDir, hashKey, "CodAchats");
+            CodAppro.CodAppro.ImportQuestionnaire(data,  ConfigurationManager.AppSettings["CodApproDirPath"] + "\\" + sn + "\\questionnaires\\", hashKey);
+        }
+
+
+        [OperationContract]
+        public string DownloadQuestionnaireCodAppro(string login, string password, string dir)
+        {            
+            Account a = Account.Check(login, password, accountDir, hashKey, "CodAchats");
+            byte[] bytes = CodAppro.CodAppro.DownloadQuestionnaire(ConfigurationManager.AppSettings["CodApproDirPath"] + "\\" + dir + "\\questionnaires\\", hashKey);
+            return Convert.ToBase64String(bytes);
+        }
     }
 
 }

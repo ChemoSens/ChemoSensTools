@@ -745,11 +745,15 @@
 
                 }
 
-                if (control instanceof Controls.CustomImage && (<Controls.CustomImage>control)._Source == "Product") {
+                if (control._Type == "CustomImage" && (<Controls.CustomImage>control)._Source == "ProductURL") {
                     let currentDesign = _subjectSessionReader.Session.ListExperimentalDesigns.filter((x) => { return x.Id == _subjectSessionReader.CurrentScreen.Screen.ExperimentalDesignId })[0];
-                    let binaries = currentDesign.ListItems.filter((x) => { return x.Code == _subjectSessionReader.CurrentScreen.ProductCode })[0].Image;
-                    if (binaries) {
-                        (<Controls.CustomImage>control).SetBinaries(binaries);
+                    //let binaries = currentDesign.ListItems.filter((x) => { return x.Code == _subjectSessionReader.CurrentScreen.ProductCode })[0].Image;
+                    //if (binaries) {
+                    //    (<Controls.CustomImage>control).SetBinaries(binaries);
+                    //}
+                    let url = currentDesign.ListItems.filter((x) => { return x.Code == _subjectSessionReader.CurrentScreen.ProductCode })[0].ImageURL;
+                    if (url) {
+                        (<Controls.CustomImage>control).SetURL(url);
                     }
                 }
 
@@ -826,6 +830,12 @@
 
                                     _subjectSessionReader.goToNextScreen_ButtonClick(_customButton, "nothing", () => { _subjectSessionReader.onNavigation(_customButton._URL); });
 
+                                    break;
+                                case "GoToSubjectUrlAndGoToNextPage":
+                                    // Propage l'événement OnNavigate  
+                                    _subjectSessionReader.goToNextScreen_ButtonClick(_customButton, "nothing", () => {
+                                        _subjectSessionReader.onNavigation(_subjectSessionReader.Session.Subject.URL);
+                                    });
                                     break;
                                 case "StartChronometer":
                                     _subjectSessionReader.start_ButtonClick(_customButton);
@@ -4445,6 +4455,7 @@
             public _SelectedBackground: string = "gold"; // Couleur d'arrière plan quand le bouton est cliqué
             public _SelectedBorderBrush: string = "black"  // Couleur de la bordure quand le bouton est coché
             public _ChangeHoverBackground: boolean = true;
+            public _Key:string="";
 
             public _ConfirmationRequired: boolean = false;
 
@@ -4592,6 +4603,15 @@
 
                         if (_customButton.Text.length > 0 && text.toLowerCase().indexOf(_customButton.Text.toLowerCase()) > -1) {
                             _customButton.OnClick();
+                        }
+                    }
+
+                    if (_customButton._Key != "") {
+
+                        document.onkeypress = (ev) => {
+                            if (ev.key == _customButton._Key) {
+                                _customButton.Click();
+                            }
                         }
                     }
 
@@ -4907,7 +4927,15 @@
                         if (formSetEvent.ValidationResult == "") {
                             self.changeProperty("_EventName", x);
                         }
-                    }, Framework.Form.Validator.MinLength(3), () => { return (self._Action == "TDS" || self._Action == "SaveEvent" || self._Action == "SaveEventThenGoToNextPage"); });
+                }, Framework.Form.Validator.MinLength(3), () => { return (self._Action == "TDS" || self._Action == "SaveEvent" || self._Action == "SaveEventThenGoToNextPage"); });
+
+                let formSetKey = Framework.Form.PropertyEditorWithTextInput.Render("Parameters", "Key",
+                    self._Key, (x) => {
+                        
+                            self.changeProperty("_Key", x);
+                        
+                }, Framework.Form.Validator.MinLength(1), () => { return true; });
+
 
                 let controlIds = self.ListGroupOfControlFriendlyNames;
                 if (controlIds == undefined) {
@@ -4939,6 +4967,7 @@
                     properties.push(formSetSound);
                     properties.push(formSetSoundBinaries);
                     properties.push(formSetOneClickOnly);
+                    properties.push(formSetKey);
                 }
 
                 if (mode == "edition") {
@@ -4993,7 +5022,7 @@
                     properties.push(formSetURL);
                     properties.push(formSetBlank);
                     properties.push(formSetURLVariablePart);
-                    properties.push(formSetEvent);
+                    properties.push(formSetEvent);                    
                     properties.push(formSetGroupOfControlID);
                     properties.push(formSetScreenId);
                     properties.push(formSetCondition);
@@ -5005,7 +5034,7 @@
 
             private getActionList() {
                 let list: string[] = ["GoToPreviousPage", "GoToNextPage",/*"CloseApplication"*/, "GoToLoginScreen", "GoToScreen", "GoToUrl", "GoToUrlAndGoToNextPage",
-                    "TDS", "SaveEvent", "SaveEventThenGoToNextPage", "StartSameSession", "HideControl", "ShowControl"];
+                    "TDS", "SaveEvent", "SaveEventThenGoToNextPage", "StartSameSession", "HideControl", "ShowControl","GoToSubjectUrlAndGoToNextPage"];
 
                 if (this.screen.Controls.filter((x) => { return x instanceof ScreenReader.Controls.DataControl }).length > 0) {
                     list.push("StartChronometer");
@@ -13038,7 +13067,7 @@
             private image: HTMLImageElement;
             public _Source: string = "None";
 
-            public static SourceEnum: string[] = ["None", "LocalImage", "ExternalImage"/*, "Product"*/];
+            public static SourceEnum: string[] = ["None", "LocalImage", "ExternalImage", "ProductURL"];
 
             public GetEditableProperties(mode: string = "edition"): Framework.Form.PropertyEditor[] {
 
@@ -13184,6 +13213,10 @@
 
             public SetBinaries(binaries: string) {
                 this._Binaries = binaries;
+            }
+
+            public SetURL(url: string) {
+                this._URL = url;
             }
 
         }
@@ -13677,15 +13710,16 @@
         class GroupDescription {
             public Group: string = "";
             public Products: string = "";
-            public Description: string[] = [];
+            /*public Description: string[] = [];*/
+            public Description: string = "";
         }
 
         export class GroupDescriptionControl extends GroupedControl {
 
-            public _CanAddDescription: boolean = true; // Possibilité d'ajouter une description
+            /*public _CanAddDescription: boolean = true; // Possibilité d'ajouter une description*/
             public _AssociatedControlId: string; // ID du contrôle qui a permis de générer les groupes
-            public _MinNumberOfTerms: number = 0; // Nombre de descripteurs minimal
-            public _MaxNumberOfTerms: number = 10; // Nombre de descripteurs maximal
+            //public _MinNumberOfTerms: number = 0; // Nombre de descripteurs minimal
+            //public _MaxNumberOfTerms: number = 10; // Nombre de descripteurs maximal
 
             public ListControlNames: string[] = [];
 
@@ -13725,20 +13759,20 @@
                     properties.push(formSetControlId);
                     validateFormSetControlId();
 
-                    let formSetMinNumberOfTerms = Framework.Form.PropertyEditorWithNumericUpDown.Render("Parameters", "MinNumberOfTermsProperty", self._MinNumberOfTerms, 0, this.Items.length, (x) => {
-                        self.changeProperty("_MinNumberOfTerms", x);
-                    });
-                    properties.push(formSetMinNumberOfTerms);
+                    //let formSetMinNumberOfTerms = Framework.Form.PropertyEditorWithNumericUpDown.Render("Parameters", "MinNumberOfTermsProperty", self._MinNumberOfTerms, 0, this.Items.length, (x) => {
+                    //    self.changeProperty("_MinNumberOfTerms", x);
+                    //});
+                    //properties.push(formSetMinNumberOfTerms);
 
-                    let formSetMaxNumberOfTerms = Framework.Form.PropertyEditorWithNumericUpDown.Render("Parameters", "MaxNumberOfTermsProperty", self._MaxNumberOfTerms, 0, this.Items.length, (x) => {
-                        self.changeProperty("_MaxNumberOfTerms", x);
-                    });
-                    properties.push(formSetMaxNumberOfTerms);
+                    //let formSetMaxNumberOfTerms = Framework.Form.PropertyEditorWithNumericUpDown.Render("Parameters", "MaxNumberOfTermsProperty", self._MaxNumberOfTerms, 0, this.Items.length, (x) => {
+                    //    self.changeProperty("_MaxNumberOfTerms", x);
+                    //});
+                    //properties.push(formSetMaxNumberOfTerms);
 
-                    let formSetCanAddDescription = Framework.Form.PropertyEditorWithToggle.Render("Parameters", "CanAddDescription", self._CanAddDescription, (x) => {
-                        self.changeProperty("_CanAddDescription", x);
-                    });
-                    properties.push(formSetCanAddDescription);
+                    //let formSetCanAddDescription = Framework.Form.PropertyEditorWithToggle.Render("Parameters", "CanAddDescription", self._CanAddDescription, (x) => {
+                    //    self.changeProperty("_CanAddDescription", x);
+                    //});
+                   /* properties.push(formSetCanAddDescription);*/
 
                 }
 
@@ -13771,16 +13805,16 @@
                 this.ValidationMessage = "";
                 this.IsValid = true;
 
-                for (var i = 0; i < this.groupDescriptions.length; i++) {
-                    if (this.groupDescriptions[i].Description.length > self._MaxNumberOfTerms) {
+                for (var i = 0; i < this.ListData.length; i++) {
+                    if (this.ListData[i].Description==undefined || this.ListData[i].Description.length < 5) {
                         self.IsValid = false;
-                        self.ValidationMessage += Framework.LocalizationManager.Format("MaxNumberOfTerms", [self._MaxNumberOfTerms.toString(), this.groupDescriptions[i].Group]) + '\r\n';
-                    }
+                        self.ValidationMessage += "Longueur minimale de 5 caractères pour (groupe" + this.ListData[i].Group + ")";
+                    }                    
                     if (this.groupDescriptions[i].Description.length < self._MinNumberOfTerms) {
                         self.IsValid = false;
                         self.ValidationMessage += Framework.LocalizationManager.Format("MinNumberOfTerms", [self._MinNumberOfTerms.toString(), this.groupDescriptions[i].Group]) + '\r\n';
-                    }
                 }
+            }
             }
 
             public Render(editMode: boolean = false, ratio: number): void {
@@ -13817,8 +13851,11 @@
 
                 self.groupDescriptions.sort(f);
 
-                let dtParameters = new Framework.Form.DataTableParameters();
-                dtParameters.ListData = self.groupDescriptions;
+                let table = document.createElement("table");
+                let tr = document.createElement("tr"); table.appendChild(tr);
+                let td1 = document.createElement("td"); tr.appendChild(td1); td1.innerHTML = "Groupe";
+                let td2 = document.createElement("td"); tr.appendChild(td2); td2.innerHTML = "Produits";
+                let td3 = document.createElement("td"); tr.appendChild(td3); td3.innerHTML = "Description";
 
                 dtParameters.ListColumns = [
                     {
@@ -13844,77 +13881,133 @@
                 dtParameters.Paging = false;
                 dtParameters.Filtering = false;
                 dtParameters.Ordering = false;
-
+                
                 if (editMode == false) {
                     dtParameters.OnEditCell = (propertyName, data) => {
                         if (propertyName == "Description") {
 
-                            let div = document.createElement("div");
+                self.groupDescriptions.forEach((x) => {
 
-                            let getAttributeForm = (attribute: Models.CodeLabel) => {
-                                let pr = Framework.Form.PropertyEditorWithToggle.Render("", attribute.Label, data["Description"].indexOf(attribute.Code) > -1, (x) => {
-                                    let arr: string[] = data["Description"];
-                                    if (arr.length > 0 && arr.indexOf(attribute.Code) > -1) {
-                                        self.RemoveDescription(data["Group"], attribute.Code);
-                                        ////Framework.Array.Remove(data["Description"], attribute.Code);
-                                    } else {
-                                        //arr.push(attribute.Code);
-                                        self.AddDescription(data["Group"], attribute.Code);
-                                    }
-                                });
+                    let tr = document.createElement("tr"); table.appendChild(tr);
+                    let td1 = document.createElement("td"); tr.appendChild(td1); td1.innerHTML = x.Group;
+                    let td2 = document.createElement("td"); tr.appendChild(td2); td2.innerHTML = x.Products;
+                    let td3 = document.createElement("td"); tr.appendChild(td3);
+                    let input = Framework.Form.InputText.Create("", (newVal, sender) => {
+                        let group = sender.CustomAttributes.Get("group");
+                        let data = self.ListData.filter(x => x.Group == group);
+                        data.forEach(x => x.Description = newVal);                        
+                        self.validate();
+                    }, Framework.Form.Validator.MinLength(4), true);
+                    input.CustomAttributes.Add("group", x.Group);
+                    td3.appendChild(input.HtmlElement);
+                });
                                 pr.Editor.HtmlElement.classList.add("noDot");
                                 return pr;
                             }
 
-                            let getDescriptionForm = () => {
-                                let pr = Framework.Form.Button.Create(() => { return true; }, () => {
-                                    let input = Framework.Form.InputText.Create("", () => { }, Framework.Form.Validator.MinLength(3), false, ['tableInput']);
-                                    Framework.Modal.Confirm(Framework.LocalizationManager.Get("PleaseEnterNewDescriptor"), input.HtmlElement, () => {
-                                        if (input.ValidationMessage == "") {
-                                            div.removeChild(pr.HtmlElement);
-                                            let newAttribute = new Models.CodeLabel(input.Value, input.Value);
-                                            self.Attributes.push(newAttribute);
-                                            let arr: string[] = data["Description"];
-                                            arr.push(input.Value);
-                                            let pr1 = getAttributeForm(newAttribute);
-                                            div.appendChild(pr1.Editor.HtmlElement);
-                                            let pr2 = getDescriptionForm();
-                                            div.appendChild(pr2.HtmlElement);
-                                        }
-                                    });
-                                }, Framework.LocalizationManager.Get("Descriptor"), ['tableInput', 'btnEditableProperty', 'editableProperty']);
-                                return pr;
-                            }
+                this.HtmlElement.appendChild(table);
 
-                            // Liste de cases à cocher
-                            self.Attributes.forEach((attribute) => {
-                                let pr = getAttributeForm(attribute);
-                                div.appendChild(pr.Editor.HtmlElement);
-                            });
+                //let dtParameters = new Framework.Form.DataTableParameters();
+                //dtParameters.ListData = self.groupDescriptions;
 
-                            if (self._CanAddDescription == true) {
-                                let pr = getDescriptionForm();
-                                div.appendChild(pr.HtmlElement);
-                            }
+                //dtParameters.ListColumns = [
+                //    {
+                //        data: "Group", title: Framework.LocalizationManager.Get("Group"), render: function (data, type, row) {
+                //            return data;
+                //        }
+                //    },
+                //    {
+                //        data: "Products", title: Framework.LocalizationManager.Get("Products"), render: function (data, type, row) {
+                //            return data;
+                //        }
+                //    },
+                //    {
+                //        data: "Description", title: Framework.LocalizationManager.Get("Description"), render: function (data, type, row) {
+                //            if (data.length == 0) {
+                //                return Framework.LocalizationManager.Get("NoDescription");
+                //            }
+                //            return data.join(', ');
+                //        }
+                //    }
+                //];
+                //dtParameters.Order = [[0, 'desc']];
+                //dtParameters.Paging = false;
+                //dtParameters.Filtering = false;
+                //dtParameters.Ordering = false;
 
-                            return div;
-                        }
-                    }
-                }
+                //if (editMode == false) {
+                //    dtParameters.OnEditCell = (propertyName, data) => {
+                //        if (propertyName == "Description") {
 
-                dtParameters.TdHeight = 20;
+                //            let div = document.createElement("div");
 
-                let dtTable: Framework.Form.DataTable;
+                //            let getAttributeForm = (attribute: Models.CodeLabel) => {
+                //                let pr = Framework.Form.PropertyEditorWithToggle.Render("", attribute.Label, data["Description"].indexOf(attribute.Code) > -1, (x) => {
+                //                    let arr: string[] = data["Description"];
+                //                    if (arr.length > 0 && arr.indexOf(attribute.Code) > -1) {
+                //                        self.RemoveDescription(data["Group"], attribute.Code);
+                //                        ////Framework.Array.Remove(data["Description"], attribute.Code);
+                //                    } else {
+                //                        //arr.push(attribute.Code);
+                //                        self.AddDescription(data["Group"], attribute.Code);
+                //                    }
+                //                });
+                //                pr.Editor.HtmlElement.classList.add("noDot");
+                //                return pr;
+                //            }
 
-                Framework.Form.DataTable.AppendToDiv(undefined, this._Height + "px", this.HtmlElement, dtParameters, (dt) => {
-                    dtTable = dt;
-                    dt.SetStyle('td', 'text-align', 'left');
-                    dt.SetStyle('td', 'font-weight', self._FontWeight);
-                    dt.SetStyle('td', 'font-style', self._FontStyle);
-                    dt.SetStyle('td', 'font-size', self._FontSize + "px");
-                    dt.SetStyle('td', 'color', self._Foreground);
-                    dt.SetStyle('td', 'font-family', self._FontFamily);
-                });
+                //            let getDescriptionForm = () => {
+                //                let pr = Framework.Form.Button.Create(() => { return true; }, () => {
+                //                    let input = Framework.Form.InputText.Create("", () => { }, Framework.Form.Validator.MinLength(3), false, ['tableInput']);
+                //                    Framework.Modal.Confirm(Framework.LocalizationManager.Get("PleaseEnterNewDescriptor"), input.HtmlElement, () => {
+                //                        if (input.ValidationMessage == "") {
+                //                            div.removeChild(pr.HtmlElement);
+                //                            let newAttribute = new Models.CodeLabel(input.Value, input.Value);
+                //                            self.Attributes.push(newAttribute);
+                //                            let arr: string[] = data["Description"];
+                //                            arr.push(input.Value);
+                //                            let pr1 = getAttributeForm(newAttribute);
+                //                            div.appendChild(pr1.Editor.HtmlElement);
+                //                            let pr2 = getDescriptionForm();
+                //                            div.appendChild(pr2.HtmlElement);
+                //                        }
+                //                    });
+                //                }, Framework.LocalizationManager.Get("Descriptor"), ['tableInput', 'btnEditableProperty', 'editableProperty']);
+                //                return pr;
+                //            }
+
+                //            // Liste de cases à cocher
+                //            //self.Attributes.forEach((attribute) => {
+                //            //    let pr = getAttributeForm(attribute);
+                //            //    div.appendChild(pr.Editor.HtmlElement);
+                //            //});
+
+                //            //if (self._CanAddDescription == true) {
+                //            //    let pr = getDescriptionForm();
+                //            //    div.appendChild(pr.HtmlElement);
+                //            //}
+
+                //            let input = Framework.Form.InputText.Create("", () => { }, Framework.Form.Validator.MinLength(3), false, ['tableInput']);
+                //            div.appendChild(input.HtmlElement);
+
+                //            return div;
+                //        }
+                //    }
+                //}
+
+                //dtParameters.TdHeight = 20;
+
+                //let dtTable: Framework.Form.DataTable;
+
+                //Framework.Form.DataTable.AppendToDiv(undefined, this._Height + "px", this.HtmlElement, dtParameters, (dt) => {
+                //    dtTable = dt;
+                //    dt.SetStyle('td', 'text-align', 'left');
+                //    dt.SetStyle('td', 'font-weight', self._FontWeight);
+                //    dt.SetStyle('td', 'font-style', self._FontStyle);
+                //    dt.SetStyle('td', 'font-size', self._FontSize + "px");
+                //    dt.SetStyle('td', 'color', self._Foreground);
+                //    dt.SetStyle('td', 'font-family', self._FontFamily);
+                //});
 
 
 
@@ -14201,41 +14294,41 @@
             //    }
             //}
 
-            public AddDescription(group: string, attribute: string) {
-                let self = this;
-                let data: Models.Data[] = this.ListData.filter((x) => { return x.Group == group });
-                let groupDescription = self.groupDescriptions.filter((x) => x.Group == group)[0];
-                groupDescription.Description.push(attribute);
+            //public AddDescription(group: string, attribute: string) {
+            //    let self = this;
+            //    let data: Models.Data[] = this.ListData.filter((x) => { return x.Group == group });
+            //    let groupDescription = self.groupDescriptions.filter((x) => x.Group == group)[0];
+            //    groupDescription.Description.push(attribute);
 
-                data.forEach((x) => {
-                    let tab = Framework.Array.Unique((x.Description + "," + attribute).split(","));
-                    if (tab.indexOf('') >= 0) {
-                        tab.splice(tab.indexOf(''), 1);
-                    }
-                    x.Description = tab.join(",");
-                    self.onDataChanged(x);
-                });
-                self.validate();
-            }
+            //    data.forEach((x) => {
+            //        let tab = Framework.Array.Unique((x.Description + "," + attribute).split(","));
+            //        if (tab.indexOf('') >= 0) {
+            //            tab.splice(tab.indexOf(''), 1);
+            //        }
+            //        x.Description = tab.join(",");
+            //        self.onDataChanged(x);
+            //    });
+            //    self.validate();
+            //}
 
-            public RemoveDescription(group: string, attribute: string) {
-                let self = this;
-                let data: Models.Data[] = this.ListData.filter((x) => { return x.Group == group });
-                let gd = self.groupDescriptions.filter((x) => x.Group == group)[0];
-                let index = gd.Description.indexOf(attribute);
-                gd.Description.splice(index, 1);
+            //public RemoveDescription(group: string, attribute: string) {
+            //    let self = this;
+            //    let data: Models.Data[] = this.ListData.filter((x) => { return x.Group == group });
+            //    let gd = self.groupDescriptions.filter((x) => x.Group == group)[0];
+            //    let index = gd.Description.indexOf(attribute);
+            //    gd.Description.splice(index, 1);
 
-                data.forEach((x) => {
-                    let tab = Framework.Array.Unique(x.Description.replace(attribute, "").split(","));
-                    if (tab.indexOf('') >= 0) {
-                        tab.splice(tab.indexOf(''), 1);
-                    }
-                    x.Description = tab.join(",");
-                    self.onDataChanged(x);
-                });
+            //    data.forEach((x) => {
+            //        let tab = Framework.Array.Unique(x.Description.replace(attribute, "").split(","));
+            //        if (tab.indexOf('') >= 0) {
+            //            tab.splice(tab.indexOf(''), 1);
+            //        }
+            //        x.Description = tab.join(",");
+            //        self.onDataChanged(x);
+            //    });
 
-                self.validate();
-            }
+            //    self.validate();
+            //}
 
             //public GetListAnchors(): HTMLAnchorElement[] {
             //    return this.listAnchors;
@@ -14648,18 +14741,21 @@
                 this.div = document.createElement("div");
                 this.div.innerHTML = label;
                 this.div.style.margin = "0";
-                this.div.style.marginBottom = "5px";
+                this.div.style.marginBottom = "2px";   
                 this.div.style.zIndex = "1000";
                 this.div.style.width = width + "px";
                 this.div.style.height = height + "px";
+                this.div.style.lineHeight = height + "px";
                 this.div.style.position = "absolute";
                 this.div.style.border = '1px solid black';
                 this.div.style.background = color.Hex;
                 this.div.style.color = Framework.Color.InvertHexColor(color.Hex);
                 this.div.style.fontFamily = control._FontFamily;
-                this.div.style.fontSize = control._FontSize + "px";
+                /*this.div.style.fontSize = control._FontSize + "px";*/
+                this.div.style.fontSize = (height-2) + "px";
                 this.div.style.fontWeight = control._FontWeight;
                 this.div.style.fontStyle = control._FontStyle;
+                this.div.style.verticalAlign = "middle";
                 this.div.style.textAlign = "center"
                 this.div.style.touchAction = "none";
                 this.div.classList.add("noselect");
@@ -14718,12 +14814,12 @@
                 this.dropZoneDiv.style.userSelect = "none";
 
                 this.dropZoneDiv.style.zIndex = "1";
-                this.dropZoneDiv.style.height = (height - 20) + "px";;
+                this.dropZoneDiv.style.height = (height - 20) + "px";                
                 this.dropZoneDiv.style.width = width + "px";;
                 this.dropZoneDiv.style.background = "lightgray";
                 this.dropZoneDiv.style.left = left + "px";
                 this.dropZoneDiv.style.top = (top + 30) + "px";
-                this.dropZoneDiv.classList.add("noselect");
+                this.dropZoneDiv.classList.add("noselect");                
 
                 this.containerDiv.appendChild(this.dropZoneDiv);
 
@@ -14748,6 +14844,11 @@
                 let top = Number(this.dropZoneDiv.style.top.replace('px', ''));
                 for (let i = 0; i < this.items.length; i++) {
                     this.items[i].Div.style.top = top + "px";
+                    if (top > Number(this.dropZoneDiv.style.height.replace('px', ''))) {
+                        this.items[i].Div.style.visibility = "hidden";
+                    } else {
+                        this.items[i].Div.style.visibility = "visible";
+                    }
                     top += Number(this.items[i].Div.style.height.replace('px', '')) + 2;
                 }
             }
@@ -14783,7 +14884,7 @@
             //TODO : style du texte
             //TODO : couleurs produits
 
-            public _BoxSize: number = 100;
+            public _BoxSize: number = 50;
 
             private listDraggableItems: DraggableItem[] = [];
             private listDropZones: DropZone[] = [];
@@ -14846,38 +14947,51 @@
                 let dropZonesDiv: HTMLElement[] = [];
                 let draggableItemsDiv: HTMLElement[] = [];
 
-                let maxBoxSize = Framework.Maths.Round((this._Width - (5 * this.Items.length + 1)) / (this.Items.length + 1), 0);
-                if (this._BoxSize > maxBoxSize) {
-                    this._BoxSize = maxBoxSize;
-                }
+                let boxWidth = Framework.Maths.Round((this._Width - (dropZones*3)) / (dropZones+1), 0)*ratio;
+
+                //let maxBoxSize = Framework.Maths.Round((this._Width - (5 * this.Items.length + 1)) / (this.Items.length + 1), 0);
+                //if (this._BoxSize > maxBoxSize) {
+                //    this._BoxSize = maxBoxSize;
+                //}
 
 
-                let baseDropZone = new DropZone("0", this._BoxSize, this._Height - this._BoxSize - 20, 0, 0, this.Items.length);
+                //let baseDropZone = new DropZone("0", this._BoxSize, this._Height * ratio - this._BoxSize * ratio - 20, 0, 0, this.Items.length);
+                //this.listDropZones.push(baseDropZone);
+                //dropZonesDiv.push(baseDropZone.DropZone);
+                //this.HtmlElement.appendChild(baseDropZone.Container);
+
+                //left += this._BoxSize + 5;
+
+                /*var colors: Framework.NamedColor[] = Framework.Color.DistinctPalette;*/
+
+                var boxHeight = (this._Height - this._BoxSize - 20)*ratio;
+                var itemHeight = this._BoxSize*ratio;
+                //while ((itemHeight * (this.Items.length + 1)) >= boxHeight) {
+                //    itemHeight = itemHeight - 2;
+                //}
+
+                //let baseDropZone = new DropZone("0", this._BoxSize, boxHeight * ratio, 0, 0, this.Items.length);
+                let baseDropZone = new DropZone("0", boxWidth, boxHeight, 0, 0, this.Items.length);
                 this.listDropZones.push(baseDropZone);
                 dropZonesDiv.push(baseDropZone.DropZone);
                 this.HtmlElement.appendChild(baseDropZone.Container);
 
-                left += this._BoxSize + 5;
-
-                var colors: Framework.NamedColor[] = Framework.Color.DistinctPalette;
-
-                var boxHeight = (this._Height - this._BoxSize - 20);
-                var itemHeight = this._BoxSize;
-                while ((itemHeight * (this.Items.length + 1)) >= boxHeight) {
-                    itemHeight = itemHeight - 2;
-                }
+                //left += this._BoxSize + 5;
+                left += boxWidth + 1;
 
                 for (var i = 0; i < dropZones; i++) {
 
-                    let dropZone = new DropZone((i + 1).toString(), this._BoxSize, boxHeight, left, 0, maxItemPerGroup);
+                    //let dropZone = new DropZone((i + 1).toString(), this._BoxSize, boxHeight*ratio, left, 0, maxItemPerGroup);
+                    let dropZone = new DropZone((i + 1).toString(), boxWidth, boxHeight, left, 0, maxItemPerGroup);
                     dropZone.Group = i + 1;
                     this.HtmlElement.appendChild(dropZone.Container);
                     this.listDropZones.push(dropZone);
                     dropZonesDiv.push(dropZone.DropZone);
 
-                    left += this._BoxSize + 5;
+                    //left += this._BoxSize + 5;
+                    left += boxWidth + 1;
                 }
-                let j = 0;
+
                 for (var i = 0; i < this.Items.length; i++) {
 
                     // Données par défaut : groupe 0
@@ -14896,10 +15010,8 @@
                     d.Type = this._DataType;
                     this.ListData.push(d);
 
-                    if (i % 19 === 0) {
-                        j = 0
-                    }
-                    let draggable = new DraggableItem(this.Items[i].Code, this.Items[i].Label, this._BoxSize, itemHeight, colors[j], self);
+                    //let draggable = new DraggableItem(this.Items[i].Code, this.Items[i].Label, this._BoxSize, itemHeight, Framework.Color.BasePalette[0], self);
+                    let draggable = new DraggableItem(this.Items[i].Code, this.Items[i].Label, boxWidth, itemHeight, Framework.Color.BasePalette[0], self);
                     draggable.DropZone = baseDropZone;
                     this.HtmlElement.appendChild(draggable.Div);
                     this.listDraggableItems.push(draggable);
@@ -14927,7 +15039,7 @@
                                 });
                             },
                             dropZonesDiv,
-                            this.Ratio
+                            self.Ratio
                         );
 
                     }
@@ -14976,7 +15088,7 @@
 
                     let maxLength = this.Items.length;
                     if (maxLength == 0) {
-                        maxLength = 40;
+                        maxLength = 10;
                     }
 
                     let formSetMinNumberOfGroups = Framework.Form.PropertyEditorWithNumericUpDown.Render("Parameters", "MinNumberOfGroupsProperty", self._MinNumberOfGroups, 1, maxLength, (x) => {

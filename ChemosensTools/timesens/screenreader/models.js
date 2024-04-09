@@ -434,7 +434,7 @@ var Models;
                 col11.RemoveSpecialCharacters = true;
                 TableData.ListColumns.push(col11);
             }
-            if (selectedDataType == "Sentiment" || selectedDataType == "Question" || selectedDataType == "FreeTextQuestion" || selectedDataType == "SpeechToText" || selectedDataType == "SingleAnswerQuestion" || selectedDataType == "MultipleAnswersQuestion") {
+            if (selectedDataType == "Sentiment" || selectedDataType == "Question" || selectedDataType == "FreeTextQuestion" || selectedDataType == "SpeechToText" || selectedDataType == "SingleAnswerQuestion" || selectedDataType == "MultipleAnswersQuestion" || selectedDataType == "Sorting") {
                 var col12 = new Framework.Form.TableColumn();
                 col12.Name = "Description";
                 col12.Title = Framework.LocalizationManager.Get("Description");
@@ -587,6 +587,7 @@ var Models;
             _this.ProfessionalActivity = "";
             _this.FamilialStatus = "";
             _this.Notes = "";
+            _this.URL = "";
             return _this;
         }
         // Supprimer
@@ -603,7 +604,8 @@ var Models;
                 { data: "Address", title: Framework.LocalizationManager.Get("Address") }, //OK
                 //TODO{ data: "BirthDate", title: Localization.Get("BirthDate") },
                 { data: "Gender", title: Framework.LocalizationManager.Get("Gender") },
-                { data: "Notes", title: Framework.LocalizationManager.Get("Notes") } //OK
+                { data: "Notes", title: Framework.LocalizationManager.Get("Notes") }, //OK
+                { data: "URL", title: Framework.LocalizationManager.Get("URL") } //OK
             ];
             PanelLeaderModels.DBField.ExtendDataTableColumnsWithDBFields(additionalFields, subjectsColumns);
             // Propriétés modifiables à l'aide d'un input texte, sans validation
@@ -1737,7 +1739,8 @@ var Models;
         __extends(ExperimentalDesignItem, _super);
         function ExperimentalDesignItem() {
             var _this = _super !== null && _super.apply(this, arguments) || this;
-            _this.Image = "";
+            /*public Image: string = "";*/
+            _this.ImageURL = "";
             _this.Description = "";
             _this.Notes = "";
             return _this;
