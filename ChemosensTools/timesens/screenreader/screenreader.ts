@@ -109,7 +109,7 @@
             }
         }
 
-        private onNavigation(url: string, blank:boolean=false): void {
+        private onNavigation(url: string, blank: boolean = false): void {
             if (this.actions.OnNavigation) {
                 this.actions.OnNavigation(url, blank);
             }
@@ -1003,6 +1003,17 @@
             }).forEach((y) => {
                 (<Controls.CustomTimer>y).Start();
             });
+
+
+            document.addEventListener("keydown", (evt) => {
+                (_ref.listControls.filter(function (x) {
+                    return (x instanceof Controls.CustomButton && (<Controls.CustomButton>x)._Key==evt.key);
+                })).forEach((y) => {
+                    (<Controls.CustomButton>y).Click();
+                });
+   
+            });
+
         }
 
         private actionGoToScreenOfDesignItem() {
@@ -4453,7 +4464,7 @@
             public _SelectedBackground: string = "gold"; // Couleur d'arrière plan quand le bouton est cliqué
             public _SelectedBorderBrush: string = "black"  // Couleur de la bordure quand le bouton est coché
             public _ChangeHoverBackground: boolean = true;
-            public _Key:string="";
+            public _Key: string = "";
 
             public _ConfirmationRequired: boolean = false;
 
@@ -4604,14 +4615,25 @@
                         }
                     }
 
-                    if (_customButton._Key != "") {
+                    //if (_customButton._Key != "") { 
 
-                        document.onkeypress = (ev) => {
-                            if (ev.key == _customButton._Key) {
-                                _customButton.Click();
-                            }
-                        }
-                    }
+
+
+                    //        document.addEventListener("keydown", (evt) => {
+                    //            if (evt.key == _customButton._Key) {                                    
+                    //                _customButton.Click();
+                    //            }
+                    //        });
+
+
+
+
+                    //    //document.onkeypress = (ev) => {
+                    //    //    if (ev.key == _customButton._Key) {
+                    //    //        _customButton.Click();
+                    //    //    }
+                    //    //}
+                    //}
 
                     // Rendu en mode non éditable
 
@@ -4902,13 +4924,13 @@
                         if (formSetURL.ValidationResult == "") {
                             self.changeProperty("_URL", x);
                         }
-                }, Framework.Form.Validator.MinLength(3), () => { return (self._Action == "GoToUrl" || self._Action == "GoToUrlAndGoToNextPage" || self._Action == "GoToScreenOfSampleCodeInputAndExit") });
+                    }, Framework.Form.Validator.MinLength(3), () => { return (self._Action == "GoToUrl" || self._Action == "GoToUrlAndGoToNextPage" || self._Action == "GoToScreenOfSampleCodeInputAndExit") });
 
                 let formSetBlank = Framework.Form.PropertyEditorWithToggle.Render("Parameters", "New window",
                     self._Blank, (x) => {
-                        
-                            self.changeProperty("_Blank", x);
-                        
+
+                        self.changeProperty("_Blank", x);
+
                     }, () => { return (self._Action == "GoToUrl") });
 
                 //TOFIX : URRL
@@ -4925,14 +4947,14 @@
                         if (formSetEvent.ValidationResult == "") {
                             self.changeProperty("_EventName", x);
                         }
-                }, Framework.Form.Validator.MinLength(3), () => { return (self._Action == "TDS" || self._Action == "SaveEvent" || self._Action == "SaveEventThenGoToNextPage"); });
+                    }, Framework.Form.Validator.MinLength(3), () => { return (self._Action == "TDS" || self._Action == "SaveEvent" || self._Action == "SaveEventThenGoToNextPage"); });
 
                 let formSetKey = Framework.Form.PropertyEditorWithTextInput.Render("Parameters", "Key",
                     self._Key, (x) => {
-                        
-                            self.changeProperty("_Key", x);
-                        
-                }, Framework.Form.Validator.MinLength(1), () => { return true; });
+
+                        self.changeProperty("_Key", x);
+
+                    }, Framework.Form.Validator.MinLength(1), () => { return true; });
 
 
                 let controlIds = self.ListGroupOfControlFriendlyNames;
@@ -5020,7 +5042,7 @@
                     properties.push(formSetURL);
                     properties.push(formSetBlank);
                     properties.push(formSetURLVariablePart);
-                    properties.push(formSetEvent);                    
+                    properties.push(formSetEvent);
                     properties.push(formSetGroupOfControlID);
                     properties.push(formSetScreenId);
                     properties.push(formSetCondition);
@@ -5032,7 +5054,7 @@
 
             private getActionList() {
                 let list: string[] = ["GoToPreviousPage", "GoToNextPage",/*"CloseApplication"*/, "GoToLoginScreen", "GoToScreen", "GoToUrl", "GoToUrlAndGoToNextPage",
-                    "TDS", "SaveEvent", "SaveEventThenGoToNextPage", "StartSameSession", "HideControl", "ShowControl","GoToSubjectUrlAndGoToNextPage"];
+                    "TDS", "SaveEvent", "SaveEventThenGoToNextPage", "StartSameSession", "HideControl", "ShowControl", "GoToSubjectUrlAndGoToNextPage"];
 
                 if (this.screen.Controls.filter((x) => { return x instanceof ScreenReader.Controls.DataControl }).length > 0) {
                     list.push("StartChronometer");
@@ -5492,7 +5514,7 @@
                 this.label.style.fontFamily = this._FontFamily;
                 this.label.style.color = this._Foreground;
                 this.label.style.fontSize = this._FontSize * ratio + "px";
-                this.label.style.fontWeight = this._FontWeight;                
+                this.label.style.fontWeight = this._FontWeight;
                 this.label.style.fontStyle = this._FontStyle;
                 this.label.style.height = (this._Height * ratio) + "px";
                 this.label.style.maxHeight = (this._Height * ratio) + "px";
@@ -6830,7 +6852,7 @@
 
                 let increment = 0;
 
-                if (this.Orientation == "Horizontal") {                    
+                if (this.Orientation == "Horizontal") {
                     increment = ((this._Width) / this.ListControlLabels.length - 10);
                     //left = (this._Width - (this.ListControlLabels.length * this.CheckBoxSize))/ (this.ListControlLabels.length + 1);
                 }
@@ -6897,7 +6919,7 @@
                                 self.AttachedData.Score = currentCheckBox.Value;
                                 currentCheckBox.Check();
                             }
-                            self.AttachedData.RecordedDate = new Date(Date.now());                                   
+                            self.AttachedData.RecordedDate = new Date(Date.now());
                             self.OnClick();
                         };
                     } else {
@@ -7133,7 +7155,7 @@
                 }
                 else {
                     control.AttachedData.RecordedDate = new Date(Date.now());
-                    var dd: Models.Data = new Models.Data();                    
+                    var dd: Models.Data = new Models.Data();
                     dd.AttributeCode = control.AttachedData.AttributeCode;
                     dd.AttributeRank = control.AttachedData.AttributeRank;
                     dd.DataControlId = control.AttachedData.DataControlId;
@@ -7517,7 +7539,7 @@
                     }, 1);
                     properties.push(formSetMaxNumberOfAnswers);
 
-                    
+
                     properties.push(formSetMustAnswerAllAttributes);
                 }
 
@@ -7573,7 +7595,7 @@
             public _LabelWidth: number = 150; // Si ShowLabel, largeur (hauteur) du libellé de la collection de cases à cocher 
             public _ListControlLabels: ControlLabel[] = []; // Etiquettes des cases à cocher
             public _LineSpacing: number = 0; // Espace entre chaque collection de cases à cocher
-            public _MarginBetweenLabelAndControl: number = 0; 
+            public _MarginBetweenLabelAndControl: number = 0;
             public _ShowTooltip: boolean = false;
 
             public static OrientationEnum: string[] = ["Horizontal", "Vertical"];
@@ -10950,7 +10972,7 @@
 
                 (<HTMLElement>this.answerBox.HtmlElement.children[0]).style.padding = "5px";
                 (<HTMLElement>this.answerBox.HtmlElement.children[0]).style.fontFamily = this._AnswerFontFamily;
-                (<HTMLElement>this.answerBox.HtmlElement.children[0]).style.fontSize = this._AnswerFontSize*ratio + "px";
+                (<HTMLElement>this.answerBox.HtmlElement.children[0]).style.fontSize = this._AnswerFontSize * ratio + "px";
                 (<HTMLElement>this.answerBox.HtmlElement.children[0]).style.color = this._AnswerFontColor;
 
                 if (this._HasRecordButton == true && SpeechToText.IsCompatible() == true) {
@@ -13770,7 +13792,7 @@
                     //let formSetCanAddDescription = Framework.Form.PropertyEditorWithToggle.Render("Parameters", "CanAddDescription", self._CanAddDescription, (x) => {
                     //    self.changeProperty("_CanAddDescription", x);
                     //});
-                   /* properties.push(formSetCanAddDescription);*/
+                    /* properties.push(formSetCanAddDescription);*/
 
                 }
 
@@ -13804,10 +13826,10 @@
                 this.IsValid = true;
 
                 for (var i = 0; i < this.ListData.length; i++) {
-                    if (this.ListData[i].Description==undefined || this.ListData[i].Description.length < 5) {
+                    if (this.ListData[i].Description == undefined || this.ListData[i].Description.length < 5) {
                         self.IsValid = false;
                         self.ValidationMessage += "Longueur minimale de 5 caractères pour (groupe" + this.ListData[i].Group + ")";
-                    }                    
+                    }
                 }
             }
 
@@ -13851,7 +13873,7 @@
                 let td2 = document.createElement("td"); tr.appendChild(td2); td2.innerHTML = "Produits";
                 let td3 = document.createElement("td"); tr.appendChild(td3); td3.innerHTML = "Description";
 
-                
+
 
                 self.groupDescriptions.forEach((x) => {
 
@@ -13862,7 +13884,7 @@
                     let input = Framework.Form.InputText.Create("", (newVal, sender) => {
                         let group = sender.CustomAttributes.Get("group");
                         let data = self.ListData.filter(x => x.Group == group);
-                        data.forEach(x => x.Description = newVal);                        
+                        data.forEach(x => x.Description = newVal);
                         self.validate();
                     }, Framework.Form.Validator.MinLength(4), true);
                     input.CustomAttributes.Add("group", x.Group);
@@ -14705,7 +14727,7 @@
                 this.div = document.createElement("div");
                 this.div.innerHTML = label;
                 this.div.style.margin = "0";
-                this.div.style.marginBottom = "2px";   
+                this.div.style.marginBottom = "2px";
                 this.div.style.zIndex = "1000";
                 this.div.style.width = width + "px";
                 this.div.style.height = height + "px";
@@ -14716,7 +14738,7 @@
                 this.div.style.color = Framework.Color.InvertHexColor(color.Hex);
                 this.div.style.fontFamily = control._FontFamily;
                 /*this.div.style.fontSize = control._FontSize + "px";*/
-                this.div.style.fontSize = (height-2) + "px";
+                this.div.style.fontSize = (height - 2) + "px";
                 this.div.style.fontWeight = control._FontWeight;
                 this.div.style.fontStyle = control._FontStyle;
                 this.div.style.verticalAlign = "middle";
@@ -14777,12 +14799,12 @@
                 this.dropZoneDiv.style.userSelect = "none";
 
                 this.dropZoneDiv.style.zIndex = "1";
-                this.dropZoneDiv.style.height = (height - 20) + "px";                
+                this.dropZoneDiv.style.height = (height - 20) + "px";
                 this.dropZoneDiv.style.width = width + "px";;
                 this.dropZoneDiv.style.background = "lightgray";
                 this.dropZoneDiv.style.left = left + "px";
                 this.dropZoneDiv.style.top = (top + 30) + "px";
-                this.dropZoneDiv.classList.add("noselect");                
+                this.dropZoneDiv.classList.add("noselect");
 
                 this.containerDiv.appendChild(this.dropZoneDiv);
 
@@ -14908,7 +14930,7 @@
                 let dropZonesDiv: HTMLElement[] = [];
                 let draggableItemsDiv: HTMLElement[] = [];
 
-                let boxWidth = Framework.Maths.Round((this._Width - (dropZones*3)) / (dropZones+1), 0)*ratio;
+                let boxWidth = Framework.Maths.Round((this._Width - (dropZones * 3)) / (dropZones + 1), 0) * ratio;
 
                 //let maxBoxSize = Framework.Maths.Round((this._Width - (5 * this.Items.length + 1)) / (this.Items.length + 1), 0);
                 //if (this._BoxSize > maxBoxSize) {
@@ -14925,8 +14947,8 @@
 
                 /*var colors: Framework.NamedColor[] = Framework.Color.DistinctPalette;*/
 
-                var boxHeight = (this._Height - this._BoxSize - 20)*ratio;
-                var itemHeight = this._BoxSize*ratio;
+                var boxHeight = (this._Height - this._BoxSize - 20) * ratio;
+                var itemHeight = this._BoxSize * ratio;
                 //while ((itemHeight * (this.Items.length + 1)) >= boxHeight) {
                 //    itemHeight = itemHeight - 2;
                 //}

@@ -857,6 +857,7 @@
         public Resolution: string;
         public IsConditionnal: boolean = false;
         public XamlContent: string; //TODO : ne plus enregistrer
+        
 
         public Ratio: number = 1;
 

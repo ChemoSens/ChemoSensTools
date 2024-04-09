@@ -901,6 +901,13 @@ var ScreenReader;
             }).forEach(function (y) {
                 y.Start();
             });
+            document.addEventListener("keydown", function (evt) {
+                (_ref.listControls.filter(function (x) {
+                    return (x instanceof Controls.CustomButton && x._Key == evt.key);
+                })).forEach(function (y) {
+                    y.Click();
+                });
+            });
         };
         Reader.prototype.actionGoToScreenOfDesignItem = function () {
             var items = this.listControls.filter(function (x) { return x._Type == "SampleCodeInput"; });
@@ -3896,13 +3903,18 @@ var ScreenReader;
                             _customButton.OnClick();
                         }
                     };
-                    if (_customButton._Key != "") {
-                        document.onkeypress = function (ev) {
-                            if (ev.key == _customButton._Key) {
-                                _customButton.Click();
-                            }
-                        };
-                    }
+                    //if (_customButton._Key != "") { 
+                    //        document.addEventListener("keydown", (evt) => {
+                    //            if (evt.key == _customButton._Key) {                                    
+                    //                _customButton.Click();
+                    //            }
+                    //        });
+                    //    //document.onkeypress = (ev) => {
+                    //    //    if (ev.key == _customButton._Key) {
+                    //    //        _customButton.Click();
+                    //    //    }
+                    //    //}
+                    //}
                     // Rendu en mode non éditable
                     var startEventType = 'mousedown';
                     var endEventType = 'mouseup';
