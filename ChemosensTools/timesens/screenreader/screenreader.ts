@@ -13869,16 +13869,27 @@
 
                 self.groupDescriptions.sort(f);
 
-                let table = document.createElement("table");
-                let tr = document.createElement("tr"); table.appendChild(tr);
-                let td1 = document.createElement("td"); tr.appendChild(td1); td1.innerHTML = "Groupe";
-                let td2 = document.createElement("td"); tr.appendChild(td2); td2.innerHTML = "Produits";
-                let td3 = document.createElement("td"); tr.appendChild(td3); td3.innerHTML = "Description";
+                let table = document.createElement("table"); table.style.borderCollapse = "collapse"; table.style.width = "100%";
+                let thead = document.createElement("thead"); table.appendChild(thead);
+
+                let tr = document.createElement("tr"); thead.appendChild(tr);
+                let th1 = document.createElement("th"); tr.appendChild(th1); th1.innerHTML = "Groupe";
+                let th2 = document.createElement("th"); tr.appendChild(th2); th2.innerHTML = "Produits";
+                let th3 = document.createElement("th"); tr.appendChild(th3); th3.innerHTML = "Description";
+
+                for (let i of [th1, th2, th3]) {
+                    i.style.background = "#f2f2f2";
+                    i.style.border = "1px solid #ddd";
+                    i.style.padding = "8px";
+                    i.style.textAlign = "left";
+                }
+
+                let tbody = document.createElement("tbody"); table.appendChild(tbody)
 
 
                 self.groupDescriptions.forEach((x) => {
 
-                    let tr = document.createElement("tr"); table.appendChild(tr);
+                    let tr = document.createElement("tr"); tbody.appendChild(tr);
                     let td1 = document.createElement("td"); tr.appendChild(td1); td1.innerHTML = x.Group;
                     let td2 = document.createElement("td"); tr.appendChild(td2); td2.innerHTML = x.Products;
                     let td3 = document.createElement("td"); tr.appendChild(td3);
@@ -13890,8 +13901,13 @@
                     }, Framework.Form.Validator.MinLength(4), true);
                     input.CustomAttributes.Add("group", x.Group);
                     td3.appendChild(input.HtmlElement);
+
+                    for (let i of [td1, td2, td3]) {
+                        i.style.border = "1px solid #ddd";
+                        i.style.padding = "8px";
+                    }
                 });
-                            
+        
                 this.HtmlElement.appendChild(table);
 
                 //let dtParameters = new Framework.Form.DataTableParameters();
