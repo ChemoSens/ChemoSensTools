@@ -13877,7 +13877,8 @@
                 let th2 = document.createElement("th"); tr.appendChild(th2); th2.innerHTML = "Produits";
                 let th3 = document.createElement("th"); tr.appendChild(th3); th3.innerHTML = "Description";
 
-                for (let i of [th1, th2, th3]) {
+                let tableHeadCOl = [th1, th2, th3];
+                for (let i of tableHeadCOl) {
                     i.style.background = "#f2f2f2";
                     i.style.border = "1px solid #ddd";
                     i.style.padding = "8px";
@@ -13902,7 +13903,8 @@
                     input.CustomAttributes.Add("group", x.Group);
                     td3.appendChild(input.HtmlElement);
 
-                    for (let i of [td1, td2, td3]) {
+                    let tableBodyCol = [td1, td2, td3];
+                    for (let i of tableBodyCol) {
                         i.style.border = "1px solid #ddd";
                         i.style.padding = "8px";
                     }
