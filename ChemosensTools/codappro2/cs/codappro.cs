@@ -385,12 +385,12 @@ namespace ChemosensTools.CodAppro
             {
 
                 Aliment o = new Aliment();
-                o.TicketCode = (myWorksheet.Cells[rowNum, EPPlusHelper.GetColumnByName(myWorksheet, "CodeTicket")].Value ?? string.Empty).ToString();
+                o.TicketCode = (myWorksheet.Cells[rowNum, EPPlusHelper.GetColumnByName(myWorksheet, "TicketCode")].Value ?? string.Empty).ToString() + "_imported";
                 o.Code = (myWorksheet.Cells[rowNum, EPPlusHelper.GetColumnByName(myWorksheet, "Code")].Value ?? string.Empty).ToString();
                 o.Lieu = (myWorksheet.Cells[rowNum, EPPlusHelper.GetColumnByName(myWorksheet, "Lieu")].Value ?? string.Empty).ToString();
                 o.Date = (myWorksheet.Cells[rowNum, EPPlusHelper.GetColumnByName(myWorksheet, "Date")].Value ?? string.Empty).ToString();
-                //o.CodeCIQUAL = (myWorksheet.Cells[rowNum, EPPlusHelper.GetColumnByName(myWorksheet, "CodeCIQUAL")].Value ?? string.Empty).ToString();
-                //o.LibelleCIQUAL = (myWorksheet.Cells[rowNum, EPPlusHelper.GetColumnByName(myWorksheet, "LibelleCIQUAL")].Value ?? string.Empty).ToString();
+                o.CodeCIQUAL = (myWorksheet.Cells[rowNum, EPPlusHelper.GetColumnByName(myWorksheet, "CodeCIQUAL")].Value ?? string.Empty).ToString();
+                o.LibelleCIQUAL = (myWorksheet.Cells[rowNum, EPPlusHelper.GetColumnByName(myWorksheet, "LibelleCIQUAL")].Value ?? string.Empty).ToString();
                 o.Categorie1 = (myWorksheet.Cells[rowNum, EPPlusHelper.GetColumnByName(myWorksheet, "Categorie1")].Value ?? string.Empty).ToString();
                 o.Categorie2 = (myWorksheet.Cells[rowNum, EPPlusHelper.GetColumnByName(myWorksheet, "Categorie2")].Value ?? string.Empty).ToString();
 
@@ -406,8 +406,13 @@ namespace ChemosensTools.CodAppro
                     o.Prix = Convert.ToDecimal(prix);
                 }
 
-                //o.Appreciation = (myWorksheet.Cells[rowNum, EPPlusHelper.GetColumnByName(myWorksheet, "Appreciation")].Value ?? string.Empty).ToString();
-                //o.Labels = (myWorksheet.Cells[rowNum, EPPlusHelper.GetColumnByName(myWorksheet, "Labels")].Value ?? string.Empty).ToString().Split(',');
+                string appreciation = (myWorksheet.Cells[rowNum, EPPlusHelper.GetColumnByName(myWorksheet, "Appreciation")].Value ?? string.Empty).ToString();
+                if (appreciation != "")
+                {
+                    o.Appreciation = Convert.ToInt32(appreciation);
+                }
+                
+                o.Labels = (myWorksheet.Cells[rowNum, EPPlusHelper.GetColumnByName(myWorksheet, "Labels")].Value ?? string.Empty).ToString().Split(',').ToList();
                 o.Menu = (myWorksheet.Cells[rowNum, EPPlusHelper.GetColumnByName(myWorksheet, "Menu")].Value ?? string.Empty).ToString();
                 string prixmenu = (myWorksheet.Cells[rowNum, EPPlusHelper.GetColumnByName(myWorksheet, "PrixMenu")].Value ?? string.Empty).ToString();
                 if (prixmenu != "")
@@ -415,6 +420,17 @@ namespace ChemosensTools.CodAppro
                     o.PrixMenu = Convert.ToDecimal(prixmenu);
                 }
                 o.LibelleCustom = (myWorksheet.Cells[rowNum, EPPlusHelper.GetColumnByName(myWorksheet, "LibelleCustom")].Value ?? string.Empty).ToString();
+
+
+                string montantChequeAlimentaire = (myWorksheet.Cells[rowNum, EPPlusHelper.GetColumnByName(myWorksheet, "MontantChequeAlimentaire")].Value ?? string.Empty).ToString();
+                if (montantChequeAlimentaire != "")
+                {
+                    o.MontantChequeAlimentaire = Convert.ToDecimal(montantChequeAlimentaire);
+                }
+
+                o.DateSaisie = (myWorksheet.Cells[rowNum, EPPlusHelper.GetColumnByName(myWorksheet, "DateSaisie")].Value ?? string.Empty).ToString();
+                o.DateModif = (myWorksheet.Cells[rowNum, EPPlusHelper.GetColumnByName(myWorksheet, "DateMAJ")].Value ?? string.Empty).ToString();
+                
 
                 list.Add(o);
 
