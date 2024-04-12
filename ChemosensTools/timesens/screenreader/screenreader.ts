@@ -13868,8 +13868,12 @@
                 }
 
                 self.groupDescriptions.sort(f);
+                let table = document.createElement("table");
+                table.style.width = this._Width * ratio + "px";
+                //table.style.maxWidth = "100%";
+                table.style.borderCollapse = "collapse";
+                table.style.fontSize = 100 * ratio + "%";
 
-                let table = document.createElement("table"); table.style.borderCollapse = "collapse"; table.style.width = "100%";
                 let thead = document.createElement("thead"); table.appendChild(thead);
 
                 let tr = document.createElement("tr"); thead.appendChild(tr);
@@ -13881,7 +13885,7 @@
                 for (let i of tableHeadCOl) {
                     i.style.background = "#f2f2f2";
                     i.style.border = "1px solid #ddd";
-                    i.style.padding = "8px";
+                    i.style.padding = 8 * ratio + "px";
                     i.style.textAlign = "left";
                 }
 
@@ -13892,7 +13896,7 @@
 
                     let tr = document.createElement("tr"); tbody.appendChild(tr);
                     let td1 = document.createElement("td"); tr.appendChild(td1); td1.innerHTML = x.Group;
-                    let td2 = document.createElement("td"); tr.appendChild(td2); td2.innerHTML = x.Products;
+                    let td2 = document.createElement("td"); tr.appendChild(td2); td2.innerHTML = x.Products.replace(/,/g, ", ");
                     let td3 = document.createElement("td"); tr.appendChild(td3);
                     let input = Framework.Form.InputText.Create("", (newVal, sender) => {
                         let group = sender.CustomAttributes.Get("group");
@@ -13906,7 +13910,7 @@
                     let tableBodyCol = [td1, td2, td3];
                     for (let i of tableBodyCol) {
                         i.style.border = "1px solid #ddd";
-                        i.style.padding = "8px";
+                        i.style.padding = 8 * ratio + "px";
                     }
                 });
         
