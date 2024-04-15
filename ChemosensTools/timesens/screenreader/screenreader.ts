@@ -13915,6 +13915,8 @@
                 });
         
                 this.HtmlElement.appendChild(table);
+                this.HtmlElement.style.maxHeight = this._Height * ratio + "px";
+                this.HtmlElement.style.overflowY = "auto";
 
                 //let dtParameters = new Framework.Form.DataTableParameters();
                 //dtParameters.ListData = self.groupDescriptions;
