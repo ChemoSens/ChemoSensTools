@@ -13911,6 +13911,7 @@
                     for (let i of tableBodyCol) {
                         i.style.border = "1px solid #ddd";
                         i.style.padding = 8 * ratio + "px";
+                        i.style.fontSize = 85 * ratio + "%";
                     }
                 });
         
