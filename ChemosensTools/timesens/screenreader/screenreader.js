@@ -11654,26 +11654,42 @@ var ScreenReader;
                 };
                 self.groupDescriptions.sort(f);
                 var table = document.createElement("table");
+                table.style.width = this._Width * ratio + "px";
+                //table.style.maxWidth = "100%";
+                table.style.borderCollapse = "collapse";
+                table.style.fontSize = 100 * ratio + "%";
+                var thead = document.createElement("thead");
+                table.appendChild(thead);
                 var tr = document.createElement("tr");
-                table.appendChild(tr);
-                var td1 = document.createElement("td");
-                tr.appendChild(td1);
-                td1.innerHTML = "Groupe";
-                var td2 = document.createElement("td");
-                tr.appendChild(td2);
-                td2.innerHTML = "Produits";
-                var td3 = document.createElement("td");
-                tr.appendChild(td3);
-                td3.innerHTML = "Description";
+                thead.appendChild(tr);
+                var th1 = document.createElement("th");
+                tr.appendChild(th1);
+                th1.innerHTML = "Groupe";
+                var th2 = document.createElement("th");
+                tr.appendChild(th2);
+                th2.innerHTML = "Produits";
+                var th3 = document.createElement("th");
+                tr.appendChild(th3);
+                th3.innerHTML = "Description";
+                var tableHeadCOl = [th1, th2, th3];
+                for (var _i = 0, tableHeadCOl_1 = tableHeadCOl; _i < tableHeadCOl_1.length; _i++) {
+                    var i = tableHeadCOl_1[_i];
+                    i.style.background = "#f2f2f2";
+                    i.style.border = "1px solid #ddd";
+                    i.style.padding = 8 * ratio + "px";
+                    i.style.textAlign = "left";
+                }
+                var tbody = document.createElement("tbody");
+                table.appendChild(tbody);
                 self.groupDescriptions.forEach(function (x) {
                     var tr = document.createElement("tr");
-                    table.appendChild(tr);
+                    tbody.appendChild(tr);
                     var td1 = document.createElement("td");
                     tr.appendChild(td1);
                     td1.innerHTML = x.Group;
                     var td2 = document.createElement("td");
                     tr.appendChild(td2);
-                    td2.innerHTML = x.Products;
+                    td2.innerHTML = x.Products.replace(/,/g, ", ");
                     var td3 = document.createElement("td");
                     tr.appendChild(td3);
                     var input = Framework.Form.InputText.Create("", function (newVal, sender) {
@@ -11684,8 +11700,17 @@ var ScreenReader;
                     }, Framework.Form.Validator.MinLength(4), true);
                     input.CustomAttributes.Add("group", x.Group);
                     td3.appendChild(input.HtmlElement);
+                    var tableBodyCol = [td1, td2, td3];
+                    for (var _i = 0, tableBodyCol_1 = tableBodyCol; _i < tableBodyCol_1.length; _i++) {
+                        var i = tableBodyCol_1[_i];
+                        i.style.border = "1px solid #ddd";
+                        i.style.padding = 8 * ratio + "px";
+                        i.style.fontSize = 85 * ratio + "%";
+                    }
                 });
                 this.HtmlElement.appendChild(table);
+                this.HtmlElement.style.maxHeight = this._Height * ratio + "px";
+                this.HtmlElement.style.overflowY = "auto";
                 //let dtParameters = new Framework.Form.DataTableParameters();
                 //dtParameters.ListData = self.groupDescriptions;
                 //dtParameters.ListColumns = [
