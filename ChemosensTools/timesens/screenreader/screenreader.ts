@@ -14938,7 +14938,6 @@
             public Render(creationMode: boolean = false, maxItemPerGroup: number = undefined, dropZones: number = undefined, ratio: number = 1): void {
 
                 super.Render(creationMode, ratio);
-
                 if (maxItemPerGroup == undefined) {
                     maxItemPerGroup = this.Items.length;
                 }
@@ -14951,8 +14950,120 @@
                 this.listDraggableItems = [];
                 this.listDropZones = [];
 
-                let self = this;
+                /*let self = this;
 
+                let top: number = 0;
+                let left: number = 0;
+
+                let dropZonesDiv: HTMLElement[] = [];
+                let draggableItemsDiv: HTMLElement[] = [];
+
+                let boxWidth = Framework.Maths.Round((this._Width - (dropZones * 3)) / (dropZones + 1), 0) * ratio;
+
+                //let maxBoxSize = Framework.Maths.Round((this._Width - (5 * this.Items.length + 1)) / (this.Items.length + 1), 0);
+                //if (this._BoxSize > maxBoxSize) {
+                //    this._BoxSize = maxBoxSize;
+                //}
+
+
+                //let baseDropZone = new DropZone("0", this._BoxSize, this._Height * ratio - this._BoxSize * ratio - 20, 0, 0, this.Items.length);
+                //this.listDropZones.push(baseDropZone);
+                //dropZonesDiv.push(baseDropZone.DropZone);
+                //this.HtmlElement.appendChild(baseDropZone.Container);
+
+                //left += this._BoxSize + 5;
+
+                /*var colors: Framework.NamedColor[] = Framework.Color.DistinctPalette;*/
+
+                //var boxHeight = (this._Height - this._BoxSize - 20) * ratio;
+                //var itemHeight = this._BoxSize * ratio;
+                //while ((itemHeight * (this.Items.length + 1)) >= boxHeight) {
+                //    itemHeight = itemHeight - 2;
+                //}
+
+                //let baseDropZone = new DropZone("0", this._BoxSize, boxHeight * ratio, 0, 0, this.Items.length);
+                /*let baseDropZone = new DropZone("0", boxWidth, boxHeight, 0, 0, this.Items.length);
+                this.listDropZones.push(baseDropZone);
+                dropZonesDiv.push(baseDropZone.DropZone);
+                this.HtmlElement.appendChild(baseDropZone.Container);
+
+                //left += this._BoxSize + 5;
+                left += boxWidth + 1;
+
+                for (var i = 0; i < dropZones; i++) {
+
+                    //let dropZone = new DropZone((i + 1).toString(), this._BoxSize, boxHeight*ratio, left, 0, maxItemPerGroup);
+                    let dropZone = new DropZone((i + 1).toString(), boxWidth, boxHeight, left, 0, maxItemPerGroup);
+                    dropZone.Group = i + 1;
+                    this.HtmlElement.appendChild(dropZone.Container);
+                    this.listDropZones.push(dropZone);
+                    dropZonesDiv.push(dropZone.DropZone);
+
+                    //left += this._BoxSize + 5;
+                    left += boxWidth + 1;
+                }
+
+                for (var i = 0; i < this.Items.length; i++) {
+
+                    // Données par défaut : groupe 0
+                    var d: Models.Data = new Models.Data();
+                    d.DataControlId = this._Id;
+                    d.ControlName = this._FriendlyName;
+                    d.ProductCode = this.Items[i].Code;
+                    d.AttributeCode = this.AttributeCode;
+                    d.AttributeRank = this.AttributeRank;
+                    d.ProductRank = i + 1;
+                    d.Replicate = this.Replicate;
+                    d.Score = 0;
+                    d.Group = "0";
+                    d.Session = this.UploadId;
+                    d.SubjectCode = this.SubjectCode;
+                    d.Type = this._DataType;
+                    this.ListData.push(d);
+
+                    //let draggable = new DraggableItem(this.Items[i].Code, this.Items[i].Label, this._BoxSize, itemHeight, Framework.Color.BasePalette[0], self);
+                    let draggable = new DraggableItem(this.Items[i].Code, this.Items[i].Label, boxWidth, itemHeight, Framework.Color.BasePalette[0], self);
+                    draggable.DropZone = baseDropZone;
+                    this.HtmlElement.appendChild(draggable.Div);
+                    this.listDraggableItems.push(draggable);
+                    draggableItemsDiv.push(draggable.Div);
+
+                    //j++;
+
+                    baseDropZone.AddItem(draggable);
+
+                    if (creationMode == false) {
+
+                        Framework.DragDropManager.Dropable(draggable.Div, this.HtmlElement,
+                            () => {
+                            },
+                            (elt, dx, dy) => {
+                                elt.style.left = (Number(elt.style.left.replace('px', '')) + dx) + "px";
+                                elt.style.top = (Number(elt.style.top.replace('px', '')) + dy) + "px";
+                            },
+                            (draggableElt, dropZone) => {
+                                let de = self.listDraggableItems[draggableItemsDiv.indexOf(draggableElt)];
+                                let dz = self.listDropZones[dropZonesDiv.indexOf(dropZone)];
+
+                                dz.MoveItem(de, (item) => {
+                                    self.changeData(item);
+                                });
+                            },
+                            dropZonesDiv,
+                            self.Ratio
+                        );
+
+                    }
+                }
+
+                this.validate();*/
+
+                this.dynaDrop(dropZones, ratio, maxItemPerGroup, creationMode);
+            }
+
+            public dynaDrop(dropZones, ratio, maxItemPerGroup, creationMode = false) {
+                let self = this;
+                self.HtmlElement.innerHTML = "";
                 let top: number = 0;
                 let left: number = 0;
 
@@ -15059,7 +15170,6 @@
 
                 this.validate();
 
-
             }
 
             private validate() {
@@ -15127,8 +15237,38 @@
                 return properties;
             }
 
+            public dynamicAddGroup(creationMode: boolean = false, ratio: number): void {
+                let self = this;
+                let btnADD = document.createElement("button")
+                btnADD.innerHTML = "AJOUTER +"; btnADD.classList.add("addDropZone");
+                btnADD.style.position = "absolute"; btnADD.style.bottom = "1px"; btnADD.style.left = "1px";
+                btnADD.style.paddingBottom = "10px";
+                this.HtmlElement.appendChild(btnADD);
+
+                if (creationMode == false) {
+
+                
+                btnADD.addEventListener("click", () => {
+                    //alert(self._MaxNumberOfGroups);
+                    self._MaxNumberOfGroups++; self.Update();
+                    if (document.querySelector(".modal-dialog") != null) {
+                        /*let closeBtn = document.querySelector(".modal-footer").lastElementChild;
+                        closeBtn.id = "Terminer";
+                        document.getElementById("Terminer").click()
+                        document.getElementById("btnSimulateSession").click();*/
+                    }
+                    self.HtmlElement.style.background = Framework.Color.BasePalette[self._MaxNumberOfGroups].Hex;
+                    //self.Render(creationMode, ratio);
+                    self.dynaDrop(self._MaxNumberOfGroups, ratio, 10, creationMode);
+                    self.dynamicAddGroup(creationMode, ratio);
+
+                });
+                }
+            }
+
             public Render(creationMode: boolean = false, ratio: number): void {
                 super.Render(creationMode, undefined, this._MaxNumberOfGroups, ratio);
+                this.dynamicAddGroup(creationMode, ratio);
             }
 
             //constructor(control: Element = null) {
