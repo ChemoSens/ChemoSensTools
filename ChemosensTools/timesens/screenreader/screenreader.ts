@@ -1009,11 +1009,11 @@
 
             document.addEventListener("keydown", (evt) => {
                 (_ref.listControls.filter(function (x) {
-                    return (x instanceof Controls.CustomButton && (<Controls.CustomButton>x)._Key==evt.key);
+                    return (x instanceof Controls.CustomButton && (<Controls.CustomButton>x)._Key == evt.key);
                 })).forEach((y) => {
                     (<Controls.CustomButton>y).Click();
                 });
-   
+
             });
 
         }
@@ -13914,7 +13914,7 @@
                         i.style.fontSize = 85 * ratio + "%";
                     }
                 });
-        
+
                 this.HtmlElement.appendChild(table);
                 this.HtmlElement.style.maxHeight = this._Height * ratio + "px";
                 this.HtmlElement.style.overflowY = "auto";
@@ -14897,6 +14897,8 @@
             //TODO : couleurs produits
 
             public _BoxSize: number = 50;
+            public _MaxNumberOfGroups: number = undefined; // Nombre maximal de groupes
+            public _MinNumberOfGroups: number = 1; // Nombre miniaml de groupes
 
             private listDraggableItems: DraggableItem[] = [];
             private listDropZones: DropZone[] = [];
@@ -14938,17 +14940,7 @@
             public Render(creationMode: boolean = false, maxItemPerGroup: number = undefined, dropZones: number = undefined, ratio: number = 1): void {
 
                 super.Render(creationMode, ratio);
-                if (maxItemPerGroup == undefined) {
-                    maxItemPerGroup = this.Items.length;
-                }
 
-                if (dropZones == undefined) {
-                    dropZones = this.Items.length;
-                }
-
-                this.ListData = [];
-                this.listDraggableItems = [];
-                this.listDropZones = [];
 
                 /*let self = this;
 
@@ -15062,6 +15054,20 @@
             }
 
             public dynaDrop(dropZones, ratio, maxItemPerGroup, creationMode = false) {
+
+
+                if (maxItemPerGroup == undefined) {
+                    maxItemPerGroup = this.Items.length;
+                }
+
+                if (dropZones == undefined) {
+                    dropZones = this.Items.length;
+                }
+
+                this.ListData = [];
+                this.listDraggableItems = [];
+                this.listDropZones = [];
+
                 let self = this;
                 self.HtmlElement.innerHTML = "";
                 let top: number = 0;
@@ -15165,6 +15171,25 @@
                             self.Ratio
                         );
 
+
+                        let btnADD = document.createElement("button")
+                        btnADD.innerHTML = "AJOUTER +"; btnADD.classList.add("addDropZone");
+                        btnADD.style.position = "absolute"; btnADD.style.bottom = "1px"; btnADD.style.left = "1px";
+                        btnADD.style.paddingBottom = "10px";
+                        this.HtmlElement.appendChild(btnADD);
+
+
+                        btnADD.addEventListener("click", () => {
+
+                            self._MaxNumberOfGroups++;
+
+
+                            self.dynaDrop(self._MaxNumberOfGroups, ratio, maxItemPerGroup, creationMode);
+                            //self.dynamicAddGroup(creationMode, ratio);
+
+                        });
+
+
                     }
                 }
 
@@ -15194,8 +15219,7 @@
 
             //TODO : améliorer gestion min/max en fonction du plan de présentation (à la création), gérer min<=max
 
-            public _MaxNumberOfGroups: number = undefined; // Nombre maximal de groupes
-            public _MinNumberOfGroups: number = 1; // Nombre miniaml de groupes
+           
 
             //TODO : récupérer valeur existante
 
@@ -15237,38 +15261,44 @@
                 return properties;
             }
 
-            public dynamicAddGroup(creationMode: boolean = false, ratio: number): void {
-                let self = this;
-                let btnADD = document.createElement("button")
-                btnADD.innerHTML = "AJOUTER +"; btnADD.classList.add("addDropZone");
-                btnADD.style.position = "absolute"; btnADD.style.bottom = "1px"; btnADD.style.left = "1px";
-                btnADD.style.paddingBottom = "10px";
-                this.HtmlElement.appendChild(btnADD);
+            //public dynamicAddGroup(creationMode: boolean = false, ratio: number): void {
 
-                if (creationMode == false) {
+            //    if (creationMode == false) {
 
-                
-                btnADD.addEventListener("click", () => {
-                    //alert(self._MaxNumberOfGroups);
-                    self._MaxNumberOfGroups++; self.Update();
-                    if (document.querySelector(".modal-dialog") != null) {
-                        /*let closeBtn = document.querySelector(".modal-footer").lastElementChild;
-                        closeBtn.id = "Terminer";
-                        document.getElementById("Terminer").click()
-                        document.getElementById("btnSimulateSession").click();*/
-                    }
-                    self.HtmlElement.style.background = Framework.Color.BasePalette[self._MaxNumberOfGroups].Hex;
-                    //self.Render(creationMode, ratio);
-                    self.dynaDrop(self._MaxNumberOfGroups, ratio, 10, creationMode);
-                    self.dynamicAddGroup(creationMode, ratio);
+            //        let self = this;
 
-                });
-                }
-            }
+
+            //        let btnADD = document.createElement("button")
+            //        btnADD.innerHTML = "AJOUTER +"; btnADD.classList.add("addDropZone");
+            //        btnADD.style.position = "absolute"; btnADD.style.bottom = "1px"; btnADD.style.left = "1px";
+            //        btnADD.style.paddingBottom = "10px";
+            //        this.HtmlElement.appendChild(btnADD);
+
+
+
+
+            //        btnADD.addEventListener("click", () => {
+            //            //alert(self._MaxNumberOfGroups);
+            //            self._MaxNumberOfGroups++; self.Update();
+            //            if (document.querySelector(".modal-dialog") != null) {
+            //                /*let closeBtn = document.querySelector(".modal-footer").lastElementChild;
+            //                closeBtn.id = "Terminer";
+            //                document.getElementById("Terminer").click()
+            //                document.getElementById("btnSimulateSession").click();*/
+            //            }
+            //            self.HtmlElement.style.background = Framework.Color.BasePalette[self._MaxNumberOfGroups].Hex;
+            //            //self.Render(creationMode, ratio);
+            //            self.dynaDrop(self._MaxNumberOfGroups, ratio, 10, creationMode);
+            //            self.dynamicAddGroup(creationMode, ratio);
+
+            //        });
+            //    }
+            //}
 
             public Render(creationMode: boolean = false, ratio: number): void {
                 super.Render(creationMode, undefined, this._MaxNumberOfGroups, ratio);
-                this.dynamicAddGroup(creationMode, ratio);
+                //this.dynamicAddGroup(creationMode, ratio);
+                //this.updateControl();
             }
 
             //constructor(control: Element = null) {

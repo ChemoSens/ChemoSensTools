@@ -11654,26 +11654,42 @@ var ScreenReader;
                 };
                 self.groupDescriptions.sort(f);
                 var table = document.createElement("table");
+                table.style.width = this._Width * ratio + "px";
+                //table.style.maxWidth = "100%";
+                table.style.borderCollapse = "collapse";
+                table.style.fontSize = 100 * ratio + "%";
+                var thead = document.createElement("thead");
+                table.appendChild(thead);
                 var tr = document.createElement("tr");
-                table.appendChild(tr);
-                var td1 = document.createElement("td");
-                tr.appendChild(td1);
-                td1.innerHTML = "Groupe";
-                var td2 = document.createElement("td");
-                tr.appendChild(td2);
-                td2.innerHTML = "Produits";
-                var td3 = document.createElement("td");
-                tr.appendChild(td3);
-                td3.innerHTML = "Description";
+                thead.appendChild(tr);
+                var th1 = document.createElement("th");
+                tr.appendChild(th1);
+                th1.innerHTML = "Groupe";
+                var th2 = document.createElement("th");
+                tr.appendChild(th2);
+                th2.innerHTML = "Produits";
+                var th3 = document.createElement("th");
+                tr.appendChild(th3);
+                th3.innerHTML = "Description";
+                var tableHeadCOl = [th1, th2, th3];
+                for (var _i = 0, tableHeadCOl_1 = tableHeadCOl; _i < tableHeadCOl_1.length; _i++) {
+                    var i = tableHeadCOl_1[_i];
+                    i.style.background = "#f2f2f2";
+                    i.style.border = "1px solid #ddd";
+                    i.style.padding = 8 * ratio + "px";
+                    i.style.textAlign = "left";
+                }
+                var tbody = document.createElement("tbody");
+                table.appendChild(tbody);
                 self.groupDescriptions.forEach(function (x) {
                     var tr = document.createElement("tr");
-                    table.appendChild(tr);
+                    tbody.appendChild(tr);
                     var td1 = document.createElement("td");
                     tr.appendChild(td1);
                     td1.innerHTML = x.Group;
                     var td2 = document.createElement("td");
                     tr.appendChild(td2);
-                    td2.innerHTML = x.Products;
+                    td2.innerHTML = x.Products.replace(/,/g, ", ");
                     var td3 = document.createElement("td");
                     tr.appendChild(td3);
                     var input = Framework.Form.InputText.Create("", function (newVal, sender) {
@@ -11684,8 +11700,17 @@ var ScreenReader;
                     }, Framework.Form.Validator.MinLength(4), true);
                     input.CustomAttributes.Add("group", x.Group);
                     td3.appendChild(input.HtmlElement);
+                    var tableBodyCol = [td1, td2, td3];
+                    for (var _i = 0, tableBodyCol_1 = tableBodyCol; _i < tableBodyCol_1.length; _i++) {
+                        var i = tableBodyCol_1[_i];
+                        i.style.border = "1px solid #ddd";
+                        i.style.padding = 8 * ratio + "px";
+                        i.style.fontSize = 85 * ratio + "%";
+                    }
                 });
                 this.HtmlElement.appendChild(table);
+                this.HtmlElement.style.maxHeight = this._Height * ratio + "px";
+                this.HtmlElement.style.overflowY = "auto";
                 //let dtParameters = new Framework.Form.DataTableParameters();
                 //dtParameters.ListData = self.groupDescriptions;
                 //dtParameters.ListColumns = [
@@ -12542,6 +12567,8 @@ var ScreenReader;
                 //TODO : style du texte
                 //TODO : couleurs produits
                 _this._BoxSize = 50;
+                _this._MaxNumberOfGroups = undefined; // Nombre maximal de groupes
+                _this._MinNumberOfGroups = 1; // Nombre miniaml de groupes
                 _this.listDraggableItems = [];
                 _this.listDropZones = [];
                 return _this;
@@ -12576,6 +12603,115 @@ var ScreenReader;
                 if (dropZones === void 0) { dropZones = undefined; }
                 if (ratio === void 0) { ratio = 1; }
                 _super.prototype.Render.call(this, creationMode, ratio);
+                /*let self = this;
+
+                let top: number = 0;
+                let left: number = 0;
+
+                let dropZonesDiv: HTMLElement[] = [];
+                let draggableItemsDiv: HTMLElement[] = [];
+
+                let boxWidth = Framework.Maths.Round((this._Width - (dropZones * 3)) / (dropZones + 1), 0) * ratio;
+
+                //let maxBoxSize = Framework.Maths.Round((this._Width - (5 * this.Items.length + 1)) / (this.Items.length + 1), 0);
+                //if (this._BoxSize > maxBoxSize) {
+                //    this._BoxSize = maxBoxSize;
+                //}
+
+
+                //let baseDropZone = new DropZone("0", this._BoxSize, this._Height * ratio - this._BoxSize * ratio - 20, 0, 0, this.Items.length);
+                //this.listDropZones.push(baseDropZone);
+                //dropZonesDiv.push(baseDropZone.DropZone);
+                //this.HtmlElement.appendChild(baseDropZone.Container);
+
+                //left += this._BoxSize + 5;
+
+                /*var colors: Framework.NamedColor[] = Framework.Color.DistinctPalette;*/
+                //var boxHeight = (this._Height - this._BoxSize - 20) * ratio;
+                //var itemHeight = this._BoxSize * ratio;
+                //while ((itemHeight * (this.Items.length + 1)) >= boxHeight) {
+                //    itemHeight = itemHeight - 2;
+                //}
+                //let baseDropZone = new DropZone("0", this._BoxSize, boxHeight * ratio, 0, 0, this.Items.length);
+                /*let baseDropZone = new DropZone("0", boxWidth, boxHeight, 0, 0, this.Items.length);
+                this.listDropZones.push(baseDropZone);
+                dropZonesDiv.push(baseDropZone.DropZone);
+                this.HtmlElement.appendChild(baseDropZone.Container);
+
+                //left += this._BoxSize + 5;
+                left += boxWidth + 1;
+
+                for (var i = 0; i < dropZones; i++) {
+
+                    //let dropZone = new DropZone((i + 1).toString(), this._BoxSize, boxHeight*ratio, left, 0, maxItemPerGroup);
+                    let dropZone = new DropZone((i + 1).toString(), boxWidth, boxHeight, left, 0, maxItemPerGroup);
+                    dropZone.Group = i + 1;
+                    this.HtmlElement.appendChild(dropZone.Container);
+                    this.listDropZones.push(dropZone);
+                    dropZonesDiv.push(dropZone.DropZone);
+
+                    //left += this._BoxSize + 5;
+                    left += boxWidth + 1;
+                }
+
+                for (var i = 0; i < this.Items.length; i++) {
+
+                    // Données par défaut : groupe 0
+                    var d: Models.Data = new Models.Data();
+                    d.DataControlId = this._Id;
+                    d.ControlName = this._FriendlyName;
+                    d.ProductCode = this.Items[i].Code;
+                    d.AttributeCode = this.AttributeCode;
+                    d.AttributeRank = this.AttributeRank;
+                    d.ProductRank = i + 1;
+                    d.Replicate = this.Replicate;
+                    d.Score = 0;
+                    d.Group = "0";
+                    d.Session = this.UploadId;
+                    d.SubjectCode = this.SubjectCode;
+                    d.Type = this._DataType;
+                    this.ListData.push(d);
+
+                    //let draggable = new DraggableItem(this.Items[i].Code, this.Items[i].Label, this._BoxSize, itemHeight, Framework.Color.BasePalette[0], self);
+                    let draggable = new DraggableItem(this.Items[i].Code, this.Items[i].Label, boxWidth, itemHeight, Framework.Color.BasePalette[0], self);
+                    draggable.DropZone = baseDropZone;
+                    this.HtmlElement.appendChild(draggable.Div);
+                    this.listDraggableItems.push(draggable);
+                    draggableItemsDiv.push(draggable.Div);
+
+                    //j++;
+
+                    baseDropZone.AddItem(draggable);
+
+                    if (creationMode == false) {
+
+                        Framework.DragDropManager.Dropable(draggable.Div, this.HtmlElement,
+                            () => {
+                            },
+                            (elt, dx, dy) => {
+                                elt.style.left = (Number(elt.style.left.replace('px', '')) + dx) + "px";
+                                elt.style.top = (Number(elt.style.top.replace('px', '')) + dy) + "px";
+                            },
+                            (draggableElt, dropZone) => {
+                                let de = self.listDraggableItems[draggableItemsDiv.indexOf(draggableElt)];
+                                let dz = self.listDropZones[dropZonesDiv.indexOf(dropZone)];
+
+                                dz.MoveItem(de, (item) => {
+                                    self.changeData(item);
+                                });
+                            },
+                            dropZonesDiv,
+                            self.Ratio
+                        );
+
+                    }
+                }
+
+                this.validate();*/
+                this.dynaDrop(dropZones, ratio, maxItemPerGroup, creationMode);
+            };
+            DragDropControl.prototype.dynaDrop = function (dropZones, ratio, maxItemPerGroup, creationMode) {
+                if (creationMode === void 0) { creationMode = false; }
                 if (maxItemPerGroup == undefined) {
                     maxItemPerGroup = this.Items.length;
                 }
@@ -12586,6 +12722,7 @@ var ScreenReader;
                 this.listDraggableItems = [];
                 this.listDropZones = [];
                 var self = this;
+                self.HtmlElement.innerHTML = "";
                 var top = 0;
                 var left = 0;
                 var dropZonesDiv = [];
@@ -12659,6 +12796,19 @@ var ScreenReader;
                                 self.changeData(item);
                             });
                         }, dropZonesDiv, self.Ratio);
+                        var btnADD = document.createElement("button");
+                        btnADD.innerHTML = "AJOUTER +";
+                        btnADD.classList.add("addDropZone");
+                        btnADD.style.position = "absolute";
+                        btnADD.style.bottom = "1px";
+                        btnADD.style.left = "1px";
+                        btnADD.style.paddingBottom = "10px";
+                        this.HtmlElement.appendChild(btnADD);
+                        btnADD.addEventListener("click", function () {
+                            self._MaxNumberOfGroups++;
+                            self.dynaDrop(self._MaxNumberOfGroups, ratio, 10, creationMode);
+                            //self.dynamicAddGroup(creationMode, ratio);
+                        });
                     }
                 }
                 this.validate();
@@ -12684,9 +12834,6 @@ var ScreenReader;
             //    super(control);
             function SortingControl() {
                 var _this = _super.call(this) || this;
-                //TODO : améliorer gestion min/max en fonction du plan de présentation (à la création), gérer min<=max
-                _this._MaxNumberOfGroups = undefined; // Nombre maximal de groupes
-                _this._MinNumberOfGroups = 1; // Nombre miniaml de groupes
                 //if (control != null) {
                 //    this.setPropertyFromXaml(control, "MaxNumberOfGroups", "_MaxNumberOfGroups", "number");
                 //    this.setPropertyFromXaml(control, "MinNumberOfGroups", "_MinNumberOfGroups", "number");
@@ -12698,6 +12845,7 @@ var ScreenReader;
                 var self = _this;
                 return _this;
             }
+            //TODO : améliorer gestion min/max en fonction du plan de présentation (à la création), gérer min<=max
             //TODO : récupérer valeur existante
             //TODO : couleurs produits -> utiliser couleur du plan prés
             SortingControl.prototype.GetEditableProperties = function (mode) {
@@ -12727,9 +12875,35 @@ var ScreenReader;
                 }
                 return properties;
             };
+            //public dynamicAddGroup(creationMode: boolean = false, ratio: number): void {
+            //    if (creationMode == false) {
+            //        let self = this;
+            //        let btnADD = document.createElement("button")
+            //        btnADD.innerHTML = "AJOUTER +"; btnADD.classList.add("addDropZone");
+            //        btnADD.style.position = "absolute"; btnADD.style.bottom = "1px"; btnADD.style.left = "1px";
+            //        btnADD.style.paddingBottom = "10px";
+            //        this.HtmlElement.appendChild(btnADD);
+            //        btnADD.addEventListener("click", () => {
+            //            //alert(self._MaxNumberOfGroups);
+            //            self._MaxNumberOfGroups++; self.Update();
+            //            if (document.querySelector(".modal-dialog") != null) {
+            //                /*let closeBtn = document.querySelector(".modal-footer").lastElementChild;
+            //                closeBtn.id = "Terminer";
+            //                document.getElementById("Terminer").click()
+            //                document.getElementById("btnSimulateSession").click();*/
+            //            }
+            //            self.HtmlElement.style.background = Framework.Color.BasePalette[self._MaxNumberOfGroups].Hex;
+            //            //self.Render(creationMode, ratio);
+            //            self.dynaDrop(self._MaxNumberOfGroups, ratio, 10, creationMode);
+            //            self.dynamicAddGroup(creationMode, ratio);
+            //        });
+            //    }
+            //}
             SortingControl.prototype.Render = function (creationMode, ratio) {
                 if (creationMode === void 0) { creationMode = false; }
                 _super.prototype.Render.call(this, creationMode, undefined, this._MaxNumberOfGroups, ratio);
+                //this.dynamicAddGroup(creationMode, ratio);
+                //this.updateControl();
             };
             SortingControl.Create = function (experimentalDesignId) {
                 if (experimentalDesignId === void 0) { experimentalDesignId = 0; }
