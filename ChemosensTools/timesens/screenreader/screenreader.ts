@@ -14889,19 +14889,24 @@
                 item.Div.style.left = this.dropZoneDiv.style.left;
                 this.PositionItems();
             }
+
+            public GetItems(): DraggableItem[] {
+                return this.items
+            }
         }
 
         class DragDropControl extends GroupedControl {
             //TODO : récupérer valeur existante
             //TODO : style du texte
             //TODO : couleurs produits
-
+            
             public _BoxSize: number = 50;
             public _MaxNumberOfGroups: number = undefined; // Nombre maximal de groupes
             public _MinNumberOfGroups: number = 1; // Nombre miniaml de groupes
 
             private listDraggableItems: DraggableItem[] = [];
             private listDropZones: DropZone[] = [];
+            static previousData: DropZone[] = [];
 
             public GetEditableProperties(mode: string = "edition"): Framework.Form.PropertyEditor[] {
                 let self = this;
@@ -15063,12 +15068,15 @@
                 if (dropZones == undefined) {
                     dropZones = this.Items.length;
                 }
-
+                
                 this.ListData = [];
                 this.listDraggableItems = [];
                 this.listDropZones = [];
 
                 let self = this;
+                if (self._FriendlyName === "SortingControl_2") {
+                    dropZones = DragDropControl.previousData.length < 1 ? DragDropControl.previousData.length : DragDropControl.previousData.length - 1; 
+                }
                 self.HtmlElement.innerHTML = "";
                 let top: number = 0;
                 let left: number = 0;
@@ -15166,32 +15174,47 @@
                                 dz.MoveItem(de, (item) => {
                                     self.changeData(item);
                                 });
+                                DragDropControl.previousData = self.listDropZones;
                             },
                             dropZonesDiv,
                             self.Ratio
                         );
-
-
-                        let btnADD = document.createElement("button")
-                        btnADD.innerHTML = "AJOUTER +"; btnADD.classList.add("addDropZone");
-                        btnADD.style.position = "absolute"; btnADD.style.bottom = "1px"; btnADD.style.left = "1px";
-                        btnADD.style.paddingBottom = "10px";
-                        this.HtmlElement.appendChild(btnADD);
-
-
-                        btnADD.addEventListener("click", () => {
-
-                            self._MaxNumberOfGroups++;
-
-
-                            self.dynaDrop(self._MaxNumberOfGroups, ratio, maxItemPerGroup, creationMode);
-                            //self.dynamicAddGroup(creationMode, ratio);
-
-                        });
-
-
                     }
                 }
+
+                let btnADD = document.createElement("button")
+                btnADD.innerHTML = "AJOUTER +"; btnADD.classList.add("addDropZone");
+                btnADD.style.position = "absolute"; btnADD.style.bottom = "1px"; btnADD.style.left = "1px";
+                btnADD.style.paddingBottom = "10px";
+                this.HtmlElement.appendChild(btnADD);
+
+                if (creationMode == false) {
+                    if (self._FriendlyName === "SortingControl_2") {
+                        for (let i = 0; i < DragDropControl.previousData.length; i++) {
+                            for (let j = 0; j < DragDropControl.previousData[i].NbItems(); j++) {
+                                let idx = self.listDraggableItems.filter((x) => {
+                                    return x.Code === DragDropControl.previousData[i].GetItems()[j].Code;
+                                });
+                                self.listDropZones[i].MoveItem(idx[0], (item) => { self.changeData(item); });
+                            }
+                        }
+                    }
+
+                    btnADD.addEventListener("click", () => {
+                        let tempo = self.ListData;
+                        self._MaxNumberOfGroups++;
+                        self.dynaDrop(self._MaxNumberOfGroups, ratio, maxItemPerGroup, creationMode);
+                        for (let i = 0; i < self.listDropZones.length; i++) {
+                            for (let j = 0; j < tempo.length; j++) {
+                                if (i == tempo[j].Score) {
+                                    self.listDropZones[i].MoveItem(self.listDraggableItems[j], (item) => { self.changeData(item); });
+                                }
+                            }
+                        }
+                    });
+                }
+
+                if (self._FriendlyName === "SortingControl_2") console.log(DragDropControl.previousData);
 
                 this.validate();
 
