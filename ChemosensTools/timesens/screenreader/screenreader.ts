@@ -15183,9 +15183,12 @@
                 }
 
                 let btnADD = document.createElement("button")
-                btnADD.innerHTML = "AJOUTER +"; btnADD.classList.add("addDropZone");
-                btnADD.style.position = "absolute"; btnADD.style.bottom = "1px"; btnADD.style.left = "1px";
-                btnADD.style.paddingBottom = "10px";
+                btnADD.innerHTML = "AJOUTER +";             btnADD.classList.add("addDropZone");
+                btnADD.style.position = "absolute";         btnADD.style.zIndex = "100000";
+                btnADD.style.left = "1px";                  btnADD.style.bottom = "1px";
+                btnADD.style.width = 130 * ratio + "px";    btnADD.style.height = 40 * ratio + "px";
+                btnADD.style.fontSize = 20 * ratio + "px";  btnADD.style.paddingBottom = "10px";
+                btnADD.setAttribute("title", "ajouter un groupe");
                 this.HtmlElement.appendChild(btnADD);
 
                 if (creationMode == false) {
