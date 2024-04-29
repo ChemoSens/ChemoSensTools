@@ -169,8 +169,10 @@ namespace ChemosensTools
         public string GetSensoryWordsInXlsForAnalysis(string login, string password, string data, string options)
         {
             Account a = Account.Check(login, password, accountDir, hashKey, "ConsoTextplorer");
-            string s = ChemosensTools.fcLexicon.csModels.fcLexicon.GetSensoryWordsInXlsInForAnalysis(login, data, options);
-            return s;
+            //string s = ChemosensTools.fcLexicon.csModels.fcLexicon.GetSensoryWordsInXlsInForAnalysis(login, data, options);
+            // return s;
+            byte[] bytes = ChemosensTools.fcLexicon.csModels.fcLexicon.GetSensoryWordsInXlsInForAnalysis(login, data, options);
+            return Convert.ToBase64String(bytes);
         }
 
         [OperationContract]

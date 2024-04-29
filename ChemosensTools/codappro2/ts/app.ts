@@ -398,6 +398,13 @@
                 divChequeAlimentaire.Show();
             }
 
+            let divPhoto1 = Framework.Form.TextElement.Register("divPhoto1");
+            let divPhoto2 = Framework.Form.TextElement.Register("divPhoto2");
+
+            if (self.config.ListOptions.indexOf("MasquagePhotos") > -1) {
+                divPhoto1.Hide();
+                divPhoto2.Hide();
+            }
 
             // Tab
             document.getElementById("lastSpan").onfocus = () => {
@@ -487,6 +494,10 @@
             })            
 
             btnVoirFactures.Show();
+
+            if (self.config.ListOptions.indexOf("MasquageFactures") > -1) {
+                btnVoirFactures.Hide();
+            }
 
             self.translate("h5Date");
             self.translate("h5Lieu");

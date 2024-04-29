@@ -189,9 +189,10 @@ var FcLexiconApp = /** @class */ (function (_super) {
                         }, function (res) {
                             Framework.Progress.Hide();
                             if (res.Status == 'success') {
-                                var result = JSON.parse(res.Result);
-                                var URL_1 = result.URL;
-                                Framework.Browser.OpenNew(URL_1);
+                                Framework.FileHelper.SaveBase64As(res.Result, "result.xlsx");
+                                //let result = JSON.parse(res.Result);
+                                //let URL = result.URL;
+                                //Framework.Browser.OpenNew(URL);
                             }
                             else {
                                 Framework.Modal.Alert("Erreur", res.ErrorMessage);
@@ -239,7 +240,7 @@ var FcLexiconApp = /** @class */ (function (_super) {
                 MotsRetenus += m.Word + " ";
             });
             var txt = "<p>" + result.TexteNettoye + "</p>";
-            txt += "<p>contexte/descripteur/quantifieur ==> contexte_modalité/parent/concept_quantifieur</p>";
+            txt += "<p>contexte/descripteur/quantifieur (non agrégé) ==> contexte/modalité/concept/quantifieur/descripteur (agrégé)</p>";
             result.Concepts.forEach(function (m) {
                 txt += "<p><span style='color:blue'>" + m.ExtractedText + "</span> ==> <span style='color:green'>" + m.HandledText + "</span></p>";
             });

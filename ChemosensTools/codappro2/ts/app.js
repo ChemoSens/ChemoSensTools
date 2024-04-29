@@ -339,6 +339,12 @@ var CodApproApp = /** @class */ (function (_super) {
             if (self.config.ListOptions.indexOf("SaisieChequeAlimentaire") > -1) {
                 divChequeAlimentaire.Show();
             }
+            var divPhoto1 = Framework.Form.TextElement.Register("divPhoto1");
+            var divPhoto2 = Framework.Form.TextElement.Register("divPhoto2");
+            if (self.config.ListOptions.indexOf("MasquagePhotos") > -1) {
+                divPhoto1.Hide();
+                divPhoto2.Hide();
+            }
             // Tab
             document.getElementById("lastSpan").onfocus = function () {
                 document.getElementById("prevent-outside-tab").focus();
@@ -406,6 +412,9 @@ var CodApproApp = /** @class */ (function (_super) {
                 self.showDivFactures();
             });
             btnVoirFactures.Show();
+            if (self.config.ListOptions.indexOf("MasquageFactures") > -1) {
+                btnVoirFactures.Hide();
+            }
             self.translate("h5Date");
             self.translate("h5Lieu");
             self.translate("h5Ticket");
