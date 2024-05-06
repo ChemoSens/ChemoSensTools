@@ -25,6 +25,7 @@ using ChemosensTools.Framework.cs;
 using TimeSense.Web.Helpers;
 using TimeSens.webservices.helpers;
 using DocumentFormat.OpenXml.Drawing.ChartDrawing;
+using System.Threading.Tasks;
 
 namespace ChemosensTools.fcLexicon.csModels
 {
@@ -1647,7 +1648,8 @@ namespace ChemosensTools.fcLexicon.csModels
             Dictionary<string, string> motsCorriges = new Dictionary<string, string>();
             List<ResultSenso> resultatSenso = new List<ResultSenso>();
 
-            for (int rowNum = 2; rowNum <= totalRows; rowNum++)
+            Parallel.For(2, totalRows, rowNum =>
+            //for (int rowNum = 2; rowNum <= totalRows; rowNum++)
             {
                 string txt = (myWorksheet.Cells[rowNum, 4].Value ?? string.Empty).ToString();
                 Result res = classifier.Classify(txt);
@@ -1741,7 +1743,7 @@ namespace ChemosensTools.fcLexicon.csModels
                 });
 
                 //motsNonRetenus = motsNonRetenus.Concat(res.MotsNonRetenus).ToList();
-            }
+            });
 
             xlPackage.Workbook.Worksheets.Add("result");
             myWorksheet = xlPackage.Workbook.Worksheets.ElementAt(1);

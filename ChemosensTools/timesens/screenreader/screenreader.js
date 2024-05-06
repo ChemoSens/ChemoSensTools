@@ -12555,6 +12555,9 @@ var ScreenReader;
                 item.Div.style.left = this.dropZoneDiv.style.left;
                 this.PositionItems();
             };
+            DropZone.prototype.GetItems = function () {
+                return this.items;
+            };
             return DropZone;
         }());
         var DragDropControl = /** @class */ (function (_super) {
@@ -12722,6 +12725,9 @@ var ScreenReader;
                 this.listDraggableItems = [];
                 this.listDropZones = [];
                 var self = this;
+                if (self._FriendlyName === "SortingControl_2") {
+                    dropZones = DragDropControl.previousData.length < 1 ? DragDropControl.previousData.length : DragDropControl.previousData.length - 1;
+                }
                 self.HtmlElement.innerHTML = "";
                 var top = 0;
                 var left = 0;
@@ -12795,22 +12801,55 @@ var ScreenReader;
                             dz.MoveItem(de, function (item) {
                                 self.changeData(item);
                             });
+                            DragDropControl.previousData = self.listDropZones;
                         }, dropZonesDiv, self.Ratio);
-                        var btnADD = document.createElement("button");
-                        btnADD.innerHTML = "AJOUTER +";
-                        btnADD.classList.add("addDropZone");
-                        btnADD.style.position = "absolute";
-                        btnADD.style.bottom = "1px";
-                        btnADD.style.left = "1px";
-                        btnADD.style.paddingBottom = "10px";
-                        this.HtmlElement.appendChild(btnADD);
-                        btnADD.addEventListener("click", function () {
-                            self._MaxNumberOfGroups++;
-                            self.dynaDrop(self._MaxNumberOfGroups, ratio, 10, creationMode);
-                            //self.dynamicAddGroup(creationMode, ratio);
-                        });
                     }
                 }
+                var btnADD = document.createElement("button");
+                btnADD.innerHTML = "AJOUTER +";
+                btnADD.classList.add("addDropZone");
+                btnADD.style.position = "absolute";
+                btnADD.style.zIndex = "100000";
+                btnADD.style.left = "1px";
+                btnADD.style.bottom = "1px";
+                btnADD.style.width = 130 * ratio + "px";
+                btnADD.style.height = 40 * ratio + "px";
+                btnADD.style.fontSize = 20 * ratio + "px";
+                btnADD.style.paddingBottom = "10px";
+                btnADD.setAttribute("title", "ajouter un groupe");
+                this.HtmlElement.appendChild(btnADD);
+                if (creationMode == false) {
+                    if (self._FriendlyName === "SortingControl_2") {
+                        var _loop_4 = function (i_1) {
+                            var _loop_5 = function (j) {
+                                var idx = self.listDraggableItems.filter(function (x) {
+                                    return x.Code === DragDropControl.previousData[i_1].GetItems()[j].Code;
+                                });
+                                self.listDropZones[i_1].MoveItem(idx[0], function (item) { self.changeData(item); });
+                            };
+                            for (var j = 0; j < DragDropControl.previousData[i_1].NbItems(); j++) {
+                                _loop_5(j);
+                            }
+                        };
+                        for (var i_1 = 0; i_1 < DragDropControl.previousData.length; i_1++) {
+                            _loop_4(i_1);
+                        }
+                    }
+                    btnADD.addEventListener("click", function () {
+                        var tempo = self.ListData;
+                        self._MaxNumberOfGroups++;
+                        self.dynaDrop(self._MaxNumberOfGroups, ratio, maxItemPerGroup, creationMode);
+                        for (var i_2 = 0; i_2 < self.listDropZones.length; i_2++) {
+                            for (var j = 0; j < tempo.length; j++) {
+                                if (i_2 == tempo[j].Score) {
+                                    self.listDropZones[i_2].MoveItem(self.listDraggableItems[j], function (item) { self.changeData(item); });
+                                }
+                            }
+                        }
+                    });
+                }
+                if (self._FriendlyName === "SortingControl_2")
+                    console.log(DragDropControl.previousData);
                 this.validate();
             };
             DragDropControl.prototype.validate = function () {
@@ -12826,6 +12865,7 @@ var ScreenReader;
                     this.ValidationMessage = Framework.LocalizationManager.Get("FollowingProductsHaveToBeRanked");
                 }
             };
+            DragDropControl.previousData = [];
             return DragDropControl;
         }(GroupedControl));
         var SortingControl = /** @class */ (function (_super) {
@@ -13013,7 +13053,7 @@ var ScreenReader;
                 table.style.color = "black";
                 this.HtmlElement.appendChild(table);
                 var tds = [];
-                var _loop_4 = function () {
+                var _loop_6 = function () {
                     var tr = document.createElement("tr");
                     table.appendChild(tr);
                     var td1 = document.createElement("td");
@@ -13084,7 +13124,7 @@ var ScreenReader;
                 };
                 var this_3 = this, d;
                 for (var i = 0; i < this.items.length; i++) {
-                    _loop_4();
+                    _loop_6();
                 }
                 this.validate();
             };

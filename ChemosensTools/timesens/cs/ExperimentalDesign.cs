@@ -14,7 +14,7 @@ namespace TimeSens.webservices.models
         public int DefaultRank;
         public string LongName;
         public string Color;
-        public string Image;
+        public string ImageURL;
         public string Description;
         public string Notes;
     }
