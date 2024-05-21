@@ -14848,6 +14848,10 @@
                 return this.dropZoneDiv;
             }
 
+            public get LabelDiv(): HTMLDivElement {
+                return this.labelDiv;
+            }
+
             public get Container(): HTMLDivElement {
                 return this.containerDiv;
             }
@@ -15074,7 +15078,7 @@
                 this.listDropZones = [];
 
                 let self = this;
-                if (self._FriendlyName === "SortingControl_2") {
+                if (self._FriendlyName === "SortingControl_bis") {
                     dropZones = DragDropControl.previousData.length < 1 ? DragDropControl.previousData.length : DragDropControl.previousData.length - 1; 
                 }
                 self.HtmlElement.innerHTML = "";
@@ -15111,6 +15115,9 @@
                 let baseDropZone = new DropZone("0", boxWidth, boxHeight, 0, 0, this.Items.length);
                 this.listDropZones.push(baseDropZone);
                 dropZonesDiv.push(baseDropZone.DropZone);
+                baseDropZone.LabelDiv.style.maxWidth = "200px";
+                baseDropZone.DropZone.style.maxWidth = "200px";
+
                 this.HtmlElement.appendChild(baseDropZone.Container);
 
                 //left += this._BoxSize + 5;
@@ -15124,6 +15131,8 @@
                     this.HtmlElement.appendChild(dropZone.Container);
                     this.listDropZones.push(dropZone);
                     dropZonesDiv.push(dropZone.DropZone);
+                    dropZone.DropZone.style.maxWidth = "200px";
+                    dropZone.LabelDiv.style.maxWidth = "200px";
 
                     //left += this._BoxSize + 5;
                     left += boxWidth + 1;
@@ -15153,6 +15162,7 @@
                     this.HtmlElement.appendChild(draggable.Div);
                     this.listDraggableItems.push(draggable);
                     draggableItemsDiv.push(draggable.Div);
+                    draggable.Div.style.maxWidth = "200px";
 
                     //j++;
 
@@ -15217,7 +15227,7 @@
                     });
                 }
 
-                if (self._FriendlyName === "SortingControl_2") console.log(DragDropControl.previousData);
+                if (self._FriendlyName === "SortingControl_bis") console.log(DragDropControl.previousData);
 
                 this.validate();
 
