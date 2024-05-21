@@ -26,6 +26,7 @@
     }
 
     export class AnalysisOption {
+        public ExcludedWords: string[] = [];
         public ExcludedModalities: string[] = [];
         public Alpha: number = 0.05;        
         public Lexicon: string = "Lexicon";

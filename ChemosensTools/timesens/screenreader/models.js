@@ -666,16 +666,17 @@ var Models;
             template.Name = "Subject";
             template.ColumnTemplates = [
                 { AttributeName: "Code", Synonyms: ["code"], IsImperative: true, Description: Framework.LocalizationManager.Get("Subject"), Type: String, ColumnName: "" },
-                { AttributeName: "FirstName", Synonyms: ["firstname", "prenom", "prénom"], IsImperative: false, Description: Framework.LocalizationManager.Get("FirstName"), Type: String, ColumnName: "" },
-                { AttributeName: "LastName", Synonyms: ["lastname", "nom"], IsImperative: false, Description: Framework.LocalizationManager.Get("LastName"), Type: String, ColumnName: "" },
+                //{ AttributeName: "FirstName", Synonyms: ["firstname", "prenom", "prénom"], IsImperative: false, Description: Framework.LocalizationManager.Get("FirstName"), Type: String, ColumnName: "" },
+                //{ AttributeName: "LastName", Synonyms: ["lastname", "nom"], IsImperative: false, Description: Framework.LocalizationManager.Get("LastName"), Type: String, ColumnName: "" },
                 { AttributeName: "Password", Synonyms: ["password", "pwd", "mot de passe"], IsImperative: false, Description: Framework.LocalizationManager.Get("Password"), Type: String, ColumnName: "" },
-                { AttributeName: "Country", Synonyms: ["country", "pays"], IsImperative: false, Description: Framework.LocalizationManager.Get("Country"), Type: String, ColumnName: "" },
+                /*{ AttributeName: "Country", Synonyms: ["country", "pays"], IsImperative: false, Description: Framework.LocalizationManager.Get("Country"), Type: String, ColumnName: "" },*/
                 { AttributeName: "Mail", Synonyms: ["mail", "email", "e-mail"], IsImperative: false, Description: Framework.LocalizationManager.Get("Mail"), Type: String, ColumnName: "" },
-                { AttributeName: "Phone", Synonyms: ["phone", "phone number", "téléphone", "telephone", "tél", "tel"], IsImperative: false, Description: Framework.LocalizationManager.Get("Phone"), Type: String, ColumnName: "" },
-                { AttributeName: "City", Synonyms: ["city", "ville"], IsImperative: false, Description: Framework.LocalizationManager.Get("City"), Type: String, ColumnName: "" },
-                { AttributeName: "Address", Synonyms: ["address", "adresse"], IsImperative: false, Description: Framework.LocalizationManager.Get("Address"), Type: String, ColumnName: "" },
-                { AttributeName: "BirthDate", Synonyms: ["birthdate", "birth date", "date de naissance"], IsImperative: false, Description: Framework.LocalizationManager.Get("BirthDate"), Type: Date, ColumnName: "" },
-                { AttributeName: "Gender", Synonyms: ["gender", "genre", "sexe"], IsImperative: false, Description: Framework.LocalizationManager.Get("Gender"), Type: String, ColumnName: "" },
+                //{ AttributeName: "Phone", Synonyms: ["phone", "phone number", "téléphone", "telephone", "tél", "tel"], IsImperative: false, Description: Framework.LocalizationManager.Get("Phone"), Type: String, ColumnName: "" },
+                //{ AttributeName: "City", Synonyms: ["city", "ville"], IsImperative: false, Description: Framework.LocalizationManager.Get("City"), Type: String, ColumnName: "" },
+                //{ AttributeName: "Address", Synonyms: ["address", "adresse"], IsImperative: false, Description: Framework.LocalizationManager.Get("Address"), Type: String, ColumnName: "" },
+                //{ AttributeName: "BirthDate", Synonyms: ["birthdate", "birth date", "date de naissance"], IsImperative: false, Description: Framework.LocalizationManager.Get("BirthDate"), Type: Date, ColumnName: "" },
+                //{ AttributeName: "Gender", Synonyms: ["gender", "genre", "sexe"], IsImperative: false, Description: Framework.LocalizationManager.Get("Gender"), Type: String, ColumnName: "" },
+                { AttributeName: "URL", Synonyms: ["url"], IsImperative: false, Description: Framework.LocalizationManager.Get("URL"), Type: String, ColumnName: "" },
             ];
             return template;
         };

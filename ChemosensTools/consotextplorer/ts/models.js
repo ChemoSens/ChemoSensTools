@@ -14,6 +14,7 @@ var FcLexiconModels;
     FcLexiconModels.Result = Result;
     var AnalysisOption = /** @class */ (function () {
         function AnalysisOption() {
+            this.ExcludedWords = [];
             this.ExcludedModalities = [];
             this.Alpha = 0.05;
             this.Lexicon = "Lexicon";

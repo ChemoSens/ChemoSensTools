@@ -96,28 +96,27 @@ var FcLexiconApp = /** @class */ (function (_super) {
             mw.AddButton(btnLogin);
         });
     };
-    FcLexiconApp.prototype.setSelectCategoriesProduit = function (produits) {
-        var self = this;
-        this.selectCategoriesProduit = Framework.Form.Select.Register("selectCategoriesProduit", "", Framework.KeyValuePair.FromArray(produits), Framework.Form.Validator.NoValidation(), function (x) { self.analysisOptions.CategorieProduit = x; });
-    };
-    FcLexiconApp.prototype.setModalites = function (modalites) {
-        var self = this;
-        self.divModalitesAExclure.Set("");
-        modalites.forEach(function (x) {
-            if (x != "" && x.indexOf("localisation") == -1 && x.indexOf("quantifieur") == -1) {
-                var cb = Framework.Form.CheckBox.Create(function () { return true; }, function (ev, cb) {
-                    if (cb.IsChecked) {
-                        self.analysisOptions.ExcludedModalities.push(cb.Value);
-                    }
-                    else {
-                        Framework.Array.Remove(self.analysisOptions.ExcludedModalities, cb.Value);
-                    }
-                }, x, x);
-                cb.Value = x;
-                self.divModalitesAExclure.Append(cb);
-            }
-        });
-    };
+    //private setSelectCategoriesProduit(produits: string[]) {
+    //    let self = this;
+    //    this.selectCategoriesProduit = Framework.Form.Select.Register("selectCategoriesProduit", "", Framework.KeyValuePair.FromArray(produits), Framework.Form.Validator.NoValidation(), (x) => { self.analysisOptions.CategorieProduit = x; });
+    //}
+    //private setModalites(modalites: string[]) {
+    //    let self = this;
+    //    self.divModalitesAExclure.Set("");
+    //    modalites.forEach(x => {
+    //        if (x != "" && x.indexOf("localisation") == -1 && x.indexOf("quantifieur") == -1) {
+    //            let cb: Framework.Form.CheckBox = Framework.Form.CheckBox.Create(() => { return true }, (ev, cb) => {
+    //                if (cb.IsChecked) {
+    //                    self.analysisOptions.ExcludedModalities.push(cb.Value);
+    //                } else {
+    //                    Framework.Array.Remove(self.analysisOptions.ExcludedModalities, cb.Value);
+    //                }
+    //            }, x, x);
+    //            cb.Value = x;
+    //            self.divModalitesAExclure.Append(cb);
+    //        }
+    //    });
+    //}
     FcLexiconApp.prototype.showMain = function () {
         var self = this;
         self.analysisOptions = new FcLexiconModels.AnalysisOption();
@@ -137,6 +136,9 @@ var FcLexiconApp = /** @class */ (function (_super) {
                 });
                 //self.spanMotsRetenus = Framework.Form.TextElement.Register("spanMotsRetenus");
                 //self.spanMotsNonRetenus = Framework.Form.TextElement.Register("spanMotsNonRetenus");
+                self.inputExcludedWords = Framework.Form.InputText.Register("inputExcludedWords", "", Framework.Form.Validator.NoValidation(), function (x) {
+                    self.analysisOptions.ExcludedWords = x.split(";");
+                }, false);
                 self.checkMRCA = Framework.Form.CheckBox.Register("checkMRCA", function () { return true; }, function (ev, cb) {
                     self.analysisOptions.MRCA = cb.IsChecked;
                 }, "");
@@ -150,9 +152,9 @@ var FcLexiconApp = /** @class */ (function (_super) {
                 }, "");
                 self.checkCorrection.Check();
                 self.divTableau = Framework.Form.TextElement.Register("divTableau");
-                self.divModalitesAExclure = Framework.Form.TextElement.Register("divModalitesAExclure");
-                self.setModalites(ress.Modalities);
-                self.setSelectCategoriesProduit(ress.Products);
+                //self.divModalitesAExclure = Framework.Form.TextElement.Register("divModalitesAExclure");
+                //self.setModalites(ress.Modalities);
+                //self.setSelectCategoriesProduit(ress.Products);
                 //self.selectCategoriesProduit = Framework.Form.Select.Register("selectCategoriesProduit", "", [], Framework.Form.Validator.NoValidation(), (x) => { self.categorieProduit = x; });
                 self.selectLexique = Framework.Form.Select.Register("selectLexique", "Défaut", Framework.KeyValuePair.FromArray(lexique), Framework.Form.Validator.NoValidation(), function (x) {
                     if (x == "Perso") {
@@ -234,13 +236,13 @@ var FcLexiconApp = /** @class */ (function (_super) {
             var result = JSON.parse(json);
             var MotsRetenus = "";
             Framework.Progress.Hide();
-            self.setSelectCategoriesProduit(result.CategoriesProduit);
+            /* self.setSelectCategoriesProduit(result.CategoriesProduit);*/
             //self.selectCategoriesProduit = Framework.Form.Select.Register("selectCategoriesProduit", "", Framework.KeyValuePair.FromArray(result.CategoriesProduit), Framework.Form.Validator.NoValidation(), (x) => { self.categorieProduit = x; });
             result.Concepts.forEach(function (m) {
                 MotsRetenus += m.Word + " ";
             });
             var txt = "<p>" + result.TexteNettoye + "</p>";
-            txt += "<p>contexte/descripteur/quantifieur (non agrégé) ==> contexte/modalité/concept/quantifieur/descripteur (agrégé)</p>";
+            txt += "<p>contexte/descripteur/quantifieur ==> concept/descripteur/intensité</p>";
             result.Concepts.forEach(function (m) {
                 txt += "<p><span style='color:blue'>" + m.ExtractedText + "</span> ==> <span style='color:green'>" + m.HandledText + "</span></p>";
             });

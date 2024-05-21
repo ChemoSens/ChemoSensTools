@@ -45,20 +45,21 @@
     //private spanDesignationNettoyee: Framework.Form.TextElement;
     //private spanMotsNonRetenus: Framework.Form.TextElement;
     private divTableau: Framework.Form.TextElement;
-    private divModalitesAExclure: Framework.Form.TextElement;
+   /* private divModalitesAExclure: Framework.Form.TextElement;*/
 
     private btnRefresh: Framework.Form.Button;
     //private btnUploadFichierExcel: Framework.Form.Button;
     private btnUploadFichierExcelForAnalysis: Framework.Form.Button;
     private btnUploadFichierLexique: Framework.Form.Button;
 
-    private selectCategoriesProduit: Framework.Form.Select;
+  /*  private selectCategoriesProduit: Framework.Form.Select;*/
     private selectLexique: Framework.Form.Select;
 
     private selectAlpha: Framework.Form.Select;
     private checkMRCA: Framework.Form.CheckBox;
     private checkCorrection: Framework.Form.CheckBox;
     private checkTestDescripteur: Framework.Form.CheckBox;
+    private inputExcludedWords: Framework.Form.InputText;
 
     private login: string;
     private password: string;
@@ -105,7 +106,7 @@
                 self.CallWCF('Login', obj, () => {
                     Framework.Progress.Show(Framework.LocalizationManager.Get("Connexion..."));
                 }, (res) => {
-                    Framework.Progress.Hide();
+                    Framework.Progress.Hide();                    
                     if (res.Status == 'success') {
                         self.login = inputLoginId.Value;
                         self.password = inputLoginPassword.Value;
@@ -127,30 +128,30 @@
 
     }
 
-    private setSelectCategoriesProduit(produits: string[]) {
-        let self = this;
-        this.selectCategoriesProduit = Framework.Form.Select.Register("selectCategoriesProduit", "", Framework.KeyValuePair.FromArray(produits), Framework.Form.Validator.NoValidation(), (x) => { self.analysisOptions.CategorieProduit = x; });
-    }
+    //private setSelectCategoriesProduit(produits: string[]) {
+    //    let self = this;
+    //    this.selectCategoriesProduit = Framework.Form.Select.Register("selectCategoriesProduit", "", Framework.KeyValuePair.FromArray(produits), Framework.Form.Validator.NoValidation(), (x) => { self.analysisOptions.CategorieProduit = x; });
+    //}
 
-    private setModalites(modalites: string[]) {
-        let self = this;
-        self.divModalitesAExclure.Set("");
-        modalites.forEach(x => {
-            if (x != "" && x.indexOf("localisation") == -1 && x.indexOf("quantifieur") == -1) {
-                let cb: Framework.Form.CheckBox = Framework.Form.CheckBox.Create(() => { return true }, (ev, cb) => {
-                    if (cb.IsChecked) {
-                        self.analysisOptions.ExcludedModalities.push(cb.Value);
-                    } else {
-                        Framework.Array.Remove(self.analysisOptions.ExcludedModalities, cb.Value);
-                    }
+    //private setModalites(modalites: string[]) {
+    //    let self = this;
+    //    self.divModalitesAExclure.Set("");
+    //    modalites.forEach(x => {
+    //        if (x != "" && x.indexOf("localisation") == -1 && x.indexOf("quantifieur") == -1) {
+    //            let cb: Framework.Form.CheckBox = Framework.Form.CheckBox.Create(() => { return true }, (ev, cb) => {
+    //                if (cb.IsChecked) {
+    //                    self.analysisOptions.ExcludedModalities.push(cb.Value);
+    //                } else {
+    //                    Framework.Array.Remove(self.analysisOptions.ExcludedModalities, cb.Value);
+    //                }
 
-                }, x, x);
-                cb.Value = x;
-                self.divModalitesAExclure.Append(cb);
-            }
-        });
+    //            }, x, x);
+    //            cb.Value = x;
+    //            self.divModalitesAExclure.Append(cb);
+    //        }
+    //    });
 
-    }
+    //}
 
     private showMain() {
 
@@ -161,6 +162,9 @@
         self.CallWCF('TesteLexique', { name: self.login }, () => {
             Framework.Progress.Show("");
         }, (res) => {
+
+
+
             Framework.Progress.Hide();
 
             let lexique = ["Défaut"];
@@ -183,6 +187,10 @@
                 //self.spanMotsRetenus = Framework.Form.TextElement.Register("spanMotsRetenus");
                 //self.spanMotsNonRetenus = Framework.Form.TextElement.Register("spanMotsNonRetenus");
 
+                self.inputExcludedWords = Framework.Form.InputText.Register("inputExcludedWords", "", Framework.Form.Validator.NoValidation(), (x:string) => {
+                    self.analysisOptions.ExcludedWords = x.split(";");
+                }, false);
+
                 self.checkMRCA = Framework.Form.CheckBox.Register("checkMRCA", () => { return true; }, (ev, cb) => {
                     self.analysisOptions.MRCA = cb.IsChecked;
                 }, "");
@@ -199,10 +207,10 @@
                 self.checkCorrection.Check();
 
                 self.divTableau = Framework.Form.TextElement.Register("divTableau");
-                self.divModalitesAExclure = Framework.Form.TextElement.Register("divModalitesAExclure");
+                //self.divModalitesAExclure = Framework.Form.TextElement.Register("divModalitesAExclure");
 
-                self.setModalites(ress.Modalities);
-                self.setSelectCategoriesProduit(ress.Products);
+                //self.setModalites(ress.Modalities);
+                //self.setSelectCategoriesProduit(ress.Products);
 
                 //self.selectCategoriesProduit = Framework.Form.Select.Register("selectCategoriesProduit", "", [], Framework.Form.Validator.NoValidation(), (x) => { self.categorieProduit = x; });
                 self.selectLexique = Framework.Form.Select.Register("selectLexique", "Défaut", Framework.KeyValuePair.FromArray(lexique), Framework.Form.Validator.NoValidation(), (x) => {
@@ -310,7 +318,7 @@
 
             Framework.Progress.Hide();
 
-            self.setSelectCategoriesProduit(result.CategoriesProduit);
+           /* self.setSelectCategoriesProduit(result.CategoriesProduit);*/
             //self.selectCategoriesProduit = Framework.Form.Select.Register("selectCategoriesProduit", "", Framework.KeyValuePair.FromArray(result.CategoriesProduit), Framework.Form.Validator.NoValidation(), (x) => { self.categorieProduit = x; });
 
             result.Concepts.forEach(m => {
@@ -319,7 +327,7 @@
 
                 let txt: string = "<p>" + result.TexteNettoye + "</p>";
 
-                txt+= "<p>contexte/descripteur/quantifieur (non agrégé) ==> contexte/modalité/concept/quantifieur/descripteur (agrégé)</p>";
+                txt+= "<p>contexte/descripteur/quantifieur ==> concept/descripteur/intensité</p>";
 
                 result.Concepts.forEach(m => {
                     txt += "<p><span style='color:blue'>" + m.ExtractedText + "</span> ==> <span style='color:green'>" + m.HandledText + "</span></p>";

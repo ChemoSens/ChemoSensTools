@@ -26,6 +26,13 @@ using TimeSense.Web.Helpers;
 using TimeSens.webservices.helpers;
 using DocumentFormat.OpenXml.Drawing.ChartDrawing;
 using System.Threading.Tasks;
+using Org.BouncyCastle.Asn1.Cms;
+using DocumentFormat.OpenXml.Drawing.Diagrams;
+using NPOI.Util.ArrayExtensions;
+using NPOI.OpenXmlFormats.Dml.Diagram;
+using static ChemosensTools.fcLexicon.csModels.fcLexicon;
+using SixLabors.Fonts.Unicode;
+using System.Security.Cryptography;
 
 namespace ChemosensTools.fcLexicon.csModels
 {
@@ -42,18 +49,18 @@ namespace ChemosensTools.fcLexicon.csModels
             public string ConceptFR;
             //public string Modality;
             public string ProductCategory;
-            public string Quantifier = "-";
-            public string QuantifierConcept = "-";
-            public string Contextualizer = "-";
-            public string ContextualizerConcept = "-";
+            public string Quantifier = "";
+            public string QuantifierConcept = "";
+            public string Contextualizer = "";
+            public string ContextualizerConcept = "";
             public string Word;
             public string Type;
             public string Class;
             public string Corrected;
 
-            public string Descriptor = "-";
-            public string Modality = "-";
-            public string RootConcept = "-";
+            public string Descriptor = "";
+            public string Modality = "";
+            public string RootConcept = "";
             public string PredecessorConcept;
 
             public int Position;
@@ -64,53 +71,225 @@ namespace ChemosensTools.fcLexicon.csModels
 
             public string GetDescription()
             {
-                // Raw description extracted from text                
-                return (this.Contextualizer + "/" + this.AttributeFR + "/" + this.Quantifier).Trim().Trim(';').Trim();
+                // Raw description extracted from text
+                if (this.Contextualizer == "")
+                {
+                    this.Contextualizer = "-";
+                }
+                if (this.AttributeFR == "")
+                {
+                    this.AttributeFR = "";
+                }
+                if (this.Quantifier == "")
+                {
+                    this.Quantifier = "-";
+                }
+                if (this.Class == "quantifier")
+                {
+                    return ("-/-/" + this.AttributeFR).Trim().Trim(';').Trim();
+                }
+                if (this.Class == "contextualizer")
+                {
+                    return (this.AttributeFR + "/-/" + this.Quantifier).Trim().Trim(';').Trim();
+                }
+                if (this.Class == "concept")
+                {
+                    return (this.Contextualizer + "/" + this.AttributeFR + "/" + this.Quantifier).Trim().Trim(';').Trim();
+                }
+                return "";
             }
 
             public string GetAgregatedDescription()
             {
-                //Description after agregation
-                if (this.QuantifierConcept == "" || this.QuantifierConcept == null) { this.QuantifierConcept = ""; }
-                string[] tab = this.FullConceptFR.Split(':');
-                string contextualiser = this.ContextualizerConcept;
-                string quantifier = this.QuantifierConcept;
-                string modality = tab.ElementAt(0);
-                string concept = tab.ElementAt(1);
-                string attribute = this.AttributeFR;
+                // Concept = dimension:groupedescripteur(_groupequantifier)/descripteur(_groupequantifier) 
+                string suffixConcept = "";
+                string suffixDescripteur = "";
 
-                if (contextualiser == "")
+                if (this.QuantifierConcept.IndexOf("mal") > -1)
                 {
-                    contextualiser = "-";
+                    suffixConcept = "_mal";
+                    suffixDescripteur = "_mal";
+                }
+                else if (this.QuantifierConcept.IndexOf("bien") > -1)
+                {
+                    suffixConcept = "_bien";
+                    suffixDescripteur = "_bien";
                 }
 
-                if (modality == "NC" || modality == "")
+                if (this.QuantifierConcept.IndexOf("pas") > -1 || this.QuantifierConcept.IndexOf("peu") > -1 || this.QuantifierConcept.IndexOf("manque") > -1)
                 {
-                    if (this.ContextualizerConcept != "-")
+                    suffixDescripteur = "_pas";
+                    if (suffixConcept == "_mal")
                     {
-                        modality = contextualiser;
-                        contextualiser = "";
+                        suffixConcept = "";
+                    }
+                    else if (suffixConcept == "_bien")
+                    {
+                        suffixConcept = "_mal";
                     }
                     else
                     {
-                        modality = "-";
+                        suffixConcept += "_pas";
+                    }
+                }
+                else if (this.QuantifierConcept.IndexOf("très") > -1 || this.QuantifierConcept.IndexOf("excès") > -1)
+                {
+                    if (suffixConcept == "")
+                    {
+                        suffixConcept = "_très";
+                        suffixDescripteur = "_très";
                     }
                 }
 
-                if (modality == contextualiser)
+                string res = "";
+                if (this.Class == "quantifier")
                 {
-                    contextualiser = "-";
+                    string bracket = "";
+                    if (this.ConceptFR.IndexOf("(") > -1)
+                    {
+                        bracket = this.ConceptFR.Split().Where(x => x.StartsWith("(") && x.EndsWith(")")).ToList().ElementAt(0).Replace("(", "").Replace(")", "");
+                        this.ConceptFR = Regex.Replace(this.ConceptFR, @"\([^()]*\)", string.Empty).Trim();
+                    }
+
+                    if (this.ConceptFR.IndexOf("mal") > -1)
+                    {
+                        suffixConcept = "_mal";
+                    }
+                    else if (this.ConceptFR.IndexOf("bien") > -1)
+                    {
+                        suffixConcept = "_bien";
+
+                    }
+
+                    if (this.ConceptFR.IndexOf("pas") > -1 || this.ConceptFR.IndexOf("peu") > -1 || this.ConceptFR.IndexOf("manque") > -1)
+                    {
+                        if (suffixConcept == "_mal")
+                        {
+                            suffixConcept = "_bien";
+                        }
+                        else if (suffixConcept == "_bien")
+                        {
+                            suffixConcept = "_mal";
+                        }
+                        else if (this.ConceptFR.IndexOf("peu") > -1 && (this.ConceptFR.IndexOf("excès") > -1 || this.ConceptFR.IndexOf("très") > -1))
+                        {
+                            // peu très
+                            suffixConcept = "_très";
+                        }
+                        else
+                        {
+                            suffixConcept += "_pas";
+                        }
+                    }
+                    else if (this.ConceptFR.IndexOf("excès") > -1 || this.ConceptFR.IndexOf("très") > -1)
+                    {
+                        suffixConcept += "_très";
+                    }
+
+                    res = "global:global" + suffixConcept + "/_";
+                    if (bracket != "")
+                    {
+                        res = bracket + ":" + bracket + suffixConcept + "/_";
+                    }
+
+                    if (this.ConceptFR == "")
+                    {
+                        res = "_:_/_";
+                    }
+
                 }
 
-                if (quantifier == "pas")
+                if (this.Class == "contextualizer")
                 {
-                    concept += "-pas";
-                    attribute += "-pas";
-                    quantifier = "-";
-                    concept = concept.Replace("-pas-pas", "");
-                    attribute = attribute.Replace("-pas-pas", "");
+
+                    if (this.ConceptFR.IndexOf("(") > -1)
+                    {
+                        this.ConceptFR = Regex.Replace(this.ConceptFR, @"\([^()]*\)", string.Empty).Trim();
+                    }
+
+                    string concept = this.ConceptFR.Split(' ').ElementAt(0);
+                    if (concept == "")
+                    {
+                        concept = "_";
+                    }
+                    if (this.QuantifierConcept.IndexOf("bien") > -1)
+                    {
+                        suffixConcept = "_bien";
+                        if (concept == "_")
+                        {
+                            concept = "global";
+                        }
+                    }
+                    if (this.QuantifierConcept.IndexOf("mal") > -1)
+                    {
+                        suffixConcept = "_mal";
+                        if (concept == "_")
+                        {
+                            concept = "global";
+                        }
+                    }
+                    res = concept + ":" + concept + suffixConcept + "/_";
                 }
-                return (contextualiser + "/" + modality + "/" + concept + "/" + quantifier + "/" + attribute);
+
+                if (this.Class == "concept")
+                {
+
+                    string concept = "";
+
+                    if (this.FullConceptFR.StartsWith("NC"))
+                    {
+                        concept = "_:_";
+                    }
+                    else if (this.FullConceptFR.IndexOf('|') > -1 && this.ContextualizerConcept.Length > 1)
+                    {
+                        string modality = this.FullConceptFR.Split(':').ElementAt(0);
+                        if (this.ContextualizerConcept.IndexOf("(") > -1)
+                        {
+                            this.ContextualizerConcept = Regex.Replace(this.ContextualizerConcept, @"\([^()]*\)", string.Empty).Trim();
+                        }
+                        if (modality.Contains("goût"))
+                        {
+                            modality += "|arrière_goût";
+                        }
+                        if (this.ContextualizerConcept.Length > 0 && modality.IndexOf(this.ContextualizerConcept) > -1)
+                        {
+                            concept = this.ContextualizerConcept + ":" + this.FullConceptFR.Split(':').ElementAt(1);
+                        }
+                        else
+                        {
+                            concept = this.FullConceptFR;
+                        }
+                    }
+                    else
+                    {
+                        concept = this.FullConceptFR;
+                    }
+
+                    
+                    concept += suffixConcept;
+                    concept = concept.Replace("_bien_très", "_bien");
+                    concept = concept.Replace("_pas_pas", "");
+                    concept = concept.Replace("_très_très", "_très");
+                    concept = concept.Replace("_pas_très", "_pas");
+                    concept = concept.Replace("_très_pas", "_pas");
+
+                    res = concept + "/" + this.AttributeFR + suffixDescripteur;
+
+                }
+
+                //if (res == "")
+                //{
+                //    res = "_:_/_";
+                //}
+
+                res = res.Replace('-', '_');                
+                res = res.Replace(' ', '_');
+                if (res == "_:_/_")
+                {
+                    res = "";
+                }
+                return res;
+
             }
 
             public void GetDescriptor()
@@ -119,107 +298,6 @@ namespace ChemosensTools.fcLexicon.csModels
                 this.HandledText = this.GetAgregatedDescription();
             }
 
-            //public void GetDescriptor()
-            //{
-
-            //    string pas = "";
-            //    if (this.Quantifier == "pas")
-            //    {
-            //        pas = "pas-";
-            //    }
-            //    if (this.FullConceptFR != null & this.FullConceptFR != "")
-            //    {
-            //        string[] left = this.FullConceptFR.Split(':');
-            //        this.Modality = left.ElementAt(0);
-            //        if (left.Count() > 1)
-            //        {
-            //            string[] right = left.ElementAt(1).Split('>');
-            //            this.RootConcept = right.ElementAt(0);
-            //            //this.RootConcept = pas + right.ElementAt(0);
-            //            //this.PredecessorConcept = pas + right.ElementAt(Math.Max(0, right.Count() - 2));
-            //            //if (this.QuantifierConcept != null)
-            //            //{
-            //            //    this.Descriptor = this.QuantifierConcept + "-" + right.Last();
-            //            //}
-            //            //else
-            //            //{
-            //            //    this.Descriptor = right.Last();
-            //            //}
-            //            char[] MyChar = { '-' };
-            //            //this.Descriptor = this.Descriptor.Trim(MyChar);
-            //            //if (this.QuantifierConcept != null)
-            //            //{
-            //            //    this.QuantifierConcept = this.QuantifierConcept.Trim(MyChar);
-            //            //}
-
-            //            //ICI
-            //            string concept = right.Last().Trim(MyChar);
-
-            //            if (this.QuantifierConcept == "pas") { this.QuantifierConcept = ""; concept = "pas-" + concept; this.RootConcept = "pas-" + this.RootConcept; }
-            //            this.RootConcept = this.RootConcept.Replace("pas-pas-", "");
-
-            //            //if (this.Quantifier == null || this.Quantifier == "") { this.Quantifier = "-"; }
-            //            //if (this.Contextualizer == null || this.Contextualizer == "") { this.Contextualizer = "-"; }
-
-            //            this.ExtractedText = "";
-            //            if (this.Contextualizer != null)
-            //            {
-            //                this.ExtractedText += this.Contextualizer;
-            //            }
-            //            else
-            //            {
-            //                this.ExtractedText += "-";
-            //            }
-            //            this.ExtractedText += "/" + this.AttributeFR + "/";
-            //            if (this.Quantifier != null)
-            //            {
-            //                this.ExtractedText += this.Quantifier;
-            //            }
-
-            //            this.HandledText = "";
-            //            if (this.Contextualizer == null)
-            //            {
-            //                this.Contextualizer = "-";
-            //            }
-            //            if (this.Modality == "NC")
-            //            {
-            //                this.Modality = "-";
-            //            };
-
-            //            if (this.Modality == this.Contextualizer)
-            //            {
-            //                this.HandledText += this.Modality;
-            //            }
-            //            else
-            //            {
-            //                if (this.Modality == "-")
-            //                {
-            //                    this.HandledText += this.Contextualizer;
-            //                }
-            //                else if (this.Contextualizer == "-")
-            //                {
-            //                    this.HandledText += this.Modality;
-            //                }
-            //                else
-            //                {
-            //                    this.HandledText += this.Contextualizer + "-" + this.Modality;
-            //                }
-            //            }
-
-            //            this.HandledText += "/" + this.RootConcept + "/" + concept;
-            //            if (this.QuantifierConcept != null && this.QuantifierConcept != "")
-            //            {
-            //                this.HandledText += "-" + this.QuantifierConcept;
-            //            }
-
-            //        }
-            //    }
-
-
-
-            //}
-
-            public string Valence;
         }
 
         public class ResultSenso
@@ -249,6 +327,7 @@ namespace ChemosensTools.fcLexicon.csModels
 
         public class AnalysisOption
         {
+            public List<string> ExcludedWords = new List<string>();
             public List<string> ExcludedModalities = new List<string>();
             public double Alpha = 0.05;
             public string Lexicon = "Lexicon";
@@ -684,7 +763,7 @@ namespace ChemosensTools.fcLexicon.csModels
                 txt = txt.Replace('/', ' ');
                 txt = txt.Replace('"', ' ');
                 txt = txt.Replace(";", " XXX ");
-                txt = txt.Replace(":", " XXX ");
+                txt = txt.Replace(':', ' ');
                 txt = txt.Replace('è', 'é');
                 txt = txt.Replace('ê', 'é');
                 txt = txt.Replace('ë', 'é');
@@ -744,16 +823,37 @@ namespace ChemosensTools.fcLexicon.csModels
                 if (conceptsAdj.Count == 1)
                 {
                     // Fusion contextualizer + concept
-                    conceptsAdj.ElementAt(0).Contextualizer = x.AttributeFR;
-                    conceptsAdj.ElementAt(0).ContextualizerConcept = x.ConceptFR;
+                    if (conceptsAdj.ElementAt(0).Contextualizer == "-")
+                    {
+                        conceptsAdj.ElementAt(0).Contextualizer = "";
+                        conceptsAdj.ElementAt(0).ContextualizerConcept = "";
+                    }
+                    //if (conceptsAdj.ElementAt(0).Quantifier == "-")
+                    //{
+                    //    conceptsAdj.ElementAt(0).Quantifier = "";
+                    //    conceptsAdj.ElementAt(0).QuantifierConcept = "";
+                    //}
+                    conceptsAdj.ElementAt(0).Contextualizer += " " + x.AttributeFR;
+                    conceptsAdj.ElementAt(0).ContextualizerConcept += " " + x.ConceptFR;
+                    conceptsAdj.ElementAt(0).Contextualizer = conceptsAdj.ElementAt(0).Contextualizer.Trim();
+                    conceptsAdj.ElementAt(0).ContextualizerConcept = conceptsAdj.ElementAt(0).ContextualizerConcept.Trim();
+
+                    conceptsAdj.ElementAt(0).Quantifier += " " + x.Quantifier;
+                    conceptsAdj.ElementAt(0).QuantifierConcept += " " + x.QuantifierConcept;
+                    if (conceptsAdj.ElementAt(0).Quantifier != "-")
+                    {
+                        conceptsAdj.ElementAt(0).Quantifier = conceptsAdj.ElementAt(0).Quantifier.Trim();
+                        conceptsAdj.ElementAt(0).QuantifierConcept = conceptsAdj.ElementAt(0).QuantifierConcept.Trim();
+                    }
+
                     table.Remove(x);
 
                     // Suppression  du contextualizer en tant que contexte, s'il existe                      
-                    List<Pretraitement> conceptsAdjToRemove = (from y in table where y.Class == "concept" && y.Position == x.Position && y.AttributeFR == x.AttributeFR select y).ToList();
-                    if (conceptsAdjToRemove.Count > 0)
-                    {
-                        table.Remove(conceptsAdjToRemove.ElementAt(0));
-                    }
+                    //List<Pretraitement> conceptsAdjToRemove = (from y in table where y.Class == "concept" && y.Position == x.Position && y.AttributeFR == x.AttributeFR select y).ToList();
+                    //if (conceptsAdjToRemove.Count > 0)
+                    //{
+                    //    table.Remove(conceptsAdjToRemove.ElementAt(0));
+                    //}
                     return true;
                 }
                 return false;
@@ -767,8 +867,15 @@ namespace ChemosensTools.fcLexicon.csModels
                     conceptsAdj.ForEach(conc =>
                     {
                         // Association quantififier + concept
-                        conc.Quantifier = x.AttributeFR;
-                        conc.QuantifierConcept = x.ConceptFR;
+                        if (conc.Quantifier == "-")
+                        {
+                            conc.Quantifier = "";
+                            conc.QuantifierConcept = "";
+                        }
+                        conc.Quantifier += " " + x.AttributeFR;
+                        conc.QuantifierConcept += " " + x.ConceptFR;
+                        conc.Quantifier = conc.Quantifier.Trim();
+                        conc.QuantifierConcept = conc.QuantifierConcept.Trim();
                         // Suppression si considéré comme quantifier
                         table.Remove(x);
                         (from y in table where y.Position == x.Position select y).ToList().ForEach(y => table.Remove(y));
@@ -781,7 +888,6 @@ namespace ChemosensTools.fcLexicon.csModels
 
             public Result Classify(string txt)
             {
-                // TODO : garder meilleure correction 
                 // TODO : quantifieur + descripteur => léger 
                 // TODO : correction + mots multiples => pas tres douxi
 
@@ -814,14 +920,25 @@ namespace ChemosensTools.fcLexicon.csModels
                         txt = rgx.Replace(txt, x.AttributeFR);
                     }
 
+                });
 
-                    //txt = txt.Replace(x.RegularExpressionFR, x.AttributeFR);
+                // Supression des mots à exclure
+                this.listStateVerbs.ForEach(x =>
+                {
+                    Regex rgx = new Regex("\\b" + x + "\\b");
+                    if (rgx.Matches(txt).Count > 0)
+                    {
+                        txt = rgx.Replace(txt, "");
+                    }
+
                 });
 
                 tmp = txt.Split(' ').ToList();
 
-                // Supression des verbes d'états
-                tmp = tmp.Where(x => this.listStateVerbs.IndexOf(x) == -1).ToList();
+                //// Supression des verbes d'états
+                //tmp = tmp.Where(x => this.listStateVerbs.IndexOf(x) == -1).ToList();
+
+
 
                 txt = string.Join(" ", tmp);
 
@@ -834,8 +951,7 @@ namespace ChemosensTools.fcLexicon.csModels
                 res.MotsCorriges = new Dictionary<string, string>();
 
                 // Correction orthographique
-                //if (this.hunspell != null)
-                //{
+
                 for (int i = 0; i < words.Count; i++)
                 {
                     string w = words.ElementAt(i);
@@ -848,10 +964,7 @@ namespace ChemosensTools.fcLexicon.csModels
                         nbCarCorrections = 2;
                         distLeven = 3;
                     }
-                    //bool resh = hunspell.Spell(w);
 
-                    //if (resh == false)
-                    //{
                     bool found = false;
 
                     // Recherche dans les mots autorisés
@@ -871,37 +984,43 @@ namespace ChemosensTools.fcLexicon.csModels
                                 try
                                 {
                                     w = Regex.Replace(w, @"\p{Cs}", "");
-                                    list = hunspell.Suggest(w).Where(x => x.Contains(" ") == false && x.Length >= w.Length && x.StartsWith(w.ElementAt(0).ToString())).ToList();
+                                    list = hunspell.Suggest(w);
+                                    list = list.Where(x => x.Contains(" ") == false /*&& x.Length >= w.Length*/ && x.StartsWith(w.ElementAt(0).ToString())).ToList();
                                 }
                                 catch (Exception ex)
                                 {
                                     list = new List<string>();
                                 }
-                                //var list = this.listPretraitement.Where(x => ReplaceSpecialCharacters(x.AttributeFR).StartsWith(ReplaceSpecialCharacters(w).Substring(0, nbCarCorrections))).OrderBy(x => x.AttributeFR.Length);
+
+                                int minLeven = 1000;
+                                string betterSuggestion = "";
                                 for (int j = 0; j < list.Count(); j++)
                                 {
 
-                                    //Pretraitement d = list.ElementAt(j);
+
                                     string d = list.ElementAt(j);
-                                    //int leven = CalcLevenshteinDistance(ReplaceSpecialCharacters(w), ReplaceSpecialCharacters(d.AttributeFR));
+
                                     int leven = CalcLevenshteinDistance(ReplaceSpecialCharacters(w), ReplaceSpecialCharacters(d));
 
-                                    if (leven <= distLeven && rg.Matches(d).Count > 0)
+                                    if (leven <= distLeven /*&& rg.Matches(d).Count > 0*/)
                                     {
-                                        //if (res.MotsCorriges.ContainsKey(d.AttributeFR) == false)
-                                        if (res.MotsCorriges.ContainsKey(d) == false)
+                                        if (leven < minLeven || (leven == minLeven && rg.Matches(d).Count > 0))
                                         {
+                                            minLeven = leven;
                                             d = d.Replace('-', ' ');
                                             d = d.Replace('\'', ' ');
-                                            //res.MotsCorriges.Add(d.AttributeFR, w);
-                                            res.MotsCorriges.Add(d, w);
-                                            //newWords.Add(d.AttributeFR);
-                                            newWords.Add(d);
-                                            found = true;
-                                            break;
+                                            betterSuggestion = d;
                                         }
                                     }
                                 }
+
+                                if (betterSuggestion != "" && res.MotsCorriges.ContainsKey(betterSuggestion) == false)
+                                {
+                                    res.MotsCorriges.Add(betterSuggestion, w);
+                                    newWords.Add(betterSuggestion);
+                                    found = true;
+                                }
+
                             }
                         }
                         if (found == false)
@@ -910,12 +1029,329 @@ namespace ChemosensTools.fcLexicon.csModels
                             newWords.Add("XXX");
                         }
                     }
-                    //}
-                    //else
-                    //{
-                    //    newWords.Add(w);
-                    //}
-                    //}
+
+                }
+
+                txt = ReplaceSpecialCharacters(String.Join(" ", newWords));
+
+                // Supression des mots à exclure
+                this.options.ExcludedWords.Concat(this.listStateVerbs).ToList().ForEach(x =>
+                {
+                    Regex rgx = new Regex("\\b" + x + "\\b");
+                    if (rgx.Matches(txt).Count > 0)
+                    {
+                        txt = rgx.Replace(txt, "");
+                    }
+
+                });
+
+                // Parcours de la chaine et lemmatization
+                List<Pretraitement> table = new List<Pretraitement>();
+                int position = 0;
+
+                List<string> mots = txt.Split(' ').ToList();
+                while (position < mots.Count)
+                {
+                    string mot = mots.ElementAt(position);
+
+                    if (mot == "XXX")
+                    {
+                        table.Add(new Pretraitement() { Class = "stopword", Position = position });
+                    }
+
+                    Pretraitement contextualizer = this.FindConcept(mot, this.listContextualizers);
+                    if (contextualizer != null)
+                    {
+                        contextualizer.Position = position;
+                        table.Add(contextualizer);
+                    }
+                    Pretraitement quantifier = this.FindConcept(mot, this.listQuantifiers);
+                    if (quantifier != null)
+                    {
+                        quantifier.Position = position;
+                        table.Add(quantifier);
+                    }
+
+                    Pretraitement concept = this.FindConcept(mot, this.listConcepts);
+
+                    if (concept != null)
+                    {
+                        concept.Position = position;
+                        table.Add(concept);
+                    }
+
+                    position += 1;
+                }
+
+                // Fusion des quantifieurs successifs
+                List<Pretraitement> quantifiers = (from x in table where x.Class == "quantifier" select x).OrderBy(x => x.Position).ToList();
+                quantifiers.ForEach(x =>
+                {
+                    List<Pretraitement> quantifiersNext = (from y in quantifiers where y.Position == x.Position + 1 select y).ToList();
+                    if (quantifiersNext.Count > 0)
+                    {
+
+                        if (quantifiersNext.ElementAt(0).ConceptFR.Split(' ').ToList().IndexOf(x.ConceptFR) == -1)
+                        {
+                            quantifiersNext.ElementAt(0).AttributeFR = x.AttributeFR + " " + quantifiersNext.ElementAt(0).AttributeFR;
+                            quantifiersNext.ElementAt(0).ConceptFR = x.ConceptFR + " " + quantifiersNext.ElementAt(0).ConceptFR;
+
+                            // Quantifiers combinés
+                            //List<Pretraitement> combination = (from y in this.listCombinationQuantifiers where quantifiersNext.ElementAt(0).ConceptFR.Replace("-", " ") == y.AttributeFR select y).ToList();
+                            //if (combination.Count > 0)
+                            //{
+                            //    quantifiersNext.ElementAt(0).ConceptFR = combination.ElementAt(0).ConceptFR;
+                            //}
+
+
+                        }
+
+                        table.Remove(x);
+                    }
+                });
+
+                // Fusion des contextualizers successifs
+                List<Pretraitement> contextualizers = (from x in table where x.Class == "contextualizer" select x).OrderBy(x => x.Position).ToList();
+                contextualizers.ForEach(x =>
+                {
+                    List<Pretraitement> contextualizersNext = (from y in contextualizers where y.Position == x.Position + 1 select y).ToList();
+                    if (contextualizersNext.Count > 0)
+                    {
+                        if (contextualizersNext.ElementAt(0).AttributeFR != x.AttributeFR)
+                        {
+                            contextualizersNext.ElementAt(0).AttributeFR = x.AttributeFR + " " + contextualizersNext.ElementAt(0).AttributeFR;
+                            if (contextualizersNext.ElementAt(0).ConceptFR != x.ConceptFR)
+                            {
+                                contextualizersNext.ElementAt(0).ConceptFR = x.ConceptFR + " " + contextualizersNext.ElementAt(0).ConceptFR;
+                            }
+                        }
+                        table.Remove(x);
+                    }
+                });
+
+                // Renumérotation
+                position = 0;
+                int memoryPosition = 0;
+                string pred = "";
+                table.ForEach(x =>
+                {
+                    if (pred == x.AttributeFR)
+                    {
+                        x.Position = memoryPosition;
+                    }
+                    else
+                    {
+                        x.Position = position;
+                        memoryPosition = position;
+                        position++;
+                    }
+                    pred = x.AttributeFR;
+                });
+
+                // Parcours des quantifieurs ==> association avec concept précédent ou suivant, sinon supprimé         
+                quantifiers = (from x in table where x.Class == "quantifier" select x).OrderBy(x => x.Position).ToList();
+                quantifiers.ForEach(x =>
+                {
+                    // Recherches concepts à gauche
+                    if (rechercheQuantifierAdj(table, x, +1) == false)
+                    {
+                        rechercheQuantifierAdj(table, x, -1);
+                    }
+                });
+
+                // Renumérotation
+                position = 0;
+                memoryPosition = 0;
+                pred = "";
+                table.ForEach(x =>
+                {
+                    if (pred == x.AttributeFR)
+                    {
+                        x.Position = memoryPosition;
+                    }
+                    else
+                    {
+                        x.Position = position;
+                        memoryPosition = position;
+                        position++;
+                    }
+                    pred = x.AttributeFR;
+                });
+
+                // Parcours des contextualizers ==> association avec concept suivant, sinon supprimé sauf si c'est aussi un concept
+                contextualizers = (from x in table where x.Class == "contextualizer" select x).OrderBy(x => x.Position).ToList();
+                contextualizers.ForEach(x =>
+                {
+                    // Recherches concepts adjacents
+                    if (rechercheConceptAdj(table, x, +1) == false)
+                    {
+                        rechercheConceptAdj(table, x, -1);
+                    }
+                });
+
+                List<Pretraitement> toRemove = (from x in table where x.Class == "stopword" select x).ToList();
+                // Suppression des quantifieurs correspondants à des descripteurs
+                table.ForEach(x =>
+                {
+                    if (x.Class == "quantifier")
+                    {
+                        int cpt = (from y in this.listConcepts where x.AttributeFR == y.AttributeFR select x).Count();
+                        if (cpt > 0)
+                        {
+                            toRemove.Add(x);
+                        }
+                    }
+                    if (x.Class == "concept")
+                    {
+                        x.Quantifier = x.Quantifier.Replace(x.AttributeFR, "").Trim();
+                        x.QuantifierConcept = x.QuantifierConcept.Replace(x.ConceptFR, "").Trim();
+                    }
+                    x.GetDescriptor();
+                });
+
+                toRemove.ForEach(x =>
+                {
+                    table.Remove(x);
+                });
+
+                res.Concepts = table;
+
+
+                return res;
+            }
+
+            public Result ClassifyOK(string txt)
+            {
+                // TODO : quantifieur + descripteur => léger 
+                // TODO : correction + mots multiples => pas tres douxi
+
+                Result res = new Result();
+                res.CategoriesProduit = this.listCategoriesProduit;
+
+                if (txt == null)
+                {
+                    return res;
+                }
+
+                // Passage en minuscule
+                txt = txt.ToLower();
+
+                // Suppression des caractères spéciaux                
+                txt = ReplaceSpecialCharacters(txt);
+                txt = " " + Regex.Replace(txt, @"\s+", " ") + " ";
+
+                // Supression des mots de 2 lettres ou moins et des stop words
+                List<string> tmp = txt.Split(' ').ToList();
+                tmp = tmp.Where(x => { return (x.Length > 2 || this.listExceptions.IndexOf(x) > -1) && this.listStopWords.IndexOf(x) == -1; }).ToList();
+
+                // Fusion des mots composés
+                txt = string.Join(" ", tmp);
+                this.listCompositeWords.ForEach(x =>
+                {
+                    Regex rgx = new Regex("\\b" + x.RegularExpressionFR + "\\b");
+                    if (rgx.Matches(txt).Count > 0)
+                    {
+                        txt = rgx.Replace(txt, x.AttributeFR);
+                    }
+
+                });
+
+                tmp = txt.Split(' ').ToList();
+
+                // Supression des verbes d'états
+                tmp = tmp.Where(x => this.listStateVerbs.IndexOf(x) == -1).ToList();
+
+                txt = string.Join(" ", tmp);
+
+                res.TexteNettoye = txt;
+
+                // Chaine de caractères -> tableau
+                List<string> words = txt.Split(' ').Where(x => x.Length > 0).ToList();
+                List<string> newWords = new List<string>();
+
+                res.MotsCorriges = new Dictionary<string, string>();
+
+                // Correction orthographique
+
+                for (int i = 0; i < words.Count; i++)
+                {
+                    string w = words.ElementAt(i);
+
+                    int wlength = w.Length;
+                    int nbCarCorrections = Math.Min(wlength, 3);
+                    int distLeven = 2;
+                    if (wlength > 7)
+                    {
+                        nbCarCorrections = 2;
+                        distLeven = 3;
+                    }
+
+                    bool found = false;
+
+                    // Recherche dans les mots autorisés
+                    Regex rg = new Regex(this.regexpMotsAConserver);
+                    if (rg.Matches(w).Count > 0)
+                    {
+                        newWords.Add(w);
+                    }
+                    else
+                    {
+                        if (this.hunspell != null)
+                        {
+                            bool resh = hunspell.Spell(w);
+                            if (resh == false)
+                            {
+                                List<string> list = new List<string>();
+                                try
+                                {
+                                    w = Regex.Replace(w, @"\p{Cs}", "");
+                                    list = hunspell.Suggest(w);
+                                    list = list.Where(x => x.Contains(" ") == false /*&& x.Length >= w.Length*/ && x.StartsWith(w.ElementAt(0).ToString())).ToList();
+                                }
+                                catch (Exception ex)
+                                {
+                                    list = new List<string>();
+                                }
+
+                                int minLeven = 1000;
+                                string betterSuggestion = "";
+                                for (int j = 0; j < list.Count(); j++)
+                                {
+
+
+                                    string d = list.ElementAt(j);
+
+                                    int leven = CalcLevenshteinDistance(ReplaceSpecialCharacters(w), ReplaceSpecialCharacters(d));
+
+                                    if (leven <= distLeven && rg.Matches(d).Count > 0)
+                                    {
+                                        if (leven < minLeven)
+                                        {
+                                            minLeven = leven;
+                                            d = d.Replace('-', ' ');
+                                            d = d.Replace('\'', ' ');
+                                            betterSuggestion = d;
+                                        }
+                                    }
+                                }
+
+                                if (betterSuggestion != "" && res.MotsCorriges.ContainsKey(betterSuggestion) == false)
+                                {
+                                    res.MotsCorriges.Add(betterSuggestion, w);
+                                    newWords.Add(betterSuggestion);
+                                    found = true;
+                                    break;
+                                }
+
+                            }
+                        }
+                        if (found == false)
+                        {
+                            res.MotsNonRetenus.Add(w);
+                            newWords.Add("XXX");
+                        }
+                    }
+
                 }
 
                 txt = ReplaceSpecialCharacters(String.Join(" ", newWords));
@@ -1608,41 +2044,11 @@ namespace ChemosensTools.fcLexicon.csModels
 
             ExcelPackage xlPackage = new ExcelPackage(stream);
 
-            // ENTREE
-            // Colonne 1 : sujet
-            // Colonne 2 : produit
-            // Colonne 3 : autre
-            // Colonne 4 : fc
-
-            // SORTIE 1
-            // Colonne 1 : sujet
-            // Colonne 2 : produit
-            // Colonne 3 : autre
-            // Colonne 4 : fc            
-            // Colonne 5 : contexte/descripter/quantifieur (sans regroupement)
-
-            // SORTIE 2 (format long)
-            // Colonne 1 : sujet
-            // Colonne 2 : produit
-            // Colonne 3 : autre
-            // Colonne 4 : mot
-            // Colonne 5 : concept(s) séparés par ,
-            // Colonne 6 : quantifieur
-
-            // SORTIE 3
-            // Mots non retenus
-
-            // SORTIE 4
-            // Mots corrigés
-
-
             var myWorksheet = xlPackage.Workbook.Worksheets.ElementAt(0);
             var totalRows = myWorksheet.Dimension.End.Row;
 
-            //var totalRows = 100;
-
-            myWorksheet.Cells[1, 5].Value = "contexte/descripteur/quantifieur (sans regroupement)";
-            //myWorksheet.Cells[1, 6].Value = "contexte_modalité/parent/concept_quantifieur";
+            myWorksheet.Cells[1, 5].Value = "contexte/descripteur/quantifieur";
+            myWorksheet.Cells[1, 6].Value = "dimension:concept_intensité/descripteur_intensité";
 
             Dictionary<string, int> motsNonRetenus = new Dictionary<string, int>();
             Dictionary<string, string> motsCorriges = new Dictionary<string, string>();
@@ -1654,7 +2060,6 @@ namespace ChemosensTools.fcLexicon.csModels
                 string txt = (myWorksheet.Cells[rowNum, 4].Value ?? string.Empty).ToString();
                 Result res = classifier.Classify(txt);
 
-                //myWorksheet.Cells[rowNum, 5].Value = res.TexteNettoye;
                 myWorksheet.Cells[rowNum, 5].Value = "";
                 myWorksheet.Cells[rowNum, 6].Value = "";
 
@@ -1664,58 +2069,23 @@ namespace ChemosensTools.fcLexicon.csModels
                     r.Subject = (myWorksheet.Cells[rowNum, 1].Value ?? string.Empty).ToString();
                     r.Product = (myWorksheet.Cells[rowNum, 2].Value ?? string.Empty).ToString();
                     r.Factor = (myWorksheet.Cells[rowNum, 3].Value ?? string.Empty).ToString();
-                    //r.HandledText = m.HandledText;
+                    r.HandledText = m.HandledText;
+                    string desc = m.ExtractedText;
 
-                    r.HandledText = m.GetAgregatedDescription();
-
-                    myWorksheet.Cells[rowNum, 5].Value += m.GetDescription() + " ; ";
-
-
-                    //r.Word = m.Word;
-                    //r.Concept = m.FullConceptFR;
-                    //r.Quantifier = m.QuantifierConcept;
-                    //r.Corrected = m.Corrected;
-                    //r.Descriptor = m.Descriptor;
-                    //r.Modality = m.Modality;
-                    //r.RootConcept = m.RootConcept;
-                    //r.PredecessorConcept = m.PredecessorConcept;
+                    if (desc != "")
+                    {
+                        myWorksheet.Cells[rowNum, 5].Value += desc + ";";
+                        myWorksheet.Cells[rowNum, 6].Value += r.HandledText + ";";
+                    }
                     resultatSenso.Add(r);
-                    //myWorksheet.Cells[rowNum, 5].Value += m.AttributeFR;
-                    //if (m.ConceptFR != null)
-                    //{
-                    //    myWorksheet.Cells[rowNum, 6].Value += m.ConceptFR.Split('>').Last();
-                    //}
-
-                    //if (m.Contextualizer != null)
-                    //{
-                    //    myWorksheet.Cells[rowNum, 5].Value += "-" + m.Contextualizer;
-                    //    myWorksheet.Cells[rowNum, 6].Value += "-" + m.Contextualizer;
-                    //}
-
-
-                    //if (r.Quantifier != null)
-                    //{
-                    //    myWorksheet.Cells[rowNum, 5].Value += "/" + m.Quantifier;
-                    //    myWorksheet.Cells[rowNum, 6].Value += "/" + m.QuantifierConcept;
-                    //}
-
-                    //myWorksheet.Cells[rowNum, 5].Value += m.ExtractedText + " ; ";
-                    //myWorksheet.Cells[rowNum, 6].Value += m.HandledText + " ; ";
                 });
 
-                //List<string> words = new List<string>();
+                myWorksheet.Cells[rowNum, 5].Value = ((string)myWorksheet.Cells[rowNum, 5].Value).Trim(';');
+                if (myWorksheet.Cells[rowNum, 5].Value == ";")
+                {
+                    myWorksheet.Cells[rowNum, 5].Value = "";
+                }
 
-                //res.Mots.ForEach(x =>
-                //{
-                //    string word = x.AttributeFR;
-                //    if (x.Preposition != null && x.Preposition.Length > 0)
-                //    {
-                //        word += x.Preposition;
-                //    }
-                //    words.Add(word);
-                //});
-
-                //myWorksheet.Cells[rowNum, 4].Value = string.Join(" ", words);
                 res.MotsNonRetenus.ForEach(x =>
                 {
                     if (x.Length > 1)
@@ -1741,8 +2111,7 @@ namespace ChemosensTools.fcLexicon.csModels
                     }
 
                 });
-
-                //motsNonRetenus = motsNonRetenus.Concat(res.MotsNonRetenus).ToList();
+                //}  
             });
 
             xlPackage.Workbook.Worksheets.Add("result");
@@ -1751,19 +2120,8 @@ namespace ChemosensTools.fcLexicon.csModels
             myWorksheet.Cells[1, 1].Value = "subject";
             myWorksheet.Cells[1, 2].Value = "product";
             myWorksheet.Cells[1, 3].Value = "factor";
-            myWorksheet.Cells[1, 4].Value = "contexte/dimension/concept/quantifieur/descripteur (agrégé)";
-            myWorksheet.Cells[1, 5].Value = "contexte";
-            myWorksheet.Cells[1, 6].Value = "dimension";
-            myWorksheet.Cells[1, 7].Value = "concept";
-            myWorksheet.Cells[1, 8].Value = "quantifieur";
-            myWorksheet.Cells[1, 9].Value = "descripteur";
-            //myWorksheet.Cells[1, 6].Value = "quantifier";
-            //myWorksheet.Cells[1, 7].Value = "corrected";
-            //myWorksheet.Cells[1, 8].Value = "modality";
-            //myWorksheet.Cells[1, 9].Value = "rootConcept";
-            //myWorksheet.Cells[1, 10].Value = "predecessorConcept";
-            //myWorksheet.Cells[1, 11].Value = "descriptor";
-
+            myWorksheet.Cells[1, 4].Value = "dimension:concept_intensité/descripteur_intensité";
+            myWorksheet.Cells[1, 5].Value = "dimension:concept_intensité/descripteur_intensité (sans bien/mal)";
 
             int index = 2;
             foreach (ResultSenso r in resultatSenso)
@@ -1772,52 +2130,7 @@ namespace ChemosensTools.fcLexicon.csModels
                 myWorksheet.Cells[index, 2].Value = r.Product;
                 myWorksheet.Cells[index, 3].Value = r.Factor;
                 myWorksheet.Cells[index, 4].Value = r.HandledText;
-                if (r.HandledText != null)
-                {
-                    string[] t = r.HandledText.Split('/');
-                    myWorksheet.Cells[index, 5].Value = t[0];
-                    myWorksheet.Cells[index, 6].Value = t[1];
-                    myWorksheet.Cells[index, 7].Value = t[2];
-                    myWorksheet.Cells[index, 8].Value = t[3];
-                    myWorksheet.Cells[index, 9].Value = t[4];
-                }
-                //myWorksheet.Cells[index, 4].Value = r.Word;
-                //myWorksheet.Cells[index, 5].Value = r.Concept;
-                //myWorksheet.Cells[index, 6].Value = r.Quantifier;
-                //myWorksheet.Cells[index, 7].Value = r.Corrected;
-                //if (r.Concept != null & r.Concept != "")
-                //{
-                //    myWorksheet.Cells[index, 8].Value = r.Modality;
-                //    myWorksheet.Cells[index, 9].Value = r.RootConcept;
-                //    myWorksheet.Cells[index, 10].Value = r.PredecessorConcept;
-                //    myWorksheet.Cells[index, 11].Value = r.Descriptor;
-                //}
-
-                //string pas = "";
-                //if (r.Quantifier == "pas")
-                //{
-                //    pas = "pas-";
-                //}
-                //if (r.Concept != null & r.Concept != "")
-                //{
-                //    string[] left = r.Concept.Split(':');
-                //    myWorksheet.Cells[index, 8].Value = left.ElementAt(0);
-                //    if (left.Count() > 1)
-                //    {
-                //        string[] right = left.ElementAt(1).Split('>');
-                //        myWorksheet.Cells[index, 9].Value = pas + right.ElementAt(0);
-                //        myWorksheet.Cells[index, 10].Value = pas + right.ElementAt(Math.Max(0, right.Count() - 2));
-                //        if (r.Quantifier != null)
-                //        {
-                //            myWorksheet.Cells[index, 11].Value = r.Quantifier + "-" + right.Last();
-                //        }
-                //        else
-                //        {
-                //            myWorksheet.Cells[index, 11].Value = right.Last();
-                //        }
-                //    }
-                //}
-
+                myWorksheet.Cells[index, 5].Value += r.HandledText.Replace("_bien", "").Replace("_mal", "") + ";";
                 index++;
             }
 
