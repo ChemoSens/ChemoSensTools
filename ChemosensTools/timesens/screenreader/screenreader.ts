@@ -2026,15 +2026,24 @@
 
         private goToScreenIf(conditions: Controls.GoToScreenCondition[]) {
             // Dès qu'une condition de la liste est vérifiée, redirige vers l'écran
+            let canGo: boolean = true;
+            let message = "";
             for (let i = 0; i < conditions.length; i++) {
                 let condition = Framework.Factory.CreateFrom(Controls.GoToScreenCondition, conditions[i]);
                 let dataControl = this.listControls.filter((x) => { return x._FriendlyName == condition.DataControlId; })[0];
                 let dataControlValue: string[] = (<Controls.DataControl>dataControl).GetValue();
-                if (condition.IsVerified(dataControlValue) == true) {
-                    this.goToScreen(condition.ScreenId);
+                message += dataControl.ValidationMessage + "\r\n";
+                if (dataControl.IsValid == true) {
+                    if (condition.IsVerified(dataControlValue) == true) {
+                        this.goToScreen(condition.ScreenId);
+                        break;
+                    }
+                } else {
+                    canGo = false;
                     break;
                 }
             }
+            if (canGo == false) this.onValidationError(message);
         }
 
         private goToScreenOfSampleCodeInput(btn: Controls.CustomButton, designId: number, action: Function = undefined) {
