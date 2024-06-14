@@ -23,6 +23,7 @@ using System.Net.Http;
 using System.ServiceModel;
 using TimeSens.webservices.helpers;
 using System.Threading.Tasks;
+using DocumentFormat.OpenXml.ExtendedProperties;
 
 namespace ChemosensTools.inca3Classifier.csModels
 {
@@ -192,14 +193,68 @@ namespace ChemosensTools.inca3Classifier.csModels
 
         }
 
-        private static List<string> DesignationAsTableau(string designation, List<string> exceptions, List<string> motsASupprimer, int troncature)
+        private static async Task<List<string>> SyllabationAsync(string mot)
+        {
+            List<string> tableauMots = new List<string>();
+
+            // Données à envoyer à l'API
+            var data = new { word = mot };
+            var apiUrl = "http://138.102.159.153/syllabe";
+
+            using (var client = new HttpClient())
+            {
+                // Convertir les données en JSON
+                var content = new StringContent(JsonConvert.SerializeObject(data), Encoding.UTF8, "application/json");
+
+                try
+                {
+                    // Faire la requête à l'API
+                    HttpResponseMessage response = await client.PostAsync(apiUrl, content);
+
+                    // Assurez-vous que la requête a réussi
+                    response.EnsureSuccessStatusCode();
+
+                    // Lire la réponse
+                    var responseString = await response.Content.ReadAsStringAsync();
+                    dynamic syllableResponse = JsonConvert.DeserializeObject(responseString);
+
+                    foreach (string syllable in syllableResponse.syllables)
+                    {
+                        tableauMots.Add(syllable);
+                    }
+                }
+                catch (HttpRequestException e)
+                {
+                    Console.WriteLine($"Erreur HTTP : {e.Message}");
+                }
+            }
+
+            return tableauMots;
+        }
+        private static List<string> DesignationAsTableau(string designation, List<string> exceptions, List<string> motsASupprimer, int troncature, bool syllabe)
         {
             string motMinusculeNettoye = DesignationNettoyee(designation, exceptions, motsASupprimer, troncature);
             
             List<string> tableauMots = new List<string>();
-            for (int i = 0; i < motMinusculeNettoye.Length - 2; i++)
+            if (syllabe)
             {
-                tableauMots.Add(motMinusculeNettoye.Substring(i, 3));
+                try
+                {
+                    tableauMots = SyllabationAsync(motMinusculeNettoye).GetAwaiter().GetResult();
+                }
+                catch (HttpRequestException ex)
+                {
+                    var myErr = $"Erreur lors de la requête HTTP : {ex.Message}";
+                    //Console.WriteLine($"URL de la requête : {ex.Request.RequestUri}");
+                    // Vous pouvez ajouter d'autres informations utiles ici
+                    throw; // Propagez l'exception pour que le code appelant puisse la gérer si nécessaire
+                }
+        }
+            else {
+                for (int i = 0; i < motMinusculeNettoye.Length - 2; i++)
+                {
+                    tableauMots.Add(motMinusculeNettoye.Substring(i, 3));
+                }
             }
 
             return tableauMots;
@@ -273,6 +328,7 @@ namespace ChemosensTools.inca3Classifier.csModels
             public string Freq;
             public double Pourcentage;
             public int CountAfter;
+            public bool syllabe;
         }
 
         public class ResultReferentiel
@@ -282,7 +338,7 @@ namespace ChemosensTools.inca3Classifier.csModels
             public List<string> ListeMotsASupprimer = new List<string>();
         }
 
-        private static ResultReferentiel ReadReferentiel(string referentielPath, int troncature)
+        private static ResultReferentiel ReadReferentiel(string referentielPath, int troncature, bool syllabe)
         {
             ResultReferentiel result = new ResultReferentiel();
 
@@ -326,7 +382,7 @@ namespace ChemosensTools.inca3Classifier.csModels
                 //{
                 //    reference.Designation= reference.Designation.Substring(0, Math.Min(reference.Designation.Length,troncature));
                 //}
-                reference.Triplets = DesignationAsTableau(reference.Designation, result.ListeExceptions, result.ListeMotsASupprimer, troncature);
+                reference.Triplets = DesignationAsTableau(reference.Designation, result.ListeExceptions, result.ListeMotsASupprimer, troncature, syllabe);
                 reference.DesignationNettoyee = DesignationNettoyee(reference.Designation, result.ListeExceptions, result.ListeMotsASupprimer, troncature);                
                 myWorksheet.Cells[rowNum, 3].Value = reference.DesignationNettoyee;
                 reference.TripletsString = string.Join(";", reference.Triplets);
@@ -354,9 +410,9 @@ namespace ChemosensTools.inca3Classifier.csModels
             return (aa);
         }
 
-        private static ResultatClassifieurFamilleFoodEx chercheCorrespondance(string designation, List<ReferenceOFF> listeReferences, List<string> exceptions, List<string> motsASupprimer, int pourcentage, bool matchExact, int troncature, int differenceCorrespondance, bool tauxCorrespondancePondere)
+        private static ResultatClassifieurFamilleFoodEx chercheCorrespondance(string designation, List<ReferenceOFF> listeReferences, List<string> exceptions, List<string> motsASupprimer, bool syllabe, int pourcentage, bool matchExact, int troncature, int differenceCorrespondance, bool tauxCorrespondancePondere)
         {
-            List<string> list2 = DesignationAsTableau(designation, exceptions, motsASupprimer, troncature);
+            List<string> list2 = DesignationAsTableau(designation, exceptions, motsASupprimer, troncature, syllabe);
 
             List<ReferenceOFF> listeReferencesOFF = new List<ReferenceOFF>();
 
@@ -454,7 +510,7 @@ namespace ChemosensTools.inca3Classifier.csModels
             return (resultat);
         }
 
-        public static ResultatClassifieurFamilleFoodEx ClassifieurFamilleFoodEx(string referentielPath, string designation, int pourcentage = 45, bool matchExact = false, bool supprimeDoublons = false, int troncature = 1000, int differenceCorrespondance = 50, bool tauxCorrespondancePondere = false)
+        public static ResultatClassifieurFamilleFoodEx ClassifieurFamilleFoodEx(string referentielPath, string designation, bool syllabe = false, int pourcentage = 45, bool matchExact = false, bool supprimeDoublons = false, int troncature = 1000, int differenceCorrespondance = 50, bool tauxCorrespondancePondere = false)
         {
 
             //TODO : connexion persistante, une seule fonction pour charger le référentiel
@@ -463,7 +519,7 @@ namespace ChemosensTools.inca3Classifier.csModels
             {
                 ExcelPackage.LicenseContext = LicenseContext.NonCommercial;
 
-                ResultReferentiel result = ReadReferentiel(referentielPath, troncature);
+                ResultReferentiel result = ReadReferentiel(referentielPath, troncature, syllabe);
                 List<ReferenceOFF> listeReferences = result.ListeReferencesOFF;
                 // Suppression doublons
                 if (supprimeDoublons == true)
@@ -471,7 +527,7 @@ namespace ChemosensTools.inca3Classifier.csModels
                     listeReferences = listeReferences.GroupBy(elem => elem.TripletsString).Select(group => group.First()).ToList();
                 }
 
-                ResultatClassifieurFamilleFoodEx resultat = chercheCorrespondance(designation, listeReferences, result.ListeExceptions, result.ListeMotsASupprimer, pourcentage, matchExact, troncature, differenceCorrespondance, tauxCorrespondancePondere);
+                ResultatClassifieurFamilleFoodEx resultat = chercheCorrespondance(designation, listeReferences, result.ListeExceptions, result.ListeMotsASupprimer, syllabe, pourcentage, matchExact, troncature, differenceCorrespondance, tauxCorrespondancePondere);
 
                 return (resultat);
             }
@@ -488,7 +544,7 @@ namespace ChemosensTools.inca3Classifier.csModels
             public int CountAfter;
         }
 
-        public static UploadReferentielResult UploadReferentiel(string data, string name)
+        public static UploadReferentielResult UploadReferentiel(string data, string name, bool syllabe)
         {
             try
             {
@@ -499,7 +555,7 @@ namespace ChemosensTools.inca3Classifier.csModels
                 ExcelPackage xlPackage = new ExcelPackage(stream);
                 xlPackage.SaveAs(new FileInfo(ConfigurationManager.AppSettings["ReferentielFoodExPath"] + name + ".xlsx"));
 
-                ResultReferentiel result = ReadReferentiel(ConfigurationManager.AppSettings["ReferentielFoodExPath"] + name + ".xlsx", 1000);
+                ResultReferentiel result = ReadReferentiel(ConfigurationManager.AppSettings["ReferentielFoodExPath"] + name + ".xlsx", 1000, syllabe);
 
                 List<ReferenceOFF> list = result.ListeReferencesOFF;
 
@@ -535,7 +591,7 @@ namespace ChemosensTools.inca3Classifier.csModels
             }
         }
 
-        public static byte[] ClassifieurFamilleFoodExExcel(string referentielPath, string data, int pourcentage = 45, bool matchExact = false, bool supprimeDoublon = false, int troncature = 1000, string stat = "mode", int differenceCorrespondance = 50, bool tauxCorrespondancePondere = false)
+        public static byte[] ClassifieurFamilleFoodExExcel(string referentielPath, string data, bool syllabe = false, int pourcentage = 45, bool matchExact = false, bool supprimeDoublon = false, int troncature = 1000, string stat = "mode", int differenceCorrespondance = 50, bool tauxCorrespondancePondere = false)
         {
             //byte[] bytes = Org.BouncyCastle.Utilities.Encoders.Base64.Decode(data.Replace("data:application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;base64,", ""));
             byte[] bytes = Convert.FromBase64String(data.Replace("data:application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;base64,", ""));
@@ -545,7 +601,7 @@ namespace ChemosensTools.inca3Classifier.csModels
 
             //List<ReferenceOFF> listeReferencesOFF = new List<ReferenceOFF>();
 
-            ResultReferentiel result = ReadReferentiel(referentielPath, troncature);
+            ResultReferentiel result = ReadReferentiel(referentielPath, troncature, syllabe);
 
             List<ReferenceOFF> listeReferencesOFF = result.ListeReferencesOFF;
             // Suppression doublons
@@ -600,7 +656,7 @@ namespace ChemosensTools.inca3Classifier.csModels
             {
                 string designation = (myWorksheet.Cells[rowNum, 1].Value ?? string.Empty).ToString();
 
-                ResultatClassifieurFamilleFoodEx resultat = chercheCorrespondance(designation, listeReferencesOFF, result.ListeExceptions, result.ListeMotsASupprimer, pourcentage, matchExact, troncature, differenceCorrespondance, tauxCorrespondancePondere);
+                ResultatClassifieurFamilleFoodEx resultat = chercheCorrespondance(designation, listeReferencesOFF, result.ListeExceptions, result.ListeMotsASupprimer, syllabe, pourcentage, matchExact, troncature, differenceCorrespondance, tauxCorrespondancePondere);
                 myWorksheet.Cells[rowNum, 2].Value = resultat.DesignationNettoyee;
                 myWorksheet.Cells[rowNum, 3].Value = resultat.Triplets;
                 if (stat == "mode")
