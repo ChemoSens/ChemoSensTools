@@ -127,7 +127,7 @@
             let btnTeleverseTableReference = Framework.Form.Button.Register("btnTeleverseTableReference", () => { return true; }, () => {
                 Framework.FileHelper.BrowseBinaries("xlsx", (binaries: string) => {
                     Framework.Progress.Show(Framework.LocalizationManager.Get("Téléversement en cours..."));
-                    self.CallWCF('UploadReferentiel', { data: binaries, login: self.login }, () => {
+                    self.CallWCF('UploadReferentiel', { data: binaries, login: self.login, syllabe: inputSyllabe.IsChecked}, () => {
                     }, (res) => {
                         Framework.Progress.Hide();
 
@@ -197,6 +197,10 @@
 
             let spanTableReference = Framework.Form.TextElement.Register("spanTableReference");
 
+            let inputSyllabe = Framework.Form.CheckBox.Register("inputSyllabe", () => { return true; }, () => {
+                //getDesignation();
+            }, "");
+
             let textareaPourcentage = Framework.Form.InputText.Register("textareaPourcentage", "45", undefined, (newValue: string) => {
                 //getDesignation();
             }, false);
@@ -260,7 +264,7 @@
                     divResultats1.Hide();
                     textareaDesignationNettoyee.Set("");
                     console.time("execution");
-                    self.CallWCF('ClassifieurFamilleFoodEx', { designation: self.textareaDesignation.Value, login: self.login, pourcentage: Number(textareaPourcentage.Value), matchExact: inputMatchExact.IsChecked, supprimeDoublons: inputSupprimeDoublons.IsChecked, troncature: Number(textareaTroncature.Value), differenceCorrespondance: Number(textareaDifferenceCorrespondance.Value), tauxCorrespondancePondere: inputTauxCorrespondancePondere.IsChecked }, () => {
+                    self.CallWCF('ClassifieurFamilleFoodEx', { designation: self.textareaDesignation.Value, login: self.login, syllabe: inputSyllabe.IsChecked, pourcentage: Number(textareaPourcentage.Value), matchExact: inputMatchExact.IsChecked, supprimeDoublons: inputSupprimeDoublons.IsChecked, troncature: Number(textareaTroncature.Value), differenceCorrespondance: Number(textareaDifferenceCorrespondance.Value), tauxCorrespondancePondere: inputTauxCorrespondancePondere.IsChecked }, () => {
 
                     }, (res) => {
 

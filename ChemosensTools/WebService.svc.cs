@@ -774,17 +774,17 @@ namespace ChemosensTools
         }
 
         [OperationContract]
-        public string ClassifieurFamilleFoodEx(string designation, string login, int pourcentage, bool matchExact, bool supprimeDoublons, int troncature, int differenceCorrespondance = 50, bool tauxCorrespondancePondere = false)
+        public string ClassifieurFamilleFoodEx(string designation, string login, bool syllabe, int pourcentage, bool matchExact, bool supprimeDoublons, int troncature, int differenceCorrespondance = 50, bool tauxCorrespondancePondere = false)
         {
 
-            return Serializer.SerializeToString(inca3Classifier.csModels.inca3Classifier.ClassifieurFamilleFoodEx(ConfigurationManager.AppSettings["ReferentielFoodExPath"] + login + ".xlsx", designation, pourcentage, matchExact, supprimeDoublons, troncature, differenceCorrespondance, tauxCorrespondancePondere));
+            return Serializer.SerializeToString(inca3Classifier.csModels.inca3Classifier.ClassifieurFamilleFoodEx(ConfigurationManager.AppSettings["ReferentielFoodExPath"] + login + ".xlsx", designation, syllabe, pourcentage, matchExact, supprimeDoublons, troncature, differenceCorrespondance, tauxCorrespondancePondere));
         }
 
         // Classifieur FoodEx
         [OperationContract]
-        public string UploadReferentiel(string data, string login)
+        public string UploadReferentiel(string data, string login, bool syllabe)
         {
-            return Serializer.SerializeToString(inca3Classifier.csModels.inca3Classifier.UploadReferentiel(data, login));
+            return Serializer.SerializeToString(inca3Classifier.csModels.inca3Classifier.UploadReferentiel(data, login, syllabe));
         }
 
         [OperationContract]
@@ -802,9 +802,9 @@ namespace ChemosensTools
 
 
         [OperationContract]
-        public string ClassifieurFamilleFoodExExcel(string data, string login, int pourcentage, bool matchExact, bool supprimeDoublons, int troncature, string stat, int differenceCorrespondance, bool tauxCorrespondancePondere = false)
+        public string ClassifieurFamilleFoodExExcel(string data, string login, bool syllabe, int pourcentage, bool matchExact, bool supprimeDoublons, int troncature, string stat, int differenceCorrespondance, bool tauxCorrespondancePondere = false)
         {
-            byte[] bytes = inca3Classifier.csModels.inca3Classifier.ClassifieurFamilleFoodExExcel(ConfigurationManager.AppSettings["ReferentielFoodExPath"] + login + ".xlsx", data, pourcentage, matchExact, supprimeDoublons, troncature, stat, differenceCorrespondance, tauxCorrespondancePondere);
+            byte[] bytes = inca3Classifier.csModels.inca3Classifier.ClassifieurFamilleFoodExExcel(ConfigurationManager.AppSettings["ReferentielFoodExPath"] + login + ".xlsx", data, syllabe, pourcentage, matchExact, supprimeDoublons, troncature, stat, differenceCorrespondance, tauxCorrespondancePondere);
             return Convert.ToBase64String(bytes);
         }
 
