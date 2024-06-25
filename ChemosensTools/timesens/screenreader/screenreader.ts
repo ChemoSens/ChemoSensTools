@@ -13879,6 +13879,7 @@
                 self.groupDescriptions.sort(f);
                 let table = document.createElement("table");
                 table.style.width = this._Width * ratio + "px";
+                table.style.minWidth = this._Width * ratio + "px";
                 //table.style.maxWidth = "100%";
                 table.style.borderCollapse = "collapse";
                 table.style.fontSize = 100 * ratio + "%";
