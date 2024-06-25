@@ -13923,6 +13923,7 @@
                         i.style.border = "1px solid #ddd";
                         i.style.padding = 8 * ratio + "px";
                         i.style.fontSize = 85 * ratio + "%";
+                        if (i == td2) { i.style.minWidth = '400px'; }
                     }
                 });
 
